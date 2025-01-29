@@ -17,13 +17,14 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            height: 100vh;
+            min-height: 100vh; /* Changed from height: 100vh */
+            overflow-y: auto; /* Ensures scrolling works */
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
             animation: fadeIn 1.5s ease-in-out;
         }
 
@@ -84,7 +85,7 @@
             margin-top: 25px;
         }
 
-        /* Darker Brown Buttons */
+        /* Dark Brown Buttons */
         .cta-button {
             padding: 12px 35px;
             font-size: 15px;
