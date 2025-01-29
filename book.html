@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>book - haku</title>
+    <title>Book with H A K U</title>
     <style>
         /* General styling */
         body {
@@ -34,7 +34,6 @@
             font-weight: 300;
             letter-spacing: 6px;
             margin-bottom: 20px;
-            text-transform: lowercase;
         }
 
         /* Booking Form Container */
@@ -93,7 +92,6 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
-            text-transform: lowercase;
         }
 
         .submit-button:hover {
@@ -121,7 +119,6 @@
             border-radius: 50px;
             text-decoration: none;
             transition: all 0.3s ease-in-out;
-            text-transform: lowercase;
         }
 
         .button:hover {
@@ -132,39 +129,39 @@
     </style>
 </head>
 <body>
-    <h1>book with H A K U</h1>
+    <h1>Book with H A K U</h1>
 
     <div class="booking-container">
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <label for="name">name</label>
+            <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="email">email</label>
+            <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="phone">phone number</label>
+            <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" required>
 
-            <label for="service">select service</label>
+            <label for="service">Select Service</label>
             <select id="service" name="service">
-                <option value="relaxation massage">relaxation massage</option>
-                <option value="deep tissue therapy">deep tissue therapy</option>
-                <option value="japanese-inspired aromatherapy">japanese-inspired aromatherapy</option>
+                <option value="relaxation massage">Relaxation Massage</option>
+                <option value="deep tissue therapy">Deep Tissue Therapy</option>
+                <option value="japanese-inspired aromatherapy">Japanese-Inspired Aromatherapy</option>
             </select>
 
-            <label for="date">preferred date</label>
+            <label for="date">Preferred Date</label>
             <input type="date" id="date" name="date" required>
 
-            <label for="message">additional requests</label>
+            <label for="message">Additional Requests</label>
             <textarea id="message" name="message" rows="4"></textarea>
 
-            <button type="submit" class="submit-button">submit booking</button>
+            <button type="submit" class="submit-button">Submit Booking</button>
         </form>
     </div>
 
     <div class="button-container">
-        <a href="index.html" class="button">home</a>
-        <a href="services.html" class="button">services</a>
+        <a href="index.html" class="button">Home</a>
+        <a href="services.html" class="button">Services</a>
     </div>
 </body>
 </html>
