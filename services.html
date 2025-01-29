@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - HAKU</title>
+    <title>our services - haku</title>
     <style>
         /* General styling */
         body {
@@ -34,6 +34,7 @@
             font-weight: 300;
             letter-spacing: 6px;
             margin-bottom: 20px;
+            text-transform: lowercase;
         }
 
         /* Service List */
@@ -52,16 +53,32 @@
             font-weight: 300;
             border-bottom: 1px solid white;
             padding-bottom: 5px;
+            text-transform: lowercase;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .service-item .japanese {
+            font-size: 20px;
+            font-weight: 200;
+            opacity: 0.8;
         }
 
         .service-item p {
             font-size: 18px;
             font-weight: 200;
             margin-top: 5px;
+            text-transform: lowercase;
         }
 
-        /* Back to Home Button */
-        .back-button {
+        /* Buttons */
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .button {
             display: inline-block;
             padding: 10px 30px;
             font-size: 16px;
@@ -71,12 +88,12 @@
             background: transparent;
             border: 1px solid white;
             border-radius: 50px;
-            margin-top: 30px;
             text-decoration: none;
             transition: all 0.3s ease-in-out;
+            text-transform: lowercase;
         }
 
-        .back-button:hover {
+        .button:hover {
             background: white;
             color: black;
             transform: scale(1.05);
@@ -84,30 +101,33 @@
     </style>
 </head>
 <body>
-    <h1>Our Services</h1>
+    <h1>our services</h1>
 
     <div class="services-container">
         <div class="service-item">
-            <h2>🌿 Signature Relaxation Massage</h2>
-            <p>A deeply relaxing massage that eases tension and promotes a sense of calm.</p>
+            <h2>signature relaxation massage <span class="japanese">リラクゼーションマッサージ</span></h2>
+            <p>a deeply relaxing massage that eases tension and promotes a sense of calm.</p>
         </div>
 
         <div class="service-item">
-            <h2>💆‍♂️ Deep Tissue Therapy</h2>
-            <p>Designed to relieve muscle soreness and improve circulation.</p>
+            <h2>deep tissue therapy <span class="japanese">ディープティシューマッサージ</span></h2>
+            <p>designed to relieve muscle soreness and improve circulation.</p>
         </div>
 
         <div class="service-item">
-            <h2>🕊️ Japanese-Inspired Aromatherapy</h2>
-            <p>Using traditional Japanese essential oils to create a tranquil experience.</p>
+            <h2>japanese-inspired aromatherapy <span class="japanese">アロマセラピー</span></h2>
+            <p>using traditional japanese essential oils to create a tranquil experience.</p>
         </div>
 
         <div class="service-item">
-            <h2>🌸 Personalized Elderly Care Massage</h2>
-            <p>Gentle, restorative massage tailored for older clients with care-focused techniques.</p>
+            <h2>personalized elderly care massage <span class="japanese">高齢者向けマッサージ</span></h2>
+            <p>gentle, restorative massage tailored for older clients with care-focused techniques.</p>
         </div>
     </div>
 
-    <a href="index.html" class="back-button">Back to Home</a>
+    <div class="button-container">
+        <a href="index.html" class="button">home</a>
+        <a href="book.html" class="button">book</a>
+    </div>
 </body>
 </html>
