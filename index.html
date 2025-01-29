@@ -76,40 +76,35 @@
             transform: scale(1.1);
         }
 
-        /* Mount Fuji Eruption Animation */
-        .fuji {
+        /* Sakura Petals Animation */
+        .sakura {
             position: absolute;
-            bottom: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 150px;
-            background: white;
-            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-            opacity: 0.9;
-        }
-
-        .smoke {
-            position: absolute;
-            bottom: 140px;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.8);
+            width: 12px;
+            height: 12px;
+            background: pink;
             border-radius: 50%;
-            animation: rise 5s infinite ease-in-out;
-            opacity: 0.7;
+            opacity: 0.9;
+            animation: fall linear infinite;
         }
 
-        @keyframes rise {
-            0% { transform: translateX(0) translateY(0) scale(1); opacity: 0.8; }
-            100% { transform: translateX(-10px) translateY(-200px) scale(2); opacity: 0; }
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(30px) rotate(360deg);
+                opacity: 0;
+            }
         }
 
-        /* Creating multiple smoke puffs */
-        .smoke:nth-child(1) { left: 48%; animation-duration: 5s; }
-        .smoke:nth-child(2) { left: 52%; animation-duration: 6s; }
-        .smoke:nth-child(3) { left: 50%; animation-duration: 7s; }
+        /* Different Sizes & Speeds for Realism */
+        .sakura:nth-child(1) { left: 10%; animation-duration: 6s; width: 14px; height: 14px; }
+        .sakura:nth-child(2) { left: 25%; animation-duration: 8s; width: 10px; height: 10px; }
+        .sakura:nth-child(3) { left: 40%; animation-duration: 7s; width: 12px; height: 12px; }
+        .sakura:nth-child(4) { left: 55%; animation-duration: 9s; width: 16px; height: 16px; }
+        .sakura:nth-child(5) { left: 70%; animation-duration: 5s; width: 13px; height: 13px; }
+        .sakura:nth-child(6) { left: 85%; animation-duration: 7s; width: 11px; height: 11px; }
     </style>
 </head>
 <body>
@@ -118,10 +113,12 @@
     <p>personalised massage, inspired by Japanese tradition.</p>
     <a href="services.html" class="cta-button">Explore Our Services</a>
 
-    <!-- Mount Fuji -->
-    <div class="fuji"></div>
-    <div class="smoke"></div>
-    <div class="smoke"></div>
-    <div class="smoke"></div>
+    <!-- Sakura Petals for Subtle Japanese Aesthetic -->
+    <div class="sakura"></div>
+    <div class="sakura"></div>
+    <div class="sakura"></div>
+    <div class="sakura"></div>
+    <div class="sakura"></div>
+    <div class="sakura"></div>
 </body>
 </html>
