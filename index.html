@@ -48,7 +48,7 @@
             margin-top: 15px;
             display: flex;
             align-items: center;
-            gap: 25px; /* Reduced spacing for better balance */
+            gap: 25px;
         }
 
         /* Katakana styling */
@@ -68,29 +68,29 @@
         /* Button Container */
         .button-container {
             display: flex;
-            justify-content: center;
-            gap: 40px; /* Adjust spacing between buttons */
-            margin-top: 30px;
+            justify-content: space-between; /* Ensures buttons are on opposite sides */
             width: 100%;
-            max-width: 600px; /* Keeps it centered nicely */
+            max-width: 400px; /* Keeps them closer together */
+            margin-top: 30px;
         }
 
-        /* Left Button (About Us) */
+        /* Left Button */
         .left-button {
-            text-align: left;
             flex: 1;
+            display: flex;
+            justify-content: flex-start;
         }
 
-        /* Right Button (Explore Services) */
+        /* Right Button */
         .right-button {
-            text-align: right;
             flex: 1;
+            display: flex;
+            justify-content: flex-end;
         }
 
         /* Premium Buttons */
         .cta-button {
-            display: inline-block;
-            padding: 12px 40px;
+            padding: 12px 35px;
             font-size: 15px;
             font-weight: 300;
             letter-spacing: 2px;
@@ -115,8 +115,12 @@
     <p>personalised massage, inspired by Japanese tradition.</p>
 
     <div class="button-container">
-        <a href="about.html" class="cta-button left-button">About Us</a>
-        <a href="services.html" class="cta-button right-button">Explore Our Services</a>
+        <div class="left-button">
+            <a href="about.html" class="cta-button">About</a>
+        </div>
+        <div class="right-button">
+            <a href="services.html" class="cta-button">Services</a>
+        </div>
     </div>
 </body>
 </html>
