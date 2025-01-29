@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - HAKU</title>
+    <style>
+        /* General styling */
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Helvetica Neue', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Header */
+        h1 {
+            font-size: 50px;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+        }
+
+        /* Service List */
+        .services-container {
+            max-width: 800px;
+            text-align: left;
+            padding: 20px;
+        }
+
+        .service-item {
+            margin-bottom: 30px;
+        }
+
+        .service-item h2 {
+            font-size: 26px;
+            font-weight: 300;
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
+        }
+
+        .service-item p {
+            font-size: 18px;
+            font-weight: 200;
+            margin-top: 5px;
+        }
+
+        /* Back to Home Button */
+        .back-button {
+            display: inline-block;
+            padding: 10px 30px;
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: white;
+            background: transparent;
+            border: 1px solid white;
+            border-radius: 50px;
+            margin-top: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            background: white;
+            color: black;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Our Services</h1>
+
+    <div class="services-container">
+        <div class="service-item">
+            <h2>🌿 Signature Relaxation Massage</h2>
+            <p>A deeply relaxing massage that eases tension and promotes a sense of calm.</p>
+        </div>
+
+        <div class="service-item">
+            <h2>💆‍♂️ Deep Tissue Therapy</h2>
+            <p>Designed to relieve muscle soreness and improve circulation.</p>
+        </div>
+
+        <div class="service-item">
+            <h2>🕊️ Japanese-Inspired Aromatherapy</h2>
+            <p>Using traditional Japanese essential oils to create a tranquil experience.</p>
+        </div>
+
+        <div class="service-item">
+            <h2>🌸 Personalized Elderly Care Massage</h2>
+            <p>Gentle, restorative massage tailored for older clients with care-focused techniques.</p>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-button">Back to Home</a>
+</body>
+</html>
