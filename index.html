@@ -37,14 +37,14 @@
             margin-top: 5px;
             display: flex;
             align-items: center;
-            gap: 25px; /* Spacing between English and Japanese text */
+            gap: 25px;
         }
 
         /* Katakana styling */
         .katakana {
             font-size: 20px;
             font-weight: 200;
-            opacity: 0.8; /* Slight fade for subtlety */
+            opacity: 0.8;
         }
 
         /* Tagline */
@@ -54,7 +54,7 @@
             margin-top: 10px;
         }
 
-        /* Premium Button Styling */
+        /* Premium Button */
         .cta-button {
             display: inline-block;
             padding: 12px 40px;
@@ -62,50 +62,54 @@
             font-weight: 300;
             letter-spacing: 2px;
             color: white;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.6) 100%);
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: transparent;
+            border: 1px solid white;
             border-radius: 50px;
             margin-top: 20px;
+            text-decoration: none;
             transition: all 0.3s ease-in-out;
-            backdrop-filter: blur(10px);
         }
 
         .cta-button:hover {
-            background: rgba(255, 255, 255, 0.9);
+            background: white;
             color: black;
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
-        /* Subtle Japanese Aesthetic - Sakura Petals */
-        .sakura {
+        /* Mount Fuji Eruption Animation */
+        .fuji {
             position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 150px;
+            background: white;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            opacity: 0.9;
+        }
+
+        .smoke {
+            position: absolute;
+            bottom: 140px;
+            left: 50%;
             width: 10px;
             height: 10px;
-            background: pink;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
+            animation: rise 5s infinite ease-in-out;
             opacity: 0.7;
-            animation: fall 5s linear infinite;
         }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(-10px) translateX(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) translateX(20px);
-                opacity: 0;
-            }
+        @keyframes rise {
+            0% { transform: translateX(0) translateY(0) scale(1); opacity: 0.8; }
+            100% { transform: translateX(-10px) translateY(-200px) scale(2); opacity: 0; }
         }
 
-        /* Creating multiple sakura petals */
-        .sakura:nth-child(1) { left: 10%; animation-duration: 7s; }
-        .sakura:nth-child(2) { left: 25%; animation-duration: 5s; }
-        .sakura:nth-child(3) { left: 40%; animation-duration: 8s; }
-        .sakura:nth-child(4) { left: 55%; animation-duration: 6s; }
-        .sakura:nth-child(5) { left: 70%; animation-duration: 9s; }
-        .sakura:nth-child(6) { left: 85%; animation-duration: 7s; }
+        /* Creating multiple smoke puffs */
+        .smoke:nth-child(1) { left: 48%; animation-duration: 5s; }
+        .smoke:nth-child(2) { left: 52%; animation-duration: 6s; }
+        .smoke:nth-child(3) { left: 50%; animation-duration: 7s; }
     </style>
 </head>
 <body>
@@ -114,12 +118,10 @@
     <p>personalised massage, inspired by Japanese tradition.</p>
     <a href="services.html" class="cta-button">Explore Our Services</a>
 
-    <!-- Sakura Petals for Subtle Japanese Aesthetic -->
-    <div class="sakura"></div>
-    <div class="sakura"></div>
-    <div class="sakura"></div>
-    <div class="sakura"></div>
-    <div class="sakura"></div>
-    <div class="sakura"></div>
+    <!-- Mount Fuji -->
+    <div class="fuji"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
 </body>
 </html>
