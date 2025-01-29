@@ -76,15 +76,15 @@
             transform: scale(1.1);
         }
 
-        /* Sakura Petals Animation */
+        /* Sakura Petal Animation */
         .sakura {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Sakura_petal.svg/1024px-Sakura_petal.svg.png') no-repeat center center;
-            background-size: contain;
+            width: 20px;
+            height: 20px;
+            background: pink;
+            border-radius: 50% 60% 60% 50%;
             opacity: 0.9;
-            animation: fall linear infinite;
+            animation: fall linear infinite, sway ease-in-out infinite alternate;
         }
 
         @keyframes fall {
@@ -98,13 +98,18 @@
             }
         }
 
-        /* Different Sizes & Speeds for Realism */
-        .sakura:nth-child(1) { left: 10%; animation-duration: 6s; width: 34px; height: 34px; }
-        .sakura:nth-child(2) { left: 25%; animation-duration: 8s; width: 28px; height: 28px; }
-        .sakura:nth-child(3) { left: 40%; animation-duration: 7s; width: 30px; height: 30px; }
-        .sakura:nth-child(4) { left: 55%; animation-duration: 9s; width: 36px; height: 36px; }
-        .sakura:nth-child(5) { left: 70%; animation-duration: 5s; width: 32px; height: 32px; }
-        .sakura:nth-child(6) { left: 85%; animation-duration: 7s; width: 26px; height: 26px; }
+        @keyframes sway {
+            0% { transform: rotate(-10deg); }
+            100% { transform: rotate(10deg); }
+        }
+
+        /* Creating multiple sakura petals with different sizes and speeds */
+        .sakura:nth-child(1) { left: 10%; animation-duration: 7s; width: 22px; height: 22px; }
+        .sakura:nth-child(2) { left: 25%; animation-duration: 9s; width: 18px; height: 18px; }
+        .sakura:nth-child(3) { left: 40%; animation-duration: 8s; width: 20px; height: 20px; }
+        .sakura:nth-child(4) { left: 55%; animation-duration: 10s; width: 24px; height: 24px; }
+        .sakura:nth-child(5) { left: 70%; animation-duration: 6s; width: 19px; height: 19px; }
+        .sakura:nth-child(6) { left: 85%; animation-duration: 7s; width: 21px; height: 21px; }
     </style>
 </head>
 <body>
@@ -113,7 +118,7 @@
     <p>personalised massage, inspired by Japanese tradition.</p>
     <a href="services.html" class="cta-button">Explore Our Services</a>
 
-    <!-- Sakura Petals for Subtle Japanese Aesthetic -->
+    <!-- Sakura Petals -->
     <div class="sakura"></div>
     <div class="sakura"></div>
     <div class="sakura"></div>
