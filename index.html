@@ -33,6 +33,16 @@
             font-size: 24px;
             font-weight: 200;
             margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Spacing between English and Japanese text */
+        }
+
+        /* Katakana styling */
+        .katakana {
+            font-size: 20px;
+            font-weight: 200;
+            opacity: 0.8; /* Slight fade for subtlety */
         }
 
         /* Tagline */
@@ -41,11 +51,32 @@
             font-weight: 200;
             margin-top: 10px;
         }
+
+        /* Explore button */
+        .cta-button {
+            display: inline-block;
+            padding: 14px 28px;
+            font-size: 16px;
+            color: black;
+            background-color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: grey;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <h1>HAKU</h1>
-    <h2>Melbourne</h2>
-    <p>personalised massage, inspired by Japanese tradition.</p>
+    <h2>Melbourne <span class="katakana">メルボルン</span></h2>
+    <p>Personalised massage, inspired by Japanese tradition.</p>
+    <a href="services.html" class="cta-button">Explore Our Services</a>
+</body>
+</html>
 </body>
 </html>
