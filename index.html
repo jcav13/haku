@@ -68,24 +68,9 @@
         /* Button Container */
         .button-container {
             display: flex;
-            justify-content: space-between; /* Ensures buttons are on opposite sides */
-            width: 100%;
-            max-width: 400px; /* Keeps them closer together */
+            justify-content: center; /* Keeps buttons centered */
+            gap: 20px; /* Reduced spacing between buttons */
             margin-top: 30px;
-        }
-
-        /* Left Button */
-        .left-button {
-            flex: 1;
-            display: flex;
-            justify-content: flex-start;
-        }
-
-        /* Right Button */
-        .right-button {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
         }
 
         /* Premium Buttons */
@@ -115,12 +100,8 @@
     <p>personalised massage, inspired by Japanese tradition.</p>
 
     <div class="button-container">
-        <div class="left-button">
-            <a href="about.html" class="cta-button">About</a>
-        </div>
-        <div class="right-button">
-            <a href="services.html" class="cta-button">Services</a>
-        </div>
+        <a href="about.html" class="cta-button">About Us</a>
+        <a href="services.html" class="cta-button">Services</a>
     </div>
 </body>
 </html>
