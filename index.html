@@ -37,7 +37,11 @@
         .hero-image {
             max-width: 300px; /* Keep size */
             height: auto;
-            margin-bottom: 5px; /* Brings image closer to text */
+            position: absolute;
+            top: 50%; /* Moves image down */
+            left: 50%;
+            transform: translate(-50%, -40%); /* Centers image and moves it slightly down */
+            z-index: -1; /* Keeps it behind the text */
         }
 
         /* HAKU text */
@@ -47,6 +51,8 @@
             letter-spacing: 10px;
             margin-bottom: 10px;
             transition: transform 0.3s ease-in-out;
+            position: relative;
+            z-index: 2; /* Keeps text above the image */
         }
 
         h1:hover {
@@ -61,6 +67,8 @@
             display: flex;
             align-items: center;
             gap: 25px;
+            position: relative;
+            z-index: 2;
         }
 
         /* Katakana styling */
@@ -75,6 +83,8 @@
             font-size: 20px;
             font-weight: 300;
             margin-top: 5px; /* Reduce space */
+            position: relative;
+            z-index: 2;
         }
 
         /* Button Container */
@@ -83,6 +93,8 @@
             justify-content: center; /* Keeps buttons centered */
             gap: 20px; /* Reduced spacing between buttons */
             margin-top: 20px;
+            position: relative;
+            z-index: 2;
         }
 
         /* White Buttons with Brown Text */
@@ -107,7 +119,7 @@
     </style>
 </head>
 <body>
-    <!-- Momo Flower Image -->
+    <!-- Momo Flower Image Positioned Behind the Text -->
     <img src="https://github.com/jcav13/haku/blob/main/momoflower.png?raw=true" alt="Momo Flower" class="hero-image">
 
     <!-- Main Title and Text -->
