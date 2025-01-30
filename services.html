@@ -31,6 +31,73 @@
             to { opacity: 1; }
         }
 
+        /* Navigation Bar */
+        .navbar {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Hamburger Menu */
+        .menu-icon {
+            font-size: 30px;
+            color: #4B0082; /* Purple */
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            width: 150px;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: #4B0082;
+            color: white;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons img {
+            width: 25px;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
         /* Header */
         h1 {
             font-size: 50px;
@@ -98,10 +165,34 @@
             color: white;
             border-color: black;
         }
-
     </style>
 </head>
 <body>
+
+    <!-- Navigation -->
+    <div class="navbar">
+        <!-- Hamburger Menu -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/yourprofile" target="_blank">
+                <img src="https://github.com/jcav13/haku/blob/main/Instagrambw.png?raw=true" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/yourprofile" target="_blank">
+                <img src="https://raw.githubusercontent.com/jcav13/haku/3349f87c45928a92fc0aa8b8d6ee32e7f7de69f2/fblogobw.svg" alt="Facebook">
+            </a>
+            <a href="https://line.me/ti/p/yourprofile" target="_blank">
+                <img src="https://github.com/jcav13/haku/blob/main/linebw.png?raw=true" alt="LINE">
+            </a>
+        </div>
+    </div>
 
     <!-- Main Title -->
     <h1>Our Services</h1>
@@ -126,6 +217,27 @@
 
     <!-- Book Now Button -->
     <a href="book.html" class="book-now">Book Now</a>
+
+    <!-- JavaScript for Menu -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("dropdownMenu");
+            var menuIcon = document.querySelector(".menu-icon");
+            if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
 
 </body>
 </html>
