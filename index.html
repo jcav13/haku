@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HAKU</title>
     
-    <!-- Google Fonts Import -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google Font: Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         /* General styling */
         body {
             background-color: #3A4D39; /* Dark Matcha Green */
             color: white;
-            font-family: 'tt-ricordi-allegria', sans-serif;
+            font-family: 'Playfair Display', serif; /* Elegant font */
             text-align: center;
             margin: 0;
             padding: 0;
@@ -37,11 +37,11 @@
         .header {
             position: absolute;
             top: 20px;
-            width: 90%;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 30px;
+            padding: 0 20px;
         }
 
         /* Menu Button */
@@ -49,6 +49,9 @@
             font-size: 28px;
             cursor: pointer;
             transition: opacity 0.3s ease-in-out;
+            position: absolute;
+            left: 15px; /* Move closer to left */
+            top: 15px;
         }
 
         .menu-icon:hover {
@@ -58,8 +61,8 @@
         /* Hidden Menu Panel */
         .menu {
             position: absolute;
-            top: 60px;
-            left: 30px;
+            top: 50px;
+            left: 15px;
             background: rgba(0, 0, 0, 0.85);
             border-radius: 8px;
             display: none;
@@ -89,8 +92,20 @@
             background: #4A3725; /* Brown hover effect */
         }
 
+        /* Hide menu when mouse moves away */
+        .menu-container {
+            position: relative;
+        }
+
+        .menu-container:hover .menu {
+            display: flex;
+        }
+
         /* Social Media Icons */
         .social-icons {
+            position: absolute;
+            top: 20px;
+            right: 30px;
             display: flex;
             gap: 15px;
         }
@@ -119,7 +134,7 @@
         /* HAKU text */
         h1 {
             font-size: 80px;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 8px;
             margin-bottom: 10px;
             transition: transform 0.3s ease-in-out;
@@ -132,7 +147,7 @@
         /* Melbourne text */
         h2 {
             font-size: 22px;
-            font-weight: 300;
+            font-weight: 400;
             margin-top: 5px;
             display: flex;
             align-items: center;
@@ -142,14 +157,14 @@
         /* Katakana styling */
         .katakana {
             font-size: 20px;
-            font-weight: 300;
+            font-weight: 400;
             opacity: 0.8;
         }
 
         /* Tagline */
         p {
             font-size: 18px;
-            font-weight: 300;
+            font-weight: 400;
             margin-top: 5px;
         }
 
@@ -195,7 +210,14 @@
     <!-- Header Section with Menu & Social Icons -->
     <div class="header">
         <!-- Menu Button -->
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="menu-container">
+            <div class="menu-icon">☰</div>
+            <div class="menu">
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
 
         <!-- Social Media Icons -->
         <div class="social-icons">
@@ -211,13 +233,6 @@
         </div>
     </div>
 
-    <!-- Hidden Menu -->
-    <div class="menu" id="menu">
-        <a href="about.html">About Us</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact Us</a>
-    </div>
-
     <!-- Momo Flower Image -->
     <img src="https://github.com/jcav13/haku/blob/main/momoflower.png?raw=true" alt="Momo Flower" class="hero-image">
 
@@ -225,18 +240,6 @@
     <h1>H A K U</h1>
     <h2>melbourne <span class="katakana">メルボルン</span></h2>
     <p>personalised massage, inspired by Japanese tradition.</p>
-
-    <!-- JavaScript for Menu Toggle -->
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
-        }
-    </script>
 
 </body>
 </html>
