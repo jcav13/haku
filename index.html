@@ -33,6 +33,27 @@
             to { opacity: 1; }
         }
 
+        /* Sakura Petal Animation */
+        .petal {
+            position: absolute;
+            width: 30px; /* Small petal size */
+            height: auto;
+            top: -50px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         /* Top Navbar */
         .top-bar {
             position: absolute;
@@ -154,45 +175,28 @@
             font-weight: 400;
             margin-top: 5px;
         }
-
-        /* Mobile Styling */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 50px;
-                letter-spacing: 6px;
-            }
-
-            .kanji-container {
-                font-size: 25px;
-                gap: 35px;
-            }
-
-            h2 {
-                font-size: 18px;
-                gap: 10px;
-            }
-
-            .katakana {
-                font-size: 16px;
-            }
-
-            p {
-                font-size: 16px;
-            }
-
-            .social-icons {
-                top: 10px;
-                right: 15px;
-            }
-
-            .social-icons img {
-                width: 22px;
-                height: 22px;
-            }
-        }
     </style>
 </head>
 <body>
+
+    <!-- Falling Sakura Petals -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const numPetals = 15; // Number of petals
+            const petalImg = "https://github.com/jcav13/haku/blob/main/vecteezy_pink-sakura-flower-isolated-on-transparent-background_24856595.png?raw=true"; 
+
+            for (let i = 0; i < numPetals; i++) {
+                let petal = document.createElement("img");
+                petal.src = petalImg;
+                petal.className = "petal";
+                petal.style.left = Math.random() * 100 + "vw"; // Random horizontal start
+                petal.style.animationDuration = (Math.random() * 3 + 5) + "s"; // Random fall speed
+                petal.style.animationDelay = Math.random() * 5 + "s"; // Staggered start
+
+                document.body.appendChild(petal);
+            }
+        });
+    </script>
 
     <!-- Top Bar -->
     <div class="top-bar">
@@ -233,14 +237,9 @@
     <script>
         function toggleMenu() {
             var menu = document.getElementById("dropdownMenu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
         }
 
-        // Close the dropdown when clicking outside
         document.addEventListener("click", function(event) {
             var menu = document.getElementById("dropdownMenu");
             var button = document.querySelector(".hamburger");
