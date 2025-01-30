@@ -86,6 +86,7 @@
         .social-icons {
             display: flex;
             gap: 15px;
+            margin-right: 30px; /* Moves icons slightly left */
         }
 
         .social-icons img {
@@ -108,6 +109,14 @@
             border-bottom: 2px solid black;
             padding-bottom: 10px;
             display: inline-block;
+        }
+
+        /* Pricing Info */
+        .pricing-info {
+            font-size: 14px;
+            font-weight: 400;
+            color: #666;
+            margin-top: 5px;
         }
 
         /* Service List */
@@ -196,21 +205,22 @@
 
     <!-- Main Title -->
     <h1>Our Services</h1>
+    <p class="pricing-info">Pricing is for 60 minutes.</p>
 
     <!-- Services List -->
     <div class="services-container">
         <div class="service-item">
-            <h2>Relaxation Massage <span class="japanese">リラクゼーション</span></h2>
+            <h2>Relaxation Massage (リラクゼーション) - $140</h2>
             <p>A deeply relaxing massage that eases tension and promotes a sense of calm.</p>
         </div>
 
         <div class="service-item">
-            <h2>Deep Tissue Therapy <span class="japanese">ディープティシューマッサージ</span></h2>
+            <h2>Deep Tissue Therapy (ディープティシューマッサージ) - $170</h2>
             <p>Designed to relieve muscle soreness and improve circulation.</p>
         </div>
 
         <div class="service-item">
-            <h2>Japanese-Inspired Aromatherapy <span class="japanese">アロマセラピー</span></h2>
+            <h2>Japanese-Inspired Aromatherapy (アロマセラピー) - $200</h2>
             <p>Using traditional Japanese essential oils to create a tranquil experience.</p>
         </div>
     </div>
