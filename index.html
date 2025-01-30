@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HAKU</title>
     
-    <!-- Google Font: Inter (Minimalist, Clean Aesthetic) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google Font: Playfair Display (Elegant & Minimalist) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         /* General styling */
         body {
-            background-color: #3A4D39; /* Dark Matcha Green */
-            color: white;
-            font-family: 'Inter', sans-serif;
+            background-color: white; /* White Background */
+            color: black; /* Black Text */
+            font-family: 'Playfair Display', serif; /* Elegant Font */
             text-align: center;
             margin: 0;
             padding: 0;
@@ -55,13 +55,13 @@
             cursor: pointer;
             transition: opacity 0.3s ease-in-out;
             position: absolute;
-            left: 15px; /* Move closer to left */
+            left: 15px;
             top: 15px;
             z-index: 100;
         }
 
         .menu-icon:hover {
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         /* Dropdown Menu */
@@ -70,7 +70,7 @@
             top: 50px;
             left: 0;
             width: 180px;
-            background: white;
+            background: black; /* Black background */
             border-radius: 8px;
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
             display: none;
@@ -81,14 +81,14 @@
 
         .menu a {
             font-weight: 600;
-            color: #4A3725; /* Brown text */
+            color: white; /* White Text */
             text-decoration: none;
             font-size: 18px;
             padding: 12px;
             text-align: center;
             width: 100%;
             transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             display: block;
         }
 
@@ -97,8 +97,8 @@
         }
 
         .menu a:hover {
-            background: #2D3B2E; /* Darker Matcha Green */
-            color: white;
+            background: #D8BFD8; /* Soft Lavender Background */
+            color: black; /* Black Text on Hover */
         }
 
         /* Toggle Menu on Click (for mobile) */
@@ -121,7 +121,7 @@
         }
 
         .social-icons a:hover {
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         .social-icons img {
@@ -139,7 +139,7 @@
         /* HAKU text */
         h1 {
             font-size: 80px;
-            font-weight: 400;
+            font-weight: 600;
             letter-spacing: 8px;
             margin-bottom: 10px;
             transition: transform 0.3s ease-in-out;
@@ -152,7 +152,7 @@
         /* Melbourne text */
         h2 {
             font-size: 22px;
-            font-weight: 400;
+            font-weight: 600;
             margin-top: 5px;
             display: flex;
             align-items: center;
@@ -238,13 +238,13 @@
         </div>
     </div>
 
-    <!-- Momo Flower Image -->
-    <img src="https://github.com/jcav13/haku/blob/main/momoflower.png?raw=true" alt="Momo Flower" class="hero-image">
+    <!-- Purple Lily Image -->
+    <img src="https://github.com/jcav13/haku/blob/main/purplelilly.png?raw=true" alt="Purple Lily" class="hero-image">
 
     <!-- Main Title and Text -->
     <h1>H A K U</h1>
-    <h2>melbourne <span class="katakana">メルボルン</span></h2>
-    <p>personalised massage, inspired by Japanese tradition.</p>
+    <h2>Melbourne <span class="katakana">メルボルン</span></h2>
+    <p>Personalised massage, inspired by Japanese tradition.</p>
 
     <script>
         function toggleMenu() {
