@@ -14,11 +14,9 @@
             background-color: white;
             color: black;
             font-family: 'Inter', sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            overflow-y: auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -33,25 +31,79 @@
             to { opacity: 1; }
         }
 
-        /* Sakura Petal Animation */
-        .petal {
-            position: absolute;
-            width: 30px; /* Small petal size */
-            height: auto;
-            top: -50px;
-            opacity: 0.8;
-            animation: fall linear infinite;
+        /* Layout container */
+        .content-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            max-width: 1000px;
+            text-align: left;
+            gap: 40px;
         }
 
-        @keyframes fall {
+        /* Image styling (rises from bottom) */
+        .flower-image {
+            width: 350px; /* Adjust size */
+            height: auto;
+            opacity: 0;
+            animation: riseUp 2s ease-in-out forwards;
+        }
+
+        @keyframes riseUp {
             0% {
-                transform: translateY(-10vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
+                transform: translateY(100vh); /* Starts off-screen */
                 opacity: 0;
             }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Text styling */
+        .text-content {
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 80px;
+            font-weight: 600;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        h1:hover {
+            transform: scale(1.02);
+        }
+
+        /* Japanese Characters Below H A K U */
+        .kanji-container {
+            font-size: 35px;
+            font-weight: 400;
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-top: -10px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .katakana {
+            font-size: 20px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 400;
+            margin-top: 5px;
         }
 
         /* Top Navbar */
@@ -128,75 +180,53 @@
             height: 28px;
         }
 
-        /* HAKU text */
-        h1 {
-            font-size: 80px;
-            font-weight: 600;
-            letter-spacing: 8px;
-            margin-bottom: 10px;
-            position: relative;
-            transition: transform 0.3s ease-in-out;
-        }
+        /* Mobile Styling */
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+                text-align: center;
+            }
 
-        h1:hover {
-            transform: scale(1.02);
-        }
+            .flower-image {
+                width: 250px;
+            }
 
-        /* Japanese Characters Below H A K U */
-        .kanji-container {
-            font-size: 35px;
-            font-weight: 400;
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: -10px;
-        }
+            h1 {
+                font-size: 50px;
+                letter-spacing: 6px;
+            }
 
-        /* Melbourne text */
-        h2 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+            .kanji-container {
+                font-size: 25px;
+                gap: 15px;
+            }
 
-        /* Katakana styling */
-        .katakana {
-            font-size: 20px;
-            font-weight: 400;
-            opacity: 0.8;
-        }
+            h2 {
+                font-size: 18px;
+                gap: 10px;
+            }
 
-        /* Tagline */
-        p {
-            font-size: 18px;
-            font-weight: 400;
-            margin-top: 5px;
+            .katakana {
+                font-size: 16px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .social-icons {
+                top: 10px;
+                right: 15px;
+            }
+
+            .social-icons img {
+                width: 22px;
+                height: 22px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Falling Sakura Petals -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const numPetals = 15; // Number of petals
-            const petalImg = "https://github.com/jcav13/haku/blob/main/vecteezy_pink-sakura-flower-isolated-on-transparent-background_24856595.png?raw=true"; 
-
-            for (let i = 0; i < numPetals; i++) {
-                let petal = document.createElement("img");
-                petal.src = petalImg;
-                petal.className = "petal";
-                petal.style.left = Math.random() * 100 + "vw"; // Random horizontal start
-                petal.style.animationDuration = (Math.random() * 3 + 5) + "s"; // Random fall speed
-                petal.style.animationDelay = Math.random() * 5 + "s"; // Staggered start
-
-                document.body.appendChild(petal);
-            }
-        });
-    </script>
 
     <!-- Top Bar -->
     <div class="top-bar">
@@ -225,13 +255,21 @@
         </div>
     </div>
 
-    <!-- Main Title -->
-    <h1>H A K U</h1>
-    <div class="kanji-container">
-        <span>は</span> <span>く</span>
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Text Content -->
+        <div class="text-content">
+            <h1>H A K U</h1>
+            <div class="kanji-container">
+                <span>は</span> <span>く</span>
+            </div>
+            <h2>Melbourne <span class="katakana">メルボルン</span></h2>
+            <p>Personalised massage, inspired by Japanese tradition.</p>
+        </div>
+
+        <!-- Flower Image -->
+        <img src="https://github.com/jcav13/haku/blob/main/bwlilly.png?raw=true" alt="Black and White Lily" class="flower-image">
     </div>
-    <h2>Melbourne <span class="katakana">メルボルン</span></h2>
-    <p>Personalised massage, inspired by Japanese tradition.</p>
 
     <!-- JavaScript for Dropdown -->
     <script>
