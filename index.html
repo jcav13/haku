@@ -55,10 +55,10 @@
             cursor: pointer;
             transition: opacity 0.3s ease-in-out;
             position: absolute;
-            left: 10px;
-            top: 10px;
+            left: 10px; /* Moved closer */
+            top: 10px; /* Lowered to align */
             z-index: 100;
-            color: black;
+            color: #4B0082; /* Dark Purple */
         }
 
         .menu-icon:hover {
@@ -68,10 +68,10 @@
         /* Dropdown Menu */
         .menu {
             position: absolute;
-            top: 35px;
-            left: 0;
+            top: 35px; /* Lowered to align with icon */
+            left: 0; /* Adjusted so it aligns properly */
             width: 180px;
-            background: white;
+            background: white; /* White background */
             border-radius: 8px;
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
             display: none;
@@ -82,7 +82,7 @@
 
         .menu a {
             font-weight: 600;
-            color: black;
+            color: black; /* Black Text */
             text-decoration: none;
             font-size: 18px;
             padding: 12px;
@@ -147,31 +147,27 @@
         }
 
         /* HAKU text */
-        .haku-container {
-            display: flex;
+        h1 {
             font-size: 80px;
             font-weight: 600;
             letter-spacing: 8px;
+            margin-bottom: 10px;
             position: relative;
             transition: transform 0.3s ease-in-out;
         }
 
-        .haku-container:hover {
+        h1:hover {
             transform: scale(1.02);
         }
 
-        /* Japanese Hiragana Below */
-        .haku-container span {
-            position: relative;
-        }
-
-        .haku-container span.hiragana {
-            font-size: 30px;
-            position: absolute;
-            bottom: -25px; /* Adjusts position below */
-            left: 50%;
-            transform: translateX(-50%);
+        /* Japanese Characters Below H A K U */
+        .kanji-container {
+            font-size: 35px;
             font-weight: 400;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: -10px; /* Bring them closer */
         }
 
         /* Melbourne text */
@@ -205,14 +201,14 @@
                 margin-bottom: 5px;
             }
 
-            .haku-container {
+            h1 {
                 font-size: 50px;
                 letter-spacing: 6px;
             }
 
-            .haku-container span.hiragana {
+            .kanji-container {
                 font-size: 25px;
-                bottom: -20px;
+                gap: 35px;
             }
 
             h2 {
@@ -260,8 +256,8 @@
         <div class="menu-container">
             <div class="menu-icon">☰</div>
             <div class="menu">
-                <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
                 <a href="contact.html">Contact Us</a>
             </div>
         </div>
@@ -280,12 +276,13 @@
         </div>
     </div>
 
+    <!-- Purple Lily Image -->
+    <img src="https://github.com/jcav13/haku/blob/main/purplelilly.png?raw=true" alt="Purple Lily" class="hero-image">
+
     <!-- Main Title and Text -->
-    <div class="haku-container">
-        <span>H<span class="hiragana">は</span></span>
-        <span>A</span>
-        <span>K<span class="hiragana">く</span></span>
-        <span>U</span>
+    <h1>H A K U</h1>
+    <div class="kanji-container">
+        <span>は</span> <span>く</span>
     </div>
     <h2>Melbourne <span class="katakana">メルボルン</span></h2>
     <p>Personalised massage, inspired by Japanese tradition.</p>
