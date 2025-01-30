@@ -6,7 +6,7 @@
     <title>HAKU</title>
     
     <!-- Google Font: Inter (Ultra Minimalist & Modern) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
         /* General styling */
@@ -26,22 +26,78 @@
             overflow-x: hidden;
         }
 
+        /* Top Navbar */
+        .top-bar {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 20px;
+        }
+
+        /* Hamburger Icon */
+        .hamburger {
+            font-size: 24px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            z-index: 100;
+            color: #F1E7BB;
+            border: 2px solid #F1E7BB;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            background: #F1E7BB;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 160px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .dropdown a {
+            text-decoration: none;
+            color: #293717;
+            padding: 12px;
+            display: block;
+            font-size: 16px;
+            text-align: left;
+            font-weight: 500;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .dropdown a:hover {
+            background: #5A3E74; /* Dark purple */
+            color: white;
+        }
+
         /* Text styling */
         h1 {
-            font-size: 80px; /* Large */
-            font-weight: 600;
-            letter-spacing: 8px;
+            font-size: 70px; /* Large */
+            font-weight: 500; /* Slightly thinner */
+            letter-spacing: 12px;
             margin-bottom: 10px;
         }
 
         h2 {
-            font-size: 28px; /* Medium */
-            font-weight: 500;
+            font-size: 24px; /* Medium */
+            font-weight: 400; /* Slightly thinner */
             margin-bottom: 10px;
         }
 
         p {
-            font-size: 18px; /* Small */
+            font-size: 16px; /* Small */
             font-weight: 400;
             margin-bottom: 30px;
         }
@@ -53,7 +109,7 @@
             border: 2px solid white;
             padding: 12px 40px;
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 500;
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s ease-in-out;
@@ -69,15 +125,15 @@
         @media (max-width: 768px) {
             h1 {
                 font-size: 50px;
-                letter-spacing: 6px;
+                letter-spacing: 8px;
             }
 
             h2 {
-                font-size: 22px;
+                font-size: 20px;
             }
 
             p {
-                font-size: 16px;
+                font-size: 14px;
             }
 
             .book-button {
@@ -89,13 +145,43 @@
 </head>
 <body>
 
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <!-- Hamburger Icon -->
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
     <!-- Main Content -->
-    <h1>HAKU</h1>
+    <h1>H A K U</h1>
     <h2>Melbourne メルボルン</h2>
     <p>Personalised massage services, inspired by Japanese tradition.</p>
 
     <!-- Book Now Button -->
     <a href="book.html" class="book-button">Book</a>
+
+    <!-- JavaScript for Dropdown -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("dropdownMenu");
+            var button = document.querySelector(".hamburger");
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
 
 </body>
 </html>
