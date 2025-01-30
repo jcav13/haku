@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book with H A K U</title>
+    
     <style>
         /* General styling */
         body {
-            background-color: black;
+            background-color: #3A4D39; /* Dark Matcha Green */
             color: white;
-            font-family: 'Helvetica Neue', sans-serif;
+            font-family: 'Poppins', sans-serif; /* Sleek Font */
             text-align: center;
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            overflow-y: auto; /* Allows scrolling */
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
             position: relative;
             overflow-x: hidden;
             animation: fadeIn 1.5s ease-in-out;
@@ -28,12 +30,43 @@
             to { opacity: 1; }
         }
 
+        /* Home Button in Top Left */
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 16px;
+            font-weight: 400;
+            color: white;
+            background: transparent;
+            border: 1px solid white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .home-button:hover {
+            background: white;
+            color: black;
+        }
+
         /* Header */
         h1 {
             font-size: 50px;
             font-weight: 300;
             letter-spacing: 6px;
+            margin-bottom: 10px;
+        }
+
+        /* Introductory Text */
+        .intro-text {
+            font-size: 18px;
+            font-weight: 300;
+            max-width: 600px;
             margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.6;
         }
 
         /* Booking Form Container */
@@ -41,8 +74,6 @@
             max-width: 600px;
             text-align: left;
             padding: 20px;
-            background: transparent;
-            border-radius: 10px;
         }
 
         .booking-container label {
@@ -80,60 +111,41 @@
             border: 1px solid white;
         }
 
-        /* Sleek Submit Button */
+        /* Single Button at Bottom */
         .submit-button {
             display: inline-block;
             padding: 12px 40px;
             font-size: 16px;
             font-weight: 300;
-            color: black;
+            color: #4A3725;
             background: white;
-            border: none;
+            border: 2px solid #4A3725;
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
+            margin-top: 10px;
         }
 
         .submit-button:hover {
-            background: grey;
+            background: #4A3725;
             color: white;
         }
 
-        /* Navigation Buttons */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 30px;
-            font-size: 16px;
-            font-weight: 300;
-            letter-spacing: 2px;
-            color: white;
-            background: transparent;
-            border: 1px solid white;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .button:hover {
-            background: white;
-            color: black;
-            transform: scale(1.05);
-        }
     </style>
 </head>
 <body>
+    <!-- Home Button in Top Left -->
+    <a href="index.html" class="home-button">Home</a>
+
     <h1>Book with H A K U</h1>
 
+    <!-- Introductory Text -->
+    <p class="intro-text">
+        Our booking process ensures your service can be tailored to your needs. We ask that you complete a quick questionnaire which will guide our therapist through the planning process. Please enter your details first, and then complete the questionnaire.
+    </p>
+
     <div class="booking-container">
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-    <input type="hidden" name="_next" value="https://jcav13.github.io/haku/confirmation.html">
+        <form action="questionnaire.html" method="GET">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
 
@@ -153,16 +165,8 @@
             <label for="date">Preferred Date</label>
             <input type="date" id="date" name="date" required>
 
-            <label for="message">Additional Requests</label>
-            <textarea id="message" name="message" rows="4"></textarea>
-
-            <button type="submit" class="submit-button">Submit Booking</button>
+            <button type="submit" class="submit-button">Submit Your Details</button>
         </form>
-    </div>
-
-    <div class="button-container">
-        <a href="index.html" class="button">Home</a>
-        <a href="services.html" class="button">Services</a>
     </div>
 </body>
 </html>
