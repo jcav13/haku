@@ -45,7 +45,7 @@
 
         /* Pricing Info */
         .pricing-info {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 400;
             color: #666;
             margin-top: 5px;
@@ -61,33 +61,36 @@
         .service-item {
             margin-bottom: 30px;
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+            flex-direction: column;
         }
 
-        .service-item h2 {
-            font-size: 26px;
-            font-weight: 400;
-            border-bottom: 1px solid black;
-            padding-bottom: 5px;
-            text-transform: capitalize;
+        .service-header {
             display: flex;
             justify-content: space-between;
-            width: 100%;
+            align-items: center;
+            border-bottom: 1px solid black;
+            padding-bottom: 5px;
+            font-size: 24px;
+            font-weight: 400;
         }
 
-        .service-item .japanese {
+        .service-header .left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .japanese {
             font-size: 20px;
             font-weight: 300;
             opacity: 0.8;
-            margin-left: 10px;
         }
 
-        .service-item .price {
+        .price {
             font-size: 20px;
             font-weight: 600;
             color: black;
-            margin-left: auto;
+            white-space: nowrap; /* Ensures price stays on the same line */
         }
 
         .service-item p {
@@ -124,31 +127,40 @@
 
     <!-- Main Title -->
     <h1>Our Services</h1>
-    <p class="pricing-info">Pricing is for 60 minutes and includes travel costs..</p>
+    <p class="pricing-info">Pricing is for 60 minutes.</p>
 
     <!-- Services List -->
     <div class="services-container">
         <div class="service-item">
-            <h2>
-                Relaxation Massage <span class="japanese">(リラクゼーション)</span>
+            <div class="service-header">
+                <div class="left">
+                    <span>Relaxation Massage</span>
+                    <span class="japanese">(リラクゼーション)</span>
+                </div>
                 <span class="price">140</span>
-            </h2>
+            </div>
             <p>A deeply relaxing massage that eases tension and promotes a sense of calm.</p>
         </div>
 
         <div class="service-item">
-            <h2>
-                Deep Tissue Therapy <span class="japanese">(ディープティシューマッサージ)</span>
+            <div class="service-header">
+                <div class="left">
+                    <span>Deep Tissue Therapy</span>
+                    <span class="japanese">(ディープティシューマッサージ)</span>
+                </div>
                 <span class="price">170</span>
-            </h2>
+            </div>
             <p>Designed to relieve muscle soreness and improve circulation.</p>
         </div>
 
         <div class="service-item">
-            <h2>
-                Japanese-Inspired Aromatherapy <span class="japanese">(アロマセラピー)</span>
+            <div class="service-header">
+                <div class="left">
+                    <span>Japanese-Inspired Aromatherapy</span>
+                    <span class="japanese">(アロマセラピー)</span>
+                </div>
                 <span class="price">200</span>
-            </h2>
+            </div>
             <p>Using traditional Japanese essential oils to create a tranquil experience.</p>
         </div>
     </div>
