@@ -33,6 +33,45 @@
             to { opacity: 1; }
         }
 
+        /* Menu Button */
+        .menu-icon {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 28px;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .menu-icon:hover {
+            opacity: 0.7;
+        }
+
+        /* Hidden Menu Panel */
+        .menu {
+            position: absolute;
+            top: 60px;
+            left: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .menu a:hover {
+            color: #B89C78; /* Subtle gold hover effect */
+        }
+
         /* Social Media Icons */
         .social-icons {
             position: absolute;
@@ -100,48 +139,20 @@
             margin-top: 5px;
         }
 
-        /* Button Container */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        /* White Buttons with Brown Text */
-        .cta-button {
-            padding: 12px 35px;
-            font-size: 14px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            color: #4A3725;
-            background: white;
-            border: 2px solid #4A3725;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .cta-button:hover {
-            background: #4A3725;
-            color: white;
-            transform: scale(1.05);
-        }
-
-        /* 🌟 Mobile Styling - Makes Everything Smaller & More Readable */
+        /* Mobile Styling */
         @media (max-width: 768px) {
             .hero-image {
-                max-width: 200px; /* Reduce image size */
+                max-width: 200px;
                 margin-bottom: 5px;
             }
 
             h1 {
-                font-size: 50px; /* Reduce title size */
+                font-size: 50px;
                 letter-spacing: 6px;
             }
 
             h2 {
-                font-size: 18px; /* Reduce subtitle size */
+                font-size: 18px;
                 gap: 10px;
             }
 
@@ -150,22 +161,12 @@
             }
 
             p {
-                font-size: 16px; /* Make tagline smaller */
-            }
-
-            .button-container {
-                flex-direction: column; /* Stack buttons vertically */
-                gap: 10px;
-            }
-
-            .cta-button {
-                padding: 10px 30px;
-                font-size: 14px;
+                font-size: 16px;
             }
 
             .social-icons {
                 top: 10px;
-                right: 15px; /* Make icons smaller on mobile */
+                right: 15px;
             }
 
             .social-icons img {
@@ -177,6 +178,15 @@
 </head>
 <body>
     
+    <!-- Menu Button -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- Hidden Menu -->
+    <div class="menu" id="menu">
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+    </div>
+
     <!-- Social Media Icons -->
     <div class="social-icons">
         <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
@@ -198,11 +208,17 @@
     <h2>melbourne <span class="katakana">メルボルン</span></h2>
     <p>personalised massage, inspired by Japanese tradition.</p>
 
-    <!-- Buttons -->
-    <div class="button-container">
-        <a href="about.html" class="cta-button">About Us</a>
-        <a href="services.html" class="cta-button">Services</a>
-    </div>
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+    </script>
 
 </body>
 </html>
