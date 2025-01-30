@@ -57,7 +57,7 @@
             position: absolute;
             top: 50px;
             left: 10px;
-            background: #F1E7BB;
+            background: #F1E7BB; /* Light Cream Background */
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 160px;
@@ -68,7 +68,7 @@
 
         .dropdown a {
             text-decoration: none;
-            color: #293717;
+            color: #293717; /* Dark Green Text */
             padding: 12px;
             display: block;
             font-size: 16px;
@@ -79,7 +79,7 @@
 
         .dropdown a:hover {
             background: #5A3E74; /* Dark purple */
-            color: white;
+            color: #F1E7BB;
         }
 
         /* Text styling */
@@ -87,7 +87,7 @@
             font-size: 70px; /* Large */
             font-weight: 500; /* Slightly thinner */
             letter-spacing: 12px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         h2 {
@@ -100,6 +100,15 @@
             font-size: 16px; /* Small */
             font-weight: 400;
             margin-bottom: 30px;
+        }
+
+        /* Kanji under H A K U */
+        .kanji-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 28px;
+            font-weight: 400;
         }
 
         /* Book Button */
@@ -126,6 +135,11 @@
             h1 {
                 font-size: 50px;
                 letter-spacing: 8px;
+            }
+
+            .kanji-container {
+                font-size: 22px;
+                gap: 30px;
             }
 
             h2 {
@@ -161,6 +175,12 @@
 
     <!-- Main Content -->
     <h1>H A K U</h1>
+
+    <!-- Kanji under H and K -->
+    <div class="kanji-container">
+        <span>ハ</span> <span>ク</span>
+    </div>
+
     <h2>Melbourne メルボルン</h2>
     <p>Personalised massage services, inspired by Japanese tradition.</p>
 
