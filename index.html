@@ -12,25 +12,81 @@
         /* General styling */
         body {
             background-color: white; /* White Background */
-            color: black; /* Black Text */
             font-family: 'Inter', sans-serif; /* Ultra Minimalist Font */
             text-align: center;
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            overflow-y: auto;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             position: relative;
-            overflow-x: hidden;
             animation: fadeIn 1.5s ease-in-out;
         }
 
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        /* Red Circle */
+        .circle {
+            width: 350px; /* Adjust size */
+            height: 350px;
+            background-color: #B22222; /* Deep Red */
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* HAKU text */
+        h1 {
+            font-size: 60px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        /* Japanese Characters Below H A K U */
+        .kanji-container {
+            font-size: 30px;
+            font-weight: 400;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: -10px;
+        }
+
+        /* Melbourne text */
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Katakana styling */
+        .katakana {
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        /* Tagline */
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            margin-top: 5px;
         }
 
         /* Header Bar */
@@ -55,10 +111,10 @@
             cursor: pointer;
             transition: opacity 0.3s ease-in-out;
             position: absolute;
-            left: 10px; /* Moved closer */
-            top: 10px; /* Lowered to align */
+            left: 10px;
+            top: 10px;
             z-index: 100;
-            color: #4B0082; /* Dark Purple */
+            color: black;
         }
 
         .menu-icon:hover {
@@ -68,10 +124,10 @@
         /* Dropdown Menu */
         .menu {
             position: absolute;
-            top: 35px; /* Lowered to align with icon */
-            left: 0; /* Adjusted so it aligns properly */
+            top: 35px;
+            left: 0;
             width: 180px;
-            background: white; /* White background */
+            background: white;
             border-radius: 8px;
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
             display: none;
@@ -82,7 +138,7 @@
 
         .menu a {
             font-weight: 600;
-            color: black; /* Black Text */
+            color: black;
             text-decoration: none;
             font-size: 18px;
             padding: 12px;
@@ -139,89 +195,34 @@
             height: 28px;
         }
 
-        /* Image styling */
-        .hero-image {
-            max-width: 300px;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        /* HAKU text */
-        h1 {
-            font-size: 80px;
-            font-weight: 600;
-            letter-spacing: 8px;
-            margin-bottom: 10px;
-            position: relative;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        h1:hover {
-            transform: scale(1.02);
-        }
-
-        /* Japanese Characters Below H A K U */
-        .kanji-container {
-            font-size: 35px;
-            font-weight: 400;
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: -10px; /* Bring them closer */
-        }
-
-        /* Melbourne text */
-        h2 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        /* Katakana styling */
-        .katakana {
-            font-size: 20px;
-            font-weight: 400;
-            opacity: 0.8;
-        }
-
-        /* Tagline */
-        p {
-            font-size: 18px;
-            font-weight: 400;
-            margin-top: 5px;
-        }
-
         /* Mobile Styling */
         @media (max-width: 768px) {
-            .hero-image {
-                max-width: 200px;
-                margin-bottom: 5px;
+            .circle {
+                width: 250px;
+                height: 250px;
             }
 
             h1 {
-                font-size: 50px;
-                letter-spacing: 6px;
+                font-size: 40px;
+                letter-spacing: 4px;
             }
 
             .kanji-container {
-                font-size: 25px;
-                gap: 35px;
+                font-size: 20px;
+                gap: 20px;
             }
 
             h2 {
-                font-size: 18px;
-                gap: 10px;
+                font-size: 14px;
+                gap: 5px;
             }
 
             .katakana {
-                font-size: 16px;
+                font-size: 12px;
             }
 
             p {
-                font-size: 16px;
+                font-size: 12px;
             }
 
             .social-icons {
@@ -256,8 +257,8 @@
         <div class="menu-container">
             <div class="menu-icon">☰</div>
             <div class="menu">
+                <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
-                <a href="services.html">Services</a>
                 <a href="contact.html">Contact Us</a>
             </div>
         </div>
@@ -276,16 +277,15 @@
         </div>
     </div>
 
-    <!-- Purple Lily Image -->
-    <img src="https://github.com/jcav13/haku/blob/main/purplelilly.png?raw=true" alt="Purple Lily" class="hero-image">
-
-    <!-- Main Title and Text -->
-    <h1>H A K U</h1>
-    <div class="kanji-container">
-        <span>は</span> <span>く</span>
+    <!-- Red Circle Container -->
+    <div class="circle">
+        <h1>H A K U</h1>
+        <div class="kanji-container">
+            <span>は</span> <span>く</span>
+        </div>
+        <h2>Melbourne <span class="katakana">メルボルン</span></h2>
+        <p>Personalised massage, inspired by Japanese tradition.</p>
     </div>
-    <h2>Melbourne <span class="katakana">メルボルン</span></h2>
-    <p>Personalised massage, inspired by Japanese tradition.</p>
 
 </body>
 </html>
