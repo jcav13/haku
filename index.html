@@ -28,24 +28,25 @@
         /* Layout container */
         .content-container {
             display: flex;
-            align-items: flex-end; /* Aligns text with the top of the flower */
-            justify-content: center;
+            align-items: center; /* Centers vertically */
+            justify-content: flex-start; /* Moves text to middle left */
             width: 80%;
             max-width: 1200px;
             text-align: left;
             gap: 40px;
             position: relative;
             height: 100vh;
+            padding-left: 5%;
         }
 
         /* Flower Image Styling */
         .flower-image {
             position: absolute;
             bottom: 0;
-            right: 10%; /* Adjust positioning */
-            width: 400px; /* Enlarged for better coverage */
+            right: 5%; /* Adjust positioning */
+            width: 800px; /* Increased 2x */
             height: auto;
-            max-height: 95vh; /* Ensures full height coverage */
+            max-height: 100vh; /* Ensures full height coverage */
         }
 
         /* Text styling */
@@ -59,16 +60,6 @@
             font-weight: 600;
             letter-spacing: 8px;
             margin-bottom: 10px;
-        }
-
-        /* Japanese Characters Below H A K U */
-        .kanji-container {
-            font-size: 35px;
-            font-weight: 400;
-            display: flex;
-            justify-content: flex-start;
-            gap: 10px;
-            margin-top: -10px;
         }
 
         h2 {
@@ -172,7 +163,7 @@
             }
 
             .flower-image {
-                width: 250px;
+                width: 400px;
                 position: relative;
                 bottom: auto;
                 right: auto;
@@ -181,11 +172,6 @@
             h1 {
                 font-size: 50px;
                 letter-spacing: 6px;
-            }
-
-            .kanji-container {
-                font-size: 25px;
-                gap: 15px;
             }
 
             h2 {
@@ -247,9 +233,6 @@
         <!-- Text Content -->
         <div class="text-content">
             <h1>H A K U</h1>
-            <div class="kanji-container">
-                <span>は</span> <span>く</span>
-            </div>
             <h2>Melbourne <span class="katakana">メルボルン</span></h2>
             <p>Personalised massage, inspired by Japanese tradition.</p>
         </div>
