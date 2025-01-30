@@ -127,6 +127,52 @@
             color: white;
             transform: scale(1.05);
         }
+
+        /* 🌟 Mobile Styling - Makes Everything Smaller & More Readable */
+        @media (max-width: 768px) {
+            .hero-image {
+                max-width: 200px; /* Reduce image size */
+                margin-bottom: 5px;
+            }
+
+            h1 {
+                font-size: 50px; /* Reduce title size */
+                letter-spacing: 6px;
+            }
+
+            h2 {
+                font-size: 18px; /* Reduce subtitle size */
+                gap: 10px;
+            }
+
+            .katakana {
+                font-size: 16px;
+            }
+
+            p {
+                font-size: 16px; /* Make tagline smaller */
+            }
+
+            .button-container {
+                flex-direction: column; /* Stack buttons vertically */
+                gap: 10px;
+            }
+
+            .cta-button {
+                padding: 10px 30px;
+                font-size: 14px;
+            }
+
+            .social-icons {
+                top: 10px;
+                right: 15px; /* Make icons smaller on mobile */
+            }
+
+            .social-icons img {
+                width: 22px;
+                height: 22px;
+            }
+        }
     </style>
 </head>
 <body>
