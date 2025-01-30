@@ -28,12 +28,12 @@
         /* Layout container */
         .content-container {
             display: flex;
-            align-items: flex-end; /* Aligns text with the top of the flower */
+            align-items: flex-end;
             justify-content: center;
             width: 80%;
             max-width: 1200px;
             text-align: left;
-            gap: 40px;
+            gap: 60px; /* Adds spacing between flower and text */
             position: relative;
             height: 100vh;
         }
@@ -42,51 +42,49 @@
         .flower-image {
             position: absolute;
             bottom: 0;
-            right: 10%; /* Adjust positioning */
-            width: 400px; /* Enlarged for better coverage */
+            right: 10%;
+            width: 400px;
             height: auto;
-            max-height: 95vh; /* Ensures full height coverage */
+            max-height: 95vh;
         }
 
         /* Text styling */
         .text-content {
-            max-width: 400px;
-            z-index: 2; /* Ensures text appears above the flower */
-        }
-
-        h1 {
-            font-size: 80px;
-            font-weight: 600;
-            letter-spacing: 8px;
-            margin-bottom: 10px;
-        }
-
-        /* Japanese Characters Below H A K U */
-        .kanji-container {
-            font-size: 35px;
-            font-weight: 400;
             display: flex;
-            justify-content: flex-start;
-            gap: 10px;
-            margin-top: -10px;
+            flex-direction: row;
+            gap: 30px;
+            align-items: center;
+            z-index: 2;
         }
 
-        h2 {
-            font-size: 22px;
+        /* Vertical Text */
+        .vertical-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
             font-weight: 600;
-            margin-top: 5px;
+            letter-spacing: 5px;
         }
 
         .katakana {
-            font-size: 20px;
+            font-size: 30px;
             font-weight: 400;
             opacity: 0.8;
         }
 
-        p {
+        .vertical-small {
+            font-size: 22px;
+            font-weight: 400;
+        }
+
+        /* Tagline */
+        .tagline {
             font-size: 18px;
             font-weight: 400;
-            margin-top: 5px;
+            max-width: 200px;
+            text-align: left;
         }
 
         /* Top Navbar */
@@ -136,7 +134,7 @@
         }
 
         .dropdown a:hover {
-            background: #5A3E74; /* Dark purple */
+            background: #5A3E74;
             color: white;
         }
 
@@ -171,6 +169,12 @@
                 align-items: center;
             }
 
+            .text-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
             .flower-image {
                 width: 250px;
                 position: relative;
@@ -178,27 +182,20 @@
                 right: auto;
             }
 
-            h1 {
-                font-size: 50px;
-                letter-spacing: 6px;
-            }
-
-            .kanji-container {
-                font-size: 25px;
-                gap: 15px;
-            }
-
-            h2 {
-                font-size: 18px;
-                gap: 10px;
+            .vertical-text {
+                font-size: 40px;
             }
 
             .katakana {
-                font-size: 16px;
+                font-size: 25px;
             }
 
-            p {
-                font-size: 16px;
+            .vertical-small {
+                font-size: 18px;
+            }
+
+            .tagline {
+                text-align: center;
             }
 
             .social-icons {
@@ -246,15 +243,13 @@
     <div class="content-container">
         <!-- Text Content -->
         <div class="text-content">
-            <h1>H A K U</h1>
-            <div class="kanji-container">
-                <span>は</span> <span>く</span>
-            </div>
-            <h2>Melbourne <span class="katakana">メルボルン</span></h2>
-            <p>Personalised massage, inspired by Japanese tradition.</p>
+            <div class="vertical-text">H A K U</div>
+            <div class="vertical-small">Melbourne</div>
+            <div class="katakana">メルボルン</div>
+            <p class="tagline">Personalised massage, inspired by Japanese tradition.</p>
         </div>
 
-        <!-- Flower Image (Anchored to the Bottom) -->
+        <!-- Flower Image -->
         <img src="https://github.com/jcav13/haku/blob/main/bwlilly.png?raw=true" alt="Black and White Lily" class="flower-image">
     </div>
 
