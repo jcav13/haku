@@ -51,7 +51,7 @@
             font-size: 18px;
             font-weight: 200;
             display: block;
-            margin: 10px 0 5px;
+            margin: 20px 0 10px; /* Increased spacing above text box */
         }
 
         /* Input Fields */
@@ -133,7 +133,6 @@
     </style>
 </head>
 <body>
-    <h1>Pre-Treatment Questionnaire</h1>
 
     <div class="form-container">
         <form action="confirmation.html" method="POST">
@@ -144,6 +143,7 @@
                 <textarea id="key-areas" name="key-areas" rows="4" required></textarea>
 
                 <div class="button-container">
+                    <button type="button" class="nav-button prev">Back</button>
                     <button type="button" class="nav-button next">Next</button>
                 </div>
             </div>
@@ -209,15 +209,16 @@
 
         document.querySelectorAll(".prev").forEach(button => {
             button.addEventListener("click", () => {
-                steps[currentStep].classList.remove("active");
-                currentStep--;
-                steps[currentStep].classList.add("active");
+                if (currentStep === 0) {
+                    window.location.href = "book.html"; // Redirects to booking page when first step back is clicked
+                } else {
+                    steps[currentStep].classList.remove("active");
+                    currentStep--;
+                    steps[currentStep].classList.add("active");
+                }
             });
         });
     </script>
-
-</body>
-</html>
 
 </body>
 </html>
