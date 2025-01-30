@@ -11,8 +11,8 @@
     <style>
         /* General styling */
         body {
-            background-color: white;
-            color: black;
+            background-color: #293717; /* Dark Green */
+            color: #F1E7BB; /* Light Cream */
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
@@ -22,241 +22,80 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            text-align: center;
             overflow-x: hidden;
         }
 
-        /* Layout container */
-        .content-container {
-            display: flex;
-            align-items: center; /* Centers vertically */
-            justify-content: flex-start; /* Moves text to the left */
-            width: 80%;
-            max-width: 1200px;
-            text-align: left;
-            gap: 40px;
-            position: relative;
-            height: 100vh;
-            padding-left: 10%; /* Moves text further left */
-        }
-
-        /* Flower Image Styling */
-        .flower-image {
-            position: absolute;
-            bottom: 0;
-            right: 5%; /* Adjust positioning */
-            width: 800px; /* Increased 2x */
-            height: auto;
-            max-height: 100vh; /* Ensures full height coverage */
-        }
-
         /* Text styling */
-        .text-content {
-            max-width: 400px;
-            z-index: 2; /* Ensures text appears above the flower */
-        }
-
         h1 {
-            font-size: 80px;
+            font-size: 80px; /* Large */
             font-weight: 600;
             letter-spacing: 8px;
             margin-bottom: 10px;
         }
 
         h2 {
-            font-size: 22px;
-            font-weight: 600;
-            margin-top: 5px;
-        }
-
-        .katakana {
-            font-size: 20px;
-            font-weight: 400;
-            opacity: 0.8;
+            font-size: 28px; /* Medium */
+            font-weight: 500;
+            margin-bottom: 10px;
         }
 
         p {
-            font-size: 18px;
+            font-size: 18px; /* Small */
             font-weight: 400;
-            margin-top: 5px;
+            margin-bottom: 30px;
         }
 
-        /* Top Navbar */
-        .top-bar {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 10px 20px;
-        }
-
-        /* Hamburger Icon */
-        .hamburger {
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            position: relative;
-            z-index: 100;
-        }
-
-        /* Dropdown Menu */
-        .dropdown {
-            position: absolute;
-            top: 40px;
-            left: 10px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 150px;
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .dropdown a {
-            text-decoration: none;
-            color: black;
-            padding: 12px;
-            display: block;
-            font-size: 16px;
-            text-align: left;
+        /* Book Button */
+        .book-button {
+            background-color: white;
+            color: #293717;
+            border: 2px solid white;
+            padding: 12px 40px;
+            font-size: 18px;
             font-weight: 600;
-            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease-in-out;
         }
 
-        .dropdown a:hover {
-            background: #5A3E74; /* Dark purple */
-            color: white;
-        }
-
-        /* Social Media Icons */
-        .social-icons {
-            position: absolute;
-            top: 15px;
-            right: 30px;
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .social-icons a:hover {
-            opacity: 0.6;
-        }
-
-        .social-icons img {
-            width: 28px;
-            height: 28px;
+        .book-button:hover {
+            background-color: #F1E7BB;
+            color: #293717;
+            transform: scale(1.05);
         }
 
         /* Mobile Styling */
         @media (max-width: 768px) {
-            .content-container {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-                padding-left: 0; /* Reset padding on mobile */
-            }
-
-            .flower-image {
-                width: 400px;
-                position: relative;
-                bottom: auto;
-                right: auto;
-            }
-
             h1 {
                 font-size: 50px;
                 letter-spacing: 6px;
             }
 
             h2 {
-                font-size: 18px;
-                gap: 10px;
-            }
-
-            .katakana {
-                font-size: 16px;
+                font-size: 22px;
             }
 
             p {
                 font-size: 16px;
             }
 
-            .social-icons {
-                top: 10px;
-                right: 15px;
-            }
-
-            .social-icons img {
-                width: 22px;
-                height: 22px;
+            .book-button {
+                font-size: 16px;
+                padding: 10px 30px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <!-- Hamburger Icon -->
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-
-        <!-- Dropdown Menu -->
-        <div class="dropdown" id="dropdownMenu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="services.html">Services</a>
-            <a href="contact.html">Contact Us</a>
-        </div>
-
-        <!-- Social Media Icons -->
-        <div class="social-icons">
-            <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
-                <img src="https://github.com/jcav13/haku/blob/main/Instagrambw.png?raw=true" alt="Instagram">
-            </a>
-            <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
-                <img src="https://raw.githubusercontent.com/jcav13/haku/3349f87c45928a92fc0aa8b8d6ee32e7f7de69f2/fblogobw.svg" alt="Facebook">
-            </a>
-            <a href="https://line.me/ti/p/~YOUR_USERNAME" target="_blank">
-                <img src="https://github.com/jcav13/haku/blob/main/linebw.png?raw=true" alt="LINE">
-            </a>
-        </div>
-    </div>
-
     <!-- Main Content -->
-    <div class="content-container">
-        <!-- Text Content -->
-        <div class="text-content">
-            <h1>H A K U</h1>
-            <h2>Melbourne <span class="katakana">メルボルン</span></h2>
-            <p>Personalised massage, inspired by Japanese tradition.</p>
-        </div>
+    <h1>HAKU</h1>
+    <h2>Melbourne メルボルン</h2>
+    <p>Personalised massage services, inspired by Japanese tradition.</p>
 
-        <!-- Flower Image (Anchored to the Bottom) -->
-        <img src="https://github.com/jcav13/haku/blob/main/bwlilly.png?raw=true" alt="Black and White Lily" class="flower-image">
-    </div>
-
-    <!-- JavaScript for Dropdown -->
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("dropdownMenu");
-            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-        }
-
-        document.addEventListener("click", function(event) {
-            var menu = document.getElementById("dropdownMenu");
-            var button = document.querySelector(".hamburger");
-            if (!menu.contains(event.target) && !button.contains(event.target)) {
-                menu.style.display = "none";
-            }
-        });
-    </script>
+    <!-- Book Now Button -->
+    <a href="book.html" class="book-button">Book</a>
 
 </body>
 </html>
