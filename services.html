@@ -11,9 +11,9 @@
     <style>
         /* General styling */
         body {
-            background-color: white; /* White Background */
-            color: black; /* Black Text */
-            font-family: 'Inconsolata', monospace; /* Inconsolata Font */
+            background-color: white;
+            color: black;
+            font-family: 'Inconsolata', monospace;
             text-align: center;
             margin: 0;
             padding: 0;
@@ -35,7 +35,7 @@
         .top-bar {
             position: absolute;
             top: 15px;
-            left: 15px; /* Moved to the left */
+            left: 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -48,6 +48,38 @@
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            position: relative;
+            z-index: 100;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 40px;
+            left: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 150px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .dropdown a {
+            text-decoration: none;
+            color: black;
+            padding: 12px;
+            display: block;
+            font-size: 16px;
+            text-align: left;
+            font-weight: 600;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .dropdown a:hover {
+            background: #5A3E74; /* Dark purple */
+            color: white;
         }
 
         /* Header */
@@ -67,7 +99,7 @@
             font-size: 14px;
             font-weight: 400;
             color: #666;
-            margin-top: 2px; /* Moved closer */
+            margin-top: 2px;
         }
 
         /* Service List */
@@ -109,7 +141,7 @@
             font-size: 20px;
             font-weight: 600;
             color: black;
-            white-space: nowrap; /* Ensures price stays on the same line */
+            white-space: nowrap;
         }
 
         .service-item p {
@@ -121,15 +153,15 @@
         /* Book Now Button */
         .book-now {
             display: block;
-            width: 250px; /* Matches text width */
+            width: 250px;
             background-color: white;
-            color: black; /* Black text */
+            color: black;
             text-align: center;
             padding: 15px;
             font-size: 18px;
             font-weight: 600;
             text-decoration: none;
-            border: 3px solid black; /* Thicker Black Border */
+            border: 3px solid black;
             border-radius: 50px;
             transition: all 0.3s ease-in-out;
             margin-top: 20px;
@@ -146,8 +178,15 @@
 
     <!-- Top Bar -->
     <div class="top-bar">
-        <!-- Hamburger Icon (Moved to the left) -->
-        <div class="hamburger">☰</div>
+        <!-- Hamburger Icon -->
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
     </div>
 
     <!-- Main Title -->
@@ -192,6 +231,27 @@
 
     <!-- Book Now Button -->
     <a href="book.html" class="book-now">Book Now</a>
+
+    <!-- JavaScript for Dropdown -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+
+        // Close the dropdown when clicking outside
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("dropdownMenu");
+            var button = document.querySelector(".hamburger");
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
 
 </body>
 </html>
