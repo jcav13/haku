@@ -11,9 +11,9 @@
     <style>
         /* General styling */
         body {
-            background-color: white; /* White Background */
-            color: black; /* Black Text */
-            font-family: 'Inter', sans-serif; /* Ultra Minimalist Font */
+            background-color: white;
+            color: black;
+            font-family: 'Inter', sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
@@ -33,93 +33,61 @@
             to { opacity: 1; }
         }
 
-        /* Header Bar */
-        .header {
+        /* Top Navbar */
+        .top-bar {
             position: absolute;
-            top: 20px;
-            width: 100%;
+            top: 15px;
+            left: 15px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 20px;
         }
 
-        /* Menu Button */
-        .menu-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .menu-icon {
+        /* Hamburger Icon */
+        .hamburger {
             font-size: 28px;
+            font-weight: bold;
             cursor: pointer;
-            transition: opacity 0.3s ease-in-out;
-            position: absolute;
-            left: 10px; /* Moved closer */
-            top: 10px; /* Lowered to align */
+            position: relative;
             z-index: 100;
-            color: #4B0082; /* Dark Purple */
-        }
-
-        .menu-icon:hover {
-            opacity: 0.6;
         }
 
         /* Dropdown Menu */
-        .menu {
+        .dropdown {
             position: absolute;
-            top: 35px; /* Lowered to align with icon */
-            left: 0; /* Adjusted so it aligns properly */
-            width: 180px;
-            background: white; /* White background */
+            top: 40px;
+            left: 10px;
+            background: white;
             border-radius: 8px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 150px;
             display: none;
             flex-direction: column;
-            align-items: flex-start;
             overflow: hidden;
         }
 
-        .menu a {
-            font-weight: 600;
-            color: black; /* Black Text */
+        .dropdown a {
             text-decoration: none;
-            font-size: 18px;
+            color: black;
             padding: 12px;
-            text-align: center;
-            width: 100%;
-            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             display: block;
+            font-size: 16px;
+            text-align: left;
+            font-weight: 600;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
         }
 
-        .menu a:last-child {
-            border-bottom: none;
-        }
-
-        .menu a:hover {
-            background: #4B0082; /* Dark Purple */
+        .dropdown a:hover {
+            background: #5A3E74; /* Dark purple */
             color: white;
-        }
-
-        /* Show menu on hover */
-        .menu-container:hover .menu {
-            display: flex;
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-        }
-
-        .menu-container:focus-within .menu {
-            display: flex;
         }
 
         /* Social Media Icons */
         .social-icons {
             position: absolute;
-            top: 20px;
+            top: 15px;
             right: 30px;
             display: flex;
             gap: 15px;
@@ -137,13 +105,6 @@
         .social-icons img {
             width: 28px;
             height: 28px;
-        }
-
-        /* Image styling */
-        .hero-image {
-            max-width: 300px;
-            height: auto;
-            margin-bottom: 10px;
         }
 
         /* HAKU text */
@@ -167,7 +128,7 @@
             display: flex;
             justify-content: center;
             gap: 50px;
-            margin-top: -10px; /* Bring them closer */
+            margin-top: -10px;
         }
 
         /* Melbourne text */
@@ -196,11 +157,6 @@
 
         /* Mobile Styling */
         @media (max-width: 768px) {
-            .hero-image {
-                max-width: 200px;
-                margin-bottom: 5px;
-            }
-
             h1 {
                 font-size: 50px;
                 letter-spacing: 6px;
@@ -233,33 +189,22 @@
                 width: 22px;
                 height: 22px;
             }
-
-            /* Mobile Menu Button */
-            .menu-toggle {
-                display: block;
-            }
-
-            .menu {
-                position: absolute;
-                left: 0;
-                width: 100%;
-                text-align: center;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section with Menu & Social Icons -->
-    <div class="header">
-        <!-- Menu Button -->
-        <div class="menu-container">
-            <div class="menu-icon">☰</div>
-            <div class="menu">
-                <a href="about.html">About Us</a>
-                <a href="services.html">Services</a>
-                <a href="contact.html">Contact Us</a>
-            </div>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <!-- Hamburger Icon -->
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact Us</a>
         </div>
 
         <!-- Social Media Icons -->
@@ -276,16 +221,34 @@
         </div>
     </div>
 
-    <!-- Purple Lily Image -->
-    <img src="https://github.com/jcav13/haku/blob/main/purplelilly.png?raw=true" alt="Purple Lily" class="hero-image">
-
-    <!-- Main Title and Text -->
+    <!-- Main Title -->
     <h1>H A K U</h1>
     <div class="kanji-container">
         <span>は</span> <span>く</span>
     </div>
     <h2>Melbourne <span class="katakana">メルボルン</span></h2>
     <p>Personalised massage, inspired by Japanese tradition.</p>
+
+    <!-- JavaScript for Dropdown -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+
+        // Close the dropdown when clicking outside
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("dropdownMenu");
+            var button = document.querySelector(".hamburger");
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
 
 </body>
 </html>
