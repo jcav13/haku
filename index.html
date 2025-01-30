@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HAKU</title>
     
-    <!-- Google Font: Playfair Display (Elegant & Minimalist) -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Google Font: Inter (Ultra Minimalist & Modern) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         /* General styling */
         body {
             background-color: white; /* White Background */
             color: black; /* Black Text */
-            font-family: 'Playfair Display', serif; /* Elegant Font */
+            font-family: 'Inter', sans-serif; /* Ultra Minimalist Font */
             text-align: center;
             margin: 0;
             padding: 0;
@@ -55,23 +55,23 @@
             cursor: pointer;
             transition: opacity 0.3s ease-in-out;
             position: absolute;
-            left: 15px;
-            top: 15px;
+            left: 10px; /* Moved closer */
+            top: 10px; /* Lowered to align */
             z-index: 100;
+            color: #4B0082; /* Dark Purple */
         }
 
         .menu-icon:hover {
             opacity: 0.6;
-            color: #4B0082; /* Dark Purple */
         }
 
         /* Dropdown Menu */
         .menu {
             position: absolute;
-            top: 0;
-            left: 50px; /* Now positioned to the right */
+            top: 35px; /* Lowered to align with icon */
+            left: 0; /* Adjusted so it aligns properly */
             width: 180px;
-            background: black; /* Black background */
+            background: white; /* White background */
             border-radius: 8px;
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
             display: none;
@@ -82,14 +82,14 @@
 
         .menu a {
             font-weight: 600;
-            color: white; /* White Text */
+            color: black; /* Black Text */
             text-decoration: none;
             font-size: 18px;
             padding: 12px;
             text-align: center;
             width: 100%;
             transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             display: block;
         }
 
@@ -104,6 +104,15 @@
 
         /* Show menu on hover */
         .menu-container:hover .menu {
+            display: flex;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+        }
+
+        .menu-container:focus-within .menu {
             display: flex;
         }
 
@@ -143,11 +152,22 @@
             font-weight: 600;
             letter-spacing: 8px;
             margin-bottom: 10px;
+            position: relative;
             transition: transform 0.3s ease-in-out;
         }
 
         h1:hover {
             transform: scale(1.02);
+        }
+
+        /* Japanese Characters Below H A K U */
+        .kanji-container {
+            font-size: 35px;
+            font-weight: 400;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: -10px; /* Bring them closer */
         }
 
         /* Melbourne text */
@@ -186,6 +206,11 @@
                 letter-spacing: 6px;
             }
 
+            .kanji-container {
+                font-size: 25px;
+                gap: 35px;
+            }
+
             h2 {
                 font-size: 18px;
                 gap: 10px;
@@ -207,6 +232,18 @@
             .social-icons img {
                 width: 22px;
                 height: 22px;
+            }
+
+            /* Mobile Menu Button */
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -244,6 +281,9 @@
 
     <!-- Main Title and Text -->
     <h1>H A K U</h1>
+    <div class="kanji-container">
+        <span>は</span> <span>く</span>
+    </div>
     <h2>Melbourne <span class="katakana">メルボルン</span></h2>
     <p>Personalised massage, inspired by Japanese tradition.</p>
 
