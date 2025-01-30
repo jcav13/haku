@@ -29,14 +29,14 @@
         .content-container {
             display: flex;
             align-items: center; /* Centers vertically */
-            justify-content: flex-start; /* Moves text to middle left */
+            justify-content: flex-start; /* Moves text to the left */
             width: 80%;
             max-width: 1200px;
             text-align: left;
             gap: 40px;
             position: relative;
             height: 100vh;
-            padding-left: 5%;
+            padding-left: 10%; /* Moves text further left */
         }
 
         /* Flower Image Styling */
@@ -160,6 +160,7 @@
                 flex-direction: column;
                 text-align: center;
                 align-items: center;
+                padding-left: 0; /* Reset padding on mobile */
             }
 
             .flower-image {
