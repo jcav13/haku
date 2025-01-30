@@ -23,12 +23,6 @@
             flex-direction: column;
             position: relative;
             overflow-x: hidden;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         /* Layout container */
@@ -42,23 +36,10 @@
             gap: 40px;
         }
 
-        /* Image styling (rises from bottom) */
+        /* Image styling (Static) */
         .flower-image {
             width: 350px; /* Adjust size */
             height: auto;
-            opacity: 0;
-            animation: riseUp 2s ease-in-out forwards;
-        }
-
-        @keyframes riseUp {
-            0% {
-                transform: translateY(100vh); /* Starts off-screen */
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
 
         /* Text styling */
@@ -71,11 +52,6 @@
             font-weight: 600;
             letter-spacing: 8px;
             margin-bottom: 10px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        h1:hover {
-            transform: scale(1.02);
         }
 
         /* Japanese Characters Below H A K U */
@@ -267,7 +243,7 @@
             <p>Personalised massage, inspired by Japanese tradition.</p>
         </div>
 
-        <!-- Flower Image -->
+        <!-- Flower Image (Static) -->
         <img src="https://github.com/jcav13/haku/blob/main/bwlilly.png?raw=true" alt="Black and White Lily" class="flower-image">
     </div>
 
