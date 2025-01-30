@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Treatment Questionnaire</title>
+    
+    <style>
+        /* General Styling */
+        body {
+            background-color: #3A4D39; /* Dark Matcha Green */
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-y: auto; /* Allows scrolling */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Form Container */
+        .form-container {
+            max-width: 600px;
+            text-align: left;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* Form Steps */
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-container label {
+            font-size: 18px;
+            font-weight: 200;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        /* Input Fields */
+        .form-container input, 
+        .form-container select, 
+        .form-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 30px;
+            border: 1px solid white;
+            font-size: 16px;
+            background: transparent;
+            color: white;
+            transition: all 0.3s ease-in-out;
+            box-sizing: border-box;
+        }
+
+        .form-container input::placeholder, 
+        .form-container textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-container input:focus, 
+        .form-container select:focus, 
+        .form-container textarea:focus {
+            outline: none;
+            box-shadow: 0 0 10px white;
+            border: 1px solid white;
+        }
+
+        /* Navigation Buttons */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 300;
+            color: #4A3725;
+            background: white;
+            border: 2px solid #4A3725;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            text-align: center;
+            width: 48%;
+        }
+
+        .nav-button:hover {
+            background: #4A3725;
+            color: white;
+        }
+
+        /* Submit Button (Only Shows on Last Step) */
+        .submit-button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 300;
+            color: #4A3725;
+            background: white;
+            border: 2px solid #4A3725;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .submit-button:hover {
+            background: #4A3725;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Pre-Treatment Questionnaire</h1>
+
+    <div class="form-container">
+        <form action="confirmation.html" method="POST">
+
+            <!-- Step 1 -->
+            <div class="form-step active">
+                <label for="massage-experience">Have you had a professional massage before?</label>
+                <select id="massage-experience" name="massage-experience">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="reason">Primary reason for today's massage</label>
+                <input type="text" id="reason" name="reason" placeholder="e.g., stress relief, muscle tension" required>
+
+                <div class="button-container">
+                    <button type="button" class="nav-button next">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="form-step">
+                <label for="conditions">Any medical conditions or recent injuries?</label>
+                <textarea id="conditions" name="conditions" rows="4" placeholder="List conditions or write 'None'"></textarea>
+
+                <label for="medications">Current medications or allergies?</label>
+                <textarea id="medications" name="medications" rows="4" placeholder="List medications or write 'None'"></textarea>
+
+                <div class="button-container">
+                    <button type="button" class="nav-button prev">Back</button>
+                    <button type="button" class="nav-button next">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="form-step">
+                <label for="stress-level">How would you describe your daily stress levels?</label>
+                <select id="stress-level" name="stress-level">
+                    <option value="Low">Low</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="High">High</option>
+                    <option value="Very High">Very High</option>
+                </select>
+
+                <label for="ambiance">Do you have any ambiance preferences?</label>
+                <textarea id="ambiance" name="ambiance" rows="4" placeholder="Music, aromatherapy, lighting, etc."></textarea>
+
+                <div class="button-container">
+                    <button type="button" class="nav-button prev">Back</button>
+                    <button type="submit" class="submit-button">Submit Questionnaire</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        const steps = document.querySelectorAll(".form-step");
+        let currentStep = 0;
+
+        document.querySelectorAll(".next").forEach(button => {
+            button.addEventListener("click", () => {
+                steps[currentStep].classList.remove("active");
+                currentStep++;
+                steps[currentStep].classList.add("active");
+            });
+        });
+
+        document.querySelectorAll(".prev").forEach(button => {
+            button.addEventListener("click", () => {
+                steps[currentStep].classList.remove("active");
+                currentStep--;
+                steps[currentStep].classList.add("active");
+            });
+        });
+    </script>
+
+</body>
+</html>
