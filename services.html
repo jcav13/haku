@@ -20,8 +20,9 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            overflow-x: hidden;
             animation: fadeIn 1.5s ease-in-out;
         }
 
@@ -47,7 +48,6 @@
             max-width: 800px;
             text-align: left;
             padding: 20px;
-            margin: 0 auto;
         }
 
         .service-item {
@@ -76,23 +76,29 @@
             margin-top: 5px;
         }
 
-        /* Book Now Button (Hover Effect: Turns Purple) */
+        /* Book Now Button */
         .book-now {
             display: block;
-            width: 100%;
-            background-color: black;
-            color: white;
+            width: 250px; /* Matches text width */
+            background-color: white;
+            color: #4B0082; /* Purple text */
             text-align: center;
-            padding: 20px;
+            padding: 15px;
             font-size: 18px;
             font-weight: 600;
             text-decoration: none;
-            transition: background 0.3s ease-in-out;
+            border: 2px solid #4B0082; /* Purple border */
+            border-radius: 50px;
+            transition: all 0.3s ease-in-out;
+            margin-top: 20px;
         }
 
         .book-now:hover {
-            background-color: #4B0082; /* Turns Purple on Hover */
+            background-color: black;
+            color: white;
+            border-color: black;
         }
+
     </style>
 </head>
 <body>
@@ -118,7 +124,7 @@
         </div>
     </div>
 
-    <!-- Book Now Button (Full Width) -->
+    <!-- Book Now Button -->
     <a href="book.html" class="book-now">Book Now</a>
 
 </body>
