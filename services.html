@@ -31,12 +31,31 @@
             to { opacity: 1; }
         }
 
+        /* Top Navbar */
+        .top-bar {
+            position: absolute;
+            top: 15px;
+            left: 15px; /* Moved to the left */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 10px 20px;
+        }
+
+        /* Hamburger Icon */
+        .hamburger {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         /* Header */
         h1 {
             font-size: 50px;
             font-weight: 400;
             letter-spacing: 6px;
-            margin-top: 80px;
+            margin-top: 60px;
             text-transform: capitalize;
             border-bottom: 2px solid black;
             padding-bottom: 10px;
@@ -45,10 +64,10 @@
 
         /* Pricing Info */
         .pricing-info {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 400;
             color: #666;
-            margin-top: 2px; /* Brings it closer to 'Our Services' */
+            margin-top: 2px; /* Moved closer */
         }
 
         /* Service List */
@@ -104,13 +123,13 @@
             display: block;
             width: 250px; /* Matches text width */
             background-color: white;
-            color: #4B0082; /* Purple text */
+            color: black; /* Black text */
             text-align: center;
             padding: 15px;
             font-size: 18px;
             font-weight: 600;
             text-decoration: none;
-            border: 2px solid #4B0082; /* Purple border */
+            border: 3px solid black; /* Thicker Black Border */
             border-radius: 50px;
             transition: all 0.3s ease-in-out;
             margin-top: 20px;
@@ -119,11 +138,17 @@
         .book-now:hover {
             background-color: black;
             color: white;
-            border-color: black;
         }
+
     </style>
 </head>
 <body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <!-- Hamburger Icon (Moved to the left) -->
+        <div class="hamburger">☰</div>
+    </div>
 
     <!-- Main Title -->
     <h1>Our Services</h1>
