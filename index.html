@@ -33,11 +33,19 @@
             to { opacity: 1; }
         }
 
-        /* Menu Button */
-        .menu-icon {
+        /* Header Bar */
+        .header {
             position: absolute;
             top: 20px;
-            left: 30px;
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        /* Menu Button */
+        .menu-icon {
             font-size: 28px;
             cursor: pointer;
             transition: opacity 0.3s ease-in-out;
@@ -52,31 +60,37 @@
             position: absolute;
             top: 60px;
             left: 30px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: none; /* Initially hidden */
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 8px;
+            display: none;
             flex-direction: column;
             align-items: flex-start;
-            gap: 10px;
+            width: 160px;
+            padding: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
         }
 
         .menu a {
             color: white;
             text-decoration: none;
             font-size: 18px;
-            transition: color 0.3s ease-in-out;
+            padding: 10px;
+            display: block;
+            width: 100%;
+            transition: background 0.3s ease-in-out;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .menu a:last-child {
+            border-bottom: none;
         }
 
         .menu a:hover {
-            color: #B89C78; /* Subtle gold hover effect */
+            background: #4A3725; /* Brown hover effect */
         }
 
         /* Social Media Icons */
         .social-icons {
-            position: absolute;
-            top: 20px;
-            right: 30px;
             display: flex;
             gap: 15px;
         }
@@ -177,27 +191,31 @@
     </style>
 </head>
 <body>
-    
-    <!-- Menu Button -->
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- Header Section with Menu & Social Icons -->
+    <div class="header">
+        <!-- Menu Button -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
+                <img src="https://raw.githubusercontent.com/jcav13/haku/fc28b47d5fe2574abbde85deccf0546352b14d86/Instagram.svg" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
+                <img src="https://raw.githubusercontent.com/jcav13/haku/fc28b47d5fe2574abbde85deccf0546352b14d86/facebook.svg" alt="Facebook">
+            </a>
+            <a href="https://line.me/ti/p/~YOUR_USERNAME" target="_blank">
+                <img src="https://raw.githubusercontent.com/jcav13/haku/fc28b47d5fe2574abbde85deccf0546352b14d86/LINE.svg" alt="LINE">
+            </a>
+        </div>
+    </div>
 
     <!-- Hidden Menu -->
     <div class="menu" id="menu">
         <a href="about.html">About Us</a>
         <a href="services.html">Services</a>
-    </div>
-
-    <!-- Social Media Icons -->
-    <div class="social-icons">
-        <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
-            <img src="https://raw.githubusercontent.com/jcav13/haku/fc28b47d5fe2574abbde85deccf0546352b14d86/Instagram.svg" alt="Instagram">
-        </a>
-        <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
-            <img src="https://raw.githubusercontent.com/jcav13/haku/fc28b47d5fe2574abbde85deccf0546352b14d86/facebook.svg" alt="Facebook">
-        </a>
-        <a href="https://line.me/ti/p/~YOUR_USERNAME" target="_blank">
-            <img src="https://raw.githubusercontent.com/jcav13/haku/fc28b47d5fe2574abbde85deccf0546352b14d86/LINE.svg" alt="LINE">
-        </a>
+        <a href="contact.html">Contact Us</a>
     </div>
 
     <!-- Momo Flower Image -->
