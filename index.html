@@ -18,9 +18,9 @@
             padding: 0;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
             position: relative;
             overflow-x: hidden;
         }
@@ -28,23 +28,30 @@
         /* Layout container */
         .content-container {
             display: flex;
-            align-items: center;
+            align-items: flex-end; /* Aligns text with the top of the flower */
             justify-content: center;
             width: 80%;
-            max-width: 1000px;
+            max-width: 1200px;
             text-align: left;
             gap: 40px;
+            position: relative;
+            height: 100vh;
         }
 
-        /* Image styling (Static) */
+        /* Flower Image Styling */
         .flower-image {
-            width: 350px; /* Adjust size */
+            position: absolute;
+            bottom: 0;
+            right: 10%; /* Adjust positioning */
+            width: 400px; /* Enlarged for better coverage */
             height: auto;
+            max-height: 95vh; /* Ensures full height coverage */
         }
 
         /* Text styling */
         .text-content {
             max-width: 400px;
+            z-index: 2; /* Ensures text appears above the flower */
         }
 
         h1 {
@@ -161,10 +168,14 @@
             .content-container {
                 flex-direction: column;
                 text-align: center;
+                align-items: center;
             }
 
             .flower-image {
                 width: 250px;
+                position: relative;
+                bottom: auto;
+                right: auto;
             }
 
             h1 {
@@ -243,7 +254,7 @@
             <p>Personalised massage, inspired by Japanese tradition.</p>
         </div>
 
-        <!-- Flower Image (Static) -->
+        <!-- Flower Image (Anchored to the Bottom) -->
         <img src="https://github.com/jcav13/haku/blob/main/bwlilly.png?raw=true" alt="Black and White Lily" class="flower-image">
     </div>
 
