@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Confirmed - H A K U</title>
+    <title>Booking Confirmed - HAKU</title>
+    
     <style>
-        /* General styling */
+        /* General Styling */
         body {
-            background-color: black;
+            background-color: #3A4D39; /* Dark Matcha Green */
             color: white;
-            font-family: 'Helvetica Neue', sans-serif;
+            font-family: 'Poppins', sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            overflow-y: auto; /* Allows scrolling */
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
             position: relative;
             overflow-x: hidden;
             animation: fadeIn 1.5s ease-in-out;
@@ -28,58 +30,56 @@
             to { opacity: 1; }
         }
 
-        /* Header */
+        /* Large "Arigatou Gozaimasu" Text */
         h1 {
             font-size: 50px;
-            font-weight: 300;
-            letter-spacing: 6px;
+            font-weight: 500;
+            letter-spacing: 3px;
             margin-bottom: 10px;
         }
 
-        p {
-            font-size: 20px;
-            font-weight: 200;
-            margin-top: 15px;
-            max-width: 600px;
-        }
-
-        /* Buttons */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 12px 40px;
-            font-size: 16px;
+        /* Smaller Text Below */
+        .confirmation-text {
+            font-size: 18px;
             font-weight: 300;
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Home Button */
+        .home-button {
+            margin-top: 20px;
+            padding: 12px 35px;
+            font-size: 16px;
+            font-weight: 400;
             letter-spacing: 2px;
-            color: white;
-            background: transparent;
-            border: 1px solid white;
-            border-radius: 50px;
+            color: #4A3725;
+            background: white;
+            border: 2px solid #4A3725;
+            border-radius: 30px;
             text-decoration: none;
             transition: all 0.3s ease-in-out;
         }
 
-        .button:hover {
-            background: white;
-            color: black;
-            transform: scale(1.05);
+        .home-button:hover {
+            background: #4A3725;
+            color: white;
         }
+
     </style>
 </head>
 <body>
-    <h1>Booking Confirmed</h1>
-    <p>Thank you for booking with H A K U. You will receive a confirmation email shortly.</p>
 
-    <div class="button-container">
-        <a href="index.html" class="button">Home</a>
-        <a href="services.html" class="button">Services</a>
-        <a href="book.html" class="button">Book Again</a>
-    </div>
+    <h1>Arigatou Gozaimasu - ありがとうございます</h1>
+
+    <p class="confirmation-text">
+        Your booking with H A K U has now been finalised and a confirmation email has been sent to your email address.
+    </p>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-button">Back to Home</a>
+
 </body>
 </html>
