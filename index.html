@@ -44,31 +44,29 @@
     }
 }
 
-        /* Top Navbar */
-        .top-bar {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: calc(100% - 30px);
-            padding: 10px 20px;
-        }
+/* Top Navbar */
+.top-bar {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center; /* Ensure vertical alignment */
+    justify-content: space-between; /* Distribute space evenly */
+    width: calc(100% - 30px);
+    padding: 10px 20px;
+}
 
-        /* Hamburger Icon - Removed Border */
-        .hamburger {
-            font-size: 24px;
-            font-weight: 500;
-            cursor: pointer;
-            position: relative;
-            z-index: 100;
-            color: #F1E7BB;
-            padding: 8px 12px;
-            border-radius: 6px;
-            display: inline-block;
-        }
+.hamburger {
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 100;
+    color: #F1E7BB;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+}
 
         /* Dropdown Menu */
         .dropdown {
