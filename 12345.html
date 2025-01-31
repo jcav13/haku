@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client 12345 - Loyalty Progress</title>
+    
+    <!-- Google Font Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* General Styling */
+        body {
+            background-color: #293717;
+            color: #F1E7BB;
+            font-family: 'Inconsolata', monospace;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: background 0.3s ease-in-out;
+        }
+
+        .circle.filled {
+            background: #F1E7BB;
+        }
+    </style>
+</head>
+<body>
+    <h1>Client #12345</h1>
+    <p>2 massages completed, 2 more until a free session.</p>
+    
+    <div class="progress-container">
+        <div class="circle filled"></div>
+        <div class="circle filled"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+</body>
+</html>
