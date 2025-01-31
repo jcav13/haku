@@ -203,10 +203,41 @@ body {
     color: #E8DCC0;
     transform: scale(1.05);
 }
+        @media (max-width: 768px) {
+    .service-header {
+        font-size: 16px; /* Smaller for better fit */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: nowrap;
+    }
+
+    .service-header .left {
+        display: flex;
+        align-items: center;
+        gap: 5px; /* Reduce spacing */
+        flex-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .japanese {
+        font-size: 14px; /* Reduce Japanese font size */
+        opacity: 0.8;
+    }
+
+    .price {
+        font-size: 16px; /* Slightly reduce price size */
+        font-weight: 500;
+        white-space: nowrap;
+    }
+}
 @media (max-width: 768px) {
     h1 {
-        font-size: 40px;
-        letter-spacing: 4px;
+        font-size: 32px;
+        letter-spacing: 3px;
     }
 
     .pricing-info {
@@ -222,11 +253,11 @@ body {
     }
 
     .japanese {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .price {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
         
