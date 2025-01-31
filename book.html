@@ -120,7 +120,7 @@
         }
 
         /* Full-Width Submit Button */
-        .submit-button {
+.submit-button {
     background: transparent;
     color: #E8DCC0;
     border: 2px solid #E8DCC0;
@@ -132,6 +132,9 @@
     letter-spacing: 1px;
     transition: all 0.4s ease-in-out;
     display: inline-block;
+    width: auto; /* Ensures it only takes as much space as the text */
+    min-width: fit-content; /* Prevents it from being too small */
+    white-space: nowrap; /* Ensures text stays in one line */
 }
 
         .submit-button:hover {
