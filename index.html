@@ -57,29 +57,52 @@
             position: absolute;
             top: 50px;
             left: 10px;
-            background: #F1E7BB; /* Light Cream Background */
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 160px;
-            display: none; /* Initially hidden */
+            background: rgba(241, 231, 187, 0.95); /* Light Cream with slight transparency */
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Soft drop shadow */
+            width: 180px;
+            display: none;
             flex-direction: column;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .dropdown a {
             text-decoration: none;
-            color: #293717; /* Dark Green Text */
-            padding: 12px;
+            color: #293717; /* Dark Green */
+            padding: 15px;
             display: block;
-            font-size: 16px;
+            font-size: 18px;
             text-align: left;
             font-weight: 500;
             transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+            position: relative;
         }
 
+        /* Subtle Divider Between Items */
+        .dropdown a:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hover Effect */
         .dropdown a:hover {
-            background: #5A3E74; /* Dark purple */
-            color: #F1E7BB;
+            background: rgba(90, 62, 116, 0.9); /* Dark purple with slight transparency */
+            color: #F1E7BB; /* Light Cream */
+        }
+
+        /* Show dropdown with fade-in effect */
+        .dropdown.open {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Social Media Icons */
@@ -238,11 +261,17 @@
     <script>
         function toggleMenu() {
             var menu = document.getElementById("dropdownMenu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
+
+            if (menu.classList.contains("open")) {
+                menu.classList.remove("open");
+                setTimeout(() => {
+                    menu.style.display = "none";
+                }, 300); /* Delay hiding to allow animation */
             } else {
                 menu.style.display = "flex";
-                menu.style.flexDirection = "column";
+                setTimeout(() => {
+                    menu.classList.add("open");
+                }, 10); /* Small delay to trigger fade-in */
             }
         }
 
