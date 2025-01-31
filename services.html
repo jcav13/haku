@@ -120,7 +120,7 @@ body {
             letter-spacing: 6px;
             margin-top: 60px;
             text-transform: capitalize;
-            border-bottom: 2px solid black;
+            border-bottom: 2px solid #F1E7BB;
             padding-bottom: 10px;
             display: inline-block;
         }
@@ -150,7 +150,7 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #F1E7BB;
             padding-bottom: 5px;
             font-size: 24px;
             font-weight: 400;
@@ -171,7 +171,7 @@ body {
         .price {
             font-size: 20px;
             font-weight: 600;
-            color: black;
+            color: #F1E7BB;
             white-space: nowrap;
         }
 
@@ -182,21 +182,19 @@ body {
         }
 
         /* Book Now Button */
-        .book-now {
-            display: block;
-            width: 250px;
-            background-color: white;
-            color: black;
-            text-align: center;
-            padding: 15px;
-            font-size: 18px;
-            font-weight: 600;
-            text-decoration: none;
-            border: 3px solid black;
-            border-radius: 50px;
-            transition: all 0.3s ease-in-out;
-            margin-top: 20px;
-        }
+    .book-button {
+    background: transparent;
+    color: #E8DCC0;
+    border: 2px solid #E8DCC0;
+    padding: 12px 42px;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    transition: all 0.4s ease-in-out;
+    display: inline-block;
+}
 
         .book-now:hover {
             background-color: black;
@@ -262,6 +260,14 @@ body {
 
     <!-- Book Now Button -->
     <a href="book.html" class="book-now">Book Now</a>
+
+    
+
+.book-button:hover {
+    background: rgba(232, 220, 192, 0.15); /* Subtle fill effect */
+    color: #E8DCC0;
+    transform: scale(1.05);
+}
 
     <!-- JavaScript for Dropdown -->
     <script>
