@@ -121,7 +121,20 @@
             font-weight: 300;
             letter-spacing: 6px;
             margin-bottom: 10px;
-        }
+            position: relative;
+    display: inline-block;
+}
+
+/* Underline Effect */
+h1::after {
+    content: "";
+    position: absolute;
+    bottom: -8px; /* Adjust spacing below text */
+    left: 50%;
+    width: 80px; /* Matches the "Services" underline */
+    height: 2px;
+    background-color: #F1E7BB; /* Light cream */
+    transform: translateX(-50%);
 
         /* Introductory Text */
         .intro-text {
