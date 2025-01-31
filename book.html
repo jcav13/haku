@@ -190,17 +190,16 @@
             background: transparent;
             color: #E8DCC0;
             border: 2px solid #E8DCC0;
-            padding: 12px 42px;
+            padding: 12px;
             font-size: 18px;
             font-weight: 500;
             text-decoration: none;
             border-radius: 50px;
             letter-spacing: 1px;
             transition: all 0.4s ease-in-out;
-            display: inline-block;
-            width: auto;
-            min-width: fit-content;
-            white-space: nowrap;
+            display: block;
+            width: 100%; /* Ensures it matches input field width */
+            text-align: center;
         }
 
         .submit-button:hover {
@@ -250,6 +249,9 @@
                 <option value="deep tissue therapy">Deep Tissue Therapy</option>
                 <option value="japanese-inspired aromatherapy">Japanese-Inspired Aromatherapy</option>
             </select>
+
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" name="date" required>
 
             <button type="submit" class="submit-button">Submit Your Details</button>
         </form>
