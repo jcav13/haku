@@ -27,22 +27,22 @@
         }
         
             /* Fade-in animation for text and button */
-    h1, h2, p, .book-button {
+ h1, h2, p, .book-button, .kanji-container {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
         opacity: 0;
         transform: translateY(20px);
-        animation: fadeInUp 1s ease-out forwards;
     }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
         /* Top Navbar */
         .top-bar {
@@ -178,21 +178,23 @@ p {
         }
 
         /* Book Button */
-        .book-button {
+.book-button {
     background: transparent;
-    border: 2px solid #E8DCC0; /* Gold/Cream border */
     color: #E8DCC0;
-    font-size: 20px;
-    font-weight: 600;
-    padding: 14px 50px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.3s ease-in-out;
+    border: 2px solid #E8DCC0;
+    padding: 12px 42px;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    transition: all 0.4s ease-in-out;
+    display: inline-block;
 }
 
 .book-button:hover {
-    background: #E8DCC0;
-    color: #1E261D;
+    background: rgba(232, 220, 192, 0.15); /* Subtle fill effect */
+    color: #E8DCC0;
     transform: scale(1.05);
 }
 
