@@ -187,22 +187,59 @@
         }
 
         /* Mobile Styling */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 50px;
-                letter-spacing: 8px;
-            }
+    @media (max-width: 768px) {
+    /* Adjust Header */
+    h1 {
+        font-size: 40px;
+        letter-spacing: 6px;
+        margin-bottom: 15px;
+    }
+    
+    h1::after {
+        width: 40px;
+    }
 
-            .about-container {
-                padding: 20px;
-                max-width: 90%;
-            }
+    /* Improve Text Readability */
+    .about-container {
+        padding: 15px;
+        max-width: 85%;
+    }
 
-            p {
-                font-size: 16px;
-                line-height: 1.6;
-            }
-        }
+    p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    /* Adjust Hamburger & Dropdown */
+    .top-bar {
+        padding: 8px 15px;
+    }
+
+    .hamburger {
+        font-size: 22px;
+    }
+
+    .dropdown {
+        width: 160px;
+    }
+
+    .dropdown a {
+        font-size: 16px;
+        padding: 12px 15px;
+    }
+
+    /* Optimize Social Media Icons */
+    .social-icons {
+        top: 10px;
+        right: 10px;
+        gap: 12px;
+    }
+
+    .social-icons svg {
+        width: 24px;
+        height: 24px;
+    }
+}
     </style>
 </head>
 <body>
