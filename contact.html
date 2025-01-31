@@ -1,1 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact H A K U</title>
 
+    <!-- Google Font Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Styling */
+        body {
+            background-color: #293717; /* Dark Green */
+            color: #F1E7BB; /* Light Cream */
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Top Navbar */
+        .top-bar {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: calc(100% - 30px);
+            padding: 10px 20px;
+        }
+
+        /* Hamburger Icon */
+        .hamburger {
+            font-size: 24px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            z-index: 100;
+            color: #F1E7BB;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            background: linear-gradient(180deg, rgba(241, 231, 187, 0.98), rgba(241, 231, 187, 0.90)); 
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            width: 190px;
+            display: none;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
+        }
+
+        /* Dropdown Items */
+        .dropdown a {
+            text-decoration: none;
+            color: #293717;
+            padding: 16px 20px;
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease, opacity 0.3s ease;
+            opacity: 0.85;
+        }
+
+        .dropdown a:hover {
+            opacity: 1;
+        }
+
+        /* Underline Animation */
+        .dropdown a::after {
+            content: "";
+            position: absolute;
+            bottom: 8px;
+            left: 20px;
+            width: 0;
+            height: 2px;
+            background-color: #293717;
+            transition: width 0.3s ease;
+        }
+
+        .dropdown a:hover::after {
+            width: calc(100% - 40px);
+        }
+
+        .dropdown.open {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header */
+        h1 {
+            font-size: 50px;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 10px;
+        }
+
+        /* Introductory Text */
+        .intro-text {
+            font-size: 18px;
+            font-weight: 300;
+            max-width: 600px;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            max-width: 600px;
+            text-align: left;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .contact-container label {
+            font-size: 18px;
+            font-weight: 200;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .contact-container input,
+        .contact-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 30px;
+            border: 1px solid white;
+            font-size: 16px;
+            background: transparent;
+            color: white;
+            transition: all 0.3s ease-in-out;
+            box-sizing: border-box;
+        }
+
+        .contact-container input::placeholder,
+        .contact-container textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .contact-container input:focus,
+        .contact-container textarea:focus {
+            outline: none;
+            box-shadow: 0 0 10px white;
+            border: 1px solid white;
+        }
+
+        /* Submit Button */
+        .submit-button {
+            background: transparent;
+            color: #E8DCC0;
+            border: 2px solid #E8DCC0;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            transition: all 0.4s ease-in-out;
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .submit-button:hover {
+            background: rgba(232, 220, 192, 0.15);
+            color: #E8DCC0;
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <!-- Hamburger Icon -->
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown" id="dropdownMenu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+        </div>
+    </div>
+
+    <h1>Contact H A K U</h1>
+
+    <!-- Introductory Text -->
+    <p class="intro-text">
+        Have a question? Want to book a service? Fill out the form below, and we’ll get back to you as soon as possible.
+    </p>
+
+    <div class="contact-container">
+        <form action="submit_form.php" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit" class="submit-button">Send Message</button>
+        </form>
+    </div>
+
+    <!-- JavaScript for Dropdown -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+    </script>
+
+</body>
+</html>
