@@ -57,52 +57,57 @@
             position: absolute;
             top: 50px;
             left: 10px;
-            background: rgba(241, 231, 187, 0.95); /* Light Cream with slight transparency */
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Soft drop shadow */
-            width: 180px;
+            background: linear-gradient(180deg, rgba(241, 231, 187, 0.98), rgba(241, 231, 187, 0.90)); 
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Softer drop shadow */
+            width: 190px;
             display: none;
             flex-direction: column;
-            overflow: hidden;
             opacity: 0;
             transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
         }
 
+        /* Menu Items */
         .dropdown a {
             text-decoration: none;
             color: #293717; /* Dark Green */
-            padding: 15px;
+            padding: 16px 20px;
             display: block;
             font-size: 18px;
-            text-align: left;
             font-weight: 500;
-            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
             position: relative;
+            transition: color 0.3s ease, opacity 0.3s ease;
+            opacity: 0.85; /* Soft start */
         }
 
-        /* Subtle Divider Between Items */
-        .dropdown a:not(:last-child)::after {
+        /* Hover Effects */
+        .dropdown a:hover {
+            opacity: 1;
+        }
+
+        /* Elegant Underline Animation */
+        .dropdown a::after {
             content: "";
             position: absolute;
-            bottom: 0;
-            left: 15px;
-            right: 15px;
-            height: 1px;
-            background: rgba(0, 0, 0, 0.1);
+            bottom: 8px;
+            left: 20px;
+            width: 0;
+            height: 2px;
+            background-color: #5A3E74; /* Dark purple accent */
+            transition: width 0.3s ease;
         }
 
-        /* Hover Effect */
-        .dropdown a:hover {
-            background: rgba(90, 62, 116, 0.9); /* Dark purple with slight transparency */
-            color: #F1E7BB; /* Light Cream */
+        .dropdown a:hover::after {
+            width: calc(100% - 40px);
         }
 
-        /* Show dropdown with fade-in effect */
+        /* Show dropdown with smooth animation */
         .dropdown.open {
             display: flex;
             opacity: 1;
             transform: translateY(0);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         /* Social Media Icons */
@@ -224,7 +229,6 @@
 
         <!-- Dropdown Menu -->
         <div class="dropdown" id="dropdownMenu">
-            <a href="index.html">Home</a>
             <a href="about.html">About Us</a>
             <a href="services.html">Services</a>
             <a href="contact.html">Contact Us</a>
@@ -266,7 +270,7 @@
                 menu.classList.remove("open");
                 setTimeout(() => {
                     menu.style.display = "none";
-                }, 300); /* Delay hiding to allow animation */
+                }, 350); /* Delay hiding for a smooth closing effect */
             } else {
                 menu.style.display = "flex";
                 setTimeout(() => {
@@ -275,6 +279,17 @@
             }
         }
 
+        // Improved UX: Close the dropdown only when clicking outside of it
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("dropdownMenu");
+            var button = document.querySelector(".hamburger");
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.classList.remove("open");
+                setTimeout(() => {
+                    menu.style.display = "none";
+                }, 350);
+            }
+        });
         document.addEventListener("click", function(event) {
             var menu = document.getElementById("dropdownMenu");
             var button = document.querySelector(".hamburger");
