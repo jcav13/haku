@@ -180,10 +180,13 @@
         }
 
         /* Make Select Box Match Other Inputs */
-        .booking-container select {
-            appearance: none;
-            cursor: pointer;
-        }
+.booking-container select {
+    appearance: none; /* Removes default dropdown styling */
+    cursor: pointer;
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23E8DCC0"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 15px center;
+    background-size: 16px; /* Adjust to fit luxury aesthetics */
+    padding-right: 40px; /* Ensures space for the icon */
+}
 
         /* Submit Button */
         .submit-button {
@@ -200,6 +203,7 @@
             display: block;
             width: 100%; /* Ensures it matches input field width */
             text-align: center;
+            margin-top: 20px;
         }
 
         .submit-button:hover {
