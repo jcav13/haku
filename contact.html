@@ -115,26 +115,15 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        /* Header */
-        h1 {
-            font-size: 50px;
-            font-weight: 300;
-            letter-spacing: 6px;
-            margin-bottom: 10px;
-            position: relative;
+h1 {
+    font-size: 50px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+    position: relative;
     display: inline-block;
-}
-
-/* Underline Effect */
-h1::after {
-    content: "";
-    position: absolute;
-    bottom: -8px; /* Adjust spacing below text */
-    left: 50%;
-    width: 80px; /* Matches the "Services" underline */
-    height: 2px;
-    background-color: #F1E7BB; /* Light cream */
-    transform: translateX(-50%);
+    padding-bottom: 8px; /* Creates space for the underline */
+    border-bottom: 2px solid #F1E7BB; /* Full-width underline */
 }
         /* Introductory Text */
         .intro-text {
