@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Confirmed - H A K U</title>
-        
+    
+    <!-- Google Font Import -->
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
         /* General Styling */
         body {
-            background-color: #3A4D39; /* Dark Matcha Green */
-            color: white;
+            background-color: #293717; /* Dark Green */
+            color: #F1E7BB; /* Light Cream */
             font-family: 'Inconsolata', monospace;
             text-align: center;
             margin: 0;
@@ -38,6 +39,19 @@
             font-weight: 500;
             letter-spacing: 3px;
             margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            width: 80%;
+            height: 2px;
+            background-color: #F1E7BB;
+            transform: translateX(-50%);
         }
 
         /* Smaller Text Below */
@@ -53,27 +67,26 @@
         /* Home Button */
         .home-button {
             margin-top: 20px;
-            padding: 12px 35px;
-            font-size: 16px;
-            font-weight: 400;
+            padding: 12px 42px;
+            font-size: 18px;
+            font-weight: 500;
             letter-spacing: 2px;
-            color: #4A3725;
-            background: white;
-            border: 2px solid #4A3725;
-            border-radius: 30px;
+            background: transparent;
+            color: #E8DCC0;
+            border: 2px solid #E8DCC0;
+            border-radius: 50px;
             text-decoration: none;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.4s ease-in-out;
+            display: inline-block;
         }
 
         .home-button:hover {
-            background: #4A3725;
-            color: white;
+            background: rgba(232, 220, 192, 0.15);
+            transform: scale(1.05);
         }
-
     </style>
 </head>
 <body>
-
     <h1>Arigatou Gozaimasu - ありがとうございます</h1>
 
     <p class="confirmation-text">
@@ -82,6 +95,5 @@
 
     <!-- Home Button -->
     <a href="index.html" class="home-button">Back to Home</a>
-
 </body>
 </html>
