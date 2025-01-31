@@ -94,7 +94,7 @@
             left: 20px;
             width: 0;
             height: 2px;
-            background-color: #5A3E74; /* Dark purple accent */
+            background-color: #293717; /* Light cream accent */
             transition: width 0.3s ease;
         }
 
@@ -266,17 +266,18 @@
         function toggleMenu() {
             var menu = document.getElementById("dropdownMenu");
 
-            if (menu.classList.contains("open")) {
+            menu.style.display = "flex";
+            setTimeout(() => {
+                menu.classList.add("open");
+            }, 10); /* Smooth transition */
+
+            // Auto-close when mouse leaves
+            menu.addEventListener("mouseleave", function() {
                 menu.classList.remove("open");
                 setTimeout(() => {
                     menu.style.display = "none";
-                }, 350); /* Delay hiding for a smooth closing effect */
-            } else {
-                menu.style.display = "flex";
-                setTimeout(() => {
-                    menu.classList.add("open");
-                }, 10); /* Small delay to trigger fade-in */
-            }
+                }, 350);
+            });
         }
 
         // Improved UX: Close the dropdown only when clicking outside of it
