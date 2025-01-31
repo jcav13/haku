@@ -31,10 +31,11 @@
             position: absolute;
             top: 15px;
             left: 15px;
+            right: 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
+            width: calc(100% - 30px);
             padding: 10px 20px;
         }
 
@@ -80,6 +81,27 @@
         .dropdown a:hover {
             background: #5A3E74; /* Dark purple */
             color: #F1E7BB;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .social-icons a:hover {
+            opacity: 0.6;
+        }
+
+        .social-icons svg {
+            width: 28px;
+            height: 28px;
+            fill: #F1E7BB;
         }
 
         /* Text styling */
@@ -164,23 +186,26 @@
         <!-- Hamburger Icon -->
         <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-        <!-- Dropdown Menu -->
-        <div class="dropdown" id="dropdownMenu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="services.html">Services</a>
-            <a href="contact.html">Contact Us</a>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2.163c-5.14 0-9.837 4.118-9.837 9.837s4.118 9.837 9.837 9.837 9.837-4.118 9.837-9.837-4.118-9.837-9.837-9.837zm0 18.26c-4.593 0-8.323-3.73-8.323-8.323s3.73-8.323 8.323-8.323 8.323 3.73 8.323 8.323-3.73 8.323-8.323 8.323zm4.98-10.34a1.572 1.572 0 1 1 0-3.143 1.572 1.572 0 0 1 0 3.143z"/>
+                </svg>
+            </a>
+            <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96 0 4.94 3.63 9.05 8.36 9.82v-6.94h-2.52v-2.88h2.52v-2.2c0-2.5 1.5-3.88 3.78-3.88 1.1 0 2.24.2 2.24.2v2.48h-1.26c-1.24 0-1.63.77-1.63 1.56v1.84h2.78l-.44 2.88h-2.34v6.94c4.73-.77 8.36-4.88 8.36-9.82 0-5.5-4.46-9.96-9.96-9.96z"/>
+                </svg>
+            </a>
         </div>
     </div>
 
     <!-- Main Content -->
     <h1>H A K U</h1>
-
-    <!-- Kanji under H and K -->
     <div class="kanji-container">
         <span>ハ</span> <span>ク</span>
     </div>
-
     <h2>Melbourne メルボルン</h2>
     <p>Personalised massage services, inspired by Japanese tradition.</p>
 
@@ -193,14 +218,6 @@
             var menu = document.getElementById("dropdownMenu");
             menu.style.display = menu.style.display === "flex" ? "none" : "flex";
         }
-
-        document.addEventListener("click", function(event) {
-            var menu = document.getElementById("dropdownMenu");
-            var button = document.querySelector(".hamburger");
-            if (!menu.contains(event.target) && !button.contains(event.target)) {
-                menu.style.display = "none";
-            }
-        });
     </script>
 
 </body>
