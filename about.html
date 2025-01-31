@@ -112,6 +112,7 @@
             height: 2px;
             background-color: #293717;
             transition: width 0.3s ease;
+            z-index: 200;
         }
 
         .dropdown a:hover::after {
@@ -188,6 +189,19 @@
 
         /* Mobile Styling */
     @media (max-width: 768px) {
+    .top-bar {
+        position: fixed; /* Ensures the menu stays at the top */
+        width: 100%; /* Full width */
+        background-color: #293717; /* Matches background */
+        padding: 10px 15px;
+        z-index: 200; /* Ensures it stays above content */
+    }
+
+    /* Add padding to the body to push content down */
+    body {
+        padding-top: 60px; /* Prevents heading from being covered */
+    }
+}
     /* Adjust Header */
     h1 {
         font-size: 40px;
