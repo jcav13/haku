@@ -203,35 +203,36 @@ body {
     color: #E8DCC0;
     transform: scale(1.05);
 }
-        @media (max-width: 768px) {
+@media (max-width: 768px) {
     .service-header {
-        font-size: 16px; /* Smaller for better fit */
+        font-size: 14px; /* Reduce font size for mobile */
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
+        gap: 8px;
         flex-wrap: nowrap;
+        white-space: nowrap; /* Prevent wrapping */
+        overflow: hidden; /* Prevent overflow */
     }
 
     .service-header .left {
         display: flex;
         align-items: center;
-        gap: 5px; /* Reduce spacing */
-        flex-wrap: nowrap;
+        gap: 4px; /* Reduce gap further */
         overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        text-overflow: ellipsis; /* Prevent long names from overflowing */
     }
 
     .japanese {
-        font-size: 14px; /* Reduce Japanese font size */
+        font-size: 12px; /* Further reduce font size */
         opacity: 0.8;
     }
 
     .price {
-        font-size: 16px; /* Slightly reduce price size */
-        font-weight: 500;
-        white-space: nowrap;
+        font-size: 14px; /* Reduce price size */
+        font-weight: 600;
+        flex-shrink: 0; /* Prevents it from shrinking */
+        padding-left: 5px; /* Space between text and price */
     }
 }
 @media (max-width: 768px) {
@@ -245,7 +246,8 @@ body {
     }
 
     .services-container {
-        padding: 15px;
+     padding: 10px;
+    max-width: 95vw; /* Ensures it doesn't overflow */
     }
 
     .service-header {
