@@ -6,43 +6,50 @@
     <title>Pre-Treatment Questionnaire</title>
     
     <!-- Google Font Import -->
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
         /* General Styling */
         body {
-            background-color: #293717; /* Dark Green */
-            color: #F1E7BB; /* Light Cream */
-            font-family: 'Space Grotesk', sans-serif;
-
+            background-color: #293717;
+            color: #F1E7BB;
+            font-family: 'Inconsolata', monospace;
             text-align: center;
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            overflow-y: auto; /* Allows scrolling */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
             overflow-x: hidden;
-            animation: fadeIn 1.5s ease-in-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* Fade-in Animation */
+        h2, label, textarea, .nav-button, .submit-button {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards;
         }
 
-        /* Form Container */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Form Styling */
         .form-container {
             max-width: 600px;
-            text-align: center;
             padding: 20px;
             width: 100%;
         }
 
-        /* Form Steps */
         .form-step {
             display: none;
         }
@@ -51,165 +58,107 @@
             display: block;
         }
 
-        /* Pre-Treatment Title */
         .form-title {
             font-size: 32px;
             font-weight: 500;
             margin-bottom: 30px;
         }
 
-        /* Question Styling */
-        .form-container label {
+        label {
             font-size: 22px;
             font-weight: 400;
             display: block;
-            margin: 40px 0 15px; /* Increased spacing above text box */
+            margin: 40px 0 15px;
         }
 
-        /* Input Fields */
-        .form-container input, 
-        .form-container select, 
-        .form-container textarea {
+        textarea {
             width: 100%;
             padding: 12px;
-            margin-bottom: 10px;
             border-radius: 30px;
             border: 1px solid white;
             font-size: 18px;
             background: transparent;
             color: white;
+            text-align: center;
             transition: all 0.3s ease-in-out;
             box-sizing: border-box;
-            text-align: center;
         }
 
-        .form-container input::placeholder, 
-        .form-container textarea::placeholder {
+        textarea::placeholder {
             color: rgba(255, 255, 255, 0.6);
         }
 
-        .form-container input:focus, 
-        .form-container select:focus, 
-        .form-container textarea:focus {
+        textarea:focus {
             outline: none;
             box-shadow: 0 0 10px white;
             border: 1px solid white;
         }
 
         /* Navigation Buttons */
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .nav-button {
-            padding: 12px 30px;
+        .nav-button, .submit-button {
+            background: transparent;
+            color: #E8DCC0;
+            border: 2px solid #E8DCC0;
+            padding: 12px 42px;
             font-size: 18px;
-            font-weight: 400;
-            color: #4A3725;
-            background: white;
-            border: 2px solid #4A3725;
-            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            transition: all 0.4s ease-in-out;
+            display: inline-block;
             cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            text-align: center;
-            width: 48%;
+            margin: 10px;
         }
 
-        .nav-button:hover {
-            background: #4A3725;
-            color: white;
-        }
-
-        /* Submit Button (Only Shows on Last Step) */
-        .submit-button {
-            width: 100%;
-            padding: 12px;
-            font-size: 18px;
-            font-weight: 400;
-            color: #4A3725;
-            background: white;
-            border: 2px solid #4A3725;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .submit-button:hover {
-            background: #4A3725;
-            color: white;
+        .nav-button:hover, .submit-button:hover {
+            background: rgba(232, 220, 192, 0.15);
+            transform: scale(1.05);
         }
 
     </style>
 </head>
 <body>
-
     <div class="form-container">
         <form action="confirmation.html" method="POST">
-
-            <!-- Step 1: Key Areas & Sensations -->
             <div class="form-step active">
                 <h2 class="form-title">Pre-Treatment Questionnaire</h2>
-                <label for="key-areas">Which parts of your body feel most strained or uncomfortable, and how would you characterise that sensation (e.g., dull ache, tightness, stiffness)?</label>
+                <label for="key-areas">Which parts of your body feel most strained or uncomfortable, and how would you characterize that sensation?</label>
                 <textarea id="key-areas" name="key-areas" rows="4" required></textarea>
-
-                <div class="button-container">
-                    <button type="button" class="nav-button prev">Back</button>
-                    <button type="button" class="nav-button next">Next</button>
-                </div>
+                <button type="button" class="nav-button next">Next</button>
             </div>
 
-            <!-- Step 2: Contributing Routines & Habits -->
             <div class="form-step">
                 <h2 class="form-title">Pre-Treatment Questionnaire</h2>
-                <label for="routines">In your typical day—work, fitness, or hobbies—are there repetitive movements or postures you suspect might be adding to this tension?</label>
+                <label for="routines">Are there repetitive movements or postures in your daily routine that might contribute to this tension?</label>
                 <textarea id="routines" name="routines" rows="4"></textarea>
-
-                <div class="button-container">
-                    <button type="button" class="nav-button prev">Back</button>
-                    <button type="button" class="nav-button next">Next</button>
-                </div>
+                <button type="button" class="nav-button prev">Back</button>
+                <button type="button" class="nav-button next">Next</button>
             </div>
 
-            <!-- Step 3: Recent Changes & Health Considerations -->
             <div class="form-step">
                 <h2 class="form-title">Pre-Treatment Questionnaire</h2>
-                <label for="health">Have there been any changes to your health or physical activity—such as an injury, surgery, or new workout regime—that we should be mindful of?</label>
+                <label for="health">Have there been any changes to your health or physical activity that we should be mindful of?</label>
                 <textarea id="health" name="health" rows="4"></textarea>
-
-                <div class="button-container">
-                    <button type="button" class="nav-button prev">Back</button>
-                    <button type="button" class="nav-button next">Next</button>
-                </div>
+                <button type="button" class="nav-button prev">Back</button>
+                <button type="button" class="nav-button next">Next</button>
             </div>
 
-            <!-- Step 4: Touch & Pressure Preferences -->
             <div class="form-step">
                 <h2 class="form-title">Pre-Treatment Questionnaire</h2>
-                <label for="pressure">Which pressure levels and techniques have you found most effective—or least comfortable—in previous massage experiences?</label>
+                <label for="pressure">Which pressure levels and techniques do you find most effective in massages?</label>
                 <textarea id="pressure" name="pressure" rows="4"></textarea>
-
-                <div class="button-container">
-                    <button type="button" class="nav-button prev">Back</button>
-                    <button type="button" class="nav-button next">Next</button>
-                </div>
+                <button type="button" class="nav-button prev">Back</button>
+                <button type="button" class="nav-button next">Next</button>
             </div>
 
-            <!-- Step 5: Final Thoughts -->
             <div class="form-step">
                 <h2 class="form-title">Pre-Treatment Questionnaire</h2>
-                <label for="final-thoughts">Is there anything else—whether a past experience you’d like to replicate or avoid, or special preferences regarding communication or ambiance—we should know before we begin?</label>
+                <label for="final-thoughts">Is there anything else we should know before your session?</label>
                 <textarea id="final-thoughts" name="final-thoughts" rows="4"></textarea>
-
-                <div class="button-container">
-                    <button type="button" class="nav-button prev">Back</button>
-                    <button type="submit" class="submit-button">Submit Questionnaire</button>
-                </div>
+                <button type="button" class="nav-button prev">Back</button>
+                <button type="submit" class="submit-button">Submit Questionnaire</button>
             </div>
-
         </form>
     </div>
 
@@ -227,16 +176,11 @@
 
         document.querySelectorAll(".prev").forEach(button => {
             button.addEventListener("click", () => {
-                if (currentStep === 0) {
-                    window.location.href = "book.html"; // Redirects to booking page when first step back is clicked
-                } else {
-                    steps[currentStep].classList.remove("active");
-                    currentStep--;
-                    steps[currentStep].classList.add("active");
-                }
+                steps[currentStep].classList.remove("active");
+                currentStep--;
+                steps[currentStep].classList.add("active");
             });
         });
     </script>
-
 </body>
 </html>
