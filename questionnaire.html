@@ -134,7 +134,7 @@
 </head>
 <body>
     <div class="form-container">
-        <form action="confirmation.html" method="POST">
+        <form action="confirmation.html" method="POST" id="questionnaire-form">
             <div class="form-step active">
                 <h2 class="form-title">Pre-Treatment Questionnaire</h2>
                 <label for="key-areas">Which parts of your body feel most strained or uncomfortable, and how would you characterize that sensation?</label>
@@ -147,7 +147,7 @@
                 <label for="final-thoughts">Is there anything else we should know before your session?</label>
                 <textarea id="final-thoughts" name="final-thoughts" rows="4"></textarea>
                 <button type="button" class="nav-button prev">Back</button>
-                <button type="submit" class="submit-button">Submit Questionnaire</button>
+                <button type="submit" class="submit-button" id="submit-button">Submit Questionnaire</button>
             </div>
         </form>
     </div>
@@ -174,4 +174,3 @@
     </script>
 </body>
 </html>
-
