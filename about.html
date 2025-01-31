@@ -135,15 +135,6 @@
             gap: 15px;
         }
 
-        .social-icons a {
-            display: inline-block;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .social-icons a:hover {
-            opacity: 0.6;
-        }
-
         .social-icons svg {
             width: 30px;
             height: 30px;
@@ -158,20 +149,35 @@
             letter-spacing: 12px;
             margin-bottom: 20px;
             text-transform: uppercase;
+            position: relative;
         }
 
-        /* Content */
+        /* Subtle Underline */
+        h1::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -8px;
+            width: 50px;
+            height: 2px;
+            background-color: #F1E7BB;
+            transform: translateX(-50%);
+        }
+
+        /* Content Layout */
         .about-container {
             max-width: 700px;
             text-align: left;
-            padding: 20px;
-        }
-
-        p {
-            font-size: 18px;
-            font-weight: 300;
+            padding: 30px;
             line-height: 1.8;
             letter-spacing: 0.3px;
+        }
+
+        /* Sectioned Styling for Readability */
+        .about-container p {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 25px;
         }
 
         /* Mobile Styling */
@@ -181,23 +187,14 @@
                 letter-spacing: 8px;
             }
 
+            .about-container {
+                padding: 20px;
+                max-width: 90%;
+            }
+
             p {
                 font-size: 16px;
                 line-height: 1.6;
-            }
-
-            .about-container {
-                padding: 15px;
-            }
-
-            .social-icons {
-                top: 10px;
-                right: 15px;
-            }
-
-            .social-icons svg {
-                width: 26px;
-                height: 26px;
             }
         }
     </style>
@@ -235,7 +232,10 @@
     <h1>ABOUT US</h1>
 
     <div class="about-container">
-        <p>Haku is a high-end mobile massage therapy service, blending Japanese tradition with modern luxury.</p>
+        <p><b>H A K U</b> is a mobile massage therapy service that provides a personalised experience to each individual.</p>
+        <p>We aim to create a sense of relaxation, tranquility, and respect by adhering to the quality and precision of Japanese tradition.</p>
+        <p>Our founder, <b>Momo-chan (ももちゃん)</b>, has several years of experience in the massage industry and a wealth of knowledge related to personalised care.</p>
+        <p>H A K U was created in the essence of <b>Omotenashi (おもてなし)</b>—the philosophy of wholehearted hospitality and attentiveness.</p>
     </div>
 
     <!-- JavaScript for Dropdown -->
