@@ -44,43 +44,74 @@
         }
 
         /* Hamburger Icon */
-        .hamburger {
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            position: relative;
-            z-index: 100;
-        }
-
+       .hamburger {
+    font-size: 24px; /* Matches previous page */
+    font-weight: 500; /* Consistent with previous page */
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+    color: #F1E7BB; /* Matches the previous page */
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+}
         /* Dropdown Menu */
-        .dropdown {
-            position: absolute;
-            top: 40px;
-            left: 10px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 150px;
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
+ .dropdown {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    background: linear-gradient(180deg, rgba(241, 231, 187, 0.98), rgba(241, 231, 187, 0.90)); 
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Softer drop shadow */
+    width: 190px;
+    display: none;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
+}
 
-        .dropdown a {
-            text-decoration: none;
-            color: black;
-            padding: 12px;
-            display: block;
-            font-size: 16px;
-            text-align: left;
-            font-weight: 600;
-            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-        }
+/* Menu Items */
+.dropdown a {
+    text-decoration: none;
+    color: #293717; /* Dark Green */
+    padding: 16px 20px;
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.85; /* Soft start */
+}
 
-        .dropdown a:hover {
-            background: #5A3E74; /* Dark purple */
-            color: white;
-        }
+/* Hover Effects */
+.dropdown a:hover {
+    opacity: 1;
+}
+
+/* Elegant Underline Animation */
+.dropdown a::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 20px;
+    width: 0;
+    height: 2px;
+    background-color: #293717; /* Light cream accent */
+    transition: width 0.3s ease;
+}
+
+.dropdown a:hover::after {
+    width: calc(100% - 40px);
+}
+
+/* Show dropdown with smooth animation */
+.dropdown.open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
 
         /* Header */
         h1 {
@@ -234,23 +265,34 @@
 
     <!-- JavaScript for Dropdown -->
     <script>
-        function toggleMenu() {
-            var menu = document.getElementById("dropdownMenu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
-        }
+function toggleMenu() {
+    var menu = document.getElementById("dropdownMenu");
 
-        // Close the dropdown when clicking outside
-        document.addEventListener("click", function(event) {
-            var menu = document.getElementById("dropdownMenu");
-            var button = document.querySelector(".hamburger");
-            if (!menu.contains(event.target) && !button.contains(event.target)) {
-                menu.style.display = "none";
-            }
-        });
+    menu.style.display = "flex";
+    setTimeout(() => {
+        menu.classList.add("open");
+    }, 10); /* Smooth transition */
+
+    // Auto-close when mouse leaves
+    menu.addEventListener("mouseleave", function() {
+        menu.classList.remove("open");
+        setTimeout(() => {
+            menu.style.display = "none";
+        }, 350);
+    });
+}
+
+// Improved UX: Close the dropdown only when clicking outside of it
+document.addEventListener("click", function(event) {
+    var menu = document.getElementById("dropdownMenu");
+    var button = document.querySelector(".hamburger");
+    if (!menu.contains(event.target) && !button.contains(event.target)) {
+        menu.classList.remove("open");
+        setTimeout(() => {
+            menu.style.display = "none";
+        }, 350);
+    }
+});
     </script>
 
 </body>
