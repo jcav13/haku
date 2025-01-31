@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book with H A K U</title>
     
+    <!-- Google Font Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
     <style>
-        /* General styling */
+        /* General Styling */
         body {
             background-color: #293717; /* Dark Green */
             color: #F1E7BB; /* Light Cream */
@@ -30,25 +33,88 @@
             to { opacity: 1; }
         }
 
-        /* Home Button in Top Left */
-        .home-button {
+        /* Top Navbar */
+        .top-bar {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 16px;
-            font-weight: 400;
-            color: white;
-            background: transparent;
-            border: 1px solid white;
-            padding: 8px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: all 0.3s ease-in-out;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: calc(100% - 30px);
+            padding: 10px 20px;
         }
 
-        .home-button:hover {
-            background: white;
-            color: black;
+        /* Hamburger Icon */
+        .hamburger {
+            font-size: 24px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            z-index: 100;
+            color: #F1E7BB;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            background: linear-gradient(180deg, rgba(241, 231, 187, 0.98), rgba(241, 231, 187, 0.90)); 
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            width: 190px;
+            display: none;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
+        }
+
+        /* Menu Items */
+        .dropdown a {
+            text-decoration: none;
+            color: #293717;
+            padding: 16px 20px;
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease, opacity 0.3s ease;
+            opacity: 0.85;
+        }
+
+        /* Hover Effects */
+        .dropdown a:hover {
+            opacity: 1;
+        }
+
+        /* Elegant Underline Animation */
+        .dropdown a::after {
+            content: "";
+            position: absolute;
+            bottom: 8px;
+            left: 20px;
+            width: 0;
+            height: 2px;
+            background-color: #293717;
+            transition: width 0.3s ease;
+        }
+
+        .dropdown a:hover::after {
+            width: calc(100% - 40px);
+        }
+
+        /* Show dropdown with smooth animation */
+        .dropdown.open {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         /* Header */
@@ -97,7 +163,7 @@
             background: transparent;
             color: white;
             transition: all 0.3s ease-in-out;
-            box-sizing: border-box; /* Ensures consistent spacing */
+            box-sizing: border-box;
         }
 
         .booking-container input::placeholder, 
@@ -115,45 +181,56 @@
 
         /* Make Select Box Match Other Inputs */
         .booking-container select {
-            appearance: none; /* Removes default dropdown styling */
+            appearance: none;
             cursor: pointer;
         }
 
-        /* Full-Width Submit Button */
-.submit-button {
-    background: transparent;
-    color: #E8DCC0;
-    border: 2px solid #E8DCC0;
-    padding: 12px 42px;
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: none;
-    border-radius: 50px;
-    letter-spacing: 1px;
-    transition: all 0.4s ease-in-out;
-    display: inline-block;
-    width: auto; /* Ensures it only takes as much space as the text */
-    min-width: fit-content; /* Prevents it from being too small */
-    white-space: nowrap; /* Ensures text stays in one line */
-}
+        /* Submit Button */
+        .submit-button {
+            background: transparent;
+            color: #E8DCC0;
+            border: 2px solid #E8DCC0;
+            padding: 12px 42px;
+            font-size: 18px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            transition: all 0.4s ease-in-out;
+            display: inline-block;
+            width: auto;
+            min-width: fit-content;
+            white-space: nowrap;
+        }
 
         .submit-button:hover {
-    background: rgba(232, 220, 192, 0.15); /* Subtle fill effect */
-    color: #E8DCC0;
-    transform: scale(1.05);
-}
+            background: rgba(232, 220, 192, 0.15);
+            color: #E8DCC0;
+            transform: scale(1.05);
+        }
 
     </style>
 </head>
 <body>
-    <!-- Home Button in Top Left -->
-    <a href="index.html" class="home-button">Home</a>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <!-- Hamburger Icon -->
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown" id="dropdownMenu">
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
 
     <h1>Book with H A K U</h1>
 
     <!-- Introductory Text -->
     <p class="intro-text">
-        Our booking process ensures your service can be tailored to your needs. We ask that you complete a quick questionnaire which will guide our therapist through the planning process. Please enter your details first, and then complete the questionnaire.
+        Our booking process ensures your service can be tailored to your needs. Please complete the form below.
     </p>
 
     <div class="booking-container">
@@ -174,11 +251,17 @@
                 <option value="japanese-inspired aromatherapy">Japanese-Inspired Aromatherapy</option>
             </select>
 
-            <label for="date">Preferred Date</label>
-            <input type="date" id="date" name="date" required>
-
             <button type="submit" class="submit-button">Submit Your Details</button>
         </form>
     </div>
+
+    <!-- JavaScript for Dropdown -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+    </script>
+
 </body>
 </html>
