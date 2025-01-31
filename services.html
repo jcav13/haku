@@ -205,34 +205,48 @@ body {
 }
 @media (max-width: 768px) {
     .service-header {
-        font-size: 14px; /* Reduce font size for mobile */
+        font-size: 14px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 8px;
         flex-wrap: nowrap;
-        white-space: nowrap; /* Prevent wrapping */
-        overflow: hidden; /* Prevent overflow */
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .service-header .left {
         display: flex;
         align-items: center;
-        gap: 4px; /* Reduce gap further */
+        gap: 4px;
         overflow: hidden;
-        text-overflow: ellipsis; /* Prevent long names from overflowing */
+        text-overflow: ellipsis;
+    }
+
+    .service-header .left span:first-child { 
+        font-size: 13px; /* Reduce English service name */
     }
 
     .japanese {
-        font-size: 12px; /* Further reduce font size */
+        font-size: 14px; /* Keep Japanese text as is */
         opacity: 0.8;
     }
 
     .price {
-        font-size: 14px; /* Reduce price size */
+        font-size: 16px;
         font-weight: 600;
-        flex-shrink: 0; /* Prevents it from shrinking */
-        padding-left: 5px; /* Space between text and price */
+        flex-shrink: 0;
+        padding-left: 5px;
+    }
+
+    .service-item p {
+        font-size: 12px; /* Reduce paragraph text */
+        line-height: 1.4; /* Improve spacing */
+    }
+
+    .services-container {
+        padding: 10px;
+        max-width: 95vw; /* Ensure no overflow */
     }
 }
 @media (max-width: 768px) {
@@ -245,11 +259,11 @@ body {
         font-size: 12px;
     }
 
+  @media (max-width: 768px) {
     .services-container {
-     padding: 10px;
-    max-width: 95vw; /* Ensures it doesn't overflow */
+        padding: 10px;
+        max-width: 95vw; /* Ensures it doesn't overflow */
     }
-
     .service-header {
         font-size: 20px;
     }
