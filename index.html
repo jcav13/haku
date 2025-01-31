@@ -148,9 +148,27 @@
             width: 30px;
             height: 30px;
             fill: #F1E7BB;
+            transition: transform 0.2s ease-in-out;
         }
 
-        /* Text Styling */
+        /* Optional: Slight hover effect for a modern touch */
+        .social-icons a:hover svg {
+            transform: scale(1.1); /* Slight zoom effect */
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .social-icons {
+                top: 10px; /* Adjust position */
+                right: 15px;
+                gap: 15px; /* Slightly reduce spacing */
+            }
+
+            .social-icons svg {
+                width: 26px;
+                height: 26px;
+            }
+        }        /* Text Styling */
 h1 {
     font-size: 72px;
     font-weight: 400; /* Thinner font weight */
