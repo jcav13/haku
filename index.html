@@ -25,6 +25,24 @@
             text-align: center;
             overflow-x: hidden;
         }
+        
+            /* Fade-in animation for text and button */
+    h1, h2, p, .book-button {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
         /* Top Navbar */
         .top-bar {
@@ -135,25 +153,21 @@
         }
 
         /* Text Styling */
-        h1 {
-            font-size: 70px; /* Large */
-            font-weight: 500; /* Slightly thinner */
-            letter-spacing: 12px;
-            margin-bottom: 5px;
-        }
+       h1 {
+    font-size: 80px; /* Bigger headline */
+    letter-spacing: 16px; /* More spaced out */
+    font-weight: 600;
+}
 
-        h2 {
-            font-size: 24px; /* Medium */
-            font-weight: 400; /* Slightly thinner */
-            margin-bottom: 10px;
-        }
+h2 {
+    font-size: 28px; /* Slightly larger */
+    letter-spacing: 6px;
+}
 
-        p {
-            font-size: 16px; /* Small */
-            font-weight: 400;
-            margin-bottom: 30px;
-        }
-
+p {
+    font-size: 18px;
+    line-height: 1.8; /* More breathing space */
+}
         /* Kanji under H A K U */
         .kanji-container {
             display: flex;
@@ -165,22 +179,22 @@
 
         /* Book Button */
         .book-button {
-            background-color: white;
-            color: #293717;
-            border: 2px solid white;
-            padding: 12px 40px;
-            font-size: 18px;
-            font-weight: 500;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease-in-out;
-        }
+    background: transparent;
+    border: 2px solid #E8DCC0; /* Gold/Cream border */
+    color: #E8DCC0;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 14px 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease-in-out;
+}
 
-        .book-button:hover {
-            background-color: #F1E7BB;
-            color: #293717;
-            transform: scale(1.05);
-        }
+.book-button:hover {
+    background: #E8DCC0;
+    color: #1E261D;
+    transform: scale(1.05);
+}
 
         /* Mobile Styling */
         @media (max-width: 768px) {
