@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client 12345 - Loyalty Progress</title>
+    <title>H A K U Prestige - Client 12345</title>
     
     <!-- Google Font Import -->
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap" rel="stylesheet">
@@ -11,8 +11,8 @@
     <style>
         /* General Styling */
         body {
-            background-color: #293717;
-            color: #F1E7BB;
+            background-color: #1F2A16;
+            color: #E8DCC0;
             font-family: 'Inconsolata', monospace;
             text-align: center;
             margin: 0;
@@ -25,15 +25,18 @@
         }
 
         h1 {
-            font-size: 36px;
+            font-size: 40px;
             margin-bottom: 10px;
             font-weight: 700;
+            letter-spacing: 4px;
         }
 
         p {
             font-size: 18px;
             font-weight: 300;
             opacity: 0.9;
+            max-width: 500px;
+            margin-bottom: 20px;
         }
 
         .progress-container {
@@ -44,27 +47,54 @@
         }
 
         .circle {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
             transition: background 0.3s ease-in-out;
         }
 
         .circle.filled {
-            background: #F1E7BB;
+            background: #E8DCC0;
+        }
+
+        .membership-tier {
+            margin-top: 30px;
+            padding: 12px 30px;
+            font-size: 20px;
+            font-weight: 500;
+            background: rgba(232, 220, 192, 0.2);
+            border: 2px solid #E8DCC0;
+            border-radius: 30px;
+            text-transform: uppercase;
+        }
+
+        .benefits {
+            margin-top: 20px;
+            font-size: 16px;
+            max-width: 450px;
+            line-height: 1.6;
+            opacity: 0.85;
         }
     </style>
 </head>
 <body>
-    <h1>Client #12345</h1>
-    <p>2 massages completed, 2 more until a free session.</p>
+    <h1>H A K U Prestige</h1>
+    <p>Welcome, valued member. As part of our exclusive loyalty program, you are on your way to earning a complimentary treatment.</p>
     
+    <div class="membership-tier">Elite Client #12345</div>
+    
+    <p>Progress towards your complimentary session:</p>
     <div class="progress-container">
         <div class="circle filled"></div>
         <div class="circle filled"></div>
         <div class="circle"></div>
         <div class="circle"></div>
     </div>
+    
+    <div class="benefits">
+        <p>As a H A K U Prestige member, enjoy priority booking, complimentary enhancements, and bespoke treatments tailored to your needs.</p>
+    </div>
 </body>
 </html>
+
