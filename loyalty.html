@@ -27,12 +27,12 @@
         h1 {
             font-size: 36px;
             margin-bottom: 20px;
+            letter-spacing: 4px;
         }
 
         .search-container {
             width: 100%;
             max-width: 400px;
-            margin-bottom: 20px;
         }
 
         input[type="text"] {
@@ -49,61 +49,22 @@
         input::placeholder {
             color: rgba(255, 255, 255, 0.6);
         }
-
-        .client-list {
-            width: 100%;
-            max-width: 400px;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .client-list li {
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            margin-top: 10px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s ease-in-out;
-        }
-
-        .client-list li:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
     </style>
 </head>
 <body>
-    <h1>Loyalty Program</h1>
-    <p>Search for your client number to track your progress towards a free service.</p>
+    <h1>H A K U Loyalty</h1>
     
     <div class="search-container">
         <input type="text" id="searchBox" placeholder="Enter your client number..." onkeyup="searchClient()">
     </div>
     
-    <ul class="client-list" id="clientList">
-        <li onclick="redirectToClientPage('12345')">Client #12345</li>
-        <li onclick="redirectToClientPage('67890')">Client #67890</li>
-        <li onclick="redirectToClientPage('54321')">Client #54321</li>
-    </ul>
-    
     <script>
         function searchClient() {
             let input = document.getElementById('searchBox').value.toLowerCase();
-            let clientList = document.getElementById('clientList');
-            let clients = clientList.getElementsByTagName('li');
-            
-            for (let i = 0; i < clients.length; i++) {
-                let client = clients[i];
-                if (client.innerHTML.toLowerCase().includes(input)) {
-                    client.style.display = "block";
-                } else {
-                    client.style.display = "none";
-                }
+            let clientNumber = input.trim();
+            if (clientNumber && (clientNumber === "12345" || clientNumber === "67890" || clientNumber === "54321")) {
+                window.location.href = `client_${clientNumber}.html`;
             }
-        }
-
-        function redirectToClientPage(clientNumber) {
-            window.location.href = `client_${clientNumber}.html`;
         }
     </script>
 </body>
