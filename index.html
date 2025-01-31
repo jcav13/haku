@@ -51,8 +51,8 @@
     left: 15px;
     right: 15px;
     display: flex;
-    align-items: center; /* Ensure vertical alignment */
-    justify-content: space-between; /* Distribute space evenly */
+    align-items: center; /* Aligns items vertically */
+    justify-content: space-between;
     width: calc(100% - 30px);
     padding: 10px 20px;
 }
@@ -61,9 +61,8 @@
     font-size: 24px;
     font-weight: 500;
     cursor: pointer;
-    z-index: 100;
     color: #F1E7BB;
-    padding: 8px 12px;
+    padding: 6px 10px; /* Adjust padding to match icon size */
     display: flex;
     align-items: center; /* Ensures vertical alignment */
 }
@@ -126,30 +125,29 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        /* Social Media Icons */
-        .social-icons {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            display: flex;
-            gap: 20px;
-        }
+      /* Social Media Icons */
+.social-icons {
+    display: flex;
+    align-items: center; /* Ensures alignment with hamburger */
+    gap: 15px; /* Adjust spacing */
+}
 
-        .social-icons a {
-            display: inline-block;
-            transition: opacity 0.3s ease-in-out;
-        }
+.social-icons a {
+    display: inline-block;
+    transition: opacity 0.3s ease-in-out;
+}
 
-        .social-icons a:hover {
-            opacity: 0.6;
-        }
+.social-icons a:hover {
+    opacity: 0.6;
+}
 
-        .social-icons svg {
-            width: 30px;
-            height: 30px;
-            fill: #F1E7BB;
-            transition: transform 0.2s ease-in-out;
-        }
+/* Social Media Icons (Instagram, Facebook, X) */
+.social-icons svg {
+    width: 26px; /* Adjust to better match hamburger */
+    height: 26px;
+    fill: #F1E7BB;
+    transition: transform 0.2s ease-in-out;
+}
 
         /* Optional: Slight hover effect for a modern touch */
         .social-icons a:hover svg {
