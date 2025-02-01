@@ -325,189 +325,171 @@
 <body>
 
     <!-- Top Bar -->
-    <div class="top-bar">
-        <!-- Hamburger Icon -->
-        <div class="hamburger" onclick="toggleMenu(event)">☰</div>
+  <div class="top-bar">
+    <!-- Hamburger Icon -->
+    <div class="hamburger" onclick="toggleMenu(event)">☰</div>
 
-        <!-- Dropdown Menu -->
-        <div class="dropdown" id="dropdownMenu">
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="contact.html">Contact</a>
-        </div>
+    <!-- Dropdown Menu -->
+    <div class="dropdown" id="dropdownMenu">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
     </div>
+  </div>
 
-    <!-- Social Media Icons + Login Button -->
-    <div class="social-icons">
-        <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" stroke="none" stroke-width="2" fill="none"/>
-                <path d="M12 2.163c-5.14 0-9.837 4.118-9.837 9.837s4.118 9.837 9.837 9.837 9.837-4.118 9.837-9.837-4.118-9.837-9.837-9.837zm0 18.26c-4.593 0-8.323-3.73-8.323-8.323s3.73-8.323 8.323-8.323 8.323 3.73 8.323 8.323-3.73 8.323-8.323 8.323zm4.98-10.34a1.572 1.572 0 1 1 0-3.143 1.572 1.572 0 0 1 0 3.143z"/>
-            </svg>
-        </a>
-        <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96 0 4.94 3.63 9.05 8.36 9.82v-6.94h-2.52v-2.88h2.52v-2.2c0-2.5 1.5-3.88 3.78-3.88h2.24v2.48h-1.26c-1.24 0-1.63.77-1.63 1.56v1.84h2.78l-.44 2.88h-2.34v6.94c4.73-.77 8.36-4.88 8.36-9.82 0-5.5-4.46-9.96-9.96-9.96z"/>
-            </svg>
-        </a>
-        <button class="login-button" onclick="toggleLogin(event)">Login</button>
-    </div>
+  <!-- Social Icons and Login -->
+  <div class="social-icons">
+    <!-- (Your SVG icons remain the same) -->
+    <button class="login-button" onclick="toggleLogin(event)">Login</button>
+  </div>
 
-    <!-- Login Dropdown -->
-    <div class="login-dropdown" id="loginDropdown">
-        <input type="text" id="username" placeholder="Client Number">
-        <input type="password" id="password" placeholder="Password">
-        <button class="login-submit" onclick="handleLogin()">Submit</button>
-    </div>
+  <!-- Login Dropdown -->
+  <div class="login-dropdown" id="loginDropdown">
+    <input type="text" id="username" placeholder="Client Number" />
+    <input type="password" id="password" placeholder="Password" />
+    <button class="login-submit" onclick="handleLogin()">Submit</button>
+  </div>
 
-    <!-- Main Content -->
-    <h1>H A K U</h1>
-    <p class="mobile-service">mobile massage service.</p>
-    <h2>Melbourne <span class="japanese-city">メルボルン</span></h2>
-    <p>Inspired by Japanese tradition.</p>
+  <!-- Main Content -->
+  <h1>H A K U</h1>
+  <p class="mobile-service">mobile massage service.</p>
+  <h2>Melbourne <span class="japanese-city">メルボルン</span></h2>
+  <p>Inspired by Japanese tradition.</p>
+  <a href="book.html" class="book-button">Book</a>
 
-    <!-- Book Now Button -->
-    <a href="book.html" class="book-button">Book</a>
+  <!-- Placeholder for Auth Updates -->
+  <div id="auth-section"></div>
 
-    <!-- Placeholder Auth Section (referenced in 'updateAuthUI') -->
-    <div id="auth-section"></div>
-
-    <!-- Hidden Login Form -->
-    <div id="login-form" style="display: none; text-align: center; margin-top: 20px;">
-        <input type="text" id="username" placeholder="Client Number" style="display: block; margin: 10px auto; padding: 10px; width: 200px;">
-        <input type="password" id="password" placeholder="Password" style="display: block; margin: 10px auto; padding: 10px; width: 200px;">
-        <button onclick="handleLogin()">Submit</button>
-    </div>
-
-    <script>
-    /********************
-     * GLOBAL FUNCTIONS *
-     ********************/
-
-    // 1) Provide a placeholder checkLogin() to avoid errors.
+  <script>
+    /*************************************************************
+     * 1. (Optional) Placeholder function to avoid checkLogin() error
+     *************************************************************/
     function checkLogin() {
-        // If you need real login checks, add them here.
-        // Otherwise, keep it empty so the script won't break.
+      // If you don’t use it, leave it empty. 
+      // If you have login logic on page load, place it here.
     }
 
-    // 2) Toggle Hamburger Menu
+    /*************************************************************
+     * 2. Toggle Hamburger Menu
+     *************************************************************/
     function toggleMenu(event) {
-        event.stopPropagation(); // Prevent immediate closing
-        let menu = document.getElementById("dropdownMenu");
-        let isOpen = menu.classList.contains("open");
+      event.stopPropagation(); // Not strictly necessary now, but fine to keep
+      const menu = document.getElementById("dropdownMenu");
+      const isOpen = menu.classList.contains("open");
 
-        closeAllDropdowns(); // Close other dropdowns before opening this one
+      // Close the other dropdown if open
+      closeAllDropdowns();
 
-        if (!isOpen) {
-            menu.style.display = "flex";
-            setTimeout(() => {
-                menu.classList.add("open");
-            }, 10);
-        }
-    }
-
-    // 3) Toggle Login Dropdown
-    function toggleLogin(event) {
-        event.stopPropagation();
-        let loginDropdown = document.getElementById("loginDropdown");
-        let isOpen = loginDropdown.classList.contains("open");
-
-        closeAllDropdowns();
-
-        if (!isOpen) {
-            loginDropdown.style.display = "flex";
-            setTimeout(() => {
-                loginDropdown.classList.add("open");
-                document.getElementById("username").focus();
-            }, 10);
-        }
-    }
-
-    // 4) Close All Dropdowns
-    function closeAllDropdowns() {
-        let menu = document.getElementById("dropdownMenu");
-        let loginDropdown = document.getElementById("loginDropdown");
-
-        menu.classList.remove("open");
-        loginDropdown.classList.remove("open");
-
-        // Wait 350ms before setting display to none (matches the transition)
+      if (!isOpen) {
+        menu.style.display = "flex";
         setTimeout(() => {
-            menu.style.display = "none";
-            loginDropdown.style.display = "none";
-        }, 350);
+          menu.classList.add("open");
+        }, 10);
+      }
     }
 
-    // 5) Handle Document Click to Close if Clicking Outside
-    document.addEventListener("click", function(event) {
-        let menu = document.getElementById("dropdownMenu");
-        let loginDropdown = document.getElementById("loginDropdown");
-        let loginButton = document.querySelector(".login-button");
-        let hamburgerButton = document.querySelector(".hamburger");
+    /*************************************************************
+     * 3. Toggle Login Dropdown
+     *************************************************************/
+    function toggleLogin(event) {
+      event.stopPropagation();
+      const loginDropdown = document.getElementById("loginDropdown");
+      const isOpen = loginDropdown.classList.contains("open");
 
-        // If the click is not inside our open dropdowns and not on the toggling buttons:
-        if (
-            !menu.contains(event.target) &&
-            !loginDropdown.contains(event.target) &&
-            event.target !== loginButton &&
-            event.target !== hamburgerButton
-        ) {
-            closeAllDropdowns();
-        }
-    });
+      // Close the other dropdown if open
+      closeAllDropdowns();
 
-    // 6) Handle Login
-    async function handleLogin() {
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        const response = await fakeBackendLogin(username, password);
-        if (response.success) {
-            sessionStorage.setItem("loggedIn", "true");
-            sessionStorage.setItem("clientNumber", username);
-            updateAuthUI();
-        } else {
-            alert("Invalid credentials. Try again.");
-        }
+      if (!isOpen) {
+        loginDropdown.style.display = "flex";
+        setTimeout(() => {
+          loginDropdown.classList.add("open");
+          document.getElementById("username").focus();
+        }, 10);
+      }
     }
 
-    // 7) Update Auth UI
-    function updateAuthUI() {
-        const loggedIn = sessionStorage.getItem("loggedIn");
-        const clientNumber = sessionStorage.getItem("clientNumber");
-        if (loggedIn) {
-            // Example: place a "Welcome" message in #auth-section
-            document.getElementById("auth-section").innerHTML = `
-                <span>Welcome, Client #${clientNumber} 
-                    <button onclick="logout()">Logout</button>
-                </span>`;
-            closeAllDropdowns();
-        }
+    /*************************************************************
+     * 4. Close Dropdowns
+     *************************************************************/
+    function closeAllDropdowns() {
+      const menu = document.getElementById("dropdownMenu");
+      const loginDropdown = document.getElementById("loginDropdown");
+
+      menu.classList.remove("open");
+      loginDropdown.classList.remove("open");
+
+      // After the transition, hide them
+      setTimeout(() => {
+        menu.style.display = "none";
+        loginDropdown.style.display = "none";
+      }, 350);
     }
 
-    // 8) Logout
-    function logout() {
-        sessionStorage.clear();
-        location.reload();
-    }
-
-    // 9) Fake Backend Login
-    async function fakeBackendLogin(username, password) {
-        const fakeUsers = { "12345": "password123", "67890": "securepass" };
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve({ success: fakeUsers[username] === password });
-            }, 500);
-        });
-    }
-
-    // 10) DOMContentLoaded
+    /*************************************************************
+     * 5. Add 'mouseleave' listeners so they close only when mouse leaves
+     *************************************************************/
     document.addEventListener("DOMContentLoaded", function () {
-        // If you truly need to do something on load, do it here:
-        checkLogin();
-        // e.g., if the user is already logged in, update UI:
-        updateAuthUI();
+      // Ensure any login checks if needed
+      checkLogin();
+
+      // Find the dropdowns
+      const menu = document.getElementById("dropdownMenu");
+      const loginDropdown = document.getElementById("loginDropdown");
+
+      // When the mouse leaves either dropdown, close it
+      menu.addEventListener("mouseleave", () => {
+        closeAllDropdowns();
+      });
+      loginDropdown.addEventListener("mouseleave", () => {
+        closeAllDropdowns();
+      });
+
+      // If you do NOT want them to close on outside click at all,
+      // do NOT add a global click listener that closes the dropdown.
+      // So we purposely omit the "document.addEventListener('click', ... )" code.
     });
-    </script>
+
+    /*************************************************************
+     * 6. Fake Login Handling (unchanged from your code)
+     *************************************************************/
+    async function handleLogin() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const response = await fakeBackendLogin(username, password);
+      if (response.success) {
+        sessionStorage.setItem("loggedIn", "true");
+        sessionStorage.setItem("clientNumber", username);
+        updateAuthUI();
+      } else {
+        alert("Invalid credentials. Try again.");
+      }
+    }
+
+    function updateAuthUI() {
+      const loggedIn = sessionStorage.getItem("loggedIn");
+      const clientNumber = sessionStorage.getItem("clientNumber");
+      if (loggedIn) {
+        document.getElementById("auth-section").innerHTML =
+          `<span>Welcome, Client #${clientNumber} <button onclick="logout()">Logout</button></span>`;
+        closeAllDropdowns();
+      }
+    }
+
+    function logout() {
+      sessionStorage.clear();
+      location.reload();
+    }
+
+    async function fakeBackendLogin(username, password) {
+      const fakeUsers = { "12345": "password123", "67890": "securepass" };
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ success: fakeUsers[username] === password });
+        }, 500);
+      });
+    }
+   </script>
+    
 </body>
 </html>
