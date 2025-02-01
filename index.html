@@ -64,9 +64,22 @@
       display: flex;
       align-items: center;
     }
-    .japanese-city {
-      margin-left: 40px;
-    }
+    .city-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Space between elements */
+}
+
+.city-left, .city-right {
+    font-size: 24px; /* Match existing text size */
+    font-weight: 400;
+}
+
+.flag-icon {
+    width: 26px; /* Adjust flag size as needed */
+    height: 18px;
+}
 h1 {
     font-size: 50px;
     font-weight: 300; /* Lighter font weight */
@@ -77,6 +90,7 @@ h1 {
     padding-bottom: 8px; /* Creates space for the underline */
     border-bottom: 2px solid #F1E7BB; /* Full-width underline */
 }
+    
     /* Dropdown Menu */
     .dropdown {
       position: absolute;
@@ -246,10 +260,12 @@ h1 {
     <span style="font-size: 64px; letter-spacing: 12px;">Haku</span>
     <span style="font-size: 24px; margin-left: -20px;">massage.</span>
   </h1>
-  <h2>
-    Melbourne <span class="japanese-city">🇯🇵 メルボルン</span>
-  </h2>
-
+<h2 class="city-container">
+    <span class="city-left">Melbourne</span>
+    <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" 
+         alt="Japanese Flag" class="flag-icon">
+    <span class="city-right">メルボルン</span>
+</h2>
   <!-- Book Now Button -->
   <a href="book.html" class="book-button">Book</a>
 
