@@ -349,7 +349,7 @@ p {
     <!-- Top Bar -->
     <div class="top-bar">
         <!-- Hamburger Icon -->
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+       <div class="hamburger" onclick="toggleMenu(event)">☰</div>
 
         <!-- Dropdown Menu -->
         <div class="dropdown" id="dropdownMenu">
@@ -463,9 +463,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 🔹 Attach Event Listeners to Buttons
-    document.querySelector(".hamburger").addEventListener("click", toggleMenu);
-    document.querySelector(".login-button").addEventListener("click", toggleLogin);
 
     // 🔹 Simulated Login Handling
     async function handleLogin() {
