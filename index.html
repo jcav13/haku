@@ -1,359 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haku Mobile Massage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>HAKU</title>
 
-    <!-- Font: Satoshi -->
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* General Styling */
-        body {
-            background-color: #293717; /* Dark Green */
-            color: #F1E7BB; /* Light Cream */
-            font-family: 'Satoshi', sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            padding-left: 5%;
-            text-transform: uppercase;
-        }
+  <!-- Google Fonts Import -->
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
 
-        /* Header Styling */
-        .main-header {
-            font-size: 64px;
-            font-weight: 700;
-            margin-top: 10px;
-            line-height: 1;
-            letter-spacing: 3px;
-        }
+  <style>
+    /* General Styling */
+    body {
+      background-color: #293717; /* Dark Green */
+      color: #F1E7BB; /* Light Cream */
+      font-family: 'Satoshi', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; /* Centers content vertically */
+      text-align: center; /* Centers text horizontally */
+      overflow-x: hidden;
+    }
 
-        /* Sub-Header */
-        .sub-header {
-            font-size: 40px;
-            font-weight: 400;
-            opacity: 0.9;
-        }
+    /* Fade-in animation for text and button */
+    h1, h2, p, .book-button, .kanji-container {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
 
-        /* Underline Lines */
-        .divider {
-            width: 80%;
-            height: 6px;
-            background: #F1E7BB; /* Light Cream */
-            margin-top: 20px;
-        }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .divider.thin {
-            height: 3px;
-            margin-top: 5px;
-        }
+    /* Top Navbar */
+    .top-bar {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: calc(100% - 30px);
+      padding: 10px 20px;
+    }
+    .hamburger {
+      font-size: 24px;
+      font-weight: 500;
+      cursor: pointer;
+      color: #F1E7BB;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+    }
+    .japanese-city {
+      margin-left: 40px;
+    }
 
-        /* Social Media Icons */
-        .social-icons {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+    /* Dropdown Menu */
+    .dropdown {
+      position: absolute;
+      top: 50px;
+      left: 10px;
+      background: linear-gradient(
+        180deg,
+        rgba(241, 231, 187, 0.98),
+        rgba(241, 231, 187, 0.90)
+      );
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      width: 190px;
+      display: none;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
+    }
+    .dropdown a {
+      text-decoration: none;
+      color: #293717; /* Dark Green */
+      padding: 16px 20px;
+      display: block;
+      font-size: 18px;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease, opacity 0.3s ease;
+      opacity: 0.85;
+    }
+    .dropdown a:hover {
+      opacity: 1;
+    }
+    .dropdown a::after {
+      content: "";
+      position: absolute;
+      bottom: 8px;
+      left: 20px;
+      width: 0;
+      height: 2px;
+      background-color: #293717;
+      transition: width 0.3s ease;
+    }
+    .dropdown a:hover::after {
+      width: calc(100% - 40px);
+    }
+    .dropdown.open {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
 
-        .social-icons a {
-            transition: opacity 0.3s ease-in-out;
-        }
+    /* Social Media Icons */
+    .social-icons {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 15px;
+      width: auto;
+    }
+    .social-icons a {
+      display: inline-block;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .social-icons a:hover {
+      opacity: 0.6;
+    }
+    .social-icons svg {
+      width: 26px;
+      height: 26px;
+      fill: #F1E7BB;
+      transition: transform 0.2s ease-in-out;
+    }
+    .social-icons a:hover svg {
+      transform: scale(1.1);
+    }
 
-        .social-icons a:hover {
-            opacity: 0.6;
-        }
+    /* Text Styling */
+    /* "HAKU" large, "massage" medium on same line */
+    /* We'll let h1 handle them inline */
+    h1 {
+      margin-bottom: 5px;
+    }
 
-        .social-icons svg {
-            width: 26px;
-            height: 26px;
-            fill: #F1E7BB;
-            transition: transform 0.2s ease-in-out;
-        }
+    .book-button {
+      background: transparent;
+      color: #E8DCC0;
+      border: 2px solid #E8DCC0;
+      padding: 12px 42px;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 50px;
+      letter-spacing: 1px;
+      transition: all 0.4s ease-in-out;
+      display: inline-block;
+    }
+    .book-button:hover {
+      background: rgba(232, 220, 192, 0.15);
+      color: #E8DCC0;
+      transform: scale(1.05);
+    }
 
-        .social-icons a:hover svg {
-            transform: scale(1.1);
-        }
-
-        /* Navbar & Hamburger */
-        .top-bar {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: calc(100% - 30px);
-            padding: 10px 20px;
-        }
-
-        .hamburger {
-            font-size: 24px;
-            font-weight: 500;
-            cursor: pointer;
-            color: #F1E7BB;
-            padding: 6px 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        /* Dropdown Menu */
-        .dropdown {
-            position: absolute;
-            top: 50px;
-            left: 10px;
-            background: linear-gradient(180deg, rgba(241, 231, 187, 0.98), rgba(241, 231, 187, 0.90)); 
-            border-radius: 14px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            width: 190px;
-            display: none;
-            flex-direction: column;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
-        }
-
-        .dropdown a {
-            text-decoration: none;
-            color: #293717;
-            padding: 16px 20px;
-            display: block;
-            font-size: 18px;
-            font-weight: 500;
-            position: relative;
-            transition: color 0.3s ease, opacity 0.3s ease;
-            opacity: 0.85;
-        }
-
-        .dropdown a:hover {
-            opacity: 1;
-        }
-
-        .dropdown.open {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-      /* Social Media Icons */
-/* Social Media Icons */
-.social-icons {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    display: flex;
-    justify-content: flex-end; /* Forces icons to stay on the right */
-    align-items: center; /* Keeps them vertically aligned */
-    gap: 15px; /* Keeps even spacing */
-    width: auto;
-}
-
-.social-icons a {
-    display: inline-block;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.social-icons a:hover {
-    opacity: 0.6;
-}
-
-/* Social Media Icons (Instagram, Facebook, X) */
-.social-icons svg {
-    width: 26px; /* Adjust to better match hamburger */
-    height: 26px;
-    fill: #F1E7BB;
-    transition: transform 0.2s ease-in-out;
-}
-
-        /* Optional: Slight hover effect for a modern touch */
-        .social-icons a:hover svg {
-            transform: scale(1.1); /* Slight zoom effect */
-        }
-
-        /* Mobile Optimization */
-        @media (max-width: 768px) {
-            .social-icons {
-                top: 10px; /* Adjust position */
-                right: 15px;
-                gap: 15px; /* Slightly reduce spacing */
-            }
-
-            .social-icons svg {
-                width: 26px;
-                height: 26px;
-            }
-        }        /* Text Styling */
-h1 {
-    font-size: 72px;
-    font-weight: 400; /* Thinner font weight */
-    letter-spacing: 16px; /* More spaced out for a luxury feel */
-    margin-bottom: 5px; /* Reduce gap */
-}
-
-.mobile-service {
-    font-size: 18px; /* Smaller font */
-    font-weight: 300;
-    margin-top: 0px; /* Moves it closer to "H A K U" */
-    margin-bottom: 15px; /* Reduces gap before "Melbourne" */
-}
-
-h3 {
-    font-size: 24px;
-    font-weight: 300;
-    margin-bottom: 20px; /* Adjust spacing for balance */
-}
-
-p {
-    font-size: 16px;
-    font-weight: 300;
-    margin-bottom: 25px; /* Reduce gap between tagline & book button */
-}
-
-        /* Book Button */
-.book-button {
-    background: transparent;
-    color: #E8DCC0;
-    border: 2px solid #E8DCC0;
-    padding: 12px 42px;
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: none;
-    border-radius: 50px;
-    letter-spacing: 1px;
-    transition: all 0.4s ease-in-out;
-    display: inline-block;
-}
-
-.book-button:hover {
-    background: rgba(232, 220, 192, 0.15); /* Subtle fill effect */
-    color: #E8DCC0;
-    transform: scale(1.05);
-}
-
-        /* Mobile Styling */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 50px;
-                letter-spacing: 8px;
-            }
-
-            .kanji-container {
-                font-size: 22px;
-                gap: 30px;
-            }
-
-            h2 {
-                font-size: 20px;
-            }
-
-            p {
-                font-size: 14px;
-            }
-
-            .book-button {
-                font-size: 16px;
-                padding: 10px 30px;
-            }
-
-            /* Social Icons Adjustments for Mobile */
-            .social-icons {
-                top: 10px;
-                right: 15px;
-            }
-
-            .social-icons svg {
-                width: 26px;
-                height: 26px;
-            }
-        }
-    </style>
+    /* Mobile Styling */
+    @media (max-width: 768px) {
+      .hamburger {
+        font-size: 22px;
+      }
+      .dropdown a {
+        font-size: 16px;
+      }
+      .social-icons {
+        top: 10px;
+        right: 15px;
+      }
+      .social-icons svg {
+        width: 26px;
+        height: 26px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <!-- Hamburger Icon -->
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <!-- Hamburger Icon -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-        <!-- Dropdown Menu -->
-        <div class="dropdown" id="dropdownMenu">
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="contact.html">Contact</a>
-        </div>
+    <!-- Dropdown Menu -->
+    <div class="dropdown" id="dropdownMenu">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
     </div>
+  </div>
 
- <!-- Social Media Icons -->
-    <div class="social-icons">
-        <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" stroke="none" stroke-width="2" fill="none"/>
-                <path d="M12 2.163c-5.14 0-9.837 4.118-9.837 9.837s4.118 9.837 9.837 9.837 9.837-4.118 9.837-9.837-4.118-9.837-9.837-9.837zm0 18.26c-4.593 0-8.323-3.73-8.323-8.323s3.73-8.323 8.323-8.323 8.323 3.73 8.323 8.323-3.73 8.323-8.323 8.323zm4.98-10.34a1.572 1.572 0 1 1 0-3.143 1.572 1.572 0 0 1 0 3.143z"/>
-            </svg>
-        </a>
-        <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96 0 4.94 3.63 9.05 8.36 9.82v-6.94h-2.52v-2.88h2.52v-2.2c0-2.5 1.5-3.88 3.78-3.88h2.24v2.48h-1.26c-1.24 0-1.63.77-1.63 1.56v1.84h2.78l-.44 2.88h-2.34v6.94c4.73-.77 8.36-4.88 8.36-9.82 0-5.5-4.46-9.96-9.96-9.96z"/>
-            </svg>
-        </a>
-    </div>
+  <!-- Social Media Icons -->
+  <div class="social-icons">
+    <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" fill="none"/>
+        <path d="M12 2.163c-5.14 0-9.837 4.118-9.837 9.837s4.118
+                 9.837 9.837 9.837 9.837-4.118 9.837-9.837-4.118-9.837-9.837-9.837zm0
+                 18.26c-4.593 0-8.323-3.73-8.323-8.323s3.73-8.323 8.323-8.323
+                 8.323 3.73 8.323 8.323-3.73 8.323-8.323 8.323zm4.98-10.34
+                 a1.572 1.572 0 1 1 0-3.143 1.572 1.572 0 0 1 0 3.143z"/>
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96
+                 0 4.94 3.63 9.05 8.36 9.82v-6.94h-2.52v-2.88h2.52v-2.2
+                 c0-2.5 1.5-3.88 3.78-3.88h2.24v2.48h-1.26c-1.24 0-1.63.77-1.63
+                 1.56v1.84h2.78l-.44 2.88h-2.34v6.94c4.73-.77
+                 8.36-4.88 8.36-9.82 0-5.5-4.46-9.96-9.96-9.96z"/>
+      </svg>
+    </a>
+  </div>
 
-    <!-- Main Content -->
-    <h1>H A K U</h1>
-<p class="mobile-service">mobile massage service.</p>
-<h2>Melbourne <span class="japanese-city">メルボルン</span></h2>
-    <p>Inspired by Japanese tradition.</p>
+  <!-- Main Text (Centered) -->
+  <h1>
+    <span style="font-size: 64px; letter-spacing: 12px;">HAKU</span>
+    <span style="font-size: 32px; margin-left: 10px;">massage</span>
+  </h1>
+  <h2>
+    Melbourne <span class="japanese-city">メルボルン</span>
+  </h2>
 
-    <!-- Book Now Button -->
-    <a href="book.html" class="book-button">Book</a>
+  <!-- Book Now Button -->
+  <a href="book.html" class="book-button">Book</a>
 
-    <!-- JavaScript for Dropdown -->
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("dropdownMenu");
+  <!-- JavaScript for Dropdown -->
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("dropdownMenu");
 
-            menu.style.display = "flex";
-            setTimeout(() => {
-                menu.classList.add("open");
-            }, 10); /* Smooth transition */
+      // Show menu
+      menu.style.display = "flex";
+      setTimeout(() => {
+        menu.classList.add("open");
+      }, 10); // Smooth transition
 
-            // Auto-close when mouse leaves
-            menu.addEventListener("mouseleave", function() {
-                menu.classList.remove("open");
-                setTimeout(() => {
-                    menu.style.display = "none";
-                }, 350);
-            });
-        }
+      // Auto-close when mouse leaves
+      menu.addEventListener("mouseleave", function() {
+        menu.classList.remove("open");
+        setTimeout(() => {
+          menu.style.display = "none";
+        }, 350);
+      });
+    }
 
-        // Improved UX: Close the dropdown only when clicking outside of it
-        document.addEventListener("click", function(event) {
-            var menu = document.getElementById("dropdownMenu");
-            var button = document.querySelector(".hamburger");
-            if (!menu.contains(event.target) && !button.contains(event.target)) {
-                menu.classList.remove("open");
-                setTimeout(() => {
-                    menu.style.display = "none";
-                }, 350);
-            }
-        });
-        document.addEventListener("click", function(event) {
-            var menu = document.getElementById("dropdownMenu");
-            var button = document.querySelector(".hamburger");
-            if (!menu.contains(event.target) && !button.contains(event.target)) {
-                menu.style.display = "none";
-            }
-        });
-    </script>
-
+    // Close the dropdown only when clicking outside of it
+    document.addEventListener("click", function(event) {
+      var menu = document.getElementById("dropdownMenu");
+      var button = document.querySelector(".hamburger");
+      if (!menu.contains(event.target) && !button.contains(event.target)) {
+        menu.classList.remove("open");
+        setTimeout(() => {
+          menu.style.display = "none";
+        }, 350);
+      }
+    });
+  </script>
 </body>
 </html>
