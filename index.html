@@ -425,12 +425,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 🔹 Toggle Login Dropdown (Matches Hamburger Animation)
+    // 🔹 Toggle Login Dropdown
     function toggleLogin(event) {
-        event.stopPropagation(); // Prevent closing when clicking login button
+        event.stopPropagation();
         let loginDropdown = document.getElementById("loginDropdown");
 
-        if (loginDropdown.style.display === "flex") {
+        if (loginDropdown.classList.contains("open")) {
             loginDropdown.classList.remove("open");
             setTimeout(() => {
                 loginDropdown.style.display = "none";
@@ -439,6 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
             loginDropdown.style.display = "flex";
             setTimeout(() => {
                 loginDropdown.classList.add("open");
+                document.getElementById("username").focus(); // Auto-focus input
             }, 10);
         }
     }
@@ -447,7 +448,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click", function (event) {
         let loginDropdown = document.getElementById("loginDropdown");
         let loginButton = document.querySelector(".login-button");
-        if (!loginDropdown.contains(event.target) && !loginButton.contains(event.target)) {
+
+        if (!loginDropdown.contains(event.target) && event.target !== loginButton) {
             loginDropdown.classList.remove("open");
             setTimeout(() => {
                 loginDropdown.style.display = "none";
@@ -456,7 +458,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 🔹 Attach Click Event to Login Button
-    document.querySelector(".login-button").addEventListener("click", toggleLogin);
+    document.querySelector(".login-button").addEventListener("click", function (event) {
+        event.stopPropagation();
+        toggleLogin(event);
+    });
 
     // 🔹 Simulated Login Handling
     async function handleLogin() {
@@ -500,12 +505,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // 🔹 Expose functions globally
-    window.toggleMenu = toggleMenu;
-    window.toggleLogin = toggleLogin;
-    window.handleLogin = handleLogin;
-    window.logout = logout;
-});
     // 🔹 Expose functions globally
     window.toggleMenu = toggleMenu;
     window.toggleLogin = toggleLogin;
