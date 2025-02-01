@@ -92,7 +92,60 @@
     color: #E8DCC0;
     transform: scale(1.05);
 }
+/* 🔹 Login Dropdown Styling (Matches Hamburger Menu) */
+.login-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background: linear-gradient(180deg, rgba(241, 231, 187, 0.98), rgba(241, 231, 187, 0.90)); 
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Soft drop shadow */
+    width: 220px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
+}
 
+/* Input Fields */
+.login-dropdown input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #293717;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Login Button */
+.login-submit {
+    background: transparent;
+    color: #293717;
+    border: 2px solid #293717;
+    padding: 8px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-submit:hover {
+    background: rgba(232, 220, 192, 0.15);
+    transform: scale(1.05);
+}
+
+/* Show Login Dropdown */
+.login-dropdown.open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+        
 /* Ensure it aligns well with icons */
 .social-icons {
     display: flex;
@@ -324,6 +377,11 @@ p {
     <!-- Login Button (Added Here) -->
     <button class="login-button" onclick="showLogin()">Login</button>
 </div>
+    <div class="login-dropdown" id="loginDropdown">
+    <input type="text" id="username" placeholder="Client Number">
+    <input type="password" id="password" placeholder="Password">
+    <button class="login-submit" onclick="handleLogin()">Submit</button>
+</div>
 
     <!-- Main Content -->
     <h1>H A K U</h1>
@@ -339,87 +397,119 @@ p {
     document.addEventListener("DOMContentLoaded", function () {
         checkLogin(); // Ensure login state is checked on page load
 
-        // 🔹 Dropdown Menu Logic
-        function toggleMenu() {
-            var menu = document.getElementById("dropdownMenu");
+document.addEventListener("DOMContentLoaded", function () {
+    checkLogin(); // Ensure login state is checked on page load
 
+    // 🔹 Toggle Hamburger Menu (No Change)
+    function toggleMenu() {
+        let menu = document.getElementById("dropdownMenu");
+        if (menu.style.display === "flex") {
+            menu.classList.remove("open");
+            setTimeout(() => {
+                menu.style.display = "none";
+            }, 350);
+        } else {
             menu.style.display = "flex";
             setTimeout(() => {
                 menu.classList.add("open");
-            }, 10); /* Smooth transition */
-
-            // Auto-close when mouse leaves
-            menu.addEventListener("mouseleave", function () {
-                menu.classList.remove("open");
-                setTimeout(() => {
-                    menu.style.display = "none";
-                }, 350);
-            });
+            }, 10);
         }
+    }
 
-        document.addEventListener("click", function (event) {
-            var menu = document.getElementById("dropdownMenu");
-            var button = document.querySelector(".hamburger");
-            if (!menu.contains(event.target) && !button.contains(event.target)) {
-                menu.classList.remove("open");
-                setTimeout(() => {
-                    menu.style.display = "none";
-                }, 350);
-            }
-        });
-
-        // 🔹 Login Logic
-        function showLogin() {
-            document.getElementById("login-form").style.display = "block";
+    // 🔹 Close Menu When Clicking Outside
+    document.addEventListener("click", function (event) {
+        let menu = document.getElementById("dropdownMenu");
+        let button = document.querySelector(".hamburger");
+        if (!menu.contains(event.target) && !button.contains(event.target)) {
+            menu.classList.remove("open");
+            setTimeout(() => {
+                menu.style.display = "none";
+            }, 350);
         }
-
-        async function handleLogin() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            // Simulated authentication (replace with real API later)
-            const response = await fakeBackendLogin(username, password);
-
-            if (response.success) {
-                sessionStorage.setItem("loggedIn", "true");
-                sessionStorage.setItem("clientNumber", username);
-                updateAuthUI();
-            } else {
-                alert("Invalid credentials. Try again.");
-            }
-        }
-
-        function updateAuthUI() {
-            const loggedIn = sessionStorage.getItem("loggedIn");
-            const clientNumber = sessionStorage.getItem("clientNumber");
-
-            if (loggedIn) {
-                document.getElementById("auth-section").innerHTML = `<span>Welcome, Client #${clientNumber} <button onclick="logout()">Logout</button></span>`;
-                document.getElementById("login-form").style.display = "none";
-            }
-        }
-
-        function logout() {
-            sessionStorage.clear();
-            location.reload();
-        }
-
-        async function fakeBackendLogin(username, password) {
-            const fakeUsers = { "12345": "password123", "67890": "securepass" };
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    resolve({ success: fakeUsers[username] === password });
-                }, 500);
-            });
-        }
-
-        // 🔹 Expose functions globally (so they can be used by buttons)
-        window.toggleMenu = toggleMenu;
-        window.showLogin = showLogin;
-        window.handleLogin = handleLogin;
-        window.logout = logout;
     });
-</script>
+
+    // 🔹 Toggle Login Dropdown (New Improved Logic)
+    function toggleLogin() {
+        let loginDropdown = document.getElementById("loginDropdown");
+        if (loginDropdown.style.display === "flex") {
+            loginDropdown.classList.remove("open");
+            setTimeout(() => {
+                loginDropdown.style.display = "none";
+            }, 350);
+        } else {
+            loginDropdown.style.display = "flex";
+            setTimeout(() => {
+                loginDropdown.classList.add("open");
+            }, 10);
+        }
+    }
+
+    // 🔹 Close Login Dropdown When Clicking Outside
+    document.addEventListener("click", function (event) {
+        let loginDropdown = document.getElementById("loginDropdown");
+        let loginButton = document.querySelector(".login-button");
+        if (!loginDropdown.contains(event.target) && !loginButton.contains(event.target)) {
+            loginDropdown.classList.remove("open");
+            setTimeout(() => {
+                loginDropdown.style.display = "none";
+            }, 350);
+        }
+    });
+
+    // 🔹 Attach Function to Login Button
+    document.querySelector(".login-button").addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent closing when clicking login button
+        toggleLogin();
+    });
+
+    // 🔹 Simulated Login Handling
+    async function handleLogin() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const response = await fakeBackendLogin(username, password);
+        if (response.success) {
+            sessionStorage.setItem("loggedIn", "true");
+            sessionStorage.setItem("clientNumber", username);
+            updateAuthUI();
+        } else {
+            alert("Invalid credentials. Try again.");
+        }
+    }
+
+    // 🔹 Update UI When Logged In
+    function updateAuthUI() {
+        const loggedIn = sessionStorage.getItem("loggedIn");
+        const clientNumber = sessionStorage.getItem("clientNumber");
+
+        if (loggedIn) {
+            document.getElementById("auth-section").innerHTML = `<span>Welcome, Client #${clientNumber} <button onclick="logout()">Logout</button></span>`;
+            document.getElementById("loginDropdown").style.display = "none";
+        }
+    }
+
+    // 🔹 Logout Function
+    function logout() {
+        sessionStorage.clear();
+        location.reload();
+    }
+
+    // 🔹 Fake Backend Authentication (Simulating API)
+    async function fakeBackendLogin(username, password) {
+        const fakeUsers = { "12345": "password123", "67890": "securepass" };
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({ success: fakeUsers[username] === password });
+            }, 500);
+        });
+    }
+
+    // 🔹 Expose functions globally
+    window.toggleMenu = toggleMenu;
+    window.toggleLogin = toggleLogin;
+    window.handleLogin = handleLogin;
+    window.logout = logout;
+});
 <!-- Hidden Login Form -->
 <div id="login-form" style="display: none; text-align: center; margin-top: 20px;">
     <input type="text" id="username" placeholder="Client Number" style="display: block; margin: 10px auto; padding: 10px; width: 200px;">
