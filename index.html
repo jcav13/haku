@@ -277,6 +277,9 @@ p {
             <a href="contact.html">Contact</a>
         </div>
     </div>
+    <div id="auth-section">
+    <button id="login-button" onclick="showLogin()">Login</button>
+</div>
 
  <!-- Social Media Icons -->
     <div class="social-icons">
@@ -303,7 +306,11 @@ p {
     <a href="book.html" class="book-button">Book</a>
 
     <!-- JavaScript for Dropdown -->
-    <script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        checkLogin(); // Ensure login state is checked on page load
+
+        // 🔹 Dropdown Menu Logic
         function toggleMenu() {
             var menu = document.getElementById("dropdownMenu");
 
@@ -313,7 +320,7 @@ p {
             }, 10); /* Smooth transition */
 
             // Auto-close when mouse leaves
-            menu.addEventListener("mouseleave", function() {
+            menu.addEventListener("mouseleave", function () {
                 menu.classList.remove("open");
                 setTimeout(() => {
                     menu.style.display = "none";
@@ -321,8 +328,7 @@ p {
             });
         }
 
-        // Improved UX: Close the dropdown only when clicking outside of it
-        document.addEventListener("click", function(event) {
+        document.addEventListener("click", function (event) {
             var menu = document.getElementById("dropdownMenu");
             var button = document.querySelector(".hamburger");
             if (!menu.contains(event.target) && !button.contains(event.target)) {
@@ -332,14 +338,65 @@ p {
                 }, 350);
             }
         });
-        document.addEventListener("click", function(event) {
-            var menu = document.getElementById("dropdownMenu");
-            var button = document.querySelector(".hamburger");
-            if (!menu.contains(event.target) && !button.contains(event.target)) {
-                menu.style.display = "none";
+
+        // 🔹 Login Logic
+        function showLogin() {
+            document.getElementById("login-form").style.display = "block";
+        }
+
+        async function handleLogin() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Simulated authentication (replace with real API later)
+            const response = await fakeBackendLogin(username, password);
+
+            if (response.success) {
+                sessionStorage.setItem("loggedIn", "true");
+                sessionStorage.setItem("clientNumber", username);
+                updateAuthUI();
+            } else {
+                alert("Invalid credentials. Try again.");
             }
-        });
-    </script>
+        }
+
+        function updateAuthUI() {
+            const loggedIn = sessionStorage.getItem("loggedIn");
+            const clientNumber = sessionStorage.getItem("clientNumber");
+
+            if (loggedIn) {
+                document.getElementById("auth-section").innerHTML = `<span>Welcome, Client #${clientNumber} <button onclick="logout()">Logout</button></span>`;
+                document.getElementById("login-form").style.display = "none";
+            }
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            location.reload();
+        }
+
+        async function fakeBackendLogin(username, password) {
+            const fakeUsers = { "12345": "password123", "67890": "securepass" };
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve({ success: fakeUsers[username] === password });
+                }, 500);
+            });
+        }
+
+        // 🔹 Expose functions globally (so they can be used by buttons)
+        window.toggleMenu = toggleMenu;
+        window.showLogin = showLogin;
+        window.handleLogin = handleLogin;
+        window.logout = logout;
+    });
+</script>
+<!-- Hidden Login Form -->
+<div id="login-form" style="display: none; text-align: center; margin-top: 20px;">
+    <input type="text" id="username" placeholder="Client Number" style="display: block; margin: 10px auto; padding: 10px; width: 200px;">
+    <input type="password" id="password" placeholder="Password" style="display: block; margin: 10px auto; padding: 10px; width: 200px;">
+    <button onclick="handleLogin()">Submit</button>
+</div>
 
 </body>
 </html>
