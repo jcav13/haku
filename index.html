@@ -426,23 +426,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 🔹 Toggle Login Dropdown
-  function toggleLogin(event) {
-    event.stopPropagation();
-    let loginDropdown = document.getElementById("loginDropdown");
+    function toggleLogin(event) {
+        event.stopPropagation();
+        let loginDropdown = document.getElementById("loginDropdown");
 
-    if (loginDropdown.style.display === "flex") {
-        loginDropdown.classList.remove("open");
-        setTimeout(() => {
-            loginDropdown.style.display = "none";
-        }, 350);
-    } else {
-        loginDropdown.style.display = "flex"; // Show dropdown
-        setTimeout(() => {
-            loginDropdown.classList.add("open");
-            document.getElementById("username").focus(); // Auto-focus input
-        }, 10);
+        if (loginDropdown.style.display === "flex") {
+            loginDropdown.classList.remove("open");
+            setTimeout(() => {
+                loginDropdown.style.display = "none";
+            }, 350);
+        } else {
+            loginDropdown.style.display = "flex"; // Show dropdown
+            setTimeout(() => {
+                loginDropdown.classList.add("open");
+                document.getElementById("username").focus(); // Auto-focus input
+            }, 10);
+        }
     }
-}
 
     // 🔹 Close Login Dropdown When Clicking Outside
     document.addEventListener("click", function (event) {
