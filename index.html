@@ -3,72 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAKU</title>
+    <title>Haku Mobile Massage</title>
+
+    <!-- Font: Satoshi -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
     
- <!-- Google Fonts Import -->
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">    
     <style>
         /* General Styling */
         body {
             background-color: #293717; /* Dark Green */
             color: #F1E7BB; /* Light Cream */
-           font-family: 'Satoshi', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             margin: 0;
             padding: 0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
-            position: relative;
-            text-align: center;
-            overflow-x: hidden;
+            padding-left: 5%;
+            text-transform: uppercase;
         }
-        
-            /* Fade-in animation for text and button */
- h1, h2, p, .book-button, .kanji-container {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease-out forwards;
-}
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        /* Header Styling */
+        .main-header {
+            font-size: 64px;
+            font-weight: 700;
+            margin-top: 10px;
+            line-height: 1;
+            letter-spacing: 3px;
+        }
 
-/* Top Navbar */
-.top-bar {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    display: flex;
-    align-items: center; /* Aligns items vertically */
-    justify-content: space-between;
-    width: calc(100% - 30px);
-    padding: 10px 20px;
-}
+        /* Sub-Header */
+        .sub-header {
+            font-size: 40px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
 
-.hamburger {
-    font-size: 24px;
-    font-weight: 500;
-    cursor: pointer;
-    color: #F1E7BB;
-    padding: 6px 10px; /* Adjust padding to match icon size */
-    display: flex;
-    align-items: center; /* Ensures vertical alignment */
-}
+        /* Underline Lines */
+        .divider {
+            width: 80%;
+            height: 6px;
+            background: #F1E7BB; /* Light Cream */
+            margin-top: 20px;
+        }
 
-        .japanese-city {
-    margin-left: 40px; /* Adjust space as needed */
-}
+        .divider.thin {
+            height: 3px;
+            margin-top: 5px;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .social-icons a:hover {
+            opacity: 0.6;
+        }
+
+        .social-icons svg {
+            width: 26px;
+            height: 26px;
+            fill: #F1E7BB;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .social-icons a:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Navbar & Hamburger */
+        .top-bar {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: calc(100% - 30px);
+            padding: 10px 20px;
+        }
+
+        .hamburger {
+            font-size: 24px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #F1E7BB;
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+        }
 
         /* Dropdown Menu */
         .dropdown {
@@ -77,7 +113,7 @@
             left: 10px;
             background: linear-gradient(180deg, rgba(241, 231, 187, 0.98), rgba(241, 231, 187, 0.90)); 
             border-radius: 14px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Softer drop shadow */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             width: 190px;
             display: none;
             flex-direction: column;
@@ -86,48 +122,28 @@
             transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
         }
 
-        /* Menu Items */
         .dropdown a {
             text-decoration: none;
-            color: #293717; /* Dark Green */
+            color: #293717;
             padding: 16px 20px;
             display: block;
             font-size: 18px;
             font-weight: 500;
             position: relative;
             transition: color 0.3s ease, opacity 0.3s ease;
-            opacity: 0.85; /* Soft start */
+            opacity: 0.85;
         }
 
-        /* Hover Effects */
         .dropdown a:hover {
             opacity: 1;
         }
 
-        /* Elegant Underline Animation */
-        .dropdown a::after {
-            content: "";
-            position: absolute;
-            bottom: 8px;
-            left: 20px;
-            width: 0;
-            height: 2px;
-            background-color: #293717; /* Light cream accent */
-            transition: width 0.3s ease;
-        }
-
-        .dropdown a:hover::after {
-            width: calc(100% - 40px);
-        }
-
-        /* Show dropdown with smooth animation */
         .dropdown.open {
             display: flex;
             opacity: 1;
             transform: translateY(0);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
-
       /* Social Media Icons */
 /* Social Media Icons */
 .social-icons {
