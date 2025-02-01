@@ -394,13 +394,10 @@ p {
 
     <!-- JavaScript for Dropdown -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        checkLogin(); // Ensure login state is checked on page load
-
 document.addEventListener("DOMContentLoaded", function () {
     checkLogin(); // Ensure login state is checked on page load
 
-    // 🔹 Toggle Hamburger Menu (No Change)
+    // 🔹 Toggle Hamburger Menu
     function toggleMenu() {
         let menu = document.getElementById("dropdownMenu");
         if (menu.style.display === "flex") {
@@ -416,7 +413,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // 🔹 Close Menu When Clicking Outside
+    // 🔹 Close Hamburger Menu When Clicking Outside
     document.addEventListener("click", function (event) {
         let menu = document.getElementById("dropdownMenu");
         let button = document.querySelector(".hamburger");
@@ -428,9 +425,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 🔹 Toggle Login Dropdown (New Improved Logic)
-    function toggleLogin() {
+    // 🔹 Toggle Login Dropdown (Matches Hamburger Animation)
+    function toggleLogin(event) {
+        event.stopPropagation(); // Prevent closing when clicking login button
         let loginDropdown = document.getElementById("loginDropdown");
+
         if (loginDropdown.style.display === "flex") {
             loginDropdown.classList.remove("open");
             setTimeout(() => {
@@ -456,11 +455,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 🔹 Attach Function to Login Button
-    document.querySelector(".login-button").addEventListener("click", function (event) {
-        event.stopPropagation(); // Prevent closing when clicking login button
-        toggleLogin();
-    });
+    // 🔹 Attach Click Event to Login Button
+    document.querySelector(".login-button").addEventListener("click", toggleLogin);
 
     // 🔹 Simulated Login Handling
     async function handleLogin() {
@@ -510,6 +506,13 @@ document.addEventListener("DOMContentLoaded", function () {
     window.handleLogin = handleLogin;
     window.logout = logout;
 });
+    // 🔹 Expose functions globally
+    window.toggleMenu = toggleMenu;
+    window.toggleLogin = toggleLogin;
+    window.handleLogin = handleLogin;
+    window.logout = logout;
+});
+</script>
 <!-- Hidden Login Form -->
 <div id="login-form" style="display: none; text-align: center; margin-top: 20px;">
     <input type="text" id="username" placeholder="Client Number" style="display: block; margin: 10px auto; padding: 10px; width: 200px;">
