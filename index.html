@@ -398,14 +398,15 @@ document.addEventListener("DOMContentLoaded", function () {
     checkLogin(); // Ensure login state is checked on page load
 
     // 🔹 Toggle Hamburger Menu
-    function toggleMenu() {
+    function toggleMenu(event) {
+        event.stopPropagation(); // Prevent it from immediately closing
+
         let menu = document.getElementById("dropdownMenu");
-        if (menu.style.display === "flex") {
-            menu.classList.remove("open");
-            setTimeout(() => {
-                menu.style.display = "none";
-            }, 350);
-        } else {
+        let isOpen = menu.classList.contains("open");
+
+        closeAllDropdowns(); // Close other dropdowns before opening this one
+
+        if (!isOpen) {
             menu.style.display = "flex";
             setTimeout(() => {
                 menu.classList.add("open");
@@ -413,30 +414,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // 🔹 Close Hamburger Menu When Clicking Outside
-    document.addEventListener("click", function (event) {
-        let menu = document.getElementById("dropdownMenu");
-        let button = document.querySelector(".hamburger");
-        if (!menu.contains(event.target) && !button.contains(event.target)) {
-            menu.classList.remove("open");
-            setTimeout(() => {
-                menu.style.display = "none";
-            }, 350);
-        }
-    });
-
     // 🔹 Toggle Login Dropdown
     function toggleLogin(event) {
-        event.stopPropagation();
-        let loginDropdown = document.getElementById("loginDropdown");
+        event.stopPropagation(); // Prevent closing when clicking button
 
-        if (loginDropdown.style.display === "flex") {
-            loginDropdown.classList.remove("open");
-            setTimeout(() => {
-                loginDropdown.style.display = "none";
-            }, 350);
-        } else {
-            loginDropdown.style.display = "flex"; // Show dropdown
+        let loginDropdown = document.getElementById("loginDropdown");
+        let isOpen = loginDropdown.classList.contains("open");
+
+        closeAllDropdowns(); // Close other dropdowns before opening this one
+
+        if (!isOpen) {
+            loginDropdown.style.display = "flex";
             setTimeout(() => {
                 loginDropdown.classList.add("open");
                 document.getElementById("username").focus(); // Auto-focus input
@@ -444,24 +432,40 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // 🔹 Close Login Dropdown When Clicking Outside
+    // 🔹 Close All Dropdowns (Helper Function)
+    function closeAllDropdowns() {
+        let menu = document.getElementById("dropdownMenu");
+        let loginDropdown = document.getElementById("loginDropdown");
+
+        menu.classList.remove("open");
+        loginDropdown.classList.remove("open");
+
+        setTimeout(() => {
+            menu.style.display = "none";
+            loginDropdown.style.display = "none";
+        }, 350);
+    }
+
+    // 🔹 Close dropdowns when clicking outside
     document.addEventListener("click", function (event) {
+        let menu = document.getElementById("dropdownMenu");
         let loginDropdown = document.getElementById("loginDropdown");
         let loginButton = document.querySelector(".login-button");
+        let hamburgerButton = document.querySelector(".hamburger");
 
-        if (!loginDropdown.contains(event.target) && event.target !== loginButton) {
-            loginDropdown.classList.remove("open");
-            setTimeout(() => {
-                loginDropdown.style.display = "none";
-            }, 350);
+        if (
+            !menu.contains(event.target) &&
+            !loginDropdown.contains(event.target) &&
+            event.target !== loginButton &&
+            event.target !== hamburgerButton
+        ) {
+            closeAllDropdowns();
         }
     });
 
-    // 🔹 Attach Click Event to Login Button
-    document.querySelector(".login-button").addEventListener("click", function (event) {
-        event.stopPropagation();
-        toggleLogin(event);
-    });
+    // 🔹 Attach Event Listeners to Buttons
+    document.querySelector(".hamburger").addEventListener("click", toggleMenu);
+    document.querySelector(".login-button").addEventListener("click", toggleLogin);
 
     // 🔹 Simulated Login Handling
     async function handleLogin() {
@@ -485,7 +489,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (loggedIn) {
             document.getElementById("auth-section").innerHTML = `<span>Welcome, Client #${clientNumber} <button onclick="logout()">Logout</button></span>`;
-            document.getElementById("loginDropdown").style.display = "none";
+            closeAllDropdowns();
         }
     }
 
