@@ -1,480 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>HAKU</title>
-  <!-- Google Fonts Import -->
-  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    /* General Styling */
-    body {
-      background-color: #293717; /* Dark Green */
-      color: #F1E7BB;           /* Light Cream */
-      font-family: 'Inconsolata', monospace;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      text-align: center;
-      overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAKU</title>
+    
+ <!-- Google Fonts Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* General Styling */
+        body {
+            background-color: #293717; /* Dark Green */
+            color: #F1E7BB; /* Light Cream */
+           font-family: 'Inconsolata', monospace;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        
+            /* Fade-in animation for text and button */
+ h1, h2, p, .book-button, .kanji-container {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+}
 
-    /* Fade-in animation */
-    h1, h2, p, .book-button {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s ease-out forwards;
-    }
-    @keyframes fadeInUp {
-      from {
+@keyframes fadeInUp {
+    from {
         opacity: 0;
         transform: translateY(20px);
-      }
-      to {
+    }
+    to {
         opacity: 1;
         transform: translateY(0);
-      }
     }
+}
 
-    /* Top Bar */
-    .top-bar {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      right: 15px;
-      display: flex;
-      align-items: center; 
-      justify-content: space-between;
-      width: calc(100% - 30px);
-      padding: 10px 20px;
-    }
-    .hamburger {
-      font-size: 24px;
-      font-weight: 500;
-      cursor: pointer;
-      color: #F1E7BB;
-      padding: 6px 10px;
-      display: flex;
-      align-items: center; 
-    }
+/* Top Navbar */
+.top-bar {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    justify-content: space-between;
+    width: calc(100% - 30px);
+    padding: 10px 20px;
+}
 
-    .japanese-city {
-      margin-left: 40px;
-    }
+.hamburger {
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #F1E7BB;
+    padding: 6px 10px; /* Adjust padding to match icon size */
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+}
 
-    /* Login Button */
-    .login-button {
-      background: transparent;
-      color: #E8DCC0;
-      border: 2px solid #E8DCC0;
-      padding: 8px 20px;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 50px;
-      letter-spacing: 1px;
-      transition: all 0.4s ease-in-out;
-      display: inline-block;
-      margin-left: 10px;
-    }
-    .login-button:hover {
-      background: rgba(232, 220, 192, 0.15);
-      transform: scale(1.05);
-    }
+        .japanese-city {
+    margin-left: 40px; /* Adjust space as needed */
+}
 
-    /* Dropdown Menu */
-    .dropdown {
-      position: absolute;
-      top: 50px;
-      left: 10px;
-      background: linear-gradient(180deg, rgba(241, 231, 187, 0.98), rgba(241, 231, 187, 0.90));
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      width: 190px;
-      display: none;
-      flex-direction: column;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
-    }
-    .dropdown a {
-      text-decoration: none;
-      color: #293717;
-      padding: 16px 20px;
-      display: block;
-      font-size: 18px;
-      font-weight: 500;
-      position: relative;
-      transition: color 0.3s ease, opacity 0.3s ease;
-      opacity: 0.85;
-    }
-    .dropdown a:hover {
-      opacity: 1;
-    }
-    .dropdown a::after {
-      content: "";
-      position: absolute;
-      bottom: 8px;
-      left: 20px;
-      width: 0;
-      height: 2px;
-      background-color: #293717;
-      transition: width 0.3s ease;
-    }
-    .dropdown a:hover::after {
-      width: calc(100% - 40px);
-    }
-    .dropdown.open {
-      display: flex;
-      opacity: 1;
-      transform: translateY(0);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            background: linear-gradient(180deg, rgba(241, 231, 187, 0.98), rgba(241, 231, 187, 0.90)); 
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Softer drop shadow */
+            width: 190px;
+            display: none;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
+        }
 
-    /* Login Dropdown */
-    .login-dropdown {
-      position: absolute;
-      top: 50px;
-      right: 20px;
-      background: linear-gradient(180deg, rgba(241, 231, 187, 0.98), rgba(241, 231, 187, 0.90));
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      width: 220px;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      padding: 15px;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
-    }
-    .login-dropdown input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      border: 1px solid #293717;
-      font-size: 16px;
-      text-align: center;
-    }
-    .login-submit {
-      background: transparent;
-      color: #293717;
-      border: 2px solid #293717;
-      padding: 8px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
-    .login-submit:hover {
-      background: rgba(232, 220, 192, 0.15);
-      transform: scale(1.05);
-    }
-    .login-dropdown.open {
-      display: flex;
-      opacity: 1;
-      transform: translateY(0);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
+        /* Menu Items */
+        .dropdown a {
+            text-decoration: none;
+            color: #293717; /* Dark Green */
+            padding: 16px 20px;
+            display: block;
+            font-size: 18px;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease, opacity 0.3s ease;
+            opacity: 0.85; /* Soft start */
+        }
 
-    /* Social Icons */
-    .social-icons {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 15px;
-      width: auto;
-    }
-    .social-icons a {
-      display: inline-block;
-      transition: opacity 0.3s ease-in-out;
-    }
-    .social-icons a:hover {
-      opacity: 0.6;
-    }
-    .social-icons svg {
-      width: 26px;
-      height: 26px;
-      fill: #F1E7BB;
-      transition: transform 0.2s ease-in-out;
-    }
-    .social-icons a:hover svg {
-      transform: scale(1.1);
-    }
+        /* Hover Effects */
+        .dropdown a:hover {
+            opacity: 1;
+        }
 
-    /* Text Styling */
-    h1 {
-      font-size: 72px;
-      font-weight: 400;
-      letter-spacing: 16px;
-      margin-bottom: 5px;
-    }
-    .mobile-service {
-      font-size: 18px;
-      font-weight: 300;
-      margin-top: 0;
-      margin-bottom: 15px;
-    }
-    h2 {
-      font-size: 24px;
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 16px;
-      font-weight: 300;
-      margin-bottom: 25px;
-    }
-    .book-button {
-      background: transparent;
-      color: #E8DCC0;
-      border: 2px solid #E8DCC0;
-      padding: 12px 42px;
-      font-size: 18px;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 50px;
-      letter-spacing: 1px;
-      transition: all 0.4s ease-in-out;
-      display: inline-block;
-    }
-    .book-button:hover {
-      background: rgba(232, 220, 192, 0.15);
-      transform: scale(1.05);
-    }
+        /* Elegant Underline Animation */
+        .dropdown a::after {
+            content: "";
+            position: absolute;
+            bottom: 8px;
+            left: 20px;
+            width: 0;
+            height: 2px;
+            background-color: #293717; /* Light cream accent */
+            transition: width 0.3s ease;
+        }
 
-    /* Mobile Adjustments */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 50px;
-        letter-spacing: 8px;
-      }
-      .kanji-container {
-        font-size: 22px;
-        gap: 30px;
-      }
-      h2 {
-        font-size: 20px;
-      }
-      p {
-        font-size: 14px;
-      }
-      .book-button {
-        font-size: 16px;
-        padding: 10px 30px;
-      }
-      .social-icons {
-        top: 10px;
-        right: 15px;
-      }
-      .social-icons svg {
-        width: 26px;
-        height: 26px;
-      }
-    }
-  </style>
+        .dropdown a:hover::after {
+            width: calc(100% - 40px);
+        }
+
+        /* Show dropdown with smooth animation */
+        .dropdown.open {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+      /* Social Media Icons */
+/* Social Media Icons */
+.social-icons {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end; /* Forces icons to stay on the right */
+    align-items: center; /* Keeps them vertically aligned */
+    gap: 15px; /* Keeps even spacing */
+    width: auto;
+}
+
+.social-icons a {
+    display: inline-block;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+    opacity: 0.6;
+}
+
+/* Social Media Icons (Instagram, Facebook, X) */
+.social-icons svg {
+    width: 26px; /* Adjust to better match hamburger */
+    height: 26px;
+    fill: #F1E7BB;
+    transition: transform 0.2s ease-in-out;
+}
+
+        /* Optional: Slight hover effect for a modern touch */
+        .social-icons a:hover svg {
+            transform: scale(1.1); /* Slight zoom effect */
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .social-icons {
+                top: 10px; /* Adjust position */
+                right: 15px;
+                gap: 15px; /* Slightly reduce spacing */
+            }
+
+            .social-icons svg {
+                width: 26px;
+                height: 26px;
+            }
+        }        /* Text Styling */
+h1 {
+    font-size: 72px;
+    font-weight: 400; /* Thinner font weight */
+    letter-spacing: 16px; /* More spaced out for a luxury feel */
+    margin-bottom: 5px; /* Reduce gap */
+}
+
+.mobile-service {
+    font-size: 18px; /* Smaller font */
+    font-weight: 300;
+    margin-top: 0px; /* Moves it closer to "H A K U" */
+    margin-bottom: 15px; /* Reduces gap before "Melbourne" */
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 20px; /* Adjust spacing for balance */
+}
+
+p {
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 25px; /* Reduce gap between tagline & book button */
+}
+
+        /* Book Button */
+.book-button {
+    background: transparent;
+    color: #E8DCC0;
+    border: 2px solid #E8DCC0;
+    padding: 12px 42px;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    transition: all 0.4s ease-in-out;
+    display: inline-block;
+}
+
+.book-button:hover {
+    background: rgba(232, 220, 192, 0.15); /* Subtle fill effect */
+    color: #E8DCC0;
+    transform: scale(1.05);
+}
+
+        /* Mobile Styling */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 50px;
+                letter-spacing: 8px;
+            }
+
+            .kanji-container {
+                font-size: 22px;
+                gap: 30px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .book-button {
+                font-size: 16px;
+                padding: 10px 30px;
+            }
+
+            /* Social Icons Adjustments for Mobile */
+            .social-icons {
+                top: 10px;
+                right: 15px;
+            }
+
+            .social-icons svg {
+                width: 26px;
+                height: 26px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <!-- Hamburger Icon -->
-    <div class="hamburger" onclick="toggleMenu(event)">☰</div>
-    <!-- Dropdown Menu -->
-    <div class="dropdown" id="dropdownMenu">
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <!-- Hamburger Icon -->
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown" id="dropdownMenu">
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </div>
-  </div>
 
-  <!-- Social Media Icons -->
-  <div class="social-icons">
-    <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
-      <svg viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" stroke="none" stroke-width="2" fill="none"/>
-        <path
-          d="M12 2.163c-5.14 0-9.837 4.118-9.837 9.837s4.118 9.837 
-             9.837 9.837 9.837-4.118 9.837-9.837-4.118-9.837-9.837-9.837zm0 
-             18.26c-4.593 0-8.323-3.73-8.323-8.323s3.73-8.323 8.323-8.323 
-             8.323 3.73 8.323 8.323-3.73 8.323-8.323 8.323zm4.98-10.34a1.572 
-             1.572 0 1 1 0-3.143 1.572 1.572 0 0 1 0 3.143z"
-        />
-      </svg>
-    </a>
-    <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
-      <svg viewBox="0 0 24 24">
-        <path
-          d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96 0 4.94 3.63 9.05 
-             8.36 9.82v-6.94h-2.52v-2.88h2.52v-2.2c0-2.5 1.5-3.88 3.78-3.88h2.24
-             v2.48h-1.26c-1.24 0-1.63.77-1.63 1.56v1.84h2.78l-.44 2.88h-2.34v6.94
-             c4.73-.77 8.36-4.88 8.36-9.82 0-5.5-4.46-9.96-9.96-9.96z"
-        />
-      </svg>
-    </a>
-    <!-- Login Button -->
-    <button class="login-button" onclick="toggleLogin(event)">Login</button>
-  </div>
+ <!-- Social Media Icons -->
+    <div class="social-icons">
+        <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke="none" stroke-width="2" fill="none"/>
+                <path d="M12 2.163c-5.14 0-9.837 4.118-9.837 9.837s4.118 9.837 9.837 9.837 9.837-4.118 9.837-9.837-4.118-9.837-9.837-9.837zm0 18.26c-4.593 0-8.323-3.73-8.323-8.323s3.73-8.323 8.323-8.323 8.323 3.73 8.323 8.323-3.73 8.323-8.323 8.323zm4.98-10.34a1.572 1.572 0 1 1 0-3.143 1.572 1.572 0 0 1 0 3.143z"/>
+            </svg>
+        </a>
+        <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96 0 4.94 3.63 9.05 8.36 9.82v-6.94h-2.52v-2.88h2.52v-2.2c0-2.5 1.5-3.88 3.78-3.88h2.24v2.48h-1.26c-1.24 0-1.63.77-1.63 1.56v1.84h2.78l-.44 2.88h-2.34v6.94c4.73-.77 8.36-4.88 8.36-9.82 0-5.5-4.46-9.96-9.96-9.96z"/>
+            </svg>
+        </a>
+    </div>
 
-  <!-- Login Dropdown -->
-  <div class="login-dropdown" id="loginDropdown">
-    <input type="text" id="username" placeholder="Client Number">
-    <input type="password" id="password" placeholder="Password">
-    <button class="login-submit" onclick="handleLogin()">Submit</button>
-  </div>
+    <!-- Main Content -->
+    <h1>H A K U</h1>
+<p class="mobile-service">mobile massage service.</p>
+<h2>Melbourne <span class="japanese-city">メルボルン</span></h2>
+    <p>Inspired by Japanese tradition.</p>
 
-  <!-- Main Content -->
-  <h1>H A K U</h1>
-  <p class="mobile-service">mobile massage service.</p>
-  <h2>Melbourne <span class="japanese-city">メルボルン</span></h2>
-  <p>Inspired by Japanese tradition.</p>
-  <a href="book.html" class="book-button">Book</a>
+    <!-- Book Now Button -->
+    <a href="book.html" class="book-button">Book</a>
 
-  <!-- Auth Section for updateAuthUI -->
-  <div id="auth-section"></div>
+    <!-- JavaScript for Dropdown -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
 
-  <!-- Hidden Login Form (optional) -->
-  <div id="login-form" style="display: none; text-align: center; margin-top: 20px;">
-    <input type="text" id="username" placeholder="Client Number" style="display: block; margin: 10px auto; padding: 10px; width: 200px;">
-    <input type="password" id="password" placeholder="Password" style="display: block; margin: 10px auto; padding: 10px; width: 200px;">
-    <button onclick="handleLogin()">Submit</button>
-  </div>
+            menu.style.display = "flex";
+            setTimeout(() => {
+                menu.classList.add("open");
+            }, 10); /* Smooth transition */
 
-  <script>
-    /************************************************
-     * A.  Placeholder checkLogin (if needed)
-     ************************************************/
-    function checkLogin() {
-      // If no logic is needed, leave empty
-    }
+            // Auto-close when mouse leaves
+            menu.addEventListener("mouseleave", function() {
+                menu.classList.remove("open");
+                setTimeout(() => {
+                    menu.style.display = "none";
+                }, 350);
+            });
+        }
 
-    /************************************************
-     * B. Toggle the Hamburger Menu
-     ************************************************/
-    function toggleMenu(event) {
-      event.stopPropagation();
-      const menu = document.getElementById("dropdownMenu");
-      const isOpen = menu.classList.contains("open");
+        // Improved UX: Close the dropdown only when clicking outside of it
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("dropdownMenu");
+            var button = document.querySelector(".hamburger");
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.classList.remove("open");
+                setTimeout(() => {
+                    menu.style.display = "none";
+                }, 350);
+            }
+        });
+        document.addEventListener("click", function(event) {
+            var menu = document.getElementById("dropdownMenu");
+            var button = document.querySelector(".hamburger");
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
 
-      // Close the other dropdown if open
-      closeAllDropdowns();
-
-      if (!isOpen) {
-        menu.style.display = "flex";
-        setTimeout(() => {
-          menu.classList.add("open");
-        }, 10);
-      }
-    }
-
-    /************************************************
-     * C. Toggle the Login Dropdown
-     ************************************************/
-    function toggleLogin(event) {
-      event.stopPropagation();
-      const loginDropdown = document.getElementById("loginDropdown");
-      const isOpen = loginDropdown.classList.contains("open");
-
-      // Close the other dropdown if open
-      closeAllDropdowns();
-
-      if (!isOpen) {
-        loginDropdown.style.display = "flex";
-        setTimeout(() => {
-          loginDropdown.classList.add("open");
-          document.getElementById("username").focus();
-        }, 10);
-      }
-    }
-
-    /************************************************
-     * D. Close All Dropdowns
-     ************************************************/
-    function closeAllDropdowns() {
-      const menu = document.getElementById("dropdownMenu");
-      const loginDropdown = document.getElementById("loginDropdown");
-
-      menu.classList.remove("open");
-      loginDropdown.classList.remove("open");
-
-      // After transition ends, set display to none
-      setTimeout(() => {
-        menu.style.display = "none";
-        loginDropdown.style.display = "none";
-      }, 350);
-    }
-
-    /************************************************
-     * E. Mouseleave logic: keep it open until cursor leaves
-     ************************************************/
-    document.addEventListener("DOMContentLoaded", function() {
-      // Optionally call checkLogin
-      checkLogin();
-      updateAuthUI();
-
-      // Add mouseleave listeners so each dropdown closes
-      // when the user moves the cursor away from it
-      const menu = document.getElementById("dropdownMenu");
-      const loginDropdown = document.getElementById("loginDropdown");
-
-      menu.addEventListener("mouseleave", () => {
-        closeAllDropdowns();
-      });
-      loginDropdown.addEventListener("mouseleave", () => {
-        closeAllDropdowns();
-      });
-    });
-
-    /************************************************
-     * F. Fake Login Handling (unchanged)
-     ************************************************/
-    async function handleLogin() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-      const response = await fakeBackendLogin(username, password);
-
-      if (response.success) {
-        sessionStorage.setItem("loggedIn", "true");
-        sessionStorage.setItem("clientNumber", username);
-        updateAuthUI();
-      } else {
-        alert("Invalid credentials. Try again.");
-      }
-    }
-
-    function updateAuthUI() {
-      const loggedIn = sessionStorage.getItem("loggedIn");
-      const clientNumber = sessionStorage.getItem("clientNumber");
-      if (loggedIn) {
-        document.getElementById("auth-section").innerHTML = `
-          <span>Welcome, Client #${clientNumber}
-            <button onclick="logout()">Logout</button>
-          </span>`;
-        closeAllDropdowns();
-      }
-    }
-
-    function logout() {
-      sessionStorage.clear();
-      location.reload();
-    }
-
-    async function fakeBackendLogin(username, password) {
-      const fakeUsers = { "12345": "password123", "67890": "securepass" };
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({ success: fakeUsers[username] === password });
-        }, 500);
-      });
-    }
-  </script>
 </body>
 </html>
