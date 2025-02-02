@@ -24,7 +24,14 @@
     text-align: center;
     overflow-x: hidden;
     }
-
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
     /* Fade-in animation for text */
 h1, h2, h3, p, .incense-container, .ember, .ember2 {
   opacity: 0;
@@ -247,7 +254,7 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
 
   /* Combine both animations on the same line */
   animation: 
-    fadeInUp 2.5s ease-out forwards, 
+    fadeInOpacity 2.5s ease-out forwards, 
     emberFlicker 4s infinite ease-in-out;
 
   position: absolute;
@@ -285,7 +292,7 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
 
   /* Combine fade-in and flicker as well */
   animation:
-    fadeInUp 2.5s ease-out forwards,
+    fadeInOpacity 2.5s ease-out forwards,
     emberFlicker 4s infinite ease-in-out;
 
   position: absolute;
