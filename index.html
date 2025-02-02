@@ -241,28 +241,29 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
 }
     /* Position the ember near the tip of the incense */
      .ember {
+.ember {
+  opacity: 0;
+  transform: translateY(20px);
+
+  /* Combine both animations on the same line */
+  animation: 
+    fadeInUp 2.5s ease-out forwards, 
+    emberFlicker 4s infinite ease-in-out;
+
   position: absolute;
-  top: 23.5%;   /* Adjust to match your stick tip */
-  left: 65%;  
- width: 4px;   /* Narrow width */
-  height: 14px; /* Taller height for a “flame” shape */
-
-  /* Elliptical shape: 50% horizontal radius, smaller vertical radius. */
-  /* Or simply 9999px for a pill shape. Experiment with these values. */
+  top: 23.5%;
+  left: 65%;
+  width: 4px;
+  height: 14px;
   border-radius: 20px / 50%;
-
-  /* A vertical flame-like gradient: bright at top, fades at bottom */
   background: linear-gradient(
     to bottom,
     rgba(255,140,0, 0.9) 0%,
     rgba(255,69,0, 0.7) 50%,
     transparent 100%
   );
-
-  animation: emberFlicker 2s infinite ease-in-out;
-  transform-origin: center bottom; /* If you want it to pivot from bottom. */
+  transform-origin: center bottom;
 }
-
 @keyframes emberFlicker {
   0%, 100% {
     transform: scaleY(1);
@@ -278,12 +279,18 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
   }
 }
 
-  .ember2 {
-  position: absolute;
-  top: 23.5%;   /* same vertical alignment, or slightly different if needed */
-  left: 65.87%;  /* a bit more to the right than the first (e.g. +0.6%) */
+.ember2 {
+  opacity: 0;
+  transform: translateY(20px);
 
-  /* same width, height, border-radius, etc. */
+  /* Combine fade-in and flicker as well */
+  animation:
+    fadeInUp 2.5s ease-out forwards,
+    emberFlicker 4s infinite ease-in-out;
+
+  position: absolute;
+  top: 23.5%;
+  left: 65.87%;
   width: 4px;
   height: 14px;
   border-radius: 20px / 50%;
@@ -293,7 +300,6 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     rgba(255,69,0, 0.7) 50%,
     transparent 100%
   );
-  animation: emberFlicker2 2s infinite ease-in-out;
   transform-origin: center bottom;
 }
 
