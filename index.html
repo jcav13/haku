@@ -23,37 +23,38 @@
       padding: 0;
       min-height: 100vh;
 
-      /* Let .content-wrapper fill screen; headings in center, bottom in bottom. */
+      /* We'll let .content-wrapper fill the screen. */
       display: flex;
       flex-direction: column;
     }
 
-    /* 3) Container that uses the full viewport, splits into top & bottom sections */
+    /* .content-wrapper splits into .top-section and .bottom-section */
     .content-wrapper {
-      flex: 1;
+      flex: 1; 
       display: flex;
       flex-direction: column;
     }
 
-    /* The top section is flex:1 and centers headings in the vertical middle. */
+    /* Top section: center headings (Personalised..., H A K U, ハ ク) vertically */
     .top-section {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* vertical center for headings */
+      justify-content: center; /* vertical center */
       align-items: center;     /* horizontal center */
       text-align: center;
     }
 
-    /* The bottom section sits underneath the top, pinned near bottom. */
+    /* Bottom section: MELBOURNE + Book near bottom. We’ll rely on margins to place MELBOURNE halfway. */
     .bottom-section {
       display: flex;
       flex-direction: column;
-      align-items: center;     /* center horizontally */
-      margin-bottom: 50px;     /* or more if you want a gap from the bottom edge */
+      align-items: center;
+      /* some bottom margin so button not flush with bottom edge */
+      margin-bottom: 50px; 
     }
 
-    /* 4) Fade-in Animations for Headings, Paragraphs */
+    /* 3) Fade-in Animations */
     h1, h2, h3, h4, .book-button {
       opacity: 0;
       transform: translateY(20px);
@@ -70,35 +71,41 @@
       }
     }
 
-    /* 5) Headings Styling */
+    /* 4) Heading Styles */
+    /* Personalised Massage (above H A K U) */
     h2 {
       font-size: 24px;
-      font-weight: 100;
+      font-weight: 200;
       margin: 0;
-      margin-bottom: 10px;  /* slightly above H A K U */
+      margin-bottom: 10px;   /* small gap before H A K U */
     }
+    /* H A K U (large center) */
     h1 {
       font-size: 130px;
       font-weight: 200;
       letter-spacing: 6px;
       margin: 0;
-      margin-bottom: -20px; /* overlap effect under H A K U if you want it */
+      margin-bottom: -20px;  /* if you want a slight overlap effect, else remove */
     }
+    /* ハ ク under H A K U */
     h3 {
       font-size: 28px;
       font-weight: 200;
-      letter-spacing: 25px;  
+      letter-spacing: 25px;
       margin: 0;
-      margin-bottom: 30px;   /* gap under ハ ク */
+      margin-bottom: 30px;   /* space after ハ ク */
     }
+    /* MELBOURNE: we’ll position it halfway between ハ ク & the button by adjusting margin. */
     h4 {
       font-size: 18px;
       font-weight: 200;
       margin: 0;
-      margin-bottom: 30px;   /* gap above the Book button */
+      /* Add top margin to move it downward from top headings, but above the button. */
+      margin-top: 80px;      /* tweak this to move MELBOURNE closer/farther from ハ ク */
+      margin-bottom: 40px;   /* space above the Book button */
     }
 
-    /* 6) The Book Button */
+    /* 5) The Book Button */
     .book-button {
       font-family: 'Optima', sans-serif;
       color: #E8DCC0;
@@ -118,7 +125,7 @@
       transform: scale(1.05);
     }
 
-    /* 7) Top Bar, Hamburger, Social Icons (unchanged) */
+    /* 6) Nav / Hamburger / Social Icons */
     .top-bar {
       position: absolute;
       top: 15px;
@@ -157,14 +164,14 @@
       transform: scale(1.1);
     }
 
-    /* 8) Dropdown Menu */
+    /* 7) Dropdown Menu (unchanged) */
     .dropdown {
       position: absolute;
       top: 50px;
       left: 10px;
       background: linear-gradient(180deg, rgba(241,231,187,0.98), rgba(241,231,187,0.9));
       border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       width: 190px;
       display: none;
       flex-direction: column;
@@ -205,7 +212,7 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
-    /* 9) Media Query for Mobile Adjustments (optional) */
+    /* 8) Media Query for Mobile Adjustments */
     @media (max-width: 768px) {
       h1 {
         font-size: 70px;
@@ -222,7 +229,8 @@
       }
       h4 {
         font-size: 16px;
-        margin-bottom: 80px;
+        margin-top: 50px;   
+        margin-bottom: 30px;
       }
       .book-button {
         font-size: 16px;
@@ -231,6 +239,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Top Bar -->
   <div class="top-bar">
@@ -247,19 +256,15 @@
     <!-- Insert your Instagram & Facebook links/SVGs here -->
   </div>
 
-  <!-- 
-      content-wrapper with top-section & bottom-section 
-      BUT top-section is centered in flex, bottom-section is static below
-  -->
   <div class="content-wrapper">
-    <!-- TOP SECTION: headings in the vertical center --> 
+    <!-- TOP SECTION: Centered headings -->
     <div class="top-section">
       <h2>Personalised Home Massage</h2>
       <h1>H A K U</h1>
       <h3>ハ ク</h3>
     </div>
 
-    <!-- BOTTOM SECTION: MELBOURNE & Book near bottom --> 
+    <!-- BOTTOM SECTION: MELBOURNE & Book near bottom -->
     <div class="bottom-section">
       <h4>MELBOURNE</h4>
       <a href="book.html" class="book-button">Book</a>
