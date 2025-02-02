@@ -284,48 +284,7 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     opacity: 0.6;
   }
 }
-
-/* Smoke container: relatively small box near the ember */
-.smoke {
-  position: absolute;
-  left: 37%;   /* near the ember so it looks like it rises from the tip */
-  top: 0%;     /* adjust to best line up with .ember */
-  width: 30px; /* bigger box to hold drifting trails */
-  height: 100px; /* tall enough to let smoke rise */
-  overflow: visible; /* allow trails to float up */
-}
-
-/* Each smoke trail is a translucent circle drifting upwards */
-.smoke-trail {
-  position: absolute;
-  bottom: 0; /* start at bottom of .smoke container */
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
   
-  /* Light grey/white circle with some transparency */
-  background: radial-gradient(
-    circle,
-    rgba(255,255,255,0.7) 0%,
-    rgba(255,255,255,0) 60%
-  );
-  
-  transform: translateX(-50%) scale(0.3);
-  animation: rise 3s infinite ease-in-out;
-  
-  /* Slight variation for each smoke trail to appear less uniform */
-}
-
-/* For variety, you can offset multiple .smoke-trail elements like so: */
-.smoke-trail:nth-child(2) {
-  animation-delay: 1s; /* starts 1s later */
-  transform: translateX(-50%) scale(0.2);
-}
-.smoke-trail:nth-child(3) {
-  animation-delay: 2s; /* starts 2s later */
-  transform: translateX(-50%) scale(0.4);
-}
 
 /* Keyframes for smoke rising and fading */
 @keyframes rise {
