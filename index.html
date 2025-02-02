@@ -23,9 +23,9 @@
       padding: 0;
       min-height: 100vh;
 
-      /* 
-        We'll place the headings in a top-section (vertically centered), 
-        and MELBOURNE + Book in a bottom-section. 
+      /*
+        We'll place the headings in a top-section (vertically centered),
+        and MELBOURNE + Book in a bottom-section.
       */
       display: flex;
       flex-direction: column;
@@ -38,9 +38,9 @@
       flex-direction: column;
     }
 
-    /* 
-      TOP SECTION: flex:1 to fill available space, 
-      center headings vertically & horizontally. 
+    /*
+      TOP SECTION: flex:1 to fill available space,
+      center headings vertically & horizontally.
     */
     .top-section {
       flex: 1;
@@ -52,8 +52,8 @@
     }
 
     /*
-      BOTTOM SECTION: 
-      We keep the Book button near the bottom 
+      BOTTOM SECTION:
+      We keep the Book button near the bottom
       (by margin-bottom on .content-wrapper if desired).
     */
     .bottom-section {
@@ -63,7 +63,7 @@
       margin-bottom: 50px; /* distance from bottom edge of screen */
     }
 
-    /* 3) Fade-in Animations for Headings */
+    /* 3) Fade-in Animations for Headings, Paragraphs */
     h1, h2, h3, h4, .book-button {
       opacity: 0;
       transform: translateY(20px);
@@ -101,22 +101,17 @@
       margin: 0;
       margin-bottom: 30px;  /* gap after ハ ク */
     }
-    /* 
-      h4 (MELBOURNE) is initially placed below the top headings, 
-      we use negative margin-top to push it upward 
-      (closer to ハ ク) WITHOUT moving the button. 
-    */
     h4 {
       font-size: 20px;
       font-weight: 200;
       margin: 0;
-      /* SHIFT MELBOURNE UPWARD by a negative margin-top. 
+      /* SHIFT MELBOURNE UPWARD by a negative margin-top.
          Tweak this value to find your perfect halfway point. */
-      margin-top: -210px;  /* example: moves MELBOURNE ~40px closer to ハ ク */
-      margin-bottom: 210px;/* spacing above the Book button */
+      margin-top: -180px;  /* example: moves MELBOURNE ~40px closer to ハ ク */
+      margin-bottom: 180px;/* spacing above the Book button */
     }
 
-    /* 5) The Book Button: remains in the same place near bottom */
+    /* 5) The Book Button */
     .book-button {
       font-family: 'Optima', sans-serif;
       color: #E8DCC0;
@@ -129,10 +124,11 @@
       letter-spacing: 1px;
       transition: all 0.4s ease-in-out;
       display: inline-block;
-      /* no margin-top needed unless you want to move it further away from MELBOURNE */
+      /* ADDED THIS LINE: pulls the button up by 50px */
+      margin-top: -50px;
     }
     .book-button:hover {
-      background: rgba(232,220,192,0.15);
+      background: rgba(232, 220, 192, 0.15);
       color: #E8DCC0;
       transform: scale(1.05);
     }
@@ -182,7 +178,7 @@
       left: 10px;
       background: linear-gradient(180deg, rgba(241,231,187,0.98), rgba(241,231,187,0.9));
       border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       width: 190px;
       display: none;
       flex-direction: column;
@@ -220,7 +216,7 @@
       display: flex;
       opacity: 1;
       transform: translateY(0);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
     /* 7) Media Queries for smaller screens if needed */
@@ -238,7 +234,6 @@
         margin-bottom: 20px;
         letter-spacing: 15px;
       }
-      /* For small screens, maybe reduce the negative margin for MELBOURNE. */
       h4 {
         font-size: 16px;
         margin-top: -20px;
@@ -247,6 +242,7 @@
       .book-button {
         font-size: 16px;
         padding: 10px 32px;
+        /* Still keep margin-top: -50px if you want it up on mobile too, or reduce if it's too high */
       }
     }
   </style>
@@ -267,7 +263,12 @@
     <!-- Insert your Instagram & Facebook links/SVGs here -->
   </div>
 
-  <!-- Main container with top headings in .top-section, Melbourne + Book in .bottom-section -->
+  <!-- 
+      content-wrapper with top-section & bottom-section 
+      But top-section is centered, 
+      h4 is pulled up by negative margin, 
+      and the Book button is also pulled up with margin-top: -50px 
+  -->
   <div class="content-wrapper">
     <div class="top-section">
       <h2>Personalised Home Massage</h2>
@@ -276,7 +277,6 @@
     </div>
 
     <div class="bottom-section">
-      <!-- Move MELBOURNE up by setting negative margin-top -->
       <h4>MELBOURNE</h4>
       <a href="book.html" class="book-button">Book</a>
     </div>
