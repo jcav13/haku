@@ -340,27 +340,83 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     opacity: 1;
   }
 }
-    /* Mobile Styling */
-    @media (max-width: 768px) {
-      .hamburger {
-        font-size: 22px;
-      }
-      .dropdown a {
-        font-size: 16px;
-      }
-      .social-icons {
-        top: 10px;
-        right: 15px;
-      }
-      .social-icons svg {
-        width: 26px;
-        height: 26px;
-      }
-    }
-  </style>
-</head>
-<body>
+@media (max-width: 768px) {
+  /* Adjust hamburger size & spacing */
+  .hamburger {
+    font-size: 20px;       /* Slightly smaller to fit narrower headers */
+    padding: 4px 8px;      /* Reduce padding to avoid wrapping */
+  }
 
+  /* Dropdown Menu */
+  .dropdown a {
+    font-size: 16px;       /* This is fine for readability on mobile */
+    padding: 12px 16px;    /* Slightly smaller spacing to fit narrower screens */
+  }
+
+  /* Social Icons */
+  .social-icons {
+    top: 10px;
+    right: 15px;
+    gap: 10px;             /* Reduce gap for tighter space */
+  }
+  .social-icons svg {
+    width: 24px;           /* Slightly smaller icons */
+    height: 24px;
+  }
+
+  /* Headings & Japanese Text */
+  .haku-text {
+    font-size: 70px;       /* Down from 130px for mobile */
+    letter-spacing: 3px;   /* Reduce letter spacing so text doesn’t overflow */
+    margin-bottom: 0;      /* Remove extra negative margin if it clips on mobile */
+  }
+  .japanese-text {
+    font-size: 16px;       /* Slightly smaller for tighter layout */
+    letter-spacing: -1px;  /* Adjust so it remains legible on narrower screens */
+    margin-bottom: 15px;
+    margin-top: -15px;     /* Tweak to keep consistent spacing above */
+  }
+
+  /* City / Melbourne lines */
+  h3.city-container {
+    font-size: 14px;       /* Keep city text smaller */
+    font-weight: 300;      /* Lighter text for a minimal look */
+    margin-bottom: 15px;   /* Adjust vertical spacing to keep layout balanced */
+  }
+  .city-left {
+    margin-left: -10px;    /* Less negative margin on mobile */
+  }
+  .city-right {
+    margin-right: -10px;   /* Ditto for right side */
+  }
+
+  /* Paragraph Text */
+  p {
+    font-size: 18px;       /* More legible on small screens than 30px */
+    line-height: 1.5;      /* Slightly tighter line spacing for mobile */
+    margin: 0 20px;        /* Add horizontal padding so text doesn't butt edges */
+  }
+
+  /* Button */
+  .book-button {
+    padding: 10px 32px;    /* Slightly less padding for smaller screens */
+    font-size: 16px;       /* Keep it big enough to tap easily */
+    margin-top: 40px;      /* Reduce top margin so CTA isn’t too far down */
+  }
+
+  /* Incense and Flame Layout */
+  .incense-container {
+    right: -80px;          /* Bring it closer so it’s not too far off-screen */
+    top: -30px;            /* Reduce negative top so it’s visible on smaller screens */
+    width: 140px;          /* Scale down so it fits better */
+  }
+  .ember, .ember2 {
+    top: 28.5%;            /* Possibly move them a bit lower or higher depending on how the image scales */
+    left: 68%;             /* Adjust if you notice misalignment after resizing the incense container */
+    width: 2px;            /* Keep consistent with scaled container */
+    height: 12px;          /* Slightly shorter if the container is smaller */
+  }
+}
   <!-- Top Bar -->
   <div class="top-bar">
     <!-- Hamburger Icon -->
