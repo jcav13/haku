@@ -200,18 +200,35 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
       transform: scale(1.05);
     }
 
+.haku-container {
+    display: flex;
+    align-items: center; /* Aligns the text and incense vertically */
+    justify-content: center; /* Centers the content */
+    position: relative;
+}
+
+.haku-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 130px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    margin: 0 20px; /* Adds spacing between text and incense */
+    display: flex;
+    align-items: center;
+}
+
 .incense-container {
     display: inline-block;
     position: relative;
     width: 120px; /* Adjust width */
     height: auto;
-    margin-left: 15px; /* Adjust spacing from "U" */
+    margin-left: 30px; /* Moves incense further right */
     vertical-align: bottom;
-    top: -15px; /* Manually move it up */
+    top: -15px; /* Moves incense upwards */
 }
 
 .incense {
-    width: 100%; /* Ensures the image scales with the container */
+    width: 100%;
     height: auto;
     vertical-align: bottom;
 }
@@ -274,12 +291,12 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
   </div>
 
   <!-- Main Text (Centered) -->
-  <h1>
-    H A K U <span class="incense-container">
-        <img src="https://github.com/jcav13/haku/blob/main/62a536eb-bf34-43ab-b9b3-7c75f6005ed1_removalai_preview.png?raw=true" 
-        alt="Incense" class="incense">
-    </span>
-</h1>
+<div class="haku-container">
+    <h1 class="haku-text">H A K U</h1>
+    <div class="incense-container">
+        <img class="incense" src="https://github.com/jcav13/haku/blob/main/62a536eb-bf34-43ab-b9b3-7c75f6005ed1_removalai_preview.png?raw=true" alt="Japanese Incense">
+    </div>
+</div>
   <h2 class="japanese-text">ハ　ク</h2>
   <h3> Melbourne        メルボルン </h3>  
   <p>personalized massage, inspired by Japanese tradition</p>
