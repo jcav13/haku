@@ -238,66 +238,70 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     height: auto;
 }
     /* Position the ember near the tip of the incense */
-.ember {
+     .ember {
   position: absolute;
-  /* Instead of 0%, use something that visually lines up with the incense tip: */
-  top: 23.5%;   /* Tweak to move up/down */
-  left: 64.8%;  /* Tweak to move left/right */
+ width: 4px;   /* Narrow width */
+  height: 14px; /* Taller height for a “flame” shape */
 
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,140,0,0.8) 0%, rgba(255,69,0,0.4) 60%, transparent 100%);
-  animation: emberFlicker 2s infinite ease-in-out;
-}
+  /* Elliptical shape: 50% horizontal radius, smaller vertical radius. */
+  /* Or simply 9999px for a pill shape. Experiment with these values. */
+  border-radius: 20px / 50%;
 
-/* Example flicker: adjust as you like */
-@keyframes emberFlicker {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.6;
-  }
-}
-  /* A radial gradient that looks like a glowing ember */
-  background: radial-gradient(
-    circle,
-    rgba(255, 140, 0, 0.8) 0%,
-    rgba(255, 69, 0, 0.4) 60%,
+  /* A vertical flame-like gradient: bright at top, fades at bottom */
+  background: linear-gradient(
+    to bottom,
+    rgba(255,140,0, 0.9) 0%,
+    rgba(255,69,0, 0.7) 50%,
     transparent 100%
   );
-  
+
   animation: emberFlicker 2s infinite ease-in-out;
+  transform-origin: center bottom; /* If you want it to pivot from bottom. */
 }
 
-/* Simple flicker animation */
 @keyframes emberFlicker {
   0%, 100% {
-    transform: scale(1);
+    transform: scaleY(1);
     opacity: 1;
   }
   50% {
-    transform: scale(1.2);
-    opacity: 0.6;
+    transform: scaleY(1.1);
+    opacity: 0.7;
   }
 }
-  
 
-/* Keyframes for smoke rising and fading */
-@keyframes rise {
-  0% {
-    bottom: 0px;
+  .ember2 {
+  position: absolute;
+  top: 23.5%;   /* same vertical alignment, or slightly different if needed */
+  left: 65.4%;  /* a bit more to the right than the first (e.g. +0.6%) */
+
+  /* same width, height, border-radius, etc. */
+  width: 4px;
+  height: 14px;
+  border-radius: 20px / 50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,140,0, 0.9) 0%,
+    rgba(255,69,0, 0.7) 50%,
+    transparent 100%
+  );
+  animation: emberFlicker2 2s infinite ease-in-out;
+  transform-origin: center bottom;
+}
+
+/* Optionally tweak the flicker slightly */
+@keyframes emberFlicker2 {
+  0%, 100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  40% {
+    transform: scaleY(1.2);
     opacity: 0.8;
   }
-  50% {
-    opacity: 0.4;
-  }
-  100% {
-    bottom: 100px;   /* drift up 100px */
-    opacity: 0;      /* fade out */
+  60% {
+    transform: scaleY(0.95);
+    opacity: 0.5;
   }
 }
     /* Mobile Styling */
@@ -370,16 +374,10 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     <h3> Melbourne メルボルン </h3>  
     <p>personalized massage, inspired by Japanese tradition</p>
 
-    <!-- The glowing ember -->
+  <!-- First flame -->
   <div class="ember"></div>
-
-  <!-- Smoke container -->
-  <div class="smoke">
-    <!-- You can use multiple trails for a more convincing effect -->
-    <div class="smoke-trail"></div>
-    <div class="smoke-trail"></div>
-    <div class="smoke-trail"></div>
-  </div>
+  <!-- Second flame -->
+  <div class="ember ember2"></div>
 </div>
     <!-- Book Now Button -->
     <a href="book.html" class="book-button">Book</a>
