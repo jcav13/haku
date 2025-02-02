@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>HAKU</title>
 
-  <!-- Google Fonts Import -->
   <style>
-
+    /* 1) Load Optima font from GitHub */
     @font-face {
-    font-family: 'Optima';
-    src: url('https://github.com/jcav13/haku/raw/refs/heads/main/OPTIMA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-    
-    /* General Styling */
-    body {
-         background-color: #293717; /* Base Dark Green */
-    color: #F1E7BB; /* Light Cream Text */
-    font-family: 'Optima', sans-serif;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow-x: hidden;
+      font-family: 'Optima';
+      src: url('https://github.com/jcav13/haku/raw/refs/heads/main/OPTIMA.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
     }
-@keyframes fadeInOpacity {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-    /* Fade-in animation for text */
-h1, h2, h3, h4, p {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 2.5s ease-out forwards;
-}
 
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    /* 2) Base Styling */
+    body {
+      background-color: #293717; /* Dark Green */
+      color: #F1E7BB;           /* Light Cream */
+      font-family: 'Optima', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; /* Center main content vertically */
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-    /* Top Navbar */
+    /* 3) Fade-in Animations for Headings, Paragraphs */
+    h1, h2, h3, h4, p {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 2.5s ease-out forwards;
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 4) Top Nav / Hamburger & Social Icons */
     .top-bar {
       position: absolute;
       top: 15px;
@@ -77,51 +68,82 @@ h1, h2, h3, h4, p {
       display: flex;
       align-items: center;
     }
+    .social-icons {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .social-icons svg {
+      width: 26px;
+      height: 26px;
+      fill: #F1E7BB;
+      transition: transform 0.2s ease-in-out;
+    }
+    .social-icons a:hover svg {
+      transform: scale(1.1);
+    }
 
-h1 {
-    font-family: 'Optima', sans-serif;
-    font-size: 130px; /* Larger */
-    font-weight: 200; /* Elegant */
-    letter-spacing: 6px; /* Slight spacing */
-    margin-bottom: -20px;
-}
+    /* 5) Headings */
+    /* Above HAKU: "Personalised Home Massage" */
     h2 {
-    font-family: 'Optima', sans-serif;
-    font-weight: 200;
-      font-size: 35px;
-    letter-spacing: 20px;
-    margin-bottom: 30px;
-      margin-top: -25px
-}
+      font-size: 24px;
+      font-weight: 200;
+      margin: 0;              /* let us control spacing in custom margins below */
+      margin-bottom: 40px;    /* space below if desired */
+    }
+    /* H A K U */
+    h1 {
+      font-size: 130px;
+      font-weight: 200;
+      letter-spacing: 6px;
+      margin: 0;
+      margin-bottom: -20px;   /* if you like that overlap effect, else reduce or remove */
+    }
+    /* ハ ク (Japanese) below HAKU */
     h3 {
-    font-size: 30px;
-    font-weight: 200;
-     margin-top: 0px;    /* instead of 150px */
-  margin-bottom: 20px;
-}
-     h4 {
-    font-size: 18px;
-    font-weight: 200;
-  margin-top: 150px;
-          letter-spacing: 3px 
-}
-    p {
-    font-size: 30px;
-    font-weight: 200;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-    /* Dropdown Menu */
+      font-size: 28px;
+      font-weight: 200;
+      margin: 0;
+      margin-bottom: 50px;    /* adjust spacing below */
+    }
+    /* Melbourne near the bottom, above Book button */
+    h4 {
+      font-size: 18px;
+      font-weight: 200;
+      margin: 0;
+      margin-bottom: 80px;    /* space above button */
+    }
+
+    /* 6) The Book Button */
+    .book-button {
+      font-family: 'Optima', sans-serif;
+      color: #E8DCC0;
+      border: 2px solid #E8DCC0;
+      padding: 12px 42px;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 50px;
+      letter-spacing: 1px;
+      transition: all 0.4s ease-in-out;
+      display: inline-block;
+      /* margin-top: can be adjusted if you need it even lower */
+    }
+    .book-button:hover {
+      background: rgba(232, 220, 192, 0.15);
+      color: #E8DCC0;
+      transform: scale(1.05);
+    }
+
+    /* 7) Basic Dropdown Menu (unchanged) */
     .dropdown {
       position: absolute;
       top: 50px;
       left: 10px;
-      background: linear-gradient(
-        180deg,
-        rgba(241, 231, 187, 0.98),
-        rgba(241, 231, 187, 0.90)
-      );
+      background: linear-gradient(180deg, rgba(241,231,187,0.98), rgba(241,231,187,0.9));
       border-radius: 14px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       width: 190px;
@@ -133,9 +155,8 @@ h1 {
     }
     .dropdown a {
       text-decoration: none;
-      color: #293717; /* Dark Green */
+      color: #293717;
       padding: 16px 20px;
-      display: block;
       font-size: 18px;
       font-weight: 500;
       position: relative;
@@ -162,174 +183,63 @@ h1 {
       display: flex;
       opacity: 1;
       transform: translateY(0);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
-    /* Social Media Icons */
-    .social-icons {
-      position: absolute;
-      top: 15px;
-      right: 20px;
+    /* 8) Container for headings, etc. */
+    .content-wrapper {
       display: flex;
-      justify-content: flex-end;
+      flex-direction: column;
       align-items: center;
-      gap: 15px;
-      width: auto;
-    }
-    .social-icons a {
-      display: inline-block;
-      transition: opacity 0.3s ease-in-out;
-    }
-    .social-icons a:hover {
-      opacity: 0.6;
-    }
-    .social-icons svg {
-      width: 26px;
-      height: 26px;
-      fill: #F1E7BB;
-      transition: transform 0.2s ease-in-out;
-    }
-    .social-icons a:hover svg {
-      transform: scale(1.1);
+      justify-content: center; 
+      text-align: center;
     }
 
-    /* Text Styling */
-    /* "HAKU" large, "massage" medium on same line */
-    /* We'll let h1 handle them inline */
-    h1 {
-      margin-bottom: 5px;
+    /* 9) Media Query for Mobile Adjustments (tweak as needed) */
+    @media (max-width: 768px) {
+      .hamburger {
+        font-size: 20px;
+        padding: 4px 8px;
+      }
+      .social-icons {
+        top: 10px;
+        right: 15px;
+        gap: 10px;
+      }
+      .social-icons svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      h1 {
+        font-size: 70px;   
+        letter-spacing: 3px;
+        margin-bottom: 0; 
+      }
+      h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      h3 {
+        font-size: 24px;
+        margin-bottom: 30px;
+      }
+      h4 {
+        font-size: 16px;
+        margin-bottom: 50px;
+      }
+      .book-button {
+        margin-top: 50px;
+        font-size: 16px;
+        padding: 10px 32px;
+      }
     }
-
-    .book-button {
-    font-family: 'Optima', sans-serif;
-    color: #E8DCC0;
-    border: 2px solid #E8DCC0;
-    padding: 12px 42px;
-    font-size: 18px;
-    font-weight: 500;
-    text-decoration: none;
-    border-radius: 50px;
-    letter-spacing: 1px;
-    transition: all 0.4s ease-in-out;
-    display: inline-block;
-    margin-top: 220px; /* Increase spacing to move it lower */
-}
-    .book-button:hover {
-      background: rgba(232, 220, 192, 0.15);
-      color: #E8DCC0;
-      transform: scale(1.05);
-    }
-    
-@font-face {
-    font-family: 'Optima';
-    src: url('https://github.com/jcav13/haku/raw/refs/heads/main/OPTIMA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-    
-/* Center everything inside a single container */
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Keep HAKU and incense in line */
-.haku-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-/* Center the text */
-.haku-text {
-    font-family: 'Optima', sans-serif;
-    font-size: 130px;
-    font-weight: 200;
-    letter-spacing: 6px;
-    margin: 0;
-    text-align: center; /* Ensures centering */
-}
-    .city-container {
-    width: 480px; /* Slightly less width */
-}
-
-.city-left {
-    margin-left: -50px; /* Push Melbourne left */
-}
-
-.city-right {
-    margin-right: -50px; /* Push メルボルン right */
-}
-
-
-@media (max-width: 768px) {
-  /* Adjust hamburger size & spacing */
-  .hamburger {
-    font-size: 20px;       /* Slightly smaller to fit narrower headers */
-    padding: 4px 8px;      /* Reduce padding to avoid wrapping */
-  }
-
-  /* Dropdown Menu */
-  .dropdown a {
-    font-size: 16px;       /* This is fine for readability on mobile */
-    padding: 12px 16px;    /* Slightly smaller spacing to fit narrower screens */
-  }
-
-  /* Social Icons */
-  .social-icons {
-    top: 10px;
-    right: 15px;
-    gap: 10px;             /* Reduce gap for tighter space */
-  }
-  .social-icons svg {
-    width: 24px;           /* Slightly smaller icons */
-    height: 24px;
-  }
-
-  /* Headings & Japanese Text */
-  .haku-text {
-    font-size: 70px;       /* Down from 130px for mobile */
-    letter-spacing: 3px;   /* Reduce letter spacing so text doesn’t overflow */
-    margin-bottom: 0;      /* Remove extra negative margin if it clips on mobile */
-  }
-  .japanese-text {
-    font-size: 16px;       /* Slightly smaller for tighter layout */
-    letter-spacing: -1px;  /* Adjust so it remains legible on narrower screens */
-    margin-bottom: 15px;
-    margin-top: -15px;     /* Tweak to keep consistent spacing above */
-  }
-
- h3 {
-    font-size: 24px;       /* Slightly smaller for tighter layout */
-    letter-spacing: -1px;  /* Adjust so it remains legible on narrower screens */
-     margin-bottom: 60px;
-    margin-top: 40px;  
-  }
-   h4 {
-    font-size: 18px;       /* Slightly smaller for tighter layout */
-    letter-spacing: 5px;  /* Adjust so it remains legible on narrower screens */
-     margin-bottom: 60px;
-    margin-top: 40px;
-  }
-
-  /* Button */
-  .book-button {
-    padding: 10px 32px;    /* Slightly less padding for smaller screens */
-    font-size: 16px;       /* Keep it big enough to tap easily */
-    margin-top: 160px;      /* Reduce top margin so CTA isn’t too far down */
-  }
-
-</style>
+  </style>
+</head>
 <body>
   <!-- Top Bar -->
   <div class="top-bar">
-    <!-- Hamburger Icon -->
     <div class="hamburger" onclick="toggleMenu()">☰</div>
-
-    <!-- Dropdown Menu -->
     <div class="dropdown" id="dropdownMenu">
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
@@ -337,55 +247,58 @@ h1 {
     </div>
   </div>
 
-  <!-- Social Media Icons -->
+  <!-- Social Icons -->
   <div class="social-icons">
     <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
+      <!-- Instagram SVG -->
       <svg viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10" fill="none"/>
-        <path d="M12 2.163c-5.14 0-9.837 4.118-9.837 9.837 
-                 s4.118 9.837 9.837 9.837 9.837-4.118 9.837-9.837 
-                 -4.118-9.837-9.837-9.837zm0 18.26c-4.593 0-8.323-3.73 
-                 -8.323-8.323s3.73-8.323 8.323-8.323 8.323 3.73 8.323 
-                 8.323-3.73 8.323-8.323 8.323zm4.98-10.34a1.572 
-                 1.572 0 1 1 0-3.143 1.572 1.572 0 0 1 0 3.143z"/>
+        <path d="M12 2.163c-5.14 0-9.837 4.118-9.837 9.837
+                 s4.118 9.837 9.837 9.837 9.837-4.118
+                 9.837-9.837-4.118-9.837-9.837-9.837zm0
+                 18.26c-4.593 0-8.323-3.73-8.323-8.323
+                 s3.73-8.323 8.323-8.323 8.323 3.73
+                 8.323 8.323-3.73 8.323-8.323 8.323zm4.98-10.34
+                 a1.572 1.572 0 1 1 0-3.143
+                 1.572 1.572 0 0 1 0 3.143z"/>
       </svg>
     </a>
     <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
+      <!-- Facebook SVG -->
       <svg viewBox="0 0 24 24">
-        <path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96
-                 0 4.94 3.63 9.05 8.36 9.82v-6.94h-2.52v-2.88h2.52v-2.2
-                 c0-2.5 1.5-3.88 3.78-3.88h2.24v2.48h-1.26c-1.24 0-1.63.77-1.63 
-                 1.56v1.84h2.78l-.44 2.88h-2.34v6.94c4.73-.77 
-                 8.36-4.88 8.36-9.82 0-5.5-4.46-9.96-9.96-9.96z"/>
+        <path d="M12 2.04
+                 c-5.5 0-9.96 4.46-9.96 9.96
+                 0 4.94 3.63 9.05 8.36 9.82v-6.94h-2.52
+                 v-2.88h2.52v-2.2c0-2.5 1.5-3.88
+                 3.78-3.88h2.24v2.48h-1.26c-1.24 0-1.63.77
+                 -1.63 1.56v1.84h2.78l-.44 2.88h-2.34
+                 v6.94c4.73-.77 8.36-4.88 8.36-9.82
+                 0-5.5-4.46-9.96-9.96-9.96z"/>
       </svg>
     </a>
   </div>
 
-  <!-- Main Text (Centered) -->
   <div class="content-wrapper">
-<!-- Inside your .content-wrapper -->
-<div class="haku-wrapper">
-  <h1 class="haku-text">H A K U</h1>
-</div>
+    <!-- 1) Personalised Massage Service (above HAKU) -->
+    <h2>Personalized Home Massage</h2>
 
-<!-- ハ ク, placed below H A K U -->
-<h2 class="japanese-text" style="margin-bottom: 5px;">
-  ハ ク
-</h2>
+    <!-- 2) H A K U (large) -->
+    <h1>H A K U</h1>
 
-<h3 class="home-service">Home Massage.</h3>
-<h4 class="city-container">
-  <span class="city-left">Melbourne</span>
-  <span class="city-right">メルボルン</span>
-</h4>
-    
-  <!-- Book Now Button -->
-  <a href="book.html" class="book-button">Book</a>
+    <!-- 3) ハ ク (Japanese under HAKU) -->
+    <h3>ハ ク</h3>
 
-  <!-- JavaScript for Dropdown (unchanged) -->
+    <!-- 4) Melbourne (below that) -->
+    <h4>MELBOURNE</h4>
+
+    <!-- Book Button near the bottom -->
+    <a href="book.html" class="book-button">Book</a>
+  </div>
+
+  <!-- JavaScript for Dropdown -->
   <script>
     function toggleMenu() {
-      var menu = document.getElementById("dropdownMenu");
+      const menu = document.getElementById("dropdownMenu");
       menu.style.display = "flex";
       setTimeout(() => {
         menu.classList.add("open");
@@ -400,9 +313,9 @@ h1 {
     }
 
     document.addEventListener("click", function(event) {
-      var menu = document.getElementById("dropdownMenu");
-      var button = document.querySelector(".hamburger");
-      if (!menu.contains(event.target) && !button.contains(event.target)) {
+      const menu = document.getElementById("dropdownMenu");
+      const button = document.querySelector(".hamburger");
+      if (!menu.contains(event.target) && event.target !== button) {
         menu.classList.remove("open");
         setTimeout(() => {
           menu.style.display = "none";
