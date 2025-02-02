@@ -33,7 +33,7 @@
   }
 }
     /* Fade-in animation for text */
-h1, h2, h3, p, .incense-container, .ember, .ember2 {
+h1, h2, h3, p, .incense-container {
   opacity: 0;
   transform: translateY(20px);
   /* old:
@@ -246,17 +246,8 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     width: 100%;
     height: auto;
 }
-    /* Position the ember near the tip of the incense */
-     .ember {
+/* Embers: Only fade in opacity + flicker, no "translateY(20px)" */
 .ember {
-  opacity: 0;
-  transform: translateY(20px);
-
-  /* Combine both animations on the same line */
-  animation: 
-    fadeInOpacity 2.5s ease-out forwards, 
-    emberFlicker 4s infinite ease-in-out;
-
   position: absolute;
   top: 23.5%;
   left: 65%;
@@ -270,7 +261,41 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     transparent 100%
   );
   transform-origin: center bottom;
+
+  /* Start invisible */
+  opacity: 0;
+
+  /* Combine fadeInOpacity + flicker in a single line */
+  animation: 
+    fadeInOpacity 2.5s ease-out forwards,
+    emberFlicker 4s infinite ease-in-out;
 }
+
+.ember2 {
+  position: absolute;
+  top: 23.5%;
+  left: 65.87%;
+  width: 4px;
+  height: 14px;
+  border-radius: 20px / 50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,140,0, 0.9) 0%,
+    rgba(255,69,0, 0.7) 50%,
+    transparent 100%
+  );
+  transform-origin: center bottom;
+
+  /* Start invisible */
+  opacity: 0;
+
+  /* Same fade + flicker or a slightly different flicker if you want */
+  animation: 
+    fadeInOpacity 2.5s ease-out forwards,
+    emberFlicker2 4s infinite ease-in-out;
+}
+
+/* Keyframe for the flicker(s) */
 @keyframes emberFlicker {
   0%, 100% {
     transform: scaleY(1);
@@ -286,31 +311,6 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
   }
 }
 
-.ember2 {
-  opacity: 0;
-  transform: translateY(20px);
-
-  /* Combine fade-in and flicker as well */
-  animation:
-    fadeInOpacity 2.5s ease-out forwards,
-    emberFlicker 4s infinite ease-in-out;
-
-  position: absolute;
-  top: 23.5%;
-  left: 65.87%;
-  width: 4px;
-  height: 14px;
-  border-radius: 20px / 50%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,140,0, 0.9) 0%,
-    rgba(255,69,0, 0.7) 50%,
-    transparent 100%
-  );
-  transform-origin: center bottom;
-}
-
-/* Optionally tweak the flicker slightly */
 @keyframes emberFlicker2 {
   0%, 100% {
     transform: scaleY(1);
@@ -323,6 +323,16 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
   60% {
     transform: scaleY(0.95);
     opacity: 0.5;
+  }
+}
+
+/* Fade-in only for opacity (no translateY) */
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
     /* Mobile Styling */
