@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>HAKU</title>
 
   <style>
+    /* 1) Load Optima font from GitHub */
     @font-face {
       font-family: 'Optima';
       src: url('https://github.com/jcav13/haku/raw/refs/heads/main/OPTIMA.woff') format('woff');
@@ -13,7 +14,7 @@
       font-style: normal;
     }
 
-    /* Base Page Styling */
+    /* 2) Base Styling */
     body {
       background-color: #293717; /* Dark Green */
       color: #F1E7BB;           /* Light Cream */
@@ -23,77 +24,80 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      align-items: center; /* horizontally center */
+      text-align: center;  /* center headings */
       overflow-x: hidden;
     }
 
-    /* content-wrapper splits top (headings) & bottom (Melbourne+Book) */
-    .content-wrapper {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* top-section: keep headings in the vertical middle (unchanged) */
+    /* 3) Make a top-section that centers headings vertically (Personalised, H A K U, ハ ク) */
     .top-section {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center; 
-      align-items: center; 
+      justify-content: center; /* center all vertically in the page */
+      align-items: center;
       text-align: center;
     }
 
-    /* bottom-section: move upwards by negative margin-top, 
-       so MELBOURNE & Book both shift up. */
-    .bottom-section {
+    /* 4) A middle-block of fixed height to place MELBOURNE exactly halfway between 
+          the top item (ハ ク) and the Book button, using space-between. */
+    .middle-block {
       display: flex;
       flex-direction: column;
+      justify-content: space-between; /* evenly distribute top vs bottom, so middle is in the exact halfway */
       align-items: center;
-      /* Remove the old margin-bottom, and add negative margin-top to push them upward. */
-      margin-top: -50px;   /* Tweak to move Melbourne+Book up more/less */
-      margin-bottom: 0;    
+      /* ADJUST height to achieve the desired spacing between ハ ク and the Book button: */
+      height: 250px; /* tweak this as needed */
+      width: 100%;
+      max-width: 400px; /* optional limit so it doesn't stretch too wide */
+      margin-bottom: 50px; /* gap above final bottom edge if you want more space from bottom of page */
     }
 
-    /* Fade-in Animations */
+    /* 5) Fade-in Animations for headings */
     h1, h2, h3, h4 {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 2.5s ease-out forwards;
     }
     @keyframes fadeInUp {
-      0%   { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Headings */
+    /* 6) Headings styling */
     h2 {
       font-size: 24px;
       font-weight: 200;
-      margin: 0;
-      margin-bottom: 10px;
+      margin: 0 0 20px 0; /* spacing above H A K U */
     }
     h1 {
       font-size: 130px;
       font-weight: 200;
       letter-spacing: 6px;
       margin: 0;
-      margin-bottom: -20px;
+      margin-bottom: -20px; /* if you like the small overlap under H A K U */
     }
     h3 {
       font-size: 28px;
       font-weight: 200;
       letter-spacing: 25px;
       margin: 0;
-      margin-bottom: 30px;
+      margin-bottom: 20px; /* gap below ハ ク */
     }
     h4 {
       font-size: 18px;
       font-weight: 200;
       margin: 0;
-      margin-bottom: 30px; /* gap above the Book button */
+      /* Note: in .middle-block, h4 is placed in the middle by space-between */
     }
 
-    /* Book Button */
+    /* 7) The Book Button (bottom item in .middle-block) */
     .book-button {
       font-family: 'Optima', sans-serif;
       color: #E8DCC0;
@@ -108,12 +112,12 @@
       display: inline-block;
     }
     .book-button:hover {
-      background: rgba(232,220,192,0.15);
+      background: rgba(232, 220, 192, 0.15);
       color: #E8DCC0;
       transform: scale(1.05);
     }
 
-    /* Nav/Hamburger and Social Icons (unchanged) */
+    /* 8) Nav / Social Icons */
     .top-bar {
       position: absolute;
       top: 15px;
@@ -152,7 +156,7 @@
       transform: scale(1.1);
     }
 
-    /* Dropdown Menu (unchanged) */
+    /* 9) Dropdown menu (unchanged) */
     .dropdown {
       position: absolute;
       top: 50px;
@@ -200,7 +204,7 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
-    /* Mobile Tweak if needed */
+    /* 10) Responsive adjustments if needed */
     @media (max-width: 768px) {
       h1 {
         font-size: 70px;
@@ -212,20 +216,23 @@
       h3 {
         font-size: 24px;
         letter-spacing: 15px;
-        margin-bottom: 20px;
       }
       h4 {
         font-size: 16px;
-        margin-bottom: 30px;
       }
-      .bottom-section {
-        margin-top: -30px; /* less negative margin if on smaller screens */
+      .middle-block {
+        height: 200px; /* or some smaller value for smaller screens */
+      }
+      .book-button {
+        font-size: 16px;
+        padding: 10px 32px;
       }
     }
   </style>
 </head>
+
 <body>
-  <!-- Nav -->
+  <!-- Top Bar -->
   <div class="top-bar">
     <div class="hamburger" onclick="toggleMenu()">☰</div>
     <div class="dropdown" id="dropdownMenu">
@@ -240,20 +247,20 @@
     <!-- Insert your Instagram & Facebook links/SVGs here -->
   </div>
 
-  <div class="content-wrapper">
-    <!-- Top headings (unchanged, stays in vertical middle) -->
-    <div class="top-section">
-      <h2>Personalised Home Massage</h2>
-      <h1>H A K U</h1>
-      <h3>ハ ク</h3>
-    </div>
+  <div class="top-section">
+    <!-- Top headings, vertically centered -->
+    <h2>Personalised Home Massage</h2>
+    <h1>H A K U</h1>
+    <h3>ハ ク</h3>
+  </div>
 
-    <!-- Bottom section with negative top margin to move it up, 
-         so both MELBOURNE & Book go upward together. -->
-    <div class="bottom-section">
-      <h4>MELBOURNE</h4>
-      <a href="book.html" class="book-button">Book</a>
-    </div>
+  <!-- Middle block with "MELBOURNE" halfway to the button --> 
+  <div class="middle-block">
+    <!-- The top of this block is effectively “under ハ ク.” 
+         We'll let space-between do the rest: top item, middle item, bottom item. -->
+    <div></div>            <!-- Empty/placeholder item at the top of this block -->
+    <h4>MELBOURNE</h4>     <!-- Middle item: placed exactly halfway by space-between -->
+    <a href="book.html" class="book-button">Book</a>  <!-- Bottom item -->
   </div>
 
   <script>
