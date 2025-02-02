@@ -226,20 +226,19 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     text-align: center; /* Ensures centering */
 }
 
-/* Move incense relative to HAKU */
 .incense-container {
-    width: 100px;
+    position: absolute;
+    right: -120px; /* Adjust for alignment */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 140px; /* Increased size */
     height: auto;
-    margin-left: 30px; /* Moves incense slightly right */
-    position: relative;
-    top: 10px; /* Move up manually */
 }
-
-/* Style for the incense image */
 .incense {
     width: 100%;
     height: auto;
 }
+    
     /* Mobile Styling */
     @media (max-width: 768px) {
       .hamburger {
