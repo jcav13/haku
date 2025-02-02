@@ -21,23 +21,17 @@
       font-family: 'Optima', sans-serif;
       margin: 0;
       padding: 0;
-      /* We'll let .content-wrapper handle vertical spacing. */
-      overflow-x: hidden;
-    }
-
-    /* 3) Container that fills the viewport, 
-       so we can place the “bottom” section near bottom. */
-    .content-wrapper {
-      min-height: 100vh;               /* Fill the window vertically */
+      /* NO justify-content center here to keep top headings from shifting */
       display: flex;
       flex-direction: column;
-      justify-content: space-between;  /* Top content at top, bottom section at bottom */
-      align-items: center;             /* Center horizontally */
+      align-items: center; /* horizontally center only */
       text-align: center;
+      overflow-x: hidden;
+      min-height: 100vh; /* optional if you want full viewport coverage */
     }
 
-    /* 4) Fade-in Animations */
-    h1, h2, h3, h4, p {
+    /* 3) Fade-in Animations for Headings, Paragraphs */
+    h1, h2, h3, h4 {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 2.5s ease-out forwards;
@@ -53,69 +47,7 @@
       }
     }
 
-    /* 5) Headings */
-    h2 {
-      font-size: 24px;
-      font-weight: 200;
-      margin: 0;
-      margin-bottom: 0;      /* Adjust if you want more gap before H A K U */
-    }
-    h1 {
-      font-size: 90px;
-      font-weight: 200;
-      letter-spacing: 6px;
-      margin: 0;
-      margin-bottom: -20px;  
-    }
-    h3 {
-      font-size: 28px;
-      font-weight: 200;
-      letter-spacing: 25px;  /* Extra spacing for ハ ク, tweak as desired */
-      margin: 0;
-      margin-bottom: 30px;   /* Space after h3 */
-    }
-    h4 {
-      font-size: 18px;
-      font-weight: 200;
-      margin: 0;
-      /* We'll rely on spacing within .bottom-section for final layout. */
-    }
-
-    /* 6) The Book Button */
-    .book-button {
-      font-family: 'Optima', sans-serif;
-      color: #E8DCC0;
-      border: 2px solid #E8DCC0;
-      padding: 12px 42px;
-      font-size: 18px;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 50px;
-      letter-spacing: 1px;
-      transition: all 0.4s ease-in-out;
-      display: inline-block;
-      margin-top: 40px;  /* Gap above the button so it's below MELBOURNE */
-    }
-    .book-button:hover {
-      background: rgba(232, 220, 192, 0.15);
-      color: #E8DCC0;
-      transform: scale(1.05);
-    }
-
-    /* 7) Sections: top & bottom */
-    .top-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .bottom-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 30px; /* Extra bottom margin if you want space from page bottom */
-    }
-
-    /* 8) Nav / Scripts / Social Icons as before */
+    /* 4) Top Bar, Hamburger, Social Icons (unchanged) */
     .top-bar {
       position: absolute;
       top: 15px;
@@ -154,7 +86,63 @@
       transform: scale(1.1);
     }
 
-    /* 9) Dropdown menu styling (unchanged) */
+    /* 5) Heading Styles */
+    h2 {
+      font-size: 24px;
+      font-weight: 200;
+      margin: 0; 
+      margin-bottom: 0; /* or 10px, adjust if needed */
+    }
+    h1 {
+      font-size: 130px;
+      font-weight: 200;
+      letter-spacing: 6px;
+      margin: 0;
+      margin-bottom: -20px; /* Overlap effect under H1, remove if undesired */
+    }
+    h3 {
+      font-size: 28px;
+      font-weight: 200;
+      letter-spacing: 25px;  
+      margin: 0;
+      margin-bottom: 30px;   /* Slight gap under ハ ク */
+    }
+    /* 
+      Pushing MELBOURNE further down 
+      without shifting top headings.
+      Large top margin to place it lower on the page.
+    */
+    h4 {
+      font-size: 18px;
+      font-weight: 200;
+      margin: 0; 
+      margin-top: 200px; /* Increase to push MELBOURNE down */
+      margin-bottom: 30px; /* Gap above Book button */
+    }
+
+    /* 6) The Book Button */
+    .book-button {
+      font-family: 'Optima', sans-serif;
+      color: #E8DCC0;
+      border: 2px solid #E8DCC0;
+      padding: 12px 42px;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 50px;
+      letter-spacing: 1px;
+      transition: all 0.4s ease-in-out;
+      display: inline-block;
+      /* Add a small top margin to separate from MELBOURNE. */
+      margin-top: 20px; 
+    }
+    .book-button:hover {
+      background: rgba(232, 220, 192, 0.15);
+      color: #E8DCC0;
+      transform: scale(1.05);
+    }
+
+    /* 7) Dropdown Menu */
     .dropdown {
       position: absolute;
       top: 50px;
@@ -202,15 +190,15 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
-    /* 10) Media Query Example (tweak if needed) */
+    /* 8) Media Query for Mobile Adjustments (optional) */
     @media (max-width: 768px) {
       h1 {
         font-size: 70px;
         letter-spacing: 3px;
+        margin-bottom: 0; 
       }
       h2 {
         font-size: 20px;
-        margin-bottom: 15px;
       }
       h3 {
         font-size: 24px;
@@ -219,10 +207,11 @@
       }
       h4 {
         font-size: 16px;
-        margin-bottom: 60px;
+        margin-top: 120px;    /* push lower on small screens if you want */
+        margin-bottom: 20px;
       }
       .book-button {
-        margin-top: 40px;
+        margin-top: 20px;
         font-size: 16px;
         padding: 10px 32px;
       }
@@ -230,7 +219,6 @@
   </style>
 </head>
 <body>
-
   <!-- Top Bar -->
   <div class="top-bar">
     <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -241,59 +229,30 @@
     </div>
   </div>
 
-  <!-- Social Icons -->
+  <!-- Social Media Icons -->
   <div class="social-icons">
-    <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
-      <!-- Instagram SVG -->
-      <svg viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" fill="none"/>
-        <path d="M12 2.163c-5.14 0-9.837 4.118-9.837 9.837
-                 s4.118 9.837 9.837 9.837 9.837-4.118
-                 9.837-9.837-4.118-9.837-9.837-9.837zm0
-                 18.26c-4.593 0-8.323-3.73-8.323-8.323
-                 s3.73-8.323 8.323-8.323 8.323 3.73
-                 8.323 8.323-3.73 8.323-8.323 8.323zm4.98-10.34
-                 a1.572 1.572 0 1 1 0-3.143
-                 1.572 1.572 0 0 1 0 3.143z"/>
-      </svg>
-    </a>
-
-    <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
-      <!-- Facebook SVG -->
-      <svg viewBox="0 0 24 24">
-        <path d="M12 2.04
-                 c-5.5 0-9.96 4.46-9.96 9.96
-                 0 4.94 3.63 9.05 8.36 9.82v-6.94h-2.52
-                 v-2.88h2.52v-2.2c0-2.5 1.5-3.88
-                 3.78-3.88h2.24v2.48h-1.26
-                 c-1.24 0-1.63.77-1.63 1.56v1.84h2.78l-.44
-                 2.88h-2.34v6.94c4.73-.77
-                 8.36-4.88 8.36-9.82
-                 0-5.5-4.46-9.96-9.96-9.96z"/>
-      </svg>
-    </a>
+    <!-- Insert your Instagram & Facebook links/SVGs here -->
   </div>
 
   <!-- 
-    content-wrapper with top-section & bottom-section 
-    so we can space them with "space-between"
+    We keep everything in normal flow so that 
+    the top headings remain exactly where they are. 
   -->
-  <div class="content-wrapper">
-    <!-- top-section for the headings above. -->
-    <div class="top-section">
-      <h2>Personalised Home Massage</h2>
-      <h1>H A K U</h1>
-      <h3>ハ ク</h3>
-    </div>
+  <!-- Personalised Massage Service -->
+  <h2>Personalised Home Massage</h2>
+  
+  <!-- H A K U -->
+  <h1>H A K U</h1>
 
-    <!-- bottom-section for Melbourne + Book button near the bottom -->
-    <div class="bottom-section">
-      <h4>MELBOURNE</h4>
-      <a href="book.html" class="book-button">Book</a>
-    </div>
-  </div>
+  <!-- ハ ク (Japanese) -->
+  <h3>ハ ク</h3>
 
-  <!-- JavaScript for Dropdown -->
+  <!-- M E L B O U R N E, pushed further down via margin-top -->
+  <h4>MELBOURNE</h4>
+
+  <!-- Book Button near bottom, with margin-top for spacing below M E L B O U R N E -->
+  <a href="book.html" class="book-button">Book</a>
+
   <script>
     function toggleMenu() {
       const menu = document.getElementById("dropdownMenu");
