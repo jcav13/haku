@@ -200,6 +200,21 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
       transform: scale(1.05);
     }
 
+    .incense-container {
+    display: inline-block;
+    position: relative;
+    width: 40px; /* Adjust the size of the image */
+    height: auto;
+    margin-left: 10px; /* Space between "U" and incense */
+    vertical-align: middle;
+}
+
+.incense {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
     /* Mobile Styling */
     @media (max-width: 768px) {
       .hamburger {
@@ -258,7 +273,12 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
   </div>
 
   <!-- Main Text (Centered) -->
-  <h1>H A K U</h1>
+  <h1>
+    H A K U <span class="incense-container">
+        <img src="https://github.com/jcav13/haku/blob/main/62a536eb-bf34-43ab-b9b3-7c75f6005ed1_removalai_preview.png?raw=true" 
+        alt="Incense" class="incense">
+    </span>
+</h1>
   <h2 class="japanese-text">ハ　ク</h2>
   <h3> Melbourne        メルボルン </h3>  
   <p>personalized massage, inspired by Japanese tradition</p>
