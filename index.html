@@ -23,9 +23,9 @@
       padding: 0;
       min-height: 100vh;
 
-      /*
-        We'll place the headings in a top-section (vertically centered),
-        and MELBOURNE + Book in a bottom-section.
+      /* 
+        We'll place the headings in a top-section (vertically centered), 
+        and MELBOURNE + Book in a bottom-section. 
       */
       display: flex;
       flex-direction: column;
@@ -38,9 +38,9 @@
       flex-direction: column;
     }
 
-    /*
-      TOP SECTION: flex:1 to fill available space,
-      center headings vertically & horizontally.
+    /* 
+      TOP SECTION: flex:1 to fill available space, 
+      center headings vertically & horizontally. 
     */
     .top-section {
       flex: 1;
@@ -52,8 +52,8 @@
     }
 
     /*
-      BOTTOM SECTION:
-      We keep the Book button near the bottom
+      BOTTOM SECTION: 
+      We keep the Book button near the bottom 
       (by margin-bottom on .content-wrapper if desired).
     */
     .bottom-section {
@@ -105,7 +105,7 @@
       font-size: 20px;
       font-weight: 200;
       margin: 0;
-      /* SHIFT MELBOURNE UPWARD by a negative margin-top.
+      /* SHIFT MELBOURNE UPWARD by a negative margin-top. 
          Tweak this value to find your perfect halfway point. */
       margin-top: -180px;  /* example: moves MELBOURNE ~40px closer to ハ ク */
       margin-bottom: 180px;/* spacing above the Book button */
@@ -124,8 +124,13 @@
       letter-spacing: 1px;
       transition: all 0.4s ease-in-out;
       display: inline-block;
-      /* ADDED THIS LINE: pulls the button up by 50px */
-      margin-top: -50px;
+
+      /* 
+        Use relative positioning to shift Book upward, 
+        so it won't just bring MELBOURNE closer. 
+      */
+      position: relative;  
+      top: -50px;  /* move it ~50px upward */
     }
     .book-button:hover {
       background: rgba(232, 220, 192, 0.15);
@@ -178,7 +183,7 @@
       left: 10px;
       background: linear-gradient(180deg, rgba(241,231,187,0.98), rgba(241,231,187,0.9));
       border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       width: 190px;
       display: none;
       flex-direction: column;
@@ -216,7 +221,7 @@
       display: flex;
       opacity: 1;
       transform: translateY(0);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
     /* 7) Media Queries for smaller screens if needed */
@@ -242,7 +247,9 @@
       .book-button {
         font-size: 16px;
         padding: 10px 32px;
-        /* Still keep margin-top: -50px if you want it up on mobile too, or reduce if it's too high */
+
+        /* keep or tweak the top shift for mobile if you want less or more shift */
+        top: -30px; 
       }
     }
   </style>
@@ -263,12 +270,7 @@
     <!-- Insert your Instagram & Facebook links/SVGs here -->
   </div>
 
-  <!-- 
-      content-wrapper with top-section & bottom-section 
-      But top-section is centered, 
-      h4 is pulled up by negative margin, 
-      and the Book button is also pulled up with margin-top: -50px 
-  -->
+  <!-- Main container with top headings in .top-section, MELBOURNE + Book in .bottom-section -->
   <div class="content-wrapper">
     <div class="top-section">
       <h2>Personalised Home Massage</h2>
@@ -278,6 +280,7 @@
 
     <div class="bottom-section">
       <h4>MELBOURNE</h4>
+      <!-- Book button is now raised with position: relative; top: -50px; -->
       <a href="book.html" class="book-button">Book</a>
     </div>
   </div>
