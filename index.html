@@ -26,22 +26,24 @@
     }
 
     /* Fade-in animation for text */
-    h1, h2, h3, p, .incense-container, .ember {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s ease-out forwards;
-    }
+h1, h2, h3, p, .incense-container, .ember, .ember2 {
+  opacity: 0;
+  transform: translateY(20px);
+  /* old:
+  animation: fadeInUp 1s ease-out forwards; */
+  animation: fadeInUp 2.5s ease-out forwards;
+}
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
     /* Top Navbar */
     .top-bar {
