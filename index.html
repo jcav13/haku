@@ -22,39 +22,38 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-
-      /* We'll let .content-wrapper fill the screen. */
       display: flex;
       flex-direction: column;
+      align-items: center; /* horizontally center */
+      text-align: center;  /* center headings */
+      overflow-x: hidden;
     }
 
-    /* .content-wrapper splits into .top-section and .bottom-section */
-    .content-wrapper {
-      flex: 1; 
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Top section: center headings (Personalised..., H A K U, ハ ク) vertically */
+    /* 3) Make a top-section that centers headings vertically (Personalised, H A K U, ハ ク) */
     .top-section {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* vertical center */
-      align-items: center;     /* horizontal center */
+      justify-content: center; /* center all vertically in the page */
+      align-items: center;
       text-align: center;
     }
 
-    /* Bottom section: MELBOURNE + Book near bottom. We’ll rely on margins to place MELBOURNE halfway. */
-    .bottom-section {
+    /* 4) A middle-block of fixed height to place MELBOURNE exactly halfway between 
+          the top item (ハ ク) and the Book button, using space-between. */
+    .middle-block {
       display: flex;
       flex-direction: column;
+      justify-content: space-between; /* evenly distribute top vs bottom, so middle is in the exact halfway */
       align-items: center;
-      /* some bottom margin so button not flush with bottom edge */
-      margin-bottom: 50px; 
+      /* ADJUST height to achieve the desired spacing between ハ ク and the Book button: */
+      height: 250px; /* tweak this as needed */
+      width: 100%;
+      max-width: 400px; /* optional limit so it doesn't stretch too wide */
+      margin-bottom: 50px; /* gap above final bottom edge if you want more space from bottom of page */
     }
 
-    /* 3) Fade-in Animations */
+    /* 5) Fade-in Animations for headings */
     h1, h2, h3, h4, .book-button {
       opacity: 0;
       transform: translateY(20px);
@@ -71,41 +70,34 @@
       }
     }
 
-    /* 4) Heading Styles */
-    /* Personalised Massage (above H A K U) */
+    /* 6) Headings styling */
     h2 {
       font-size: 24px;
       font-weight: 200;
-      margin: 0;
-      margin-bottom: 10px;   /* small gap before H A K U */
+      margin: 0 0 20px 0; /* spacing above H A K U */
     }
-    /* H A K U (large center) */
     h1 {
       font-size: 130px;
       font-weight: 200;
       letter-spacing: 6px;
       margin: 0;
-      margin-bottom: -20px;  /* if you want a slight overlap effect, else remove */
+      margin-bottom: -20px; /* if you like the small overlap under H A K U */
     }
-    /* ハ ク under H A K U */
     h3 {
       font-size: 28px;
       font-weight: 200;
       letter-spacing: 25px;
       margin: 0;
-      margin-bottom: 30px;   /* space after ハ ク */
+      margin-bottom: 20px; /* gap below ハ ク */
     }
-    /* MELBOURNE: we’ll position it halfway between ハ ク & the button by adjusting margin. */
     h4 {
       font-size: 18px;
       font-weight: 200;
       margin: 0;
-      /* Add top margin to move it downward from top headings, but above the button. */
-      margin-top: 80px;      /* tweak this to move MELBOURNE closer/farther from ハ ク */
-      margin-bottom: 40px;   /* space above the Book button */
+      /* Note: in .middle-block, h4 is placed in the middle by space-between */
     }
 
-    /* 5) The Book Button */
+    /* 7) The Book Button (bottom item in .middle-block) */
     .book-button {
       font-family: 'Optima', sans-serif;
       color: #E8DCC0;
@@ -125,7 +117,7 @@
       transform: scale(1.05);
     }
 
-    /* 6) Nav / Hamburger / Social Icons */
+    /* 8) Nav / Social Icons */
     .top-bar {
       position: absolute;
       top: 15px;
@@ -164,7 +156,7 @@
       transform: scale(1.1);
     }
 
-    /* 7) Dropdown Menu (unchanged) */
+    /* 9) Dropdown menu (unchanged) */
     .dropdown {
       position: absolute;
       top: 50px;
@@ -212,25 +204,24 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
-    /* 8) Media Query for Mobile Adjustments */
+    /* 10) Responsive adjustments if needed */
     @media (max-width: 768px) {
       h1 {
         font-size: 70px;
         letter-spacing: 3px;
-        margin-bottom: 0; 
       }
       h2 {
         font-size: 20px;
       }
       h3 {
         font-size: 24px;
-        margin-bottom: 20px;
         letter-spacing: 15px;
       }
       h4 {
         font-size: 16px;
-        margin-top: 50px;   
-        margin-bottom: 30px;
+      }
+      .middle-block {
+        height: 200px; /* or some smaller value for smaller screens */
       }
       .book-button {
         font-size: 16px;
@@ -256,22 +247,22 @@
     <!-- Insert your Instagram & Facebook links/SVGs here -->
   </div>
 
-  <div class="content-wrapper">
-    <!-- TOP SECTION: Centered headings -->
-    <div class="top-section">
-      <h2>Personalised Home Massage</h2>
-      <h1>H A K U</h1>
-      <h3>ハ ク</h3>
-    </div>
-
-    <!-- BOTTOM SECTION: MELBOURNE & Book near bottom -->
-    <div class="bottom-section">
-      <h4>MELBOURNE</h4>
-      <a href="book.html" class="book-button">Book</a>
-    </div>
+  <div class="top-section">
+    <!-- Top headings, vertically centered -->
+    <h2>Personalised Home Massage</h2>
+    <h1>H A K U</h1>
+    <h3>ハ ク</h3>
   </div>
 
-  <!-- Script for Dropdown -->
+  <!-- Middle block with "MELBOURNE" halfway to the button --> 
+  <div class="middle-block">
+    <!-- The top of this block is effectively “under ハ ク.” 
+         We'll let space-between do the rest: top item, middle item, bottom item. -->
+    <div></div>            <!-- Empty/placeholder item at the top of this block -->
+    <h4>MELBOURNE</h4>     <!-- Middle item: placed exactly halfway by space-between -->
+    <a href="book.html" class="book-button">Book</a>  <!-- Bottom item -->
+  </div>
+
   <script>
     function toggleMenu() {
       const menu = document.getElementById("dropdownMenu");
