@@ -33,7 +33,7 @@
   }
 }
     /* Fade-in animation for text */
-h1, h2, h3, p, .incense-container {
+h1, h2, h3, p {
   opacity: 0;
   transform: translateY(20px);
   /* old:
@@ -246,100 +246,7 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     margin-right: -50px; /* Push メルボルン right */
 }
 
-.incense-container {
-    position: absolute;
-    right: -150px; /* Adjust spacing from 'U' */
-    top: -60px; /* Manually set the top position */
-    width: 200px; /* Increase width */
-    height: auto; /* Maintain aspect ratio */
-}
-.incense {
-    width: 100%;
-    height: auto;
-}
-/* Embers: Only fade in opacity + flicker, no "translateY(20px)" */
-.ember {
-  position: absolute;
-  top: 18.2%;
-  left: 70.1%;
-  width: 2px;
-  height: 14px;
-  border-radius: 20px / 50%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,140,0, 0.9) 0%,
-    rgba(255,69,0, 0.7) 50%,
-    transparent 100%
-  );
-  transform-origin: center bottom;
 
-
-  /* Start invisible */
-  opacity: 0;
-
-  /* Combine fadeInOpacity + flicker in a single line */
-  animation: 
-    fadeInOpacity 12s ease-out forwards,
-    emberFlicker 4s infinite ease-in-out;
-}
-
-.ember2 {
-  position: absolute;
-  top: 18.2%;
-  left: 71.2%;
-  width: 2px;
-  height: 14px;
-  border-radius: 20px / 50%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,140,0, 0.9) 0%,
-    rgba(255,69,0, 0.7) 50%,
-    transparent 100%
-  );
-  transform-origin: center bottom;
-
-  /* Start invisible */
-  opacity: 0;
-
-  /* Same fade + flicker or a slightly different flicker if you want */
-  animation: 
-    fadeInOpacity 12s ease-out forwards,
-    emberFlicker2 4s infinite ease-in-out;
-}
-
-/* Keyframe for the flicker(s) */
-@keyframes emberFlicker {
-  0%, 100% {
-    /* Combine rotate + scaleY */
-    transform: rotate(-6deg) scaleY(1);
-  }
-  40% {
-    transform: rotate(-6deg) scaleY(1.2);
-  }
-  60% {
-    transform: rotate(-6deg) scaleY(0.95);
-  }
-}
-@keyframes emberFlicker2 {
-  0%, 100% {
-    transform: scaleY(1);
-  }
-  40% {
-    transform: scaleY(1.2);
-  }
-  60% {
-    transform: scaleY(0.95);
-  }
-}
-/* Fade-in only for opacity (no translateY) */
-@keyframes fadeInOpacity {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 @media (max-width: 768px) {
   /* Adjust hamburger size & spacing */
   .hamburger {
@@ -404,24 +311,6 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     margin-top: 40px;      /* Reduce top margin so CTA isn’t too far down */
   }
 
-  /* Incense and Flame Layout */
-  .incense-container {
-    right: -100px;          /* Bring it closer so it’s not too far off-screen */
-    top: -60px;            /* Reduce negative top so it’s visible on smaller screens */
-    width: 140px;          /* Scale down so it fits better */
-  }
-  .ember {
-    top: 27.5%;            /* Possibly move them a bit lower or higher depending on how the image scales */
-    left: 90%;             /* Adjust if you notice misalignment after resizing the incense container */
-    width: 2px;            /* Keep consistent with scaled container */
-    height: 12px;          /* Slightly shorter if the container is smaller */
-  }
-  .ember2 {
-     top: 27.5%;            /* Possibly move them a bit lower or higher depending on how the image scales */
-    left: 93%;             /* Adjust if you notice misalignment after resizing the incense container */
-    width: 2px;            /* Keep consistent with scaled container */
-    height: 12px;          /* Slightly shorter if the container is smaller */
-}
 </style>
   <!-- Top Bar -->
   <div class="top-bar">
@@ -463,8 +352,6 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
 <div class="content-wrapper">
     <div class="haku-wrapper">
         <h1 class="haku-text">H A K U</h1>
-        <div class="incense-container">
-            <img class="incense" src="https://github.com/jcav13/haku/blob/main/incenae.png?raw=true" alt="Japanese Incense">
         </div>
     </div>
 
@@ -473,7 +360,7 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     <span class="city-left">Melbourne</span>
     <span class="city-right">メルボルン</span>
 </h3> 
-    <p>Mobile Massage Service</p>
+    <p>Home Massage Service</p>
 
   <!-- First flame -->
   <div class="ember"></div>
