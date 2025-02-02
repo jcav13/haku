@@ -240,14 +240,28 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     /* Position the ember near the tip of the incense */
 .ember {
   position: absolute;
-  /* Adjust these offsets so it appears at the incense tip: */
-  left: 40%;
-  top: 4%;
-  
+  /* Instead of 0%, use something that visually lines up with the incense tip: */
+  top: 50%;   /* Tweak to move up/down */
+  left: 70%;  /* Tweak to move left/right */
+
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  
+  background: radial-gradient(circle, rgba(255,140,0,0.8) 0%, rgba(255,69,0,0.4) 60%, transparent 100%);
+  animation: emberFlicker 2s infinite ease-in-out;
+}
+
+/* Example flicker: adjust as you like */
+@keyframes emberFlicker {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+}
   /* A radial gradient that looks like a glowing ember */
   background: radial-gradient(
     circle,
