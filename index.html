@@ -324,6 +324,7 @@ h1 {
   }
 
 </style>
+<body>
   <!-- Top Bar -->
   <div class="top-bar">
     <!-- Hamburger Icon -->
@@ -342,58 +343,60 @@ h1 {
     <a href="https://www.instagram.com/YOUR_USERNAME" target="_blank">
       <svg viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10" fill="none"/>
-        <path d="M12 2.163c-5.14 0-9.837 4.118-9.837 9.837s4.118
-                 9.837 9.837 9.837 9.837-4.118 9.837-9.837-4.118-9.837-9.837-9.837zm0
-                 18.26c-4.593 0-8.323-3.73-8.323-8.323s3.73-8.323 8.323-8.323
-                 8.323 3.73 8.323 8.323-3.73 8.323-8.323 8.323zm4.98-10.34
-                 a1.572 1.572 0 1 1 0-3.143 1.572 1.572 0 0 1 0 3.143z"/>
+        <path d="M12 2.163c-5.14 0-9.837 4.118-9.837 9.837 
+                 s4.118 9.837 9.837 9.837 9.837-4.118 9.837-9.837 
+                 -4.118-9.837-9.837-9.837zm0 18.26c-4.593 0-8.323-3.73 
+                 -8.323-8.323s3.73-8.323 8.323-8.323 8.323 3.73 8.323 
+                 8.323-3.73 8.323-8.323 8.323zm4.98-10.34a1.572 
+                 1.572 0 1 1 0-3.143 1.572 1.572 0 0 1 0 3.143z"/>
       </svg>
     </a>
     <a href="https://www.facebook.com/YOUR_USERNAME" target="_blank">
       <svg viewBox="0 0 24 24">
         <path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96
                  0 4.94 3.63 9.05 8.36 9.82v-6.94h-2.52v-2.88h2.52v-2.2
-                 c0-2.5 1.5-3.88 3.78-3.88h2.24v2.48h-1.26c-1.24 0-1.63.77-1.63
-                 1.56v1.84h2.78l-.44 2.88h-2.34v6.94c4.73-.77
+                 c0-2.5 1.5-3.88 3.78-3.88h2.24v2.48h-1.26c-1.24 0-1.63.77-1.63 
+                 1.56v1.84h2.78l-.44 2.88h-2.34v6.94c4.73-.77 
                  8.36-4.88 8.36-9.82 0-5.5-4.46-9.96-9.96-9.96z"/>
       </svg>
     </a>
   </div>
 
   <!-- Main Text (Centered) -->
-<div class="content-wrapper">
+  <div class="content-wrapper">
+    <!-- H A K U Heading -->
     <div class="haku-wrapper">
-        <h1 class="haku-text">H A K U</h1>
-        </div>
+      <h1 class="haku-text">H A K U</h1>
     </div>
 
-    <h2 class="japanese-text">ハ　ク</h2>
-<h3 class="city-container">
-    <span class="city-left">Melbourne</span>
-    <span class="city-right">メルボルン</span>
-</h3> 
-    <p>Home Massage Service</p>
+    <!-- 1) Home Massage Service in an H2 -->
+    <h2 
+      class="home-service" 
+      style="margin-bottom: 5px;">  
+      Home Massage Service
+    </h2>
 
-  <!-- First flame -->
-  <div class="ember"></div>
-  <!-- Second flame -->
-  <div class="ember ember2"></div>
-</div>
-    <!-- Book Now Button -->
-    <a href="book.html" class="book-button">Book</a>
-</div>
-  <!-- JavaScript for Dropdown -->
+    <!-- 2) Melbourne メルボルン in an H3, with slight margin-top if needed -->
+    <h3 
+      class="city-container" 
+      style="margin: 0;">
+      <span class="city-left">Melbourne</span>
+      <span class="city-right">メルボルン</span>
+    </h3>
+  </div>
+
+  <!-- Book Now Button -->
+  <a href="book.html" class="book-button">Book</a>
+
+  <!-- JavaScript for Dropdown (unchanged) -->
   <script>
     function toggleMenu() {
       var menu = document.getElementById("dropdownMenu");
-
-      // Show menu
       menu.style.display = "flex";
       setTimeout(() => {
         menu.classList.add("open");
-      }, 10); // Smooth transition
+      }, 10);
 
-      // Auto-close when mouse leaves
       menu.addEventListener("mouseleave", function() {
         menu.classList.remove("open");
         setTimeout(() => {
@@ -402,7 +405,6 @@ h1 {
       });
     }
 
-    // Close the dropdown only when clicking outside of it
     document.addEventListener("click", function(event) {
       var menu = document.getElementById("dropdownMenu");
       var button = document.querySelector(".hamburger");
