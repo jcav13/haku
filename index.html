@@ -6,13 +6,20 @@
   <title>HAKU</title>
 
   <!-- Google Fonts Import -->
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
   <style>
+
+    @font-face {
+    font-family: 'Optima';
+    src: url('https://github.com/jcav13/haku/raw/refs/heads/main/OPTIMA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+    
     /* General Styling */
     body {
          background-color: #293717; /* Base Dark Green */
     color: #F1E7BB; /* Light Cream Text */
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Optima', sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -74,14 +81,14 @@ h1, h2, h3, p {
     }
 
 h1 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Optima', sans-serif;
     font-size: 130px; /* Larger */
     font-weight: 300; /* Elegant */
     letter-spacing: 6px; /* Slight spacing */
     margin-bottom: -20px;
 }
     .japanese-text {
-    font-size: 18px;
+    font-family: 'Optima', sans-serif;
     font-weight: 300;
     letter-spacing: -2px;
     margin-bottom: 20px;
@@ -188,7 +195,7 @@ h1 {
     }
 
     .book-button {
-font-family: 'Satoshi', sans-serif;    background: transparent;
+    font-family: 'Optima', sans-serif;
     color: #E8DCC0;
     border: 2px solid #E8DCC0;
     padding: 12px 42px;
