@@ -298,34 +298,27 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
 /* Keyframe for the flicker(s) */
 @keyframes emberFlicker {
   0%, 100% {
+    /* no opacity here! */
     transform: scaleY(1);
-    opacity: 1;
   }
   40% {
     transform: scaleY(1.2);
-    opacity: 0.8;
   }
   60% {
     transform: scaleY(0.95);
-    opacity: 0.5;
   }
 }
-
 @keyframes emberFlicker2 {
   0%, 100% {
     transform: scaleY(1);
-    opacity: 1;
   }
   40% {
     transform: scaleY(1.2);
-    opacity: 0.8;
   }
   60% {
     transform: scaleY(0.95);
-    opacity: 0.5;
   }
 }
-
 /* Fade-in only for opacity (no translateY) */
 @keyframes fadeInOpacity {
   0% {
