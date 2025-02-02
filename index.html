@@ -299,14 +299,14 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
 /* Keyframe for the flicker(s) */
 @keyframes emberFlicker {
   0%, 100% {
-    /* no opacity here! */
-    transform: scaleY(1);
+    /* Combine rotate + scaleY */
+    transform: rotate(-7deg) scaleY(1);
   }
   40% {
-    transform: scaleY(1.2);
+    transform: rotate(-7deg) scaleY(1.2);
   }
   60% {
-    transform: scaleY(0.95);
+    transform: rotate(-7deg) scaleY(0.95);
   }
 }
 @keyframes emberFlicker2 {
