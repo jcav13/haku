@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>HAKU</title>
 
   <style>
+    /* 1) Load Optima font from GitHub */
     @font-face {
       font-family: 'Optima';
       src: url('https://github.com/jcav13/haku/raw/refs/heads/main/OPTIMA.woff') format('woff');
@@ -13,7 +14,7 @@
       font-style: normal;
     }
 
-    /* Base Page Styling */
+    /* 2) Base Styling */
     body {
       background-color: #293717; /* Dark Green */
       color: #F1E7BB;           /* Light Cream */
@@ -21,92 +22,101 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
+
+      /* 
+        We'll place the headings in a top-section (vertically centered), 
+        and MELBOURNE + Book in a bottom-section. 
+      */
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
     }
 
-    /* content-wrapper divides into .top-section & .bottom-section */
+    /* content-wrapper that holds both top-section and bottom-section */
     .content-wrapper {
-      flex: 1; 
+      flex: 1;
       display: flex;
       flex-direction: column;
     }
 
-    /* top-section: center headings vertically (Personalised..., H A K U, ハ ク) */
+    /* 
+      TOP SECTION: flex:1 to fill available space, 
+      center headings vertically & horizontally. 
+    */
     .top-section {
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* vertical centring */
+      justify-content: center; /* vertical centering */
       align-items: center;
       text-align: center;
     }
 
-    /* bottom-section: holds MELBOURNE & Book near bottom */
+    /*
+      BOTTOM SECTION: 
+      We keep the Book button near the bottom 
+      (by margin-bottom on .content-wrapper if desired).
+    */
     .bottom-section {
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* The margin-bottom here is controlling the gap from the page bottom. */
-      margin-bottom: 50px;
+      margin-bottom: 50px; /* distance from bottom edge of screen */
     }
 
-    /* Fade-in animation */
+    /* 3) Fade-in Animations for Headings */
     h1, h2, h3, h4 {
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 2.5s ease-out forwards;
     }
     @keyframes fadeInUp {
-      0%   { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* 
-      1) Move “Personalised Massage Service” (h2) down:
-         By default it has no top margin. 
-         We'll add some so it sits lower on the page. 
-    */
+    /* 4) Headings Styling */
     h2 {
       font-size: 24px;
       font-weight: 200;
-      /* New top margin to push it down a bit from the very top. */
-      margin: 40px 0 10px 0; 
+      margin: 0;
+      margin-bottom: 10px; /* small gap before H A K U */
     }
-
-    /* H A K U */
     h1 {
       font-size: 130px;
       font-weight: 200;
       letter-spacing: 6px;
       margin: 0;
-      margin-bottom: -20px; /* if you like that slight overlap effect */
+      margin-bottom: -20px; /* overlap effect under H A K U if you want it */
     }
-
-    /* ハ ク */
     h3 {
       font-size: 28px;
       font-weight: 200;
       letter-spacing: 25px;
       margin: 0;
-      margin-bottom: 30px;
+      margin-bottom: 30px;  /* gap after ハ ク */
     }
-
-    /* MELBOURNE */
+    /* 
+      h4 (MELBOURNE) is initially placed below the top headings, 
+      we use negative margin-top to push it upward 
+      (closer to ハ ク) WITHOUT moving the button. 
+    */
     h4 {
       font-size: 18px;
       font-weight: 200;
       margin: 0;
-      margin-bottom: 30px; /* Gap above the Book button */
+      /* SHIFT MELBOURNE UPWARD by a negative margin-top. 
+         Tweak this value to find your perfect halfway point. */
+      margin-top: -40px;  /* example: moves MELBOURNE ~40px closer to ハ ク */
+      margin-bottom: 40px;/* spacing above the Book button */
     }
 
-    /* 
-      2) Move the Book button up:
-         If there's large margin pushing it down, 
-         reduce or remove it. 
-         Here we just ensure there's no huge top margin. 
-    */
+    /* 5) The Book Button: remains in the same place near bottom */
     .book-button {
       font-family: 'Optima', sans-serif;
       color: #E8DCC0;
@@ -119,8 +129,7 @@
       letter-spacing: 1px;
       transition: all 0.4s ease-in-out;
       display: inline-block;
-      /* No extra margin-top so the button is closer to MELBOURNE / top of bottom-section */
-      margin-top: 0; 
+      /* no margin-top needed unless you want to move it further away from MELBOURNE */
     }
     .book-button:hover {
       background: rgba(232,220,192,0.15);
@@ -128,7 +137,7 @@
       transform: scale(1.05);
     }
 
-    /* Top Bar, Hamburger, Social Icons */
+    /* 6) Top Bar, Nav, Social Icons, Script (unchanged) */
     .top-bar {
       position: absolute;
       top: 15px;
@@ -167,7 +176,6 @@
       transform: scale(1.1);
     }
 
-    /* Dropdown menu (unchanged) */
     .dropdown {
       position: absolute;
       top: 50px;
@@ -215,7 +223,7 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
-    /* Media Query for Mobile if needed */
+    /* 7) Media Queries for smaller screens if needed */
     @media (max-width: 768px) {
       h1 {
         font-size: 70px;
@@ -224,14 +232,16 @@
       }
       h2 {
         font-size: 20px;
-        margin-top: 20px; 
       }
       h3 {
         font-size: 24px;
         margin-bottom: 20px;
+        letter-spacing: 15px;
       }
+      /* For small screens, maybe reduce the negative margin for MELBOURNE. */
       h4 {
         font-size: 16px;
+        margin-top: -20px;
         margin-bottom: 30px;
       }
       .book-button {
@@ -241,7 +251,6 @@
     }
   </style>
 </head>
-
 <body>
   <!-- Top Bar -->
   <div class="top-bar">
@@ -258,30 +267,22 @@
     <!-- Insert your Instagram & Facebook links/SVGs here -->
   </div>
 
-  <!-- Container: top headings & bottom elements -->
+  <!-- Main container with top headings in .top-section, Melbourne + Book in .bottom-section -->
   <div class="content-wrapper">
-    <!-- 
-      1) The top headings remain in the vertical center 
-         thanks to flex:1 + justify-content:center. 
-         We simply added margin-top to h2 to move it down a bit. 
-    -->
     <div class="top-section">
       <h2>Personalised Home Massage</h2>
       <h1>H A K U</h1>
       <h3>ハ ク</h3>
     </div>
 
-    <!-- 
-      2) bottom-section: 
-         Book button "unchanged" near bottom. 
-         We move it up by removing large margins or negative margin if needed. 
-    -->
     <div class="bottom-section">
+      <!-- Move MELBOURNE up by setting negative margin-top -->
       <h4>MELBOURNE</h4>
       <a href="book.html" class="book-button">Book</a>
     </div>
   </div>
 
+  <!-- Script for Dropdown -->
   <script>
     function toggleMenu() {
       const menu = document.getElementById("dropdownMenu");
