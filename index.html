@@ -261,14 +261,14 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
     transparent 100%
   );
   transform-origin: center bottom;
-  transform: rotate(-7deg);
+
 
   /* Start invisible */
   opacity: 0;
 
   /* Combine fadeInOpacity + flicker in a single line */
   animation: 
-    fadeInOpacity 5s ease-out forwards,
+    fadeInOpacity 20s ease-out forwards,
     emberFlicker 4s infinite ease-in-out;
 }
 
@@ -292,7 +292,7 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
 
   /* Same fade + flicker or a slightly different flicker if you want */
   animation: 
-    fadeInOpacity 5s ease-out forwards,
+    fadeInOpacity 20s ease-out forwards,
     emberFlicker2 4s infinite ease-in-out;
 }
 
