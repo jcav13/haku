@@ -200,53 +200,46 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
       transform: scale(1.05);
     }
 
-.haku-wrapper {
+/* Center everything inside a single container */
+.content-wrapper {
     display: flex;
-    justify-content: center; /* Center the entire text + incense */
+    flex-direction: column;
     align-items: center;
-    position: relative;
-    width: 100%;
+    justify-content: center;
 }
 
+/* Keep HAKU and incense in line */
+.haku-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Center the text */
 .haku-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 130px;
     font-weight: 300;
     letter-spacing: 6px;
-    margin: 0 auto; /* Ensures true centering */
-    position: relative;
+    margin: 0;
+    text-align: center; /* Ensures centering */
 }
 
+/* Move incense relative to HAKU */
 .incense-container {
-    position: absolute;
-    right: -100px; /* Adjust distance to keep it aligned */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100px; /* Adjust for size */
+    width: 100px;
     height: auto;
+    margin-left: 30px; /* Moves incense slightly right */
+    position: relative;
+    top: 10px; /* Move up manually */
 }
 
+/* Style for the incense image */
 .incense {
     width: 100%;
     height: auto;
 }
-
-.incense-container {
-    display: inline-block;
-    position: relative;
-    width: 120px; /* Adjust width */
-    height: auto;
-    margin-left: 30px; /* Moves incense further right */
-    vertical-align: bottom;
-    top: -15px; /* Moves incense upwards */
-}
-
-.incense {
-    width: 100%;
-    height: auto;
-    vertical-align: bottom;
-}
-
     /* Mobile Styling */
     @media (max-width: 768px) {
       .hamburger {
@@ -305,18 +298,21 @@ font-family: 'Cormorant Garamond', serif; /* Match the correct font */
   </div>
 
   <!-- Main Text (Centered) -->
-<div class="haku-wrapper">
-    <h1 class="haku-text">H A K U</h1>
-    <div class="incense-container">
-        <img class="incense" src="https://github.com/jcav13/haku/blob/main/62a536eb-bf34-43ab-b9b3-7c75f6005ed1_removalai_preview.png?raw=true" alt="Japanese Incense">
+<div class="content-wrapper">
+    <div class="haku-wrapper">
+        <h1 class="haku-text">H A K U</h1>
+        <div class="incense-container">
+            <img class="incense" src="https://github.com/jcav13/haku/blob/main/62a536eb-bf34-43ab-b9b3-7c75f6005ed1_removalai_preview.png?raw=true" alt="Japanese Incense">
+        </div>
     </div>
-</div>
-  <h2 class="japanese-text">ハ　ク</h2>
-  <h3> Melbourne        メルボルン </h3>  
-  <p>personalized massage, inspired by Japanese tradition</p>
-  <!-- Book Now Button --> 
-  <a href="book.html" class="book-button">Book</a>
 
+    <h2 class="japanese-text">ハ　ク</h2>
+    <h3> Melbourne メルボルン </h3>  
+    <p>personalized massage, inspired by Japanese tradition</p>
+
+    <!-- Book Now Button -->
+    <a href="book.html" class="book-button">Book</a>
+</div>
   <!-- JavaScript for Dropdown -->
   <script>
     function toggleMenu() {
