@@ -11,12 +11,19 @@
   <style>
     /* General Styling */
     body {
-      background-color: #293717; /* Dark Green */
-          background-image:
-        linear-gradient(0deg, rgba(255, 255, 255, 0.02) 50%, transparent 50%),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 50%, transparent 50%);
-    background-size: 4px 4px; /* Adjust for desired texture intensity */
-    background-blend-mode: overlay;      color: #F1E7BB; /* Light Cream */
+         background-color: #293717; /* Base Dark Green */
+    
+    /* Layer 1: Fine grain texture */
+    background-image: 
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 1px, transparent 2px),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 2px),
+        
+        /* Layer 2: Crosshatch effect */
+        repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.04) 1px, transparent 3px),
+        repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.04) 1px, transparent 3px);
+    
+    background-size: 6px 6px, 6px 6px, 8px 8px, 8px 8px;
+    background-blend-mode: overlay;
       font-family: 'Satoshi', sans-serif;
       margin: 0;
       padding: 0;
