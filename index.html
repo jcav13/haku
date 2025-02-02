@@ -39,11 +39,9 @@
   }
 }
     /* Fade-in animation for text */
-h1, h2, h3, p {
+h1, h2, h3, h4, p {
   opacity: 0;
   transform: translateY(20px);
-  /* old:
-  animation: fadeInUp 1s ease-out forwards; */
   animation: fadeInUp 2.5s ease-out forwards;
 }
 
@@ -83,13 +81,13 @@ h1, h2, h3, p {
 h1 {
     font-family: 'Optima', sans-serif;
     font-size: 130px; /* Larger */
-    font-weight: 300; /* Elegant */
+    font-weight: 200; /* Elegant */
     letter-spacing: 6px; /* Slight spacing */
     margin-bottom: -20px;
 }
     .japanese-text {
     font-family: 'Optima', sans-serif;
-    font-weight: 300;
+    font-weight: 200;
     letter-spacing: -2px;
     margin-bottom: 20px;
       margin-top: -25px
@@ -99,9 +97,14 @@ h1 {
     font-weight: 200;
     margin-bottom: 20px;
 }
+     h4 {
+    font-size: 16px;
+    font-weight: 200;
+    margin-bottom: 20px;
+}
     p {
     font-size: 30px;
-    font-weight: 300;
+    font-weight: 200;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
@@ -364,27 +367,26 @@ h1 {
 
   <!-- Main Text (Centered) -->
   <div class="content-wrapper">
-    <!-- H A K U Heading -->
-    <div class="haku-wrapper">
-      <h1 class="haku-text">H A K U</h1>
-    </div>
+<!-- Inside your .content-wrapper -->
+<div class="haku-wrapper">
+  <h1 class="haku-text">H A K U</h1>
+</div>
 
-    <!-- 1) Home Massage Service in an H2 -->
-    <h2 
-      class="home-service" 
-      style="margin-bottom: 5px;">  
-      Home Massage Service
-    </h2>
+<!-- ハ ク, placed below H A K U -->
+<h2 class="japanese-text" style="margin-bottom: 5px;">
+  ハ ク
+</h2>
 
-    <!-- 2) Melbourne メルボルン in an H3, with slight margin-top if needed -->
-    <h3 
-      class="city-container" 
-      style="margin: 0;">
-      <span class="city-left">Melbourne</span>
-      <span class="city-right">メルボルン</span>
-    </h3>
-  </div>
+<!-- Home Massage Service next, also with ~5px gap -->
+<h3 class="home-service" style="margin-bottom: 5px;">
+  Home Massage Service
+</h3>
 
+<!-- Melbourne メルボルン last, no extra margin so total gap from line above is 5px -->
+<h4 class="city-container" style="margin: 0;">
+  <span class="city-left">Melbourne</span>
+  <span class="city-right">メルボルン</span>
+</h4>
   <!-- Book Now Button -->
   <a href="book.html" class="book-button">Book</a>
 
