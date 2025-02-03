@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>HAKU</title>
 
   <style>
-    /* Load Optima font from GitHub */
+    /* Load Optima font */
     @font-face {
       font-family: 'Optima';
       src: url('https://github.com/jcav13/haku/raw/refs/heads/main/OPTIMA.woff') format('woff');
@@ -14,7 +14,7 @@
       font-style: normal;
     }
 
-    /* General Styling */
+    /* Base Styling */
     body {
       background-color: #293717;
       color: #F1E7BB;
@@ -24,50 +24,42 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
 
-    /* 🔹 New TOP NAVIGATION BAR */
-    .top-nav {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+    /* Navigation Bar */
+    .nav-bar {
       display: flex;
-      gap: 40px; /* Evenly spaced links */
-      font-size: 18px;
-      font-weight: 400;
+      justify-content: space-around;
+      width: 100%;
+      padding: 20px 0;
+      position: absolute;
+      top: 0;
     }
 
-    .top-nav a {
+    .nav-bar a {
       text-decoration: none;
       color: #F1E7BB;
-      transition: color 0.3s ease;
+      font-size: 18px;
       position: relative;
-      padding-bottom: 5px;
     }
 
-    /* Subtle underline on hover */
-    .top-nav a:hover {
-      color: #E8DCC0;
-    }
-
-    .top-nav a::after {
+    .nav-bar a::after {
       content: "";
       position: absolute;
+      bottom: -5px;
+      left: 0;
       width: 0;
       height: 2px;
-      background-color: #E8DCC0;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      transition: width 0.3s ease-in-out;
+      background-color: #F1E7BB;
+      transition: width 0.3s ease;
     }
 
-    .top-nav a:hover::after {
+    .nav-bar a:hover::after {
       width: 100%;
     }
 
-    /* Content Wrapper */
+    /* Content Styling */
     .content-wrapper {
       flex: 1;
       display: flex;
@@ -77,11 +69,31 @@
       text-align: center;
     }
 
-    /* Headings Styling */
-    h2 { font-size: 20px; font-weight: 200; margin-bottom: 0px; }
-    h1 { font-size: 90px; font-weight: 200; letter-spacing: 6px; margin-bottom: -10px; }
-    h3 { font-size: 28px; font-weight: 200; letter-spacing: 20px; margin-bottom: 30px; }
-    h4 { font-size: 20px; font-weight: 200; margin-top: -210px; margin-bottom: 210px; }
+    h2 {
+      font-size: 20px;
+      font-weight: 200;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 90px;
+      font-weight: 200;
+      letter-spacing: 6px;
+      margin: 0;
+    }
+
+    h3 {
+      font-size: 28px;
+      font-weight: 200;
+      letter-spacing: 20px;
+      margin-bottom: 40px;
+    }
+
+    h4 {
+      font-size: 20px;
+      font-weight: 200;
+      margin-bottom: 30px;
+    }
 
     /* Book Button */
     .book-button {
@@ -96,53 +108,31 @@
       letter-spacing: 1px;
       transition: all 0.4s ease-in-out;
       display: inline-block;
-      position: relative;
-      top: -90px;
+      margin-top: 20px;
     }
 
     .book-button:hover {
       background: rgba(232, 220, 192, 0.15);
-      color: #E8DCC0;
       transform: scale(1.05);
-    }
-
-    /* Media Queries for smaller screens */
-    @media (max-width: 768px) {
-      .top-nav {
-        font-size: 16px;
-        gap: 25px;
-      }
-
-      h1 { font-size: 70px; letter-spacing: 3px; }
-      h3 { font-size: 24px; letter-spacing: 15px; margin-bottom: 20px; }
-      h4 { font-size: 16px; margin-top: -20px; margin-bottom: 30px; }
-      .book-button { font-size: 16px; padding: 10px 32px; top: -30px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- 🌟 New Navigation Bar -->
-  <nav class="top-nav">
+  <!-- Navigation Bar -->
+  <div class="nav-bar">
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="book.html">Book</a>
     <a href="contact.html">Contact</a>
-  </nav>
+  </div>
 
   <!-- Main Content -->
   <div class="content-wrapper">
-    <div class="top-section">
-      <h2>Personalised Home Massage</h2>
-      <h1>H A K U</h1>
-      <h3>ハ ク</h3>
-    </div>
-
-    <div class="bottom-section">
-      <h4>MELBOURNE</h4>
-      <a href="book.html" class="book-button">Book</a>
-    </div>
+    <h2>Personalised Home Massage</h2>
+    <h1>H A K U</h1>
+    <h3>ハ ク</h3>
+    <h4>MELBOURNE</h4>
+    <a href="book.html" class="book-button">Book</a>
   </div>
-
 </body>
 </html>
