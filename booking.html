@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>One-by-One Booking</title>
-
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Booking Flow</title>
   <style>
-    /* Example: Load Optima from GitHub for the heading */
+    /* Example: Load Optima from GitHub if you want for heading or all text */
     @font-face {
       font-family: 'Optima';
       src: url('https://github.com/jcav13/haku/raw/refs/heads/main/OPTIMA.woff') format('woff');
@@ -19,11 +18,11 @@
       padding: 0;
       background-color: #293717; /* Dark green */
       color: #F1E7BB;           /* Cream text */
-      font-family: sans-serif;  /* or 'Satoshi', etc. */
+      font-family: sans-serif;
       overflow: hidden;         /* no scrollbar if content fits */
     }
 
-    /* "Book with H A K U" heading in Optima */
+    /* Title in Optima, at top center */
     .page-title {
       position: absolute;
       top: 30px;
@@ -36,9 +35,8 @@
     }
 
     /* 
-      Each step is absolutely placed in the center (top:50%, left:50%). 
-      After 1 second idle, the question text box is removed, 
-      leaving a label that slides to top-left. 
+      Each step is absolutely in the center (top:50%/left:50%). 
+      We show only one at a time. 
     */
     .step {
       position: absolute;
@@ -46,23 +44,21 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 320px; 
-      text-align: left; /* so label is left-aligned */
-      transition: all 0.7s ease; /* used if we want to animate container itself */
+      text-align: left; /* label left aligned */
     }
-    /* Initially only the first step is visible, others hidden. */
-    .step.hidden {
-      display: none; 
+    /* hidden steps are not displayed */
+    .hidden {
+      display: none;
     }
 
-    /* The actual question label + input in the center. */
-    .question-label {
-      color: #E8DCC0;
-      margin-bottom: 8px;
+    label {
       display: block;
-      font-size: 16px;
+      margin-bottom: 8px;
+      color: #E8DCC0;
+      font-size: 15px;
     }
 
-    .question-input {
+    input, select {
       width: 100%;
       padding: 12px;
       border: 1px solid #F1E7BB;
@@ -71,47 +67,51 @@
       color: #F1E7BB;
       font-size: 16px;
       outline: none;
-      transition: box-shadow 0.3s ease;
       margin-bottom: 10px;
+      transition: box-shadow 0.3s ease;
     }
-    .question-input:focus {
+    input:focus, select:focus {
       box-shadow: 0 0 8px rgba(255,255,255,0.3);
     }
 
-    /* The label containing the user’s answered text 
-       that slides up to top-left. 
+    /* 
+      The box that appears in top-left for each answered question. 
+      We create it dynamically in JS. 
     */
-    .answered-text {
+    .answered-box {
       position: absolute;
-      left: 50%; 
-      top: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 18px;
+      left: 20px;
+      /* We'll set top in JS so each subsequent answer is below the previous. */
+      min-width: 200px;
+      padding: 6px 12px;
+      margin-bottom: 4px;
+      border: 1px solid #F1E7BB;
+      background: rgba(25,30,15,0.9);  /* darker olive box */
       color: #F1E7BB;
+      border-radius: 8px;
+      font-size: 16px;
       opacity: 0;
-      transition: all 0.7s ease;
+      transform: translateY(20px);
+      transition: 
+        opacity 0.6s ease,
+        transform 0.6s ease;
     }
-
-    /* Once we add .slide-left, it moves to top-left with an offset. */
-    .slide-left {
+    .answered-box.active {
       opacity: 1;
-      /* shift ~800px to left, 
-         and also up by some offset for each question. 
-         We can set that offset in JS. */
+      transform: translateY(0);
     }
 
-    /* optional styling for final submit button (only on last step) */
+    /* final step can have a submit button if you want */
     .submit-btn {
       padding: 10px 30px;
       font-size: 18px;
-      border-radius: 50px;
+      border-radius: 30px;
       background: transparent;
       color: #F1E7BB;
       border: 2px solid #F1E7BB;
-      display: none; /* show after final step if desired */
+      display: none; /* only show on last step */
       cursor: pointer;
-      transition: all 0.4s ease-in-out;
-      margin-top: 10px;
+      transition: all 0.4s ease;
     }
     .submit-btn:hover {
       background: rgba(255,255,255,0.1);
@@ -119,66 +119,70 @@
     }
   </style>
 </head>
-
 <body>
+
   <div class="page-title">Book with H A K U</div>
 
-  <!-- Step #1 (Name) -->
+  <!-- Step 1: Name -->
   <div class="step" id="step1">
-    <label class="question-label" for="name">Name</label>
-    <input type="text" id="name" class="question-input" />
+    <label for="name">Name</label>
+    <input type="text" id="name"/>
   </div>
 
-  <!-- Step #2 (Email) -->
+  <!-- Step 2: Email -->
   <div class="step hidden" id="step2">
-    <label class="question-label" for="email">Email</label>
-    <input type="email" id="email" class="question-input" />
+    <label for="email">Email</label>
+    <input type="email" id="email" />
   </div>
 
-  <!-- Step #3 (Phone) -->
+  <!-- Step 3: Phone -->
   <div class="step hidden" id="step3">
-    <label class="question-label" for="phone">Phone Number</label>
-    <input type="tel" id="phone" class="question-input" />
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" />
   </div>
 
-  <!-- Step #4 (Service) -->
+  <!-- Step 4: Service -->
   <div class="step hidden" id="step4">
-    <label class="question-label" for="service">Select Service</label>
-    <select id="service" class="question-input">
+    <label for="service">Select Service</label>
+    <select id="service">
+      <option disabled selected hidden>Please select.</option>
       <option>Relaxation Massage</option>
       <option>Deep Tissue Therapy</option>
       <option>Japanese-Inspired Aromatherapy</option>
     </select>
   </div>
 
-  <!-- Step #5 (Address) -->
+  <!-- Step 5: Address -->
   <div class="step hidden" id="step5">
-    <label class="question-label" for="address">Address</label>
-    <input type="text" id="address" class="question-input" />
+    <label for="address">Address</label>
+    <input type="text" id="address" />
   </div>
 
-  <!-- Step #6 (Parking) -->
+  <!-- Step 6: Parking -->
   <div class="step hidden" id="step6">
-    <label class="question-label" for="parking">Parking Availability</label>
-    <select id="parking" class="question-input">
+    <label for="parking">Parking Availability</label>
+    <select id="parking">
+      <option disabled selected hidden>Please select.</option>
       <option value="yes">Yes</option>
       <option value="no">No</option>
     </select>
   </div>
 
-  <!-- Step #7 (Stairs) -->
+  <!-- Step 7: Stairs -->
   <div class="step hidden" id="step7">
-    <label class="question-label" for="stairs">Do you have stairs?</label>
-    <select id="stairs" class="question-input">
+    <label for="stairs">Do you have stairs?</label>
+    <select id="stairs">
+      <option disabled selected hidden>Please select.</option>
       <option value="yes">Yes</option>
       <option value="no">No</option>
     </select>
   </div>
 
-  <!-- Step #8 (Pets) + Submit -->
+  <!-- Step 8: Pets + final submit -->
   <div class="step hidden" id="step8">
-    <label class="question-label" for="pets">Do you have pets?</label>
-    <select id="pets" class="question-input">
+    <label for="pets">Do you have pets?</label>
+    <select id="pets">
+      <option disabled selected hidden>Please select.</option>
       <option value="yes">Yes</option>
       <option value="no">No</option>
     </select>
@@ -186,92 +190,89 @@
   </div>
 
   <script>
-    let currentStep = 1; 
+    // We'll track current step + total steps + 1-second idle
+    let currentStep = 1;
     const totalSteps = 8;
-    let typingTimer; // for 1 second idle
-
-    // Step offsets so they don't all land on exactly the same top-left
-    // e.g. step i => top: 20 + i*40 px
-    function getStepOffsetY(stepNum) {
-      return 20 + stepNum * 40; 
+    let typingTimer = null;
+    const stepIds = [];
+    for(let i=1; i<=totalSteps; i++){
+      stepIds[i] = "step" + i;
     }
 
     // Show step n, hide previous
-    function showStep(stepNum) {
-      // hide old
-      const oldStep = document.getElementById("step" + (stepNum - 1));
-      if(oldStep) oldStep.classList.add("hidden");
-
-      // show new
-      const newStep = document.getElementById("step" + stepNum);
-      if(newStep) newStep.classList.remove("hidden");
+    function showStep(stepNum){
+      if(stepNum>1){
+        document.getElementById(stepIds[stepNum-1]).classList.add("hidden");
+      }
+      document.getElementById(stepIds[stepNum]).classList.remove("hidden");
     }
 
-    function goToNextStep() {
-      if (currentStep < totalSteps) {
+    // Move to next
+    function goToNextStep(){
+      if(currentStep < totalSteps){
         currentStep++;
-        if(currentStep === totalSteps) {
-          document.getElementById("submitBtn").style.display = "inline-block";
+        if(currentStep===totalSteps){
+          document.getElementById("submitBtn").style.display="inline-block";
         }
         showStep(currentStep);
       }
     }
 
-    // Called after 1s idle
-    function finishStep(inputElem, stepNum) {
-      // 1) Read input value
+    // Each answered box sits top-left stacked
+    function getAnsweredTopOffset(stepNum){
+      // e.g. 20px initial + 60px per step
+      return 20 + (stepNum-1)*60;
+    }
+
+    // after user idle 1s
+    function finishStep(inputElem, stepNum){
       const val = inputElem.value.trim();
-      if(!val) return; // if empty, do nothing
+      // If empty or user didn't select, do nothing
+      if(!val){
+        return;
+      }
+      // create the answered box
+      const box = document.createElement("div");
+      box.classList.add("answered-box");
+      box.textContent = val;
+      document.body.appendChild(box);
+      // position it
+      const topVal = getAnsweredTopOffset(stepNum);
+      box.style.top = topVal + "px"; // stack each step 60px below the last
+      // fade it in
+      setTimeout(()=>{
+        box.classList.add("active");
+      },50);
 
-      // 2) create an absolutely positioned label with that text 
-      //    at the current step's center location
-      const answered = document.createElement("div");
-      answered.textContent = val; 
-      answered.style.position = "absolute";
-      answered.style.left = "50%";
-      answered.style.top = "50%";
-      answered.style.transform = "translate(-50%, -50%)";
-      answered.style.color = "#F1E7BB";
-      answered.style.fontSize = "18px";
-      answered.style.transition = "transform 0.7s ease, opacity 0.7s ease";
-      answered.style.opacity = "1";
-      document.body.appendChild(answered);
-
-      // 3) Remove the question from center (like user wants: "the text box disappears")
-      const stepDiv = document.getElementById("step"+stepNum);
-      stepDiv.style.display = "none"; 
-
-      // 4) Slide the newly created label to top-left with some offset
-      //    e.g. transform: translate(-800px, -some offset)
-      const offsetY = getStepOffsetY(stepNum);
-      setTimeout(() => {
-        answered.style.transform = `translate(-800px, -${offsetY}px)`;
-      }, 50);
-
-      // 5) Move to next step
+      // hide the question
+      document.getElementById(stepIds[stepNum]).classList.add("hidden");
+      // next step
       goToNextStep();
     }
 
-    function handleTyping(e, stepNum){
+    function handleInput(e, stepNum){
       clearTimeout(typingTimer);
-      typingTimer = setTimeout(() => {
+      typingTimer = setTimeout(()=>{
         finishStep(e.target, stepNum);
-      }, 1000);
+      },1000);
     }
 
-    // On load, only step1 is shown
+    // At start, show step1 only
     for(let i=2; i<=totalSteps; i++){
-      document.getElementById("step"+i).classList.add("hidden");
+      document.getElementById(stepIds[i]).classList.add("hidden");
     }
 
-    // attach input events
+    // attach input event to each input
     for(let i=1; i<=totalSteps; i++){
-      const stepDiv = document.getElementById("step"+i);
-      const inp = stepDiv.querySelector("input, select");
-      if(inp){
-        inp.addEventListener("input", (e)=>handleTyping(e, i));
+      const stepDiv = document.getElementById(stepIds[i]);
+      const inputEl = stepDiv.querySelector("input, select");
+      if(inputEl){
+        inputEl.addEventListener("input",(e)=>handleInput(e,i));
       }
     }
+
+    // finalize
+    document.getElementById(stepIds[1]).classList.remove("hidden");
   </script>
 </body>
 </html>
