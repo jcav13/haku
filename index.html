@@ -75,11 +75,23 @@
       margin-bottom: 10px;
     }
 
+    /* Glowing Effect on HAKU */
     h1 {
       font-size: 90px;
       font-weight: 200;
       letter-spacing: 6px;
       margin: 0;
+      text-shadow: 0 0 15px rgba(241, 231, 187, 0.5);
+      animation: glow 2.5s infinite alternate ease-in-out;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 15px rgba(241, 231, 187, 0.3);
+      }
+      100% {
+        text-shadow: 0 0 25px rgba(241, 231, 187, 0.7);
+      }
     }
 
     h3 {
