@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book with H A K U</title>
+    <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #293717;
+            color: #F1E7BB;
+            font-family: 'Satoshi', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(241, 231, 187, 0.1);
+            backdrop-filter: blur(8px);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #F1E7BB;
+            background: transparent;
+            color: #F1E7BB;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #F1E7BB;
+            background: transparent;
+            color: #F1E7BB;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: rgba(241, 231, 187, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book with H A K U</h1>
+        
+        <form id="bookingForm">
+            <!-- Step 1: Basic Info -->
+            <div class="step active" id="step1">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+                
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+                
+                <label for="service">Select Service</label>
+                <select id="service">
+                    <option value="relaxation">Relaxation Massage</option>
+                    <option value="deep_tissue">Deep Tissue Therapy</option>
+                    <option value="aromatherapy">Japanese-Inspired Aromatherapy</option>
+                </select>
+                
+                <label for="address">Address</label>
+                <input type="text" id="address" required>
+
+                <div class="button-container">
+                    <button type="button" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+            
+            <!-- Step 2: Date & Payment -->
+            <div class="step" id="step2">
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" required>
+                
+                <label for="payment">Payment Method</label>
+                <select id="payment">
+                    <option value="card">Credit/Debit Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="afterpay">Afterpay</option>
+                </select>
+                
+                <div class="button-container">
+                    <button type="button" onclick="prevStep()">Back</button>
+                    <button type="submit">Confirm & Pay</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let currentStep = 1;
+
+        function nextStep() {
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            currentStep++;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+        }
+
+        function prevStep() {
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            currentStep--;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
