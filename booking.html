@@ -3,146 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Booking Form</title>
-    <link href="https://fonts.googleapis.com/css2?family=Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <title>Book with H A K U</title>
+    
+    <!-- Google Font Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
+        /* General Styling */
         body {
-            background-color: #1F261B;
-            color: #E8DCC0;
-            font-family: 'Garamond', serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            background: rgba(40, 50, 30, 0.85);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            width: 400px;
+            background-color: #1D1F14; /* Dark Olive */
+            color: #F1E7BB; /* Light Cream */
+            font-family: 'Satoshi', sans-serif;
             text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
+
+        /* Booking Container */
+        .booking-container {
+            background: rgba(39, 42, 25, 0.95); /* Elegant overlay */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Heading */
         h1 {
-            font-weight: 600;
             font-size: 24px;
-            margin-bottom: 20px;
-        }
-        .form-group {
+            font-weight: 400;
             margin-bottom: 15px;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            letter-spacing: 2px;
         }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .form-group.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            text-align: left;
+            margin-bottom: 5px;
+            opacity: 0.8;
+        }
+
         input, select {
             width: 100%;
             padding: 12px;
-            border: 1px solid #E8DCC0;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             background: transparent;
-            color: #E8DCC0;
-            border-radius: 6px;
+            color: #F1E7BB;
             font-size: 16px;
-            outline: none;
             transition: all 0.3s ease-in-out;
         }
+
         input:focus, select:focus {
-            border-color: #F4E1A1;
-            box-shadow: 0 0 10px rgba(244, 225, 161, 0.5);
+            outline: none;
+            border-color: #F1E7BB;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
         }
-        .submit-btn {
-            display: none;
-            width: 100%;
+
+        /* Progress Indicator */
+        .progress-line {
+            height: 2px;
+            background: #F1E7BB;
+            width: 0;
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Button */
+        .next-btn {
+            background: transparent;
+            color: #F1E7BB;
+            border: 2px solid #F1E7BB;
             padding: 12px;
-            background: #E8DCC0;
-            color: #1F261B;
-            font-weight: bold;
             font-size: 16px;
-            border: none;
-            border-radius: 6px;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            transition: all 0.4s ease-in-out;
+            width: 100%;
+            margin-top: 10px;
             cursor: pointer;
-            transition: background 0.3s ease-in-out;
         }
-        .submit-btn:hover {
-            background: #F4E1A1;
+
+        .next-btn:hover {
+            background: rgba(241, 231, 187, 0.2);
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <div class="booking-container">
         <h1>Book with H A K U</h1>
+        <div class="progress-line" id="progress"></div>
         <form id="bookingForm">
-            <div class="form-group" id="group-name" style="display: block; opacity: 1;">
-                <input type="text" id="name" placeholder="Name" required>
+            
+            <div class="form-group active">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
             </div>
-            <div class="form-group" id="group-email">
-                <input type="email" id="email" placeholder="Email" required>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
             </div>
-            <div class="form-group" id="group-phone">
-                <input type="tel" id="phone" placeholder="Phone Number" required>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
             </div>
-            <div class="form-group" id="group-service">
-                <select id="service" required>
-                    <option value="" disabled selected>Select Service</option>
+
+            <div class="form-group">
+                <label for="service">Select Service</label>
+                <select id="service" name="service">
                     <option value="relaxation">Relaxation Massage</option>
-                    <option value="deep-tissue">Deep Tissue Therapy</option>
+                    <option value="deep_tissue">Deep Tissue Therapy</option>
                     <option value="aromatherapy">Japanese-Inspired Aromatherapy</option>
                 </select>
             </div>
-            <div class="form-group" id="group-address">
-                <input type="text" id="address" placeholder="Address" required>
-            </div>
-            <div class="form-group" id="group-parking">
-                <select id="parking" required>
-                    <option value="" disabled selected>Parking Availability</option>
+
+            <div class="form-group">
+                <label for="parking">Parking Availability</label>
+                <select id="parking" name="parking">
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
             </div>
-            <div class="form-group" id="group-stairs">
-                <select id="stairs" required>
-                    <option value="" disabled selected>Do you have stairs?</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <div class="form-group" id="group-pets">
-                <select id="pets" required>
-                    <option value="" disabled selected>Do you have pets?</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
-            <button type="submit" class="submit-btn" id="submit-btn">Next</button>
+
+            <button type="button" class="next-btn">Next</button>
         </form>
     </div>
+
     <script>
-        const formGroups = document.querySelectorAll('.form-group');
-        let currentIndex = 0;
-
-        function revealNextField() {
-            if (currentIndex < formGroups.length - 1) {
-                const nextField = formGroups[currentIndex + 1];
-                setTimeout(() => {
-                    nextField.style.display = 'block';
-                    nextField.style.opacity = '1';
+        document.addEventListener("DOMContentLoaded", function() {
+            const formGroups = document.querySelectorAll(".form-group");
+            let currentIndex = 0;
+            
+            function revealNextField() {
+                if (currentIndex < formGroups.length - 1) {
                     currentIndex++;
-                }, 1500);
-            } else {
-                document.getElementById('submit-btn').style.display = 'block';
+                    formGroups[currentIndex].classList.add("active");
+                    updateProgress();
+                }
             }
-        }
-
-        formGroups.forEach((group, index) => {
-            if (index === 0) return; // Skip first field
-            const input = group.querySelector('input, select');
-            input.addEventListener('input', () => {
-                clearTimeout(input.timer);
-                input.timer = setTimeout(() => {
-                    revealNextField();
-                }, 1500);
+            
+            function updateProgress() {
+                const progress = document.getElementById("progress");
+                progress.style.width = `${((currentIndex + 1) / formGroups.length) * 100}%`;
+            }
+            
+            formGroups.forEach((group, index) => {
+                const input = group.querySelector("input, select");
+                if (input) {
+                    let timeout;
+                    input.addEventListener("input", () => {
+                        clearTimeout(timeout);
+                        timeout = setTimeout(() => {
+                            revealNextField();
+                        }, 1500);
+                    });
+                }
             });
         });
     </script>
+
 </body>
 </html>
