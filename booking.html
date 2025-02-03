@@ -4,128 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book with H A K U</title>
-    <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;500&display=swap" rel="stylesheet">
+    
     <style>
         body {
             background-color: #293717;
             color: #F1E7BB;
             font-family: 'Satoshi', sans-serif;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
-            margin: 0;
             overflow: hidden;
         }
         .container {
+            width: 400px;
             position: relative;
-            width: 500px;
-            min-height: 500px;
         }
-        .field {
+        .form-group {
             position: absolute;
+            width: 100%;
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.5s ease-in-out;
-            width: 100%;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
-        .field.show {
+        .form-group.active {
             opacity: 1;
             transform: translateY(0);
         }
-        .fixed-field {
+        .floating-label {
             position: absolute;
-            left: 0;
-            top: 0;
-            transition: transform 0.5s ease-in-out;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+            font-size: 16px;
+            transition: all 0.3s ease-out;
+            color: rgba(241, 231, 187, 0.7);
         }
         input, select {
             width: 100%;
             padding: 12px;
-            margin-bottom: 10px;
-            border: 1px solid #E8DCC0;
-            background: transparent;
-            color: #E8DCC0;
-            border-radius: 8px;
+            border: 2px solid #F1E7BB;
+            border-radius: 6px;
             font-size: 16px;
-        }
-        input:focus, select:focus {
+            background-color: transparent;
+            color: #F1E7BB;
             outline: none;
-            border-color: #fff;
+        }
+        input:focus + .floating-label,
+        input:not(:placeholder-shown) + .floating-label,
+        select:focus + .floating-label,
+        select:not(:placeholder-shown) + .floating-label {
+            top: -10px;
+            left: 10px;
+            font-size: 14px;
+            color: #E8DCC0;
+        }
+        .summary-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: #E8DCC0;
         }
     </style>
 </head>
 <body>
-    <div class="container" id="formContainer">
-        <h2>Book with H A K U</h2>
-        <form>
-            <div class="field" id="nameField">
-                <label for="name">Name</label>
-                <input type="text" id="name" oninput="handleInput(this, 'emailField')">
+    <div class="container">
+        <div class="summary-container" id="summary"></div>
+        <form id="booking-form">
+            <div class="form-group active" id="group-name">
+                <input type="text" id="name" name="name" placeholder=" " required>
+                <label class="floating-label">Name</label>
             </div>
-            <div class="field" id="emailField">
-                <label for="email">Email</label>
-                <input type="email" id="email" oninput="handleInput(this, 'phoneField')">
+            <div class="form-group" id="group-email">
+                <input type="email" id="email" name="email" placeholder=" " required>
+                <label class="floating-label">Email</label>
             </div>
-            <div class="field" id="phoneField">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" oninput="handleInput(this, 'serviceField')">
+            <div class="form-group" id="group-phone">
+                <input type="tel" id="phone" name="phone" placeholder=" " required>
+                <label class="floating-label">Phone Number</label>
             </div>
-            <div class="field" id="serviceField">
-                <label for="service">Select Service</label>
-                <select id="service" onchange="handleInput(this, 'addressField')">
-                    <option value="">Select...</option>
-                    <option value="relaxation">Relaxation Massage</option>
-                    <option value="deep-tissue">Deep Tissue Therapy</option>
-                    <option value="aromatherapy">Japanese-Inspired Aromatherapy</option>
+            <div class="form-group" id="group-service">
+                <select id="service" name="service" required>
+                    <option value="" disabled selected hidden></option>
+                    <option value="relaxation massage">Relaxation Massage</option>
+                    <option value="deep tissue therapy">Deep Tissue Therapy</option>
+                    <option value="japanese aromatherapy">Japanese-Inspired Aromatherapy</option>
                 </select>
+                <label class="floating-label">Select Service</label>
             </div>
-            <div class="field" id="addressField">
-                <label for="address">Address</label>
-                <input type="text" id="address" oninput="handleInput(this, 'parkingField')">
+            <div class="form-group" id="group-address">
+                <input type="text" id="address" name="address" placeholder=" " required>
+                <label class="floating-label">Address</label>
             </div>
-            <div class="field" id="parkingField">
-                <label for="parking">Parking Availability</label>
-                <select id="parking" onchange="handleInput(this, 'stairsField')">
+            <div class="form-group" id="group-parking">
+                <select id="parking" name="parking" required>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
+                <label class="floating-label">Parking Available?</label>
             </div>
-            <div class="field" id="stairsField">
-                <label for="stairs">Do you have stairs?</label>
-                <select id="stairs" onchange="handleInput(this, 'petsField')">
-                    <option value="no">No</option>
+            <div class="form-group" id="group-stairs">
+                <select id="stairs" name="stairs" required>
                     <option value="yes">Yes</option>
+                    <option value="no">No</option>
                 </select>
+                <label class="floating-label">Do you have stairs?</label>
             </div>
-            <div class="field" id="petsField">
-                <label for="pets">Do you have pets?</label>
-                <select id="pets" onchange="handleInput(this, null)">
-                    <option value="no">No</option>
+            <div class="form-group" id="group-pets">
+                <select id="pets" name="pets" required>
                     <option value="yes">Yes</option>
+                    <option value="no">No</option>
                 </select>
+                <label class="floating-label">Do you have pets?</label>
             </div>
         </form>
     </div>
 
     <script>
-        let activeTop = 10;
-        function handleInput(element, nextField) {
-            if (element.value.trim() !== "") {
-                moveToTop(element.parentElement);
-                if (nextField) {
-                    document.getElementById(nextField).classList.add('show');
-                }
+        let fields = ["name", "email", "phone", "service", "address", "parking", "stairs", "pets"];
+        let index = 0;
+        
+        function showNextField() {
+            if (index < fields.length - 1) {
+                let currentField = document.getElementById(`group-${fields[index]}`);
+                let nextField = document.getElementById(`group-${fields[index + 1]}`);
+                currentField.classList.add("active");
+                setTimeout(() => nextField.classList.add("active"), 500);
+                index++;
             }
+            updateSummary();
         }
-        function moveToTop(field) {
-            field.style.position = "absolute";
-            field.style.transform = `translateY(${activeTop}px)`;
-            activeTop += 50; 
+        
+        function updateSummary() {
+            let summary = document.getElementById("summary");
+            summary.innerHTML = "";
+            fields.slice(0, index + 1).forEach(field => {
+                let value = document.getElementById(field).value;
+                if (value) {
+                    summary.innerHTML += `<p><strong>${field.replace(/-/g, ' ')}:</strong> ${value}</p>`;
+                }
+            });
         }
-        window.onload = () => {
-            document.getElementById("nameField").classList.add("show");
-        };
+        
+        fields.forEach((field, i) => {
+            let input = document.getElementById(field);
+            let timer;
+            input.addEventListener("input", () => {
+                clearTimeout(timer);
+                timer = setTimeout(() => showNextField(), 1500);
+            });
+        });
     </script>
 </body>
 </html>
