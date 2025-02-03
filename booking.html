@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Booking Flow</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Booking Flow: H A K U</title>
   <style>
-    /* Load Optima from GitHub for heading */
+    /* (1) Load Optima for the heading */
     @font-face {
       font-family: 'Optima';
       src: url('https://github.com/jcav13/haku/raw/refs/heads/main/OPTIMA.woff') format('woff');
@@ -13,40 +13,41 @@
       font-style: normal;
     }
 
+    /* (2) Base Page Style */
     body {
-      margin: 0; padding: 0;
+      margin: 0; 
+      padding: 0;
       background-color: #293717;  /* Dark green */
       color: #F1E7BB;            /* Cream text */
-      font-family: sans-serif;   /* or 'Satoshi' */
       overflow: hidden;
+      font-family: sans-serif;   /* Or 'Satoshi' if you prefer */
     }
 
-    /* The entire interface is somewhat lower on the page => top offset: 25% */
+    /* (3) Container in the middle-lower part of page */
     .container {
       position: absolute;
-      top: 25%;
+      top: 25%;                  /* Slightly lower on the page */
       left: 50%;
       transform: translateX(-50%);
       width: 320px;
       text-align: left;
     }
 
-    /* "Book with H A K U" heading in Optima, just above each question. 
-       We'll place it inside the container so it's always above the steps. */
+    /* (4) The heading "Book with H A K U" in Optima, goldish spacing */
     .heading {
       font-family: 'Optima', sans-serif;
       font-size: 28px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      margin-bottom: 30px; /* some space before the question */
-      text-align: center;  /* center the heading above the question */
+      text-align: center;
+      margin-bottom: 30px;
+      color: #F1E7BB;
     }
 
-    /* A single "step" is the question. Also absolutely placed in container's flow. */
+    /* (5) Each step is just a question container. Start hidden except step1 */
     .step {
-      position: relative; /* so we can shift it around. We'll do the center logic in JS. */
-      margin-bottom: 20px;
-      transition: all 0.7s ease;
+      position: relative;
+      margin-bottom: 25px;
     }
     .step.hidden {
       display: none;
@@ -54,7 +55,7 @@
 
     label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #E8DCC0;
       font-size: 15px;
     }
@@ -68,24 +69,30 @@
       color: #F1E7BB;
       font-size: 16px;
       outline: none;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       transition: box-shadow 0.3s ease;
     }
+    input::placeholder,
+    select::placeholder {
+      color: #C2BFAF;
+    }
     input:focus, select:focus {
-      box-shadow: 0 0 8px rgba(255,255,255,0.3);
+      box-shadow: 0 0 8px rgba(255,250,230,0.3);
     }
 
-    /* The box that appears top-left for each answered question. */
+    /* (6) The answered box style: a more luxurious, warmer background, gold border, subtle glow */
     .answered-box {
       position: absolute;
-      left: 20px; /* left margin for all answered boxes */
-      min-width: 200px;
-      padding: 6px 12px;
-      border: 1px solid #F1E7BB;
-      background: rgba(25,30,15,0.9);  /* darker olive box */
+      left: 20px; 
+      /* We'll set the top in JS so they stack nicely. */
+      min-width: 220px;
+      padding: 8px 14px;
+      border: 2px solid #CDBA96;  /* goldish border */
+      background: rgba(50,40,30,0.8);
       color: #F1E7BB;
-      border-radius: 8px;
-      font-size: 16px;
+      border-radius: 12px;
+      font-size: 15px;
+      box-shadow: 0 3px 8px rgba(205,186,150,0.2);
       opacity: 0;
       transform: translateY(20px);
       transition: 
@@ -97,9 +104,9 @@
       transform: translateY(0);
     }
 
-    /* The final big "Proceed to Payment" button (instead of "Submit") */
+    /* (7) The final button after last question: "Proceed to Payment" */
     .payment-btn {
-      display: none; /* shown only after the last question is answered */
+      display: none; /* only show after last Q answered */
       margin: 30px auto 0;
       padding: 14px 40px;
       border-radius: 30px;
@@ -118,30 +125,29 @@
   </style>
 </head>
 <body>
-  <!-- Container to hold everything, shifted 25% down the page -->
   <div class="container">
-    <!-- Heading in Optima -->
+    <!-- The heading in Optima -->
     <div class="heading">Book with H A K U</div>
 
-    <!-- Step 1: Name -->
+    <!-- Step #1 -->
     <div class="step" id="step1">
       <label for="name">Name</label>
-      <input type="text" id="name" placeholder="e.g. John Smith"/>
+      <input type="text" id="name" placeholder="e.g. John Smith">
     </div>
 
-    <!-- Step 2: Email -->
+    <!-- Step #2 -->
     <div class="step hidden" id="step2">
       <label for="email">Email</label>
-      <input type="email" id="email" placeholder="e.g. chatgpt@g.com"/>
+      <input type="email" id="email" placeholder="e.g. chatgpt@g.com">
     </div>
 
-    <!-- Step 3: Phone -->
+    <!-- Step #3 -->
     <div class="step hidden" id="step3">
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" placeholder="e.g. 0400 123 456"/>
+      <input type="tel" id="phone" placeholder="e.g. 0400 123 456">
     </div>
 
-    <!-- Step 4: Service -->
+    <!-- Step #4 -->
     <div class="step hidden" id="step4">
       <label for="service">Select Service</label>
       <select id="service">
@@ -152,13 +158,13 @@
       </select>
     </div>
 
-    <!-- Step 5: Address -->
+    <!-- Step #5 -->
     <div class="step hidden" id="step5">
       <label for="address">Address</label>
-      <input type="text" id="address" placeholder="e.g. 123 Main St"/>
+      <input type="text" id="address" placeholder="e.g. 123 Main St">
     </div>
 
-    <!-- Step 6: Parking -->
+    <!-- Step #6 -->
     <div class="step hidden" id="step6">
       <label for="parking">Parking Availability</label>
       <select id="parking">
@@ -168,7 +174,7 @@
       </select>
     </div>
 
-    <!-- Step 7: Stairs -->
+    <!-- Step #7 -->
     <div class="step hidden" id="step7">
       <label for="stairs">Do you have stairs?</label>
       <select id="stairs">
@@ -178,7 +184,7 @@
       </select>
     </div>
 
-    <!-- Step 8: Pets. after this, big "Proceed to Payment" appears. -->
+    <!-- Step #8 -->
     <div class="step hidden" id="step8">
       <label for="pets">Do you have pets?</label>
       <select id="pets">
@@ -187,62 +193,72 @@
         <option value="no">No</option>
       </select>
     </div>
-    
-    <!-- A final big button to appear after last Q answered -->
+
+    <!-- Payment Button after last step is answered -->
     <button class="payment-btn" id="paymentBtn">Proceed to Payment</button>
   </div>
 
   <script>
     let currentStep = 1;
     const totalSteps = 8;
-    let typingTimer; 
-    // track how many answers we have placed so we can stack them vertically
+    let typingTimer;
+
+    // track how many answers we placed so we can space them vertically
     let answeredCount = 0; 
 
-    // step offsets for top-left stacking
-    function getAnsweredTopOffset(index){
-      return 20 + (index*60); 
+    // function for top offset: 
+    // we align the boxes with the heading, so let's start them around top=70,
+    // plus 60 px per answered question
+    function getAnsweredTopOffset(index) {
+      return 70 + (index * 60);
     }
 
+    // show step n, hide old
     function showStep(stepNum){
-      // hide old step
-      if(stepNum > 1){
+      if(stepNum>1){
         document.getElementById("step"+(stepNum-1)).classList.add("hidden");
       }
-      // show new
       document.getElementById("step"+stepNum).classList.remove("hidden");
     }
 
+    // next step
     function goToNextStep(){
       if(currentStep < totalSteps){
         currentStep++;
-        if(currentStep === totalSteps){
-          // after we show last step
+        if(currentStep===totalSteps){
+          // last question
         }
         showStep(currentStep);
       } else {
-        // all steps answered, show "Proceed to Payment"
+        // all done, show payment button
         document.getElementById("paymentBtn").style.display = "inline-block";
       }
     }
 
+    // after user idle 1s
     function finishStep(inputElem, stepNum){
       const val = inputElem.value.trim();
-      // ensure user picked from dropdown
-      if(!val || val === "Please select."){
+      // if user didn't pick from dropdown or typed nothing, do nothing
+      if(!val || val==="Please select."){
         return;
       }
-      // create answered box
+      // get label text from the question
+      const label = document.querySelector(`#step${stepNum} label`);
+      const questionName = label ? label.textContent.trim() : `Step ${stepNum}`;
+
       answeredCount++;
+      // create answered box with question + user answer
       const box = document.createElement("div");
       box.classList.add("answered-box");
-      box.textContent = val;
+      box.innerHTML = `<strong>${questionName}:</strong> ${val}`;
+
+      // place in body
       document.body.appendChild(box);
 
-      // position it
+      // position it near the heading, left side
       const topVal = getAnsweredTopOffset(answeredCount);
       box.style.top = topVal + "px"; 
-      
+
       // fade in
       setTimeout(()=>{
         box.classList.add("active");
@@ -250,7 +266,7 @@
 
       // hide the question
       document.getElementById("step"+stepNum).classList.add("hidden");
-      // next step
+      // next
       goToNextStep();
     }
 
@@ -261,17 +277,18 @@
       }, 1000);
     }
 
+    // on load
     document.addEventListener("DOMContentLoaded", ()=>{
-      // only step1 is visible
+      // show step1 only
       for(let i=2; i<=totalSteps; i++){
         document.getElementById("step"+i).classList.add("hidden");
       }
       // attach input event
       for(let i=1; i<=totalSteps; i++){
         const stepDiv = document.getElementById("step"+i);
-        const inp = stepDiv.querySelector("input, select");
-        if(inp){
-          inp.addEventListener("input", (e)=> handleInput(e, i));
+        const inEl = stepDiv.querySelector("input, select");
+        if(inEl){
+          inEl.addEventListener("input", (e)=> handleInput(e,i));
         }
       }
     });
