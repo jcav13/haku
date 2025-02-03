@@ -9,76 +9,69 @@
             background-color: #293717;
             color: #F1E7BB;
             font-family: 'Satoshi', sans-serif;
+            text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0;
+            overflow: hidden;
         }
 
         .form-container {
             position: relative;
             width: 400px;
-            padding: 20px;
-            background: rgba(50, 60, 30, 0.9);
+            padding: 30px;
+            background: rgba(25, 30, 15, 0.9);
             border-radius: 12px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .form-field {
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
             position: absolute;
-            width: 100%;
+            left: 20px;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
 
-        .form-field.visible {
+        .form-group.active {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        .floating-label {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-        }
-
-        .floating-label.visible {
-            opacity: 1;
-            transform: translateY(-25px);
         }
 
         input, select {
             width: 100%;
             padding: 12px;
-            border: none;
-            border-radius: 6px;
+            margin-top: 8px;
+            border: 1px solid #F1E7BB;
+            border-radius: 30px;
+            background: transparent;
+            color: white;
             font-size: 16px;
-            margin-top: 10px;
-            background: #202A12;
-            color: #F1E7BB;
-            transition: box-shadow 0.3s;
+            outline: none;
+            transition: box-shadow 0.3s ease-in-out;
         }
 
         input:focus, select:focus {
-            outline: none;
-            box-shadow: 0 0 8px rgba(241, 231, 187, 0.8);
+            box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.3);
         }
 
         .submit-button {
             width: 100%;
             padding: 12px;
+            border-radius: 30px;
             background: transparent;
-            border: 2px solid #E8DCC0;
             color: #E8DCC0;
+            border: 2px solid #E8DCC0;
             font-size: 18px;
-            border-radius: 50px;
-            margin-top: 20px;
             cursor: pointer;
+            display: none;
+            margin-top: 20px;
             transition: all 0.4s ease-in-out;
         }
 
@@ -86,79 +79,96 @@
             background: rgba(232, 220, 192, 0.15);
             transform: scale(1.05);
         }
+
     </style>
 </head>
 <body>
     <div class="form-container">
+        <h1>Book with H A K U</h1>
         <form id="bookingForm">
-            <div class="form-field" id="nameField">
-                <label class="floating-label" id="nameLabel">Name</label>
-                <input type="text" id="name" name="name" oninput="triggerNext('emailField', 'nameLabel')">
+            <div class="form-group active" id="step1">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
             </div>
-
-            <div class="form-field" id="emailField">
-                <label class="floating-label" id="emailLabel">Email</label>
-                <input type="email" id="email" name="email" oninput="triggerNext('phoneField', 'emailLabel')">
+            
+            <div class="form-group" id="step2">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
             </div>
-
-            <div class="form-field" id="phoneField">
-                <label class="floating-label" id="phoneLabel">Phone Number</label>
-                <input type="tel" id="phone" name="phone" oninput="triggerNext('serviceField', 'phoneLabel')">
+            
+            <div class="form-group" id="step3">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
             </div>
-
-            <div class="form-field" id="serviceField">
-                <label class="floating-label" id="serviceLabel">Select Service</label>
-                <select id="service" name="service" onchange="triggerNext('addressField', 'serviceLabel')">
-                    <option value="">Select...</option>
-                    <option value="relaxation">Relaxation Massage</option>
-                    <option value="deep">Deep Tissue Therapy</option>
+            
+            <div class="form-group" id="step4">
+                <label for="service">Select Service</label>
+                <select id="service" name="service">
+                    <option value="relaxation massage">Relaxation Massage</option>
+                    <option value="deep tissue therapy">Deep Tissue Therapy</option>
                     <option value="aromatherapy">Japanese-Inspired Aromatherapy</option>
                 </select>
             </div>
-
-            <div class="form-field" id="addressField">
-                <label class="floating-label" id="addressLabel">Address</label>
-                <input type="text" id="address" name="address" oninput="triggerNext('parkingField', 'addressLabel')">
+            
+            <div class="form-group" id="step5">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
             </div>
 
-            <div class="form-field" id="parkingField">
-                <label class="floating-label" id="parkingLabel">Parking Availability</label>
-                <select id="parking" name="parking" onchange="triggerNext('stairsField', 'parkingLabel')">
+            <div class="form-group" id="step6">
+                <label for="parking">Parking Availability</label>
+                <select id="parking" name="parking">
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
             </div>
 
-            <div class="form-field" id="stairsField">
-                <label class="floating-label" id="stairsLabel">Do you have stairs?</label>
-                <select id="stairs" name="stairs" onchange="triggerNext('petsField', 'stairsLabel')">
+            <div class="form-group" id="step7">
+                <label for="stairs">Do you have stairs?</label>
+                <select id="stairs" name="stairs">
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
             </div>
 
-            <div class="form-field" id="petsField">
-                <label class="floating-label" id="petsLabel">Do you have pets?</label>
+            <div class="form-group" id="step8">
+                <label for="pets">Do you have pets?</label>
                 <select id="pets" name="pets">
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
             </div>
 
-            <button type="submit" class="submit-button">Next</button>
+            <button type="submit" class="submit-button" id="submitBtn">Next</button>
         </form>
     </div>
 
     <script>
-        function triggerNext(nextFieldId, labelId) {
-            const input = document.getElementById(nextFieldId.replace('Field', ''));
-            setTimeout(() => {
-                if (input.value.trim() !== "") {
-                    document.getElementById(nextFieldId).classList.add('visible');
-                    document.getElementById(labelId).classList.add('visible');
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentStep = 1;
+            const totalSteps = 8;
+            
+            function showNextStep() {
+                if (currentStep < totalSteps) {
+                    document.getElementById(`step${currentStep}`).classList.remove("active");
+                    currentStep++;
+                    document.getElementById(`step${currentStep}`).classList.add("active");
                 }
-            }, 1500);
-        }
+                if (currentStep === totalSteps) {
+                    document.getElementById("submitBtn").style.display = "block";
+                }
+            }
+
+            document.querySelectorAll("input, select").forEach((element) => {
+                element.addEventListener("input", function() {
+                    setTimeout(() => {
+                        if (this.value.trim() !== "") {
+                            showNextStep();
+                        }
+                    }, 1500);
+                });
+            });
+        });
     </script>
 </body>
 </html>
