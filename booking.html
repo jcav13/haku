@@ -3,152 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book with H A K U</title>
-    <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Luxury Booking Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Garamond:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #293717;
-            color: #F1E7BB;
-            font-family: 'Satoshi', sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
+            background-color: #1F261B;
+            color: #E8DCC0;
+            font-family: 'Garamond', serif;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-
         .container {
-            width: 90%;
-            max-width: 600px;
-            padding: 20px;
-            border-radius: 10px;
-            background: rgba(241, 231, 187, 0.1);
-            backdrop-filter: blur(8px);
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(40, 50, 30, 0.85);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            text-align: center;
         }
-
         h1 {
-            font-size: 32px;
-            font-weight: 500;
-            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
-
-        .step {
+        .form-group {
+            margin-bottom: 15px;
             display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
-
-        .active {
-            display: block;
-        }
-
-        label {
-            display: block;
-            text-align: left;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-
         input, select {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #F1E7BB;
+            padding: 12px;
+            border: 1px solid #E8DCC0;
             background: transparent;
-            color: #F1E7BB;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: 1px solid #F1E7BB;
-            background: transparent;
-            color: #F1E7BB;
-            cursor: pointer;
+            color: #E8DCC0;
+            border-radius: 6px;
             font-size: 16px;
-            transition: all 0.3s;
+            outline: none;
+            transition: all 0.3s ease-in-out;
         }
-
-        button:hover {
-            background: rgba(241, 231, 187, 0.2);
+        input:focus, select:focus {
+            border-color: #F4E1A1;
+            box-shadow: 0 0 10px rgba(244, 225, 161, 0.5);
+        }
+        .submit-btn {
+            display: none;
+            width: 100%;
+            padding: 12px;
+            background: #E8DCC0;
+            color: #1F261B;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+        .submit-btn:hover {
+            background: #F4E1A1;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Book with H A K U</h1>
-        
         <form id="bookingForm">
-            <!-- Step 1: Basic Info -->
-            <div class="step active" id="step1">
-                <label for="name">Name</label>
-                <input type="text" id="name" required>
-                
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
-                
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" required>
-                
-                <label for="service">Select Service</label>
-                <select id="service">
+            <div class="form-group" id="group-name" style="display: block; opacity: 1;">
+                <input type="text" id="name" placeholder="Name" required>
+            </div>
+            <div class="form-group" id="group-email">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="form-group" id="group-phone">
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+            </div>
+            <div class="form-group" id="group-service">
+                <select id="service" required>
+                    <option value="" disabled selected>Select Service</option>
                     <option value="relaxation">Relaxation Massage</option>
-                    <option value="deep_tissue">Deep Tissue Therapy</option>
+                    <option value="deep-tissue">Deep Tissue Therapy</option>
                     <option value="aromatherapy">Japanese-Inspired Aromatherapy</option>
                 </select>
-                
-                <label for="address">Address</label>
-                <input type="text" id="address" required>
-
-                <div class="button-container">
-                    <button type="button" onclick="nextStep()">Next</button>
-                </div>
             </div>
-            
-            <!-- Step 2: Date & Payment -->
-            <div class="step" id="step2">
-                <label for="date">Preferred Date</label>
-                <input type="date" id="date" required>
-                
-                <label for="payment">Payment Method</label>
-                <select id="payment">
-                    <option value="card">Credit/Debit Card</option>
-                    <option value="paypal">PayPal</option>
-                    <option value="afterpay">Afterpay</option>
+            <div class="form-group" id="group-address">
+                <input type="text" id="address" placeholder="Address" required>
+            </div>
+            <div class="form-group" id="group-parking">
+                <select id="parking" required>
+                    <option value="" disabled selected>Parking Availability</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
                 </select>
-                
-                <div class="button-container">
-                    <button type="button" onclick="prevStep()">Back</button>
-                    <button type="submit">Confirm & Pay</button>
-                </div>
             </div>
+            <div class="form-group" id="group-stairs">
+                <select id="stairs" required>
+                    <option value="" disabled selected>Do you have stairs?</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="form-group" id="group-pets">
+                <select id="pets" required>
+                    <option value="" disabled selected>Do you have pets?</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn" id="submit-btn">Next</button>
         </form>
     </div>
-
     <script>
-        let currentStep = 1;
+        const formGroups = document.querySelectorAll('.form-group');
+        let currentIndex = 0;
 
-        function nextStep() {
-            document.getElementById(`step${currentStep}`).classList.remove('active');
-            currentStep++;
-            document.getElementById(`step${currentStep}`).classList.add('active');
+        function revealNextField() {
+            if (currentIndex < formGroups.length - 1) {
+                const nextField = formGroups[currentIndex + 1];
+                setTimeout(() => {
+                    nextField.style.display = 'block';
+                    nextField.style.opacity = '1';
+                    currentIndex++;
+                }, 1500);
+            } else {
+                document.getElementById('submit-btn').style.display = 'block';
+            }
         }
 
-        function prevStep() {
-            document.getElementById(`step${currentStep}`).classList.remove('active');
-            currentStep--;
-            document.getElementById(`step${currentStep}`).classList.add('active');
-        }
+        formGroups.forEach((group, index) => {
+            if (index === 0) return; // Skip first field
+            const input = group.querySelector('input, select');
+            input.addEventListener('input', () => {
+                clearTimeout(input.timer);
+                input.timer = setTimeout(() => {
+                    revealNextField();
+                }, 1500);
+            });
+        });
     </script>
 </body>
 </html>
