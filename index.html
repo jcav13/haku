@@ -6,7 +6,7 @@
   <title>HAKU</title>
 
   <style>
-    /* 1) Load Optima font from GitHub */
+    /* Load Optima font from GitHub */
     @font-face {
       font-family: 'Optima';
       src: url('https://github.com/jcav13/haku/raw/refs/heads/main/OPTIMA.woff') format('woff');
@@ -14,104 +14,76 @@
       font-style: normal;
     }
 
-    /* 2) Base Styling */
+    /* General Styling */
     body {
-      background-color: #293717; /* Dark Green */
-      color: #F1E7BB;           /* Light Cream */
+      background-color: #293717;
+      color: #F1E7BB;
       font-family: 'Optima', sans-serif;
       margin: 0;
       padding: 0;
       min-height: 100vh;
-
-      /* 
-        We'll place the headings in a top-section (vertically centered), 
-        and MELBOURNE + Book in a bottom-section. 
-      */
       display: flex;
       flex-direction: column;
     }
 
-    /* content-wrapper that holds both top-section and bottom-section */
+    /* 🔹 New TOP NAVIGATION BAR */
+    .top-nav {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 40px; /* Evenly spaced links */
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: #F1E7BB;
+      transition: color 0.3s ease;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    /* Subtle underline on hover */
+    .top-nav a:hover {
+      color: #E8DCC0;
+    }
+
+    .top-nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #E8DCC0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width 0.3s ease-in-out;
+    }
+
+    .top-nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Content Wrapper */
     .content-wrapper {
       flex: 1;
       display: flex;
       flex-direction: column;
-    }
-
-    /* 
-      TOP SECTION: flex:1 to fill available space, 
-      center headings vertically & horizontally. 
-    */
-    .top-section {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* vertical centering */
+      justify-content: center;
       align-items: center;
       text-align: center;
     }
 
-    /*
-      BOTTOM SECTION: 
-      We keep the Book button near the bottom 
-      (by margin-bottom on .content-wrapper if desired).
-    */
-    .bottom-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 50px; /* distance from bottom edge of screen */
-    }
+    /* Headings Styling */
+    h2 { font-size: 20px; font-weight: 200; margin-bottom: 0px; }
+    h1 { font-size: 90px; font-weight: 200; letter-spacing: 6px; margin-bottom: -10px; }
+    h3 { font-size: 28px; font-weight: 200; letter-spacing: 20px; margin-bottom: 30px; }
+    h4 { font-size: 20px; font-weight: 200; margin-top: -210px; margin-bottom: 210px; }
 
-    /* 3) Fade-in Animations for Headings, Paragraphs */
-    h1, h2, h3, h4, .book-button {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 2.5s ease-out forwards;
-    }
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* 4) Headings Styling */
-    h2 {
-      font-size: 20px;
-      font-weight: 200;
-      margin: 0;
-      margin-bottom: 0px; /* small gap before H A K U */
-    }
-    h1 {
-      font-size: 90px;
-      font-weight: 200;
-      letter-spacing: 6px;
-      margin: 0;
-      margin-bottom: -10px; /* overlap effect under H A K U if you want it */
-    }
-    h3 {
-      font-size: 28px;
-      font-weight: 200;
-      letter-spacing: 20px;
-      margin: 0;
-      margin-bottom: 30px;  /* gap after ハ ク */
-    }
-    h4 {
-      font-size: 20px;
-      font-weight: 200;
-      margin: 0;
-      /* SHIFT MELBOURNE UPWARD by a negative margin-top. 
-         Tweak this value to find your perfect halfway point. */
-      margin-top: -210px;  /* example: moves MELBOURNE ~40px closer to ハ ク */
-      margin-bottom: 210px;/* spacing above the Book button */
-    }
-
-    /* 5) The Book Button */
+    /* Book Button */
     .book-button {
       font-family: 'Optima', sans-serif;
       color: #E8DCC0;
@@ -124,153 +96,41 @@
       letter-spacing: 1px;
       transition: all 0.4s ease-in-out;
       display: inline-block;
-
-      /* 
-        Use relative positioning to shift Book upward, 
-        so it won't just bring MELBOURNE closer. 
-      */
-      position: relative;  
-      top: -90px;  /* move it ~50px upward */
+      position: relative;
+      top: -90px;
     }
+
     .book-button:hover {
       background: rgba(232, 220, 192, 0.15);
       color: #E8DCC0;
       transform: scale(1.05);
     }
 
-    /* 6) Top Bar, Nav, Social Icons, Script (unchanged) */
-    .top-bar {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      right: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: calc(100% - 30px);
-      padding: 10px 20px;
-    }
-    .hamburger {
-      font-size: 24px;
-      font-weight: 500;
-      cursor: pointer;
-      color: #F1E7BB;
-      padding: 6px 10px;
-      display: flex;
-      align-items: center;
-    }
-    .social-icons {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-    .social-icons svg {
-      width: 26px;
-      height: 26px;
-      fill: #F1E7BB;
-      transition: transform 0.2s ease-in-out;
-    }
-    .social-icons a:hover svg {
-      transform: scale(1.1);
-    }
-
-    .dropdown {
-      position: absolute;
-      top: 50px;
-      left: 10px;
-      background: linear-gradient(180deg, rgba(241,231,187,0.98), rgba(241,231,187,0.9));
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      width: 190px;
-      display: none;
-      flex-direction: column;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s ease;
-    }
-    .dropdown a {
-      text-decoration: none;
-      color: #293717;
-      padding: 16px 20px;
-      font-size: 18px;
-      font-weight: 500;
-      position: relative;
-      transition: color 0.3s ease, opacity 0.3s ease;
-      opacity: 0.85;
-    }
-    .dropdown a:hover {
-      opacity: 1;
-    }
-    .dropdown a::after {
-      content: "";
-      position: absolute;
-      bottom: 8px;
-      left: 20px;
-      width: 0;
-      height: 2px;
-      background-color: #293717;
-      transition: width 0.3s ease;
-    }
-    .dropdown a:hover::after {
-      width: calc(100% - 40px);
-    }
-    .dropdown.open {
-      display: flex;
-      opacity: 1;
-      transform: translateY(0);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-
-    /* 7) Media Queries for smaller screens if needed */
+    /* Media Queries for smaller screens */
     @media (max-width: 768px) {
-      h1 {
-        font-size: 70px;
-        letter-spacing: 3px;
-        margin-bottom: 0; 
-      }
-      h2 {
-        font-size: 20px;
-      }
-      h3 {
-        font-size: 24px;
-        margin-bottom: 20px;
-        letter-spacing: 15px;
-      }
-      h4 {
+      .top-nav {
         font-size: 16px;
-        margin-top: -20px;
-        margin-bottom: 30px;
+        gap: 25px;
       }
-      .book-button {
-        font-size: 16px;
-        padding: 10px 32px;
 
-        /* keep or tweak the top shift for mobile if you want less or more shift */
-        top: -30px; 
-      }
+      h1 { font-size: 70px; letter-spacing: 3px; }
+      h3 { font-size: 24px; letter-spacing: 15px; margin-bottom: 20px; }
+      h4 { font-size: 16px; margin-top: -20px; margin-bottom: 30px; }
+      .book-button { font-size: 16px; padding: 10px 32px; top: -30px; }
     }
   </style>
 </head>
 <body>
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <div class="dropdown" id="dropdownMenu">
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
 
-  <!-- Social Icons -->
-  <div class="social-icons">
-    <!-- Insert your Instagram & Facebook links/SVGs here -->
-  </div>
+  <!-- 🌟 New Navigation Bar -->
+  <nav class="top-nav">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="book.html">Book</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-  <!-- Main container with top headings in .top-section, MELBOURNE + Book in .bottom-section -->
+  <!-- Main Content -->
   <div class="content-wrapper">
     <div class="top-section">
       <h2>Personalised Home Massage</h2>
@@ -280,38 +140,9 @@
 
     <div class="bottom-section">
       <h4>MELBOURNE</h4>
-      <!-- Book button is now raised with position: relative; top: -50px; -->
       <a href="book.html" class="book-button">Book</a>
     </div>
   </div>
 
-  <!-- Script for Dropdown -->
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById("dropdownMenu");
-      menu.style.display = "flex";
-      setTimeout(() => {
-        menu.classList.add("open");
-      }, 10);
-
-      menu.addEventListener("mouseleave", function() {
-        menu.classList.remove("open");
-        setTimeout(() => {
-          menu.style.display = "none";
-        }, 350);
-      });
-    }
-
-    document.addEventListener("click", function(event) {
-      const menu = document.getElementById("dropdownMenu");
-      const button = document.querySelector(".hamburger");
-      if (!menu.contains(event.target) && event.target !== button) {
-        menu.classList.remove("open");
-        setTimeout(() => {
-          menu.style.display = "none";
-        }, 350);
-      }
-    });
-  </script>
 </body>
 </html>
