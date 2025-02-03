@@ -1,175 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book with H A K U</title>
-    <style>
-        body {
-            background-color: #293717;
-            color: #F1E7BB;
-            font-family: 'Satoshi', sans-serif;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book with H A K U</title>
+  <style>
+    /* Load Optima from GitHub (same as you had) */
+    @font-face {
+      font-family: 'Optima';
+      src: url('https://github.com/jcav13/haku/raw/refs/heads/main/OPTIMA.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-        .form-container {
-            position: relative;
-            width: 400px;
-            padding: 30px;
-            background: rgba(25, 30, 15, 0.9);
-            border-radius: 12px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
+    /* Body styling */
+    body {
+      background-color: #293717; /* Dark Green */
+      color: #F1E7BB;           /* Cream text */
+      font-family: 'Satoshi', sans-serif;
+      margin: 0;
+      padding: 0;
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+      /* Center everything vertically */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
 
-        .form-group {
-            position: absolute;
-            left: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
+    /* "Book with H A K U" heading outside the form container, in Optima */
+    .page-title {
+      position: absolute; /* so it sits above the form container */
+      top: 30px;
+      font-family: 'Optima', sans-serif; /* Use the Optima font */
+      font-size: 32px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-        .form-group.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    /* The container for the stepping form */
+    .form-container {
+      position: relative;
+      width: 400px;
+      padding: 30px;
+      background: rgba(25, 30, 15, 0.9);
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden; /* so we can hide label transitions if needed */
+    }
 
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 8px;
-            border: 1px solid #F1E7BB;
-            border-radius: 30px;
-            background: transparent;
-            color: white;
-            font-size: 16px;
-            outline: none;
-            transition: box-shadow 0.3s ease-in-out;
-        }
+    /* Each step label becomes small text in top-left corner after answered */
+    .answered-label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 14px;
+      color: #F1E7BB;
+      opacity: 0;
+      transform: translate(20px, 20px);
+      transition: 
+        opacity 0.6s ease, 
+        transform 0.6s ease;
+    }
+    .answered-label.active {
+      opacity: 1;
+      transform: translate(10px, 0px);
+    }
 
-        input:focus, select:focus {
-            box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.3);
-        }
+    /* We no longer have h1 in container, so remove that style from original code */
 
-        .submit-button {
-            width: 100%;
-            padding: 12px;
-            border-radius: 30px;
-            background: transparent;
-            color: #E8DCC0;
-            border: 2px solid #E8DCC0;
-            font-size: 18px;
-            cursor: pointer;
-            display: none;
-            margin-top: 20px;
-            transition: all 0.4s ease-in-out;
-        }
+    .form-group {
+      position: relative;
+      margin-bottom: 20px; 
+      opacity: 1;
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
 
-        .submit-button:hover {
-            background: rgba(232, 220, 192, 0.15);
-            transform: scale(1.05);
-        }
+    .form-group.hide {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+    }
 
-    </style>
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 8px;
+      color: #E8DCC0;
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #F1E7BB;
+      border-radius: 30px;
+      background: transparent;
+      color: white;
+      font-size: 16px;
+      outline: none;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    input:focus, select:focus {
+      box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.3);
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 30px;
+      background: transparent;
+      color: #E8DCC0;
+      border: 2px solid #E8DCC0;
+      font-size: 18px;
+      cursor: pointer;
+      display: none; /* only show at last step */
+      margin-top: 20px;
+      transition: all 0.4s ease-in-out;
+    }
+    .submit-button:hover {
+      background: rgba(232, 220, 192, 0.15);
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1>Book with H A K U</h1>
-        <form id="bookingForm">
-            <div class="form-group active" id="step1">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            
-            <div class="form-group" id="step2">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group" id="step3">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            
-            <div class="form-group" id="step4">
-                <label for="service">Select Service</label>
-                <select id="service" name="service">
-                    <option value="relaxation massage">Relaxation Massage</option>
-                    <option value="deep tissue therapy">Deep Tissue Therapy</option>
-                    <option value="aromatherapy">Japanese-Inspired Aromatherapy</option>
-                </select>
-            </div>
-            
-            <div class="form-group" id="step5">
-                <label for="address">Address</label>
-                <input type="text" id="address" name="address" required>
-            </div>
+  <!-- Page Title in Optima, outside the form box -->
+  <div class="page-title">Book with H A K U</div>
 
-            <div class="form-group" id="step6">
-                <label for="parking">Parking Availability</label>
-                <select id="parking" name="parking">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
+  <div class="form-container">
+    <form id="bookingForm">
+      <!-- We'll insert 8 steps, each question. 
+           We'll add a .answered-label that shows user’s response in top-left after 1s idle. -->
+      <!-- Step 1 -->
+      <div class="form-group" id="step1">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        <!-- The label to appear top-left with user's answer -->
+        <div class="answered-label" id="answered-name"></div>
+      </div>
 
-            <div class="form-group" id="step7">
-                <label for="stairs">Do you have stairs?</label>
-                <select id="stairs" name="stairs">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
+      <!-- Step 2 -->
+      <div class="form-group hide" id="step2">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <div class="answered-label" id="answered-email"></div>
+      </div>
 
-            <div class="form-group" id="step8">
-                <label for="pets">Do you have pets?</label>
-                <select id="pets" name="pets">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </div>
+      <!-- Step 3 -->
+      <div class="form-group hide" id="step3">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required>
+        <div class="answered-label" id="answered-phone"></div>
+      </div>
 
-            <button type="submit" class="submit-button" id="submitBtn">Next</button>
-        </form>
-    </div>
+      <!-- Step 4 -->
+      <div class="form-group hide" id="step4">
+        <label for="service">Select Service</label>
+        <select id="service" name="service">
+          <option value="relaxation massage">Relaxation Massage</option>
+          <option value="deep tissue therapy">Deep Tissue Therapy</option>
+          <option value="aromatherapy">Japanese-Inspired Aromatherapy</option>
+        </select>
+        <div class="answered-label" id="answered-service"></div>
+      </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let currentStep = 1;
-            const totalSteps = 8;
-            
-            function showNextStep() {
-                if (currentStep < totalSteps) {
-                    document.getElementById(`step${currentStep}`).classList.remove("active");
-                    currentStep++;
-                    document.getElementById(`step${currentStep}`).classList.add("active");
-                }
-                if (currentStep === totalSteps) {
-                    document.getElementById("submitBtn").style.display = "block";
-                }
+      <!-- Step 5 -->
+      <div class="form-group hide" id="step5">
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" required>
+        <div class="answered-label" id="answered-address"></div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="form-group hide" id="step6">
+        <label for="parking">Parking Availability</label>
+        <select id="parking" name="parking">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+        <div class="answered-label" id="answered-parking"></div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="form-group hide" id="step7">
+        <label for="stairs">Do you have stairs?</label>
+        <select id="stairs" name="stairs">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+        <div class="answered-label" id="answered-stairs"></div>
+      </div>
+
+      <!-- Step 8 -->
+      <div class="form-group hide" id="step8">
+        <label for="pets">Do you have pets?</label>
+        <select id="pets" name="pets">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+        <div class="answered-label" id="answered-pets"></div>
+      </div>
+
+      <!-- Submit at final step -->
+      <button type="submit" class="submit-button" id="submitBtn">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let currentStep = 1;
+      const totalSteps = 8;
+      let typingTimeout; // holds the setTimeout for 1s idle
+      const stepElements = [];
+      for(let i=1; i<=totalSteps; i++){
+        stepElements[i] = document.getElementById(`step${i}`);
+      }
+      const submitBtn = document.getElementById("submitBtn");
+      
+      function showStep(stepNum) {
+        // hide the previous step
+        if(stepNum > 1){
+          stepElements[stepNum - 1].classList.add("hide");
+        }
+        // show the new step
+        stepElements[stepNum].classList.remove("hide");
+      }
+
+      function goToNextStep() {
+        if (currentStep < totalSteps) {
+          currentStep++;
+          showStep(currentStep);
+          if (currentStep === totalSteps) {
+            submitBtn.style.display = "block";
+          }
+        }
+      }
+
+      // function to handle user input for each question
+      function handleInput(e, stepNum){
+        clearTimeout(typingTimeout);
+        // if user typed something, wait 1s
+        typingTimeout = setTimeout(() => {
+          const inputVal = e.target.value.trim();
+          if(inputVal !== ""){
+            // we place the answered label top-left 
+            const answeredDiv = document.getElementById(`answered-${e.target.id}`) 
+              || document.getElementById(`answered-${e.target.name}`);
+            if(answeredDiv){
+              answeredDiv.textContent = e.target.name + ": " + inputVal;
+              answeredDiv.classList.add("active");
             }
+            // hide the input box
+            stepElements[stepNum].classList.add("hide");
+            // after we hide it, go to next step
+            goToNextStep();
+          }
+        }, 1000);
+      }
 
-            document.querySelectorAll("input, select").forEach((element) => {
-                element.addEventListener("input", function() {
-                    setTimeout(() => {
-                        if (this.value.trim() !== "") {
-                            showNextStep();
-                        }
-                    }, 1500);
-                });
-            });
-        });
-    </script>
+      // add listeners to each input/select
+      const formFields = document.querySelectorAll("#bookingForm input, #bookingForm select");
+      formFields.forEach((field) => {
+        const stepId = parseInt(field.closest(".form-group").id.replace("step", ""), 10);
+        field.addEventListener("input", (e) => handleInput(e, stepId));
+      });
+    });
+  </script>
 </body>
 </html>
-
