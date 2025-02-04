@@ -96,18 +96,26 @@ body {
     }
 
     /* Glowing Effect on HAKU */
-    h1 {
-   font-size: 90px;
+h1 {
+  font-size: 90px;
   font-weight: 200;
   letter-spacing: 6px;
   margin: 0;
   text-shadow: 0 0 15px rgba(241, 231, 187, 0.5);
   animation: glow 2.5s infinite alternate ease-in-out;
-  border: 2px solid black; /* Static black border */
-  padding: 10px; /* Ensures spacing inside the border */
-  display: inline-block; /* Makes sure the border wraps tightly around the text */
-}
+  
+  /* Black stroke around each letter */
+  -webkit-text-stroke: 2px black;
+  text-stroke: 2px black;
 
+  /* Fallback for browsers that don't support text-stroke */
+  text-shadow: 
+    -2px -2px 0 black, 
+     2px -2px 0 black, 
+    -2px  2px 0 black, 
+     2px  2px 0 black,
+     0px  0px 15px rgba(241, 231, 187, 0.7); /* Keeps the glow */
+}
 @keyframes glow {
   0% {
     text-shadow: 0 0 15px rgba(241, 231, 187, 0.3);
