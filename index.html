@@ -147,8 +147,8 @@ body {
       margin: 0;
     }
     /* Main Title: H A K U – Moved to 20% from top and 75% from left */
-/* Adjusted H1 Styling */
-.content-wrapper h1 {
+/* Ensures H A is on one line and K U is on the second */
+.haku {
     position: absolute;
     top: 20%;
     left: 85%;
@@ -158,9 +158,46 @@ body {
     margin: 0;
     text-shadow: 0 0 15px rgba(241,231,187,0.5);
     animation: glow 2.5s infinite alternate ease-in-out;
-    line-height: 1.2; /* Controls spacing between lines */
-    text-align: center; /* Ensures proper alignment */
+    line-height: 1.2; /* Keeps space between the two lines */
+    text-align: center;
     display: block;
+}
+
+/* Forces H A to stay on one line and K U on the second */
+.haku .line1, .haku .line2 {
+    display: block; /* Forces them onto separate lines */
+}
+
+/* Ensure the H and U are positioned correctly */
+.haku span {
+    position: relative;
+    display: inline-block;
+}
+
+/* Pink Square (Behind H) */
+.haku .h::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: #FFC0CB; /* Light Pink */
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+/* Peach Square (Behind U) */
+.haku .u::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: #FFE4E1; /* Misty Rose */
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
     @keyframes glow {
       0% { text-shadow: 0 0 15px rgba(241,231,187,0.3); }
@@ -275,7 +312,11 @@ body {
   <!-- Vintage, Off-Centre Content Layout -->
   <div class="content-wrapper">
     <h2>Personalised Home Massage</h2>
-    <h1>H A<br>K U</h1>
+<h1 class="haku">
+    <span class="line1"><span class="h">H</span> A</span>
+    <br>
+    <span class="line2">K <span class="u">U</span></span>
+</h1>
     <h3>ハ ク</h3>
     <h4>MELBOURNE</h4>
     <a href="book.html" class="book-button">Book</a>
