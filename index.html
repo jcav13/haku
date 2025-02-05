@@ -146,7 +146,6 @@ body {
       letter-spacing: 3px;
       margin: 0;
     }
-    /* Main Title: H A K U – Moved to 20% from top and 75% from left */
 .haku {
     position: absolute;
     top: 20%;
@@ -159,36 +158,50 @@ body {
     animation: glow 2.5s infinite alternate ease-in-out;
     text-align: center;
     display: flex;
-    flex-direction: column; /* Ensures stacking of HA on KU */
-    align-items: center; /* Keeps everything centered */
-    gap: 10px; /* Adds space between the two rows */
+    flex-direction: column; /* Ensures HA is above KU */
+    align-items: center;
+    gap: 15px; /* Adjusts spacing between HA and KU */
 }
 
-/* Ensures "H A" and "K U" are on separate lines */
-.haku .line1,
-.haku .line2 {
+/* Each line contains two letters */
+.haku .line {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Controls space between letters */
+    gap: 15px; /* Adjusts spacing between H & A, K & U */
+    position: relative;
 }
 
-/* Square Background for "H" */
-.haku .h::before,
-.haku .u::before {
+/* Background squares */
+.haku .letter {
+    position: relative;
+    display: inline-block;
+    padding: 10px; /* Ensures proper spacing */
+}
+
+/* Square for "H" (Pink - #FFC0CB) */
+.haku .h::before {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 1.2em;
-    aspect-ratio: 1 / 1; /* Ensures it's a perfect square */
+    width: 1.3em;
+    height: 1.3em;
     background-color: #FFC0CB; /* Light Pink */
     transform: translate(-50%, -50%);
     z-index: -1;
 }
 
-/* Square Background for "U" */
+/* Square for "U" (Misty Rose - #FFE4E1) */
 .haku .u::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.3em;
+    height: 1.3em;
     background-color: #FFE4E1; /* Misty Rose */
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
     @keyframes glow {
       0% { text-shadow: 0 0 15px rgba(241,231,187,0.3); }
@@ -304,9 +317,15 @@ body {
   <div class="content-wrapper">
     <h2>Personalised Home Massage</h2>
 <h1 class="haku">
-    <span class="line1">
-        <span class="h">H</span> <span>A</span>
-    </span>
+    <div class="line">
+        <span class="letter h">H</span>
+        <span class="letter">A</span>
+    </div>
+    <div class="line">
+        <span class="letter">K</span>
+        <span class="letter u">U</span>
+    </div>
+</h1>
     <span class="line2">
         <span>K</span> <span class="u">U</span>
     </span>
