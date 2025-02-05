@@ -184,48 +184,45 @@
       background: rgba(232,220,192,0.15);
       transform: translate(-50%, -50%) scale(1.05);
     }
-    @media (max-width: 768px) {
-    /* Reduce H1 size and adjust spacing */
+@media (max-width: 768px) {
+    /* Adjust H1 (HA KU) for mobile */
     .content-wrapper h1 {
-        font-size: 80px; /* Smaller for mobile */
-        line-height: 1; /* Reduce line spacing */
-        letter-spacing: 6px; /* Reduce letter spacing */
-        top: 25%; /* Adjust vertical position */
-        left: 50%;
+        font-size: 80px; /* Scale down for mobile */
+        letter-spacing: 6px; /* Reduce spacing slightly */
+        top: 20%; /* Maintain proportional position */
+        left: 75%; /* Keep the alignment */
         transform: translate(-50%, -50%);
-        text-align: center;
+        line-height: 1.1; /* Adjust spacing between HA and KU */
     }
 
-    /* Adjust tagline */
+    /* Ensure tagline (Personalised Home Massage) maintains correct position */
     .content-wrapper h2 {
-        font-size: 22px; /* Smaller text */
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        top: 35vh;
-    }
-
-    /* Move and resize Melbourne text */
-    .content-wrapper h4 {
-        font-size: 20px;
-        bottom: 20px;
+        font-size: 28px; /* Scale down for mobile */
+        top: 40vh; /* Maintain relative position */
         left: 20px;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
     }
 
-    /* Move and resize ハ ク */
+    /* Adjust MELBOURNE text */
+    .content-wrapper h4 {
+        font-size: 30px; /* Scale proportionally */
+        bottom: 30px; /* Maintain positioning */
+        left: 40px;
+    }
+
+    /* Adjust ハ ク (Japanese text) */
     .content-wrapper h3 {
-        font-size: 20px;
-        bottom: 20px;
-        right: 20px;
-        letter-spacing: 1px;
+        font-size: 30px; /* Scale down */
+        bottom: 30px;
+        right: 40px;
     }
 
-    /* Adjust book button for better tap interaction */
+    /* Book Button Adjustment */
     .book-button {
-        font-size: 18px;
-        padding: 12px 40px;
-        top: 55%;
+        font-size: 20px; /* Scale down slightly */
+        padding: 14px 48px; /* Maintain proportions */
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 }
     
