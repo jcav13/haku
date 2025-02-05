@@ -184,6 +184,51 @@
       background: rgba(232,220,192,0.15);
       transform: translate(-50%, -50%) scale(1.05);
     }
+    @media (max-width: 768px) {
+    /* Reduce H1 size and adjust spacing */
+    .content-wrapper h1 {
+        font-size: 80px; /* Smaller for mobile */
+        line-height: 1; /* Reduce line spacing */
+        letter-spacing: 6px; /* Reduce letter spacing */
+        top: 25%; /* Adjust vertical position */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    /* Adjust tagline */
+    .content-wrapper h2 {
+        font-size: 22px; /* Smaller text */
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        top: 35vh;
+    }
+
+    /* Move and resize Melbourne text */
+    .content-wrapper h4 {
+        font-size: 20px;
+        bottom: 20px;
+        left: 20px;
+        letter-spacing: 1px;
+    }
+
+    /* Move and resize ハ ク */
+    .content-wrapper h3 {
+        font-size: 20px;
+        bottom: 20px;
+        right: 20px;
+        letter-spacing: 1px;
+    }
+
+    /* Adjust book button for better tap interaction */
+    .book-button {
+        font-size: 18px;
+        padding: 12px 40px;
+        top: 55%;
+    }
+}
+    
   </style>
 </head>
 <body>
