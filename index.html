@@ -187,34 +187,36 @@ body {
       margin: 0;
     }
 
-    /* H1 and Japanese text together */
+/* Ensure the container remains centered */
 .title-container {
-    text-align: center; /* Centers both HA KU and ハ ク */
+    text-align: center;
     position: absolute;
     top: 20%;
     left: 85%;
     transform: translate(-50%, -50%);
 }
 
-/* Adjusted H1 Styling */
+/* Ensure HA KU stays spaced correctly */
 .title-container h1 {
     font-size: 120px;
     letter-spacing: 8px;
     margin: 0;
     text-shadow: 0 0 15px rgba(241,231,187,0.5);
     animation: glow 2.5s infinite alternate ease-in-out;
-    line-height: 1.1; /* Keeps HA and KU close but distinct */
+    line-height: 1.1;
     text-align: center;
     display: block;
 }
 
-/* Japanese text (ハ ク) right under KU */
+/* Ensure ハ ク stays directly under KU */
 .title-container .japanese-text {
-    font-size: 50px; /* Adjust to be slightly smaller */
-    letter-spacing: 4px; /* Ensures correct spacing */
-    margin-top: -15px; /* Moves it closer to KU */
+    font-size: 50px;
+    letter-spacing: 4px;
+    margin-top: 5px; /* Adjust spacing */
     text-align: center;
-    display: block;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
     /* Prominent Book Button – Positioned smack bang in the centre */
     .book-button {
@@ -306,8 +308,9 @@ body {
   <div class="content-wrapper">
     <h2>Personalised Home Massage</h2>
 <div class="title-container">
+<div class="title-container">
     <h1>H A<br>K U</h1>
-    <h3 class="japanese-text">ハ ク</h3>
+    <div class="japanese-text">ハ ク</div>
 </div>
     <h4>MELBOURNE</h4>
     <a href="book.html" class="book-button">Book</a>
