@@ -148,7 +148,7 @@ body {
     }
 .haku {
     position: absolute;
-    top: 24%; /* Lowered H and A */
+    top: 26%; /* Lowered H and A */
     left: 85%;
     transform: translate(-50%, -50%);
     font-size: 150px;
@@ -160,14 +160,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px; /* Increased spacing between HA and KU */
+    gap: 40px; /* Increased spacing between HA and KU */
 }
 
 /* Each line contains two letters */
 .haku .line {
     display: flex;
     justify-content: center;
-    gap: 50px; /* Increased spacing between K and U */
+    gap: 60px; /* Increased spacing between K and U */
     position: relative;
 }
 
@@ -183,10 +183,10 @@ body {
 .haku .h::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 1.4em;
-    height: 1.4em;
+    top: 10px; /* Lower to align with U */
+    left: -10px; /* Slight shift left */
+    width: 1.5em;
+    height: 1.5em;
     background-color: #FFC0CB;
     z-index: -1;
 }
@@ -195,10 +195,10 @@ body {
 .haku .u::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 1.4em;
-    height: 1.4em;
+    top: -10px; /* Raise to align with H */
+    left: 10px; /* Slight shift right */
+    width: 1.5em;
+    height: 1.5em;
     background-color: #FFE4E1;
     z-index: -1;
 }
