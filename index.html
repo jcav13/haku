@@ -44,7 +44,7 @@
       z-index: -1;
     }
 
-    /* Elegant Bento Menu Icon - top left */
+    /* Menu Icon (Hamburger) - positioned at top left */
     .menu-icon {
       position: fixed;
       top: 20px;
@@ -57,7 +57,6 @@
       flex-direction: column;
       justify-content: space-between;
     }
-
     .menu-icon span {
       display: block;
       height: 3px;
@@ -66,32 +65,31 @@
       transition: background 0.3s ease;
     }
 
-    /* Creative Lo-Fi Style Menu */
+    /* Creative, Lo-Fi Menu Panel (smaller & centred vertically) */
     .menu {
       position: fixed;
-      top: 0;
+      top: 50%;
       left: 0;
       width: 250px;
-      height: 100vh;
-      /* A textured, translucent dark overlay */
-      background: rgba(41, 55, 23, 0.75);
+      max-height: 60vh;  /* limit height so it doesn't cover the entire side */
+      padding: 30px 20px;
+      background: rgba(41, 55, 23, 0.8);
       backdrop-filter: blur(8px);
-      /* Create a curved right edge */
-      clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%);
-      padding: 80px 20px 20px 30px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+      transform: translateX(-120%) translateY(-50%);
+      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      z-index: 2;
       display: flex;
       flex-direction: column;
-      transform: translateX(-120%);
-      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
-      z-index: 2;
+      justify-content: center;
     }
-
     .menu.active {
-      transform: translateX(0);
+      transform: translateX(0) translateY(-50%);
     }
 
-    /* Elegant fade-in on the menu links for a subtle lo-fi effect */
+    /* Menu Links with sequential fade-in */
     .menu a {
       text-decoration: none;
       color: #F1E7BB;
@@ -101,20 +99,10 @@
       opacity: 0;
       animation: fadeIn 0.5s forwards;
     }
-
-    /* Stagger each link slightly */
-    .menu a:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-    .menu a:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    .menu a:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-    .menu a:nth-child(4) {
-      animation-delay: 0.4s;
-    }
+    .menu a:nth-child(1) { animation-delay: 0.1s; }
+    .menu a:nth-child(2) { animation-delay: 0.2s; }
+    .menu a:nth-child(3) { animation-delay: 0.3s; }
+    .menu a:nth-child(4) { animation-delay: 0.4s; }
 
     .menu a::after {
       content: "";
@@ -129,14 +117,11 @@
     .menu a:hover::after {
       width: 100%;
     }
-
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+      to { opacity: 1; }
     }
 
-    /* Content Styling */
+    /* Main Content Styling */
     .content-wrapper {
       flex: 1;
       display: flex;
@@ -147,14 +132,11 @@
       position: relative;
       z-index: 1;
     }
-
     h2 {
       font-size: 35px;
       font-weight: 200;
       margin-bottom: 0;
     }
-
-    /* Glowing Effect on HAKU */
     h1 {
       font-size: 160px;
       font-weight: 200;
@@ -164,28 +146,20 @@
       animation: glow 2.5s infinite alternate ease-in-out;
     }
     @keyframes glow {
-      0% {
-        text-shadow: 0 0 15px rgba(241, 231, 187, 0.3);
-      }
-      100% {
-        text-shadow: 0 0 25px rgba(241, 231, 187, 0.7);
-      }
+      0% { text-shadow: 0 0 15px rgba(241, 231, 187, 0.3); }
+      100% { text-shadow: 0 0 25px rgba(241, 231, 187, 0.7); }
     }
-
     h3 {
       font-size: 70px;
       font-weight: 200;
       letter-spacing: 20px;
       margin-bottom: 40px;
     }
-
     h4 {
       font-size: 50px;
       font-weight: 200;
       margin-bottom: 30px;
     }
-
-    /* Book Button */
     .book-button {
       font-family: 'Optima', sans-serif;
       color: #E8DCC0;
@@ -210,14 +184,14 @@
   <!-- Background Image Overlay -->
   <div class="background-image"></div>
 
-  <!-- Bento Menu Icon -->
+  <!-- Menu Icon -->
   <div class="menu-icon" id="menuIcon">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-  <!-- Creative Lo-Fi Style Menu -->
+  <!-- Creative Lo-Fi Menu Panel -->
   <div class="menu" id="menu">
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
@@ -235,13 +209,13 @@
   </div>
 
   <script>
-    // Toggle the visibility of the menu when the hamburger icon is clicked
+    // Toggle the menu on clicking the hamburger icon
     const menuIcon = document.getElementById('menuIcon');
     const menu = document.getElementById('menu');
 
     menuIcon.addEventListener('click', function() {
       menu.classList.toggle('active');
-      // Optionally update icon colours for a subtle state change
+      // Optionally, change the icon colour when active
       menuIcon.querySelectorAll('span').forEach(span => {
         span.style.background = menu.classList.contains('active') ? '#E8DCC0' : '#F1E7BB';
       });
