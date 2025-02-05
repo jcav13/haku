@@ -12,7 +12,6 @@
       font-weight: normal;
       font-style: normal;
     }
-
     /* Base Styling */
     body {
       background-color: #293717;
@@ -38,7 +37,6 @@
       filter: blur(5px);
       z-index: -1;
     }
-
     /* Hamburger Icon – Top Left */
     .menu-icon {
       position: fixed;
@@ -59,7 +57,6 @@
       border-radius: 2px;
       transition: background 0.3s ease;
     }
-
     /* Aesthetic Drop-Down Menu */
     .menu {
       position: fixed;
@@ -109,7 +106,6 @@
     @keyframes fadeIn {
       to { opacity: 1; }
     }
-
     /* Vintage, Off-Centre Content Layout */
     .content-wrapper {
       position: relative;
@@ -117,37 +113,44 @@
       height: 100vh;
       overflow: hidden;
     }
-    /* “Personalised Home Massage” in the top left */
+    /* Tagline: Personalised Home Massage – Placed Top Center to avoid overlap */
     .content-wrapper h2 {
       position: absolute;
-      top: 40px;
-      left: 40px;
-      font-size: 28px;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin: 0;
     }
-    /* “H A K U” in a slightly off-centre, tilted position */
+    /* Main Title: H A K U – Off-Centre with a Glowing Effect */
     .content-wrapper h1 {
       position: absolute;
-      top: 50%;
-      left: 65%;
+      top: 45%;
+      left: 60%;
       transform: translate(-50%, -50%) rotate(-2deg);
-      font-size: 120px;
+      font-size: 140px;
       letter-spacing: 4px;
       margin: 0;
+      text-shadow: 0 0 15px rgba(241,231,187,0.5);
+      animation: glow 2.5s infinite alternate ease-in-out;
     }
-    /* “ハ ク” in the bottom right */
+    @keyframes glow {
+      0% { text-shadow: 0 0 15px rgba(241,231,187,0.3); }
+      100% { text-shadow: 0 0 25px rgba(241,231,187,0.7); }
+    }
+    /* Supplementary: ハ ク – Bottom Right */
     .content-wrapper h3 {
       position: absolute;
       bottom: 40px;
-      right: 60px;
+      right: 40px;
       font-size: 40px;
       letter-spacing: 5px;
       transform: rotate(3deg);
       margin: 0;
     }
-    /* “MELBOURNE” in the bottom left */
+    /* Supplementary: MELBOURNE – Bottom Left */
     .content-wrapper h4 {
       position: absolute;
       bottom: 40px;
@@ -157,38 +160,46 @@
       transform: rotate(-3deg);
       margin: 0;
     }
-    /* A vintage call-to-action button in the top right */
+    /* Prominent Book Button – Placed Bottom Center with a Pulsating Animation */
     .book-button {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
       font-family: 'Optima', sans-serif;
       color: #E8DCC0;
       border: 2px solid #E8DCC0;
-      padding: 12px 42px;
-      font-size: 18px;
+      padding: 14px 50px;
+      font-size: 20px;
       font-weight: 500;
       text-decoration: none;
       border-radius: 50px;
       letter-spacing: 1px;
       transition: all 0.4s ease-in-out;
+      animation: pulse 2s infinite;
+      z-index: 2;
     }
     .book-button:hover {
-      background: rgba(232, 220, 192, 0.15);
-      transform: scale(1.05);
+      background: rgba(232,220,192,0.15);
+      transform: translateX(-50%) scale(1.05);
+    }
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.1); }
+      100% { transform: translateX(-50%) scale(1); }
     }
   </style>
 </head>
 <body>
   <div class="background-image"></div>
-
+  
   <!-- Hamburger Icon -->
   <div class="menu-icon" id="menuIcon">
     <span></span>
     <span></span>
     <span></span>
   </div>
-
+  
   <!-- Aesthetic Drop-Down Menu -->
   <div class="menu" id="menu">
     <a href="about.html">About</a>
@@ -196,7 +207,7 @@
     <a href="book.html">Book</a>
     <a href="contact.html">Contact</a>
   </div>
-
+  
   <!-- Vintage, Off-Centre Content Layout -->
   <div class="content-wrapper">
     <h2>Personalised Home Massage</h2>
@@ -205,7 +216,7 @@
     <h4>MELBOURNE</h4>
     <a href="book.html" class="book-button">Book</a>
   </div>
-
+  
   <script>
     const menuIcon = document.getElementById('menuIcon');
     const menu = document.getElementById('menu');
@@ -218,7 +229,7 @@
       });
     });
     
-    // Hide the drop-down when the cursor leaves the menu area.
+    // Auto-hide the drop-down when the cursor leaves its area.
     menu.addEventListener('mouseleave', () => {
       menu.classList.remove('active');
       menuIcon.querySelectorAll('span').forEach(span => {
