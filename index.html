@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>HAKU</title>
   <style>
     /* Load Optima font */
@@ -12,7 +12,7 @@
       font-weight: normal;
       font-style: normal;
     }
-    
+
     /* Base Styling */
     body {
       background-color: #293717;
@@ -21,15 +21,11 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       overflow: hidden;
       background: url('https://github.com/jcav13/haku/blob/main/Massage%20photo.png?raw=true') no-repeat center center fixed;
       background-size: cover;
     }
     
-    /* Background Image Overlay */
     .background-image {
       position: fixed;
       top: 0;
@@ -42,7 +38,7 @@
       z-index: -1;
     }
     
-    /* Hamburger Menu Icon – Top Left */
+    /* Hamburger Icon – Top Left */
     .menu-icon {
       position: fixed;
       top: 20px;
@@ -63,33 +59,35 @@
       transition: background 0.3s ease;
     }
     
-    /* Slide-out Menu Panel – Anchored to Top Left */
+    /* Aesthetic Drop-Down Menu */
     .menu {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 250px;
-      padding: 60px 20px;
-      background: rgba(41, 55, 23, 0.8);
+      top: 60px; /* just below the icon */
+      left: 20px;
+      width: 220px;
+      background: rgba(41,55,23,0.85);
       backdrop-filter: blur(8px);
-      border-bottom-right-radius: 20px;
-      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
-      transform: translateX(-100%);
-      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;
       z-index: 2;
-      display: flex;
-      flex-direction: column;
     }
     .menu.active {
-      transform: translateX(0);
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
     }
     
-    /* Menu Links with a Subtle Fade-In */
     .menu a {
       text-decoration: none;
       color: #F1E7BB;
-      font-size: 20px;
-      margin-bottom: 20px;
+      font-size: 18px;
+      margin-bottom: 15px;
+      display: block;
       opacity: 0;
       animation: fadeIn 0.5s forwards;
     }
@@ -116,7 +114,6 @@
     
     /* Main Content Styling */
     .content-wrapper {
-      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -124,6 +121,7 @@
       text-align: center;
       position: relative;
       z-index: 1;
+      height: 100vh;
     }
     h2 {
       font-size: 35px;
@@ -135,12 +133,12 @@
       font-weight: 200;
       letter-spacing: 6px;
       margin: 0;
-      text-shadow: 0 0 15px rgba(241, 231, 187, 0.5);
+      text-shadow: 0 0 15px rgba(241,231,187,0.5);
       animation: glow 2.5s infinite alternate ease-in-out;
     }
     @keyframes glow {
-      0% { text-shadow: 0 0 15px rgba(241, 231, 187, 0.3); }
-      100% { text-shadow: 0 0 25px rgba(241, 231, 187, 0.7); }
+      0% { text-shadow: 0 0 15px rgba(241,231,187,0.3); }
+      100% { text-shadow: 0 0 25px rgba(241,231,187,0.7); }
     }
     h3 {
       font-size: 70px;
@@ -168,13 +166,12 @@
       margin-top: 20px;
     }
     .book-button:hover {
-      background: rgba(232, 220, 192, 0.15);
+      background: rgba(232,220,192,0.15);
       transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <!-- Background Overlay -->
   <div class="background-image"></div>
   
   <!-- Hamburger Icon -->
@@ -184,7 +181,7 @@
     <span></span>
   </div>
   
-  <!-- Slide-out Menu Panel -->
+  <!-- Aesthetic Drop-Down Menu -->
   <div class="menu" id="menu">
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
@@ -202,13 +199,13 @@
   </div>
   
   <script>
-    // Toggle the menu panel when the hamburger icon is clicked
+    // Toggle the drop-down menu on clicking the hamburger icon
     const menuIcon = document.getElementById('menuIcon');
     const menu = document.getElementById('menu');
     
     menuIcon.addEventListener('click', () => {
       menu.classList.toggle('active');
-      // Change the icon colour when active for a subtle state change
+      // Optionally, alter the icon's colour for feedback
       menuIcon.querySelectorAll('span').forEach(span => {
         span.style.background = menu.classList.contains('active') ? '#E8DCC0' : '#F1E7BB';
       });
