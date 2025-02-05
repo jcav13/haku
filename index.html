@@ -122,17 +122,21 @@
       margin: 0;
     }
     /* Main Title: H A K U – Moved to 20% from top and 75% from left */
-    .content-wrapper h1 {
-      position: absolute;
-      top: 20%;
-      left: 75%;
-      transform: translate(-50%, -50%) rotate(0deg);
-      font-size: 120px;
-      letter-spacing: 8px;
-      margin: 0;
-      text-shadow: 0 0 15px rgba(241,231,187,0.5);
-      animation: glow 2.5s infinite alternate ease-in-out;
-    }
+/* Adjusted H1 Styling */
+.content-wrapper h1 {
+    position: absolute;
+    top: 20%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 120px;
+    letter-spacing: 8px;
+    margin: 0;
+    text-shadow: 0 0 15px rgba(241,231,187,0.5);
+    animation: glow 2.5s infinite alternate ease-in-out;
+    line-height: 1.2; /* Controls spacing between lines */
+    text-align: center; /* Ensures proper alignment */
+    display: block;
+}
     @keyframes glow {
       0% { text-shadow: 0 0 15px rgba(241,231,187,0.3); }
       100% { text-shadow: 0 0 25px rgba(241,231,187,0.7); }
@@ -203,7 +207,7 @@
   <!-- Vintage, Off-Centre Content Layout -->
   <div class="content-wrapper">
     <h2>Personalised Home Massage</h2>
-    <h1>H A K U</h1>
+    <h1>H A<br>K U</h1>
     <h3>ハ ク</h3>
     <h4>MELBOURNE</h4>
     <a href="book.html" class="book-button">Book</a>
