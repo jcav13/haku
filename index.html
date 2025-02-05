@@ -12,6 +12,7 @@
       font-weight: normal;
       font-style: normal;
     }
+
     /* Base Styling */
     body {
       background-color: #293717;
@@ -37,6 +38,7 @@
       filter: blur(5px);
       z-index: -1;
     }
+
     /* Hamburger Icon – Top Left */
     .menu-icon {
       position: fixed;
@@ -57,6 +59,7 @@
       border-radius: 2px;
       transition: background 0.3s ease;
     }
+
     /* Aesthetic Drop-Down Menu */
     .menu {
       position: fixed;
@@ -106,6 +109,7 @@
     @keyframes fadeIn {
       to { opacity: 1; }
     }
+
     /* Vintage, Off-Centre Content Layout */
     .content-wrapper {
       position: relative;
@@ -113,24 +117,23 @@
       height: 100vh;
       overflow: hidden;
     }
-    /* Tagline: Personalised Home Massage – Placed Top Center to avoid overlap */
+    /* Tagline: Personalised Home Massage – Positioned to the left about 30% below the hamburger */
     .content-wrapper h2 {
       position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: calc(20px + 30vh);
+      left: 20px;
       font-size: 24px;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin: 0;
     }
-    /* Main Title: H A K U – Off-Centre with a Glowing Effect */
+    /* Main Title: H A K U – Keep original placement and glowing effect */
     .content-wrapper h1 {
       position: absolute;
-      top: 45%;
-      left: 60%;
+      top: 50%;
+      left: 65%;
       transform: translate(-50%, -50%) rotate(-2deg);
-      font-size: 140px;
+      font-size: 120px;
       letter-spacing: 4px;
       margin: 0;
       text-shadow: 0 0 15px rgba(241,231,187,0.5);
@@ -160,7 +163,7 @@
       transform: rotate(-3deg);
       margin: 0;
     }
-    /* Prominent Book Button – Placed Bottom Center with a Pulsating Animation */
+    /* Prominent Book Button – Now without pulse; centred at the bottom to draw attention */
     .book-button {
       position: absolute;
       bottom: 80px;
@@ -169,37 +172,32 @@
       font-family: 'Optima', sans-serif;
       color: #E8DCC0;
       border: 2px solid #E8DCC0;
-      padding: 14px 50px;
-      font-size: 20px;
+      padding: 16px 56px;
+      font-size: 22px;
       font-weight: 500;
       text-decoration: none;
       border-radius: 50px;
       letter-spacing: 1px;
       transition: all 0.4s ease-in-out;
-      animation: pulse 2s infinite;
+      box-shadow: 0 4px 15px rgba(232,220,192,0.5);
       z-index: 2;
     }
     .book-button:hover {
       background: rgba(232,220,192,0.15);
       transform: translateX(-50%) scale(1.05);
     }
-    @keyframes pulse {
-      0% { transform: translateX(-50%) scale(1); }
-      50% { transform: translateX(-50%) scale(1.1); }
-      100% { transform: translateX(-50%) scale(1); }
-    }
   </style>
 </head>
 <body>
   <div class="background-image"></div>
-  
+
   <!-- Hamburger Icon -->
   <div class="menu-icon" id="menuIcon">
     <span></span>
     <span></span>
     <span></span>
   </div>
-  
+
   <!-- Aesthetic Drop-Down Menu -->
   <div class="menu" id="menu">
     <a href="about.html">About</a>
@@ -207,7 +205,7 @@
     <a href="book.html">Book</a>
     <a href="contact.html">Contact</a>
   </div>
-  
+
   <!-- Vintage, Off-Centre Content Layout -->
   <div class="content-wrapper">
     <h2>Personalised Home Massage</h2>
@@ -216,11 +214,11 @@
     <h4>MELBOURNE</h4>
     <a href="book.html" class="book-button">Book</a>
   </div>
-  
+
   <script>
     const menuIcon = document.getElementById('menuIcon');
     const menu = document.getElementById('menu');
-    
+
     // Toggle the drop-down when the hamburger icon is clicked.
     menuIcon.addEventListener('click', () => {
       menu.classList.toggle('active');
@@ -228,7 +226,7 @@
         span.style.background = menu.classList.contains('active') ? '#E8DCC0' : '#F1E7BB';
       });
     });
-    
+
     // Auto-hide the drop-down when the cursor leaves its area.
     menu.addEventListener('mouseleave', () => {
       menu.classList.remove('active');
