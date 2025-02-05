@@ -147,7 +147,6 @@ body {
       margin: 0;
     }
     /* Main Title: H A K U – Moved to 20% from top and 75% from left */
-/* Ensures H A is on one line and K U is on the second */
 .haku {
     position: absolute;
     top: 20%;
@@ -158,46 +157,38 @@ body {
     margin: 0;
     text-shadow: 0 0 15px rgba(241,231,187,0.5);
     animation: glow 2.5s infinite alternate ease-in-out;
-    line-height: 1.2; /* Keeps space between the two lines */
     text-align: center;
-    display: block;
+    display: flex;
+    flex-direction: column; /* Ensures stacking of HA on KU */
+    align-items: center; /* Keeps everything centered */
+    gap: 10px; /* Adds space between the two rows */
 }
 
-/* Forces H A to stay on one line and K U on the second */
-.haku .line1, .haku .line2 {
-    display: block; /* Forces them onto separate lines */
+/* Ensures "H A" and "K U" are on separate lines */
+.haku .line1,
+.haku .line2 {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Controls space between letters */
 }
 
-/* Ensure the H and U are positioned correctly */
-.haku span {
-    position: relative;
-    display: inline-block;
-}
-
-/* Pink Square (Behind H) */
-.haku .h::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    background-color: #FFC0CB; /* Light Pink */
-    transform: translate(-50%, -50%);
-    z-index: -1;
-}
-
-/* Peach Square (Behind U) */
+/* Square Background for "H" */
+.haku .h::before,
 .haku .u::before {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
-    height: 100%;
-    background-color: #FFE4E1; /* Misty Rose */
+    width: 1.2em;
+    aspect-ratio: 1 / 1; /* Ensures it's a perfect square */
+    background-color: #FFC0CB; /* Light Pink */
     transform: translate(-50%, -50%);
     z-index: -1;
+}
+
+/* Square Background for "U" */
+.haku .u::before {
+    background-color: #FFE4E1; /* Misty Rose */
 }
     @keyframes glow {
       0% { text-shadow: 0 0 15px rgba(241,231,187,0.3); }
@@ -313,9 +304,12 @@ body {
   <div class="content-wrapper">
     <h2>Personalised Home Massage</h2>
 <h1 class="haku">
-    <span class="line1"><span class="h">H</span> A</span>
-    <br>
-    <span class="line2">K <span class="u">U</span></span>
+    <span class="line1">
+        <span class="h">H</span> <span>A</span>
+    </span>
+    <span class="line2">
+        <span>K</span> <span class="u">U</span>
+    </span>
 </h1>
     <h3>ハ ク</h3>
     <h4>MELBOURNE</h4>
