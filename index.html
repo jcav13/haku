@@ -15,6 +15,7 @@
       font-weight: normal;
       font-style: normal;
     }
+    
     /* Global Styles */
     body {
       background-color: #293717;
@@ -25,7 +26,7 @@
       min-height: 100vh;
       overflow: hidden;
       background: url('https://github.com/jcav13/haku/blob/main/massage3.0.png?raw=true') no-repeat center center fixed;
-      background-size: contain; /* Ensures the whole image is visible */
+      background-size: cover;  /* Use cover so the image fills the screen */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -37,23 +38,27 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      background: url('https://github.com/jcav13/haku/blob/main/massage3.0.png?raw=true') no-repeat center center;
-      background-size: contain; /* Show the entire image */
+      background: url('https://github.com/jcav13/haku/blob/main/massage3.0.png?raw=true') no-repeat center center/cover;
       opacity: 0.15;
       filter: blur(5px);
       z-index: -1;
     }
-    /* Top Panel - Light Cream Colour */
+    
+    /* Top Panel (Cream Panel) for HAKU */
     .top-panel {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 60px; /* Adjust height as desired */
+      height: 200px; /* Adjust height as needed */
       background-color: #FFF8E1; /* Light cream */
       z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    /* Hide content initially (for fade-in effect) */
+    
+    /* Hide content initially for fade-in effect */
     .content-wrapper {
       opacity: 0;
       transform: translateY(20px);
@@ -63,6 +68,7 @@
       height: 100vh;
       overflow: hidden;
     }
+    
     /* Hamburger Icon – Top Left */
     .menu-icon {
       position: fixed;
@@ -83,21 +89,22 @@
       border-radius: 2px;
       transition: background 0.3s ease;
     }
+    
     /* Aesthetic Drop-Down Menu */
     .menu {
       position: fixed;
-      top: 60px;
+      top: 60px; /* directly below the icon */
       left: 20px;
       width: 220px;
       background: rgba(41,55,23,0.85);
       backdrop-filter: blur(8px);
       border-radius: 8px;
       padding: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
       opacity: 0;
       transform: translateY(-20px);
       pointer-events: none;
-      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;
+      transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1), opacity 0.4s ease;
       z-index: 3;
     }
     .menu.active {
@@ -132,24 +139,23 @@
     @keyframes fadeIn {
       to { opacity: 1; }
     }
-    /* Content Layout */
+    
+    /* Content Elements */
+    /* Personalised Home Massage positioned on the right */
     .content-wrapper h2 {
       position: absolute;
       top: 40vh;
-      left: 20px;
+      right: 20px; /* Changed to right alignment */
       font-size: 35px;
       text-transform: uppercase;
       letter-spacing: 3px;
       margin: 0;
-      transform: translateY(41px); /* Lower H2 a bit */
+      transform: translateY(41px);
     }
-    /* H A K U */
+    
+    /* H A K U styling (now inside the cream panel) */
     .haku {
       font-family: 'Libre Bodoni', serif;
-      position: absolute;
-      top: 26%;
-      left: 85%;
-      transform: translate(-50%, -50%);
       font-size: 150px;
       letter-spacing: 8px;
       margin: 0;
@@ -166,13 +172,14 @@
     .haku .line {
       display: flex;
       justify-content: center;
-      gap: 50px; /* Adjust gap to bring letters closer or further apart */
+      gap: 50px;
       position: relative;
     }
     @keyframes glow {
       0% { text-shadow: 0 0 15px rgba(241,231,187,0.3); }
       100% { text-shadow: 0 0 25px rgba(241,231,187,0.7); }
     }
+    
     /* Supplementary Texts */
     .content-wrapper h3 {
       position: absolute;
@@ -190,6 +197,7 @@
       letter-spacing: 2px;
       margin: 0;
     }
+    
     /* Green Book Button */
     .book-button {
       position: absolute;
@@ -197,8 +205,8 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font-family: 'Optima', sans-serif;
-      color: #4CAF50; /* Green text */
-      border: 2px solid #4CAF50; /* Green border */
+      color: #293717;
+      border: 2px solid #293717;
       padding: 16px 56px;
       font-size: 22px;
       font-weight: 500;
@@ -213,18 +221,16 @@
       background: rgba(76,175,80,0.15);
       transform: translate(-50%, -50%) scale(1.05);
     }
+    
     @media (max-width: 768px) {
       .haku {
         font-size: 80px;
         letter-spacing: 6px;
-        top: 20%;
-        left: 75%;
-        transform: translate(-50%, -50%);
       }
       .content-wrapper h2 {
         font-size: 28px;
         top: 40vh;
-        left: 20px;
+        right: 20px;
         letter-spacing: 4px;
       }
       .content-wrapper h4 {
@@ -247,8 +253,20 @@
 </head>
 <body>
   <div class="background-image"></div>
-  <!-- Top Panel -->
-  <div class="top-panel"></div>
+  
+  <!-- Top Panel (Cream Panel) with HAKU -->
+  <div class="top-panel">
+    <h1 class="haku">
+      <div class="line">
+        <span class="letter h">H</span>
+        <span class="letter">A</span>
+      </div>
+      <div class="line">
+        <span class="letter">K</span>
+        <span class="letter u">U</span>
+      </div>
+    </h1>
+  </div>
   
   <!-- Hamburger Icon -->
   <div class="menu-icon" id="menuIcon">
@@ -268,16 +286,6 @@
   <!-- Content Layout -->
   <div class="content-wrapper">
     <h2>Personalised Home Massage</h2>
-    <h1 class="haku">
-      <div class="line">
-        <span class="letter h">H</span>
-        <span class="letter">A</span>
-      </div>
-      <div class="line">
-        <span class="letter">K</span>
-        <span class="letter u">U</span>
-      </div>
-    </h1>
     <h3>ハ ク</h3>
     <h4>MELBOURNE</h4>
     <a href="book.html" class="book-button">Book</a>
