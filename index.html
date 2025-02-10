@@ -30,7 +30,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
     }
     .background-image {
       position: fixed;
@@ -44,52 +44,32 @@
       z-index: -1;
     }
     
-    /* Top Panel (Cream Panel) for HAKU */
+    /* Top Panel (Cream Panel) for Hamburger and HAKU */
     .top-panel {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 70px; /* Reduced height */
+      height: 85px; /* Updated height */
       background-color: #FFF8E1; /* Light cream */
       z-index: 4;
       display: flex;
       align-items: center;
-      justify-content: center;
+      padding-left: 20px; /* Give some left padding */
+      gap: 20px;
     }
-    /* HAKU contained within the top panel */
-    .top-panel h1.haku {
-      margin: 0;
-      font-family: 'Libre Bodoni', serif;
-      font-size: 50px; /* Scaled down for the panel */
-      letter-spacing: 4px;
-      color: #293717;
-      text-shadow: 0 0 8px rgba(41,55,23,0.7);
-      -webkit-text-stroke: 2px #293717;
-      text-stroke: 2px #293717;
+    /* Container for hamburger and HAKU in the top panel */
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
     
-    /* Content Wrapper for the remaining content */
-    .content-wrapper {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1.5s ease-out, transform 1.5s ease-out;
-      position: relative;
-      width: 100%;
-      height: calc(100vh - 70px); /* Adjust for the top panel */
-      overflow: hidden;
-      margin-top: 70px; /* Push content below the top panel */
-    }
-    
-    /* Hamburger Icon – Top Left */
+    /* Hamburger Icon styling */
     .menu-icon {
-      position: fixed;
-      top: 20px;
-      left: 20px;
       width: 35px;
       height: 30px;
       cursor: pointer;
-      z-index: 5;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -97,15 +77,55 @@
     .menu-icon span {
       display: block;
       height: 3px;
-      background: #F1E7BB;
+      background: #293717;
       border-radius: 2px;
       transition: background 0.3s ease;
     }
     
-    /* Aesthetic Drop-Down Menu */
+    /* HAKU inside top panel */
+    .haku {
+      font-family: 'Libre Bodoni', serif;
+      margin: 0;
+      font-size: 50px;  /* Scaled to fit within the 85px panel */
+      letter-spacing: 4px;
+      color: #293717;
+      text-shadow: 0 0 8px rgba(41,55,23,0.7);
+      -webkit-text-stroke: 2px #293717;
+      text-stroke: 2px #293717;
+      /* Use flex to stack lines if needed */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1;
+    }
+    .haku .line {
+      display: flex;
+      gap: 10px;  /* Adjust this gap to bring letters closer */
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 8px rgba(41,55,23,0.5); }
+      100% { text-shadow: 0 0 12px rgba(41,55,23,0.7); }
+    }
+    /* (Optional: you could add an animation property to .haku if desired)
+       animation: glow 2.5s infinite alternate ease-in-out; 
+    */
+    
+    /* Content Wrapper for remaining content (pushed down by the panel) */
+    .content-wrapper {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 85px);
+      overflow: hidden;
+      margin-top: 85px; /* Push content below the top panel */
+    }
+    
+    /* Aesthetic Drop-Down Menu (unchanged) */
     .menu {
       position: fixed;
-      top: 60px; /* directly below the icon */
+      top: 60px;
       left: 20px;
       width: 220px;
       background: rgba(41,55,23,0.85);
@@ -152,8 +172,7 @@
       to { opacity: 1; }
     }
     
-    /* Content Elements */
-    /* Personalised Home Massage on the right */
+    /* Personalised Home Massage (H2) on the right */
     .content-wrapper h2 {
       position: absolute;
       top: 40vh;
@@ -165,7 +184,7 @@
       transform: translateY(41px);
     }
     
-    /* Supplementary Texts remain as before */
+    /* Supplementary texts (unchanged) */
     .content-wrapper h3 {
       position: absolute;
       bottom: 40px;
@@ -183,12 +202,12 @@
       margin: 0;
     }
     
-    /* Book Button updated to use #293717 and glow that colour */
+    /* Book Button now 30% from the bottom and using #293717 for its colour */
     .book-button {
       position: absolute;
-      top: 50%;
+      bottom: 30%; /* 30% from the bottom */
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       font-family: 'Optima', sans-serif;
       color: #293717;
       border: 2px solid #293717;
@@ -204,14 +223,14 @@
     }
     .book-button:hover {
       background: rgba(41,55,23,0.15);
-      transform: translate(-50%, -50%) scale(1.05);
+      transform: translateX(-50%) scale(1.05);
     }
     
     @media (max-width: 768px) {
       .top-panel {
-        height: 70px;
+        height: 85px;
       }
-      .top-panel h1.haku {
+      .top-panel .haku {
         font-size: 40px;
       }
       .content-wrapper h2 {
@@ -241,25 +260,25 @@
 <body>
   <div class="background-image"></div>
   
-  <!-- Top Panel (Cream Panel) containing HAKU -->
+  <!-- Top Panel (Cream Panel) with Hamburger and HAKU -->
   <div class="top-panel">
-    <h1 class="haku">
-      <div class="line">
-        <span class="letter h">H</span>
-        <span class="letter">A</span>
+    <div class="top-left">
+      <div class="menu-icon" id="menuIcon">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-      <div class="line">
-        <span class="letter">K</span>
-        <span class="letter u">U</span>
-      </div>
-    </h1>
-  </div>
-  
-  <!-- Hamburger Icon -->
-  <div class="menu-icon" id="menuIcon">
-    <span></span>
-    <span></span>
-    <span></span>
+      <h1 class="haku">
+        <div class="line">
+          <span class="letter h">H</span>
+          <span class="letter">A</span>
+        </div>
+        <div class="line">
+          <span class="letter">K</span>
+          <span class="letter u">U</span>
+        </div>
+      </h1>
+    </div>
   </div>
   
   <!-- Aesthetic Drop-Down Menu -->
