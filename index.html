@@ -34,12 +34,19 @@
     }
 .background-image {
   position: fixed;
-  top: 85px; /* Starts right below the 85px panel */
+  top: 85px; /* Starts below the top cream panel */
   left: 0;
   width: 100%;
-  height: calc(100vh - 85px); /* Ensures the background covers the remaining viewport */
-  background: url('https://github.com/jcav13/haku/blob/main/massage3.0.png?raw=true') no-repeat center center/cover;
+  height: calc(100vh - 85px); /* Only the area below the panel */
   z-index: -1;
+  overflow: hidden;
+}
+
+.background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* The entire image is visible, not stretched */
+  object-position: center top; /* Anchor the image to the top center */
 }
     
     /* Top Panel (Cream Panel) for Hamburger and HAKU */
@@ -278,7 +285,9 @@
       </h1>
     </div>
   </div>
-  
+  <div class="background-image">
+  <img src="https://github.com/jcav13/haku/blob/main/massage3.0.png?raw=true" alt="Background">
+</div>
   <!-- Aesthetic Drop-Down Menu -->
   <div class="menu" id="menu">
     <a href="about.html">About</a>
