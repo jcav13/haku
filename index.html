@@ -179,29 +179,6 @@ body {
     justify-content: center;
 }
 
-/* Background square for "H" (Pink - #FFC0CB) */
-.haku .h::before {
-    content: "";
-    position: absolute;
-    top: -10px; /* Lower to align with U */
-    left: -60px; /* Slight shift left */
-    width: 1.5em;
-    height: 1.5em;
-    background-color: #FFC0CB;
-    z-index: -1;
-}
-
-/* Background square for "U" (Misty Rose - #FFE4E1) */
-.haku .u::before {
-    content: "";
-    position: absolute;
-    top: -10px; /* Raise to align with H */
-    left: 150px; /* Slight shift right */
-    width: 1.5em;
-    height: 1.5em;
-    background-color: #FFE4E1;
-    z-index: -1;
-}
     @keyframes glow {
       0% { text-shadow: 0 0 15px rgba(241,231,187,0.3); }
       100% { text-shadow: 0 0 25px rgba(241,231,187,0.7); }
