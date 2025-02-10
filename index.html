@@ -137,15 +137,17 @@ body {
       overflow: hidden;
     }
     /* Tagline: Personalised Home Massage (H2) at 90vh from the top */
-    .content-wrapper h2 {
-      position: absolute;
-      top: 40vh;
-      left: 20px;
-      font-size: 35px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin: 0;
-    }
+.content-wrapper h2 {
+  position: absolute;
+  top: 40vh;
+  left: 20px;
+  font-size: 35px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0;
+  /* Add this line to shift it 20px lower */
+  transform: translateY(20px);
+}
 .haku {
     position: absolute;
     top: 26%;
@@ -161,8 +163,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 40px; /* spacing between lines */
-    -webkit-text-stroke: 2px #E8DCC0; /* adds a clean outline in WebKit browsers */
-    text-stroke: 2px #E8DCC0;         /* standard property for browsers that support it */
+    -webkit-text-stroke: 6px #E8DCC0; /* adds a clean outline in WebKit browsers */
+    text-stroke: 6px #E8DCC0;         /* standard property for browsers that support it */
 }
 
 /* Each line contains two letters */
