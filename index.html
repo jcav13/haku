@@ -148,7 +148,7 @@ body {
     }
 .haku {
     position: absolute;
-    top: 26%; /* Lowered H and A */
+    top: 26%;
     left: 85%;
     transform: translate(-50%, -50%);
     font-size: 150px;
@@ -160,7 +160,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px; /* Increased spacing between HA and KU */
+    gap: 40px; /* spacing between lines */
+    -webkit-text-stroke: 2px #E8DCC0; /* adds a clean outline in WebKit browsers */
+    text-stroke: 2px #E8DCC0;         /* standard property for browsers that support it */
 }
 
 /* Each line contains two letters */
