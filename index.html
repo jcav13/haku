@@ -26,7 +26,7 @@
       min-height: 100vh;
       overflow: hidden;
       background: url('https://github.com/jcav13/haku/blob/main/massage3.0.png?raw=true') no-repeat center center fixed;
-      background-size: cover;  /* Use cover so the image fills the screen */
+      background-size: cover;  /* Using cover as requested */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -50,23 +50,35 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 200px; /* Adjust height as needed */
+      height: 70px; /* Reduced height */
       background-color: #FFF8E1; /* Light cream */
       z-index: 4;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+    /* HAKU contained within the top panel */
+    .top-panel h1.haku {
+      margin: 0;
+      font-family: 'Libre Bodoni', serif;
+      font-size: 50px; /* Scaled down for the panel */
+      letter-spacing: 4px;
+      color: #293717;
+      text-shadow: 0 0 8px rgba(41,55,23,0.7);
+      -webkit-text-stroke: 2px #293717;
+      text-stroke: 2px #293717;
+    }
     
-    /* Hide content initially for fade-in effect */
+    /* Content Wrapper for the remaining content */
     .content-wrapper {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 1.5s ease-out, transform 1.5s ease-out;
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: calc(100vh - 70px); /* Adjust for the top panel */
       overflow: hidden;
+      margin-top: 70px; /* Push content below the top panel */
     }
     
     /* Hamburger Icon – Top Left */
@@ -141,11 +153,11 @@
     }
     
     /* Content Elements */
-    /* Personalised Home Massage positioned on the right */
+    /* Personalised Home Massage on the right */
     .content-wrapper h2 {
       position: absolute;
       top: 40vh;
-      right: 20px; /* Changed to right alignment */
+      right: 20px;
       font-size: 35px;
       text-transform: uppercase;
       letter-spacing: 3px;
@@ -153,34 +165,7 @@
       transform: translateY(41px);
     }
     
-    /* H A K U styling (now inside the cream panel) */
-    .haku {
-      font-family: 'Libre Bodoni', serif;
-      font-size: 150px;
-      letter-spacing: 8px;
-      margin: 0;
-      text-shadow: 0 0 15px rgba(241,231,187,0.5);
-      animation: glow 2.5s infinite alternate ease-in-out;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-      -webkit-text-stroke: 3px #293717;
-      text-stroke: 3px #293717;
-    }
-    .haku .line {
-      display: flex;
-      justify-content: center;
-      gap: 50px;
-      position: relative;
-    }
-    @keyframes glow {
-      0% { text-shadow: 0 0 15px rgba(241,231,187,0.3); }
-      100% { text-shadow: 0 0 25px rgba(241,231,187,0.7); }
-    }
-    
-    /* Supplementary Texts */
+    /* Supplementary Texts remain as before */
     .content-wrapper h3 {
       position: absolute;
       bottom: 40px;
@@ -198,7 +183,7 @@
       margin: 0;
     }
     
-    /* Green Book Button */
+    /* Book Button updated to use #293717 and glow that colour */
     .book-button {
       position: absolute;
       top: 50%;
@@ -214,18 +199,20 @@
       border-radius: 50px;
       letter-spacing: 2px;
       transition: all 0.4s ease-in-out;
-      box-shadow: 0 4px 15px rgba(76,175,80,0.5);
+      box-shadow: 0 4px 15px rgba(41,55,23,0.5);
       z-index: 2;
     }
     .book-button:hover {
-      background: rgba(76,175,80,0.15);
+      background: rgba(41,55,23,0.15);
       transform: translate(-50%, -50%) scale(1.05);
     }
     
     @media (max-width: 768px) {
-      .haku {
-        font-size: 80px;
-        letter-spacing: 6px;
+      .top-panel {
+        height: 70px;
+      }
+      .top-panel h1.haku {
+        font-size: 40px;
       }
       .content-wrapper h2 {
         font-size: 28px;
@@ -254,7 +241,7 @@
 <body>
   <div class="background-image"></div>
   
-  <!-- Top Panel (Cream Panel) with HAKU -->
+  <!-- Top Panel (Cream Panel) containing HAKU -->
   <div class="top-panel">
     <h1 class="haku">
       <div class="line">
