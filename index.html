@@ -32,17 +32,15 @@
       align-items: center;
       justify-content: flex-start;
     }
-    .background-image {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: url('https://github.com/jcav13/haku/blob/main/massage3.0.png?raw=true') no-repeat center center/cover;
-      opacity: 0.15;
-      filter: blur(5px);
-      z-index: -1;
-    }
+.background-image {
+  position: fixed;
+  top: 85px; /* Starts right below the 85px panel */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 85px); /* Ensures the background covers the remaining viewport */
+  background: url('https://github.com/jcav13/haku/blob/main/massage3.0.png?raw=true') no-repeat center center/cover;
+  z-index: -1;
+}
     
     /* Top Panel (Cream Panel) for Hamburger and HAKU */
     .top-panel {
